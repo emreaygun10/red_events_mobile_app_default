@@ -1,7 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:red_events_mobile_app_defult/product/init/config/dev_env.dart';
-import 'package:red_events_mobile_app_defult/product/init/config/prod_env.dart';
-import 'package:red_events_mobile_app_defult/product/init/config/product_configuration.dart';
+import 'package:gen/gen.dart';
 
 /// Product environment manager
 final class ProductEnvironment {

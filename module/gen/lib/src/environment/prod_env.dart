@@ -1,11 +1,11 @@
 import 'package:envied/envied.dart';
-import 'package:red_events_mobile_app_defult/product/init/config/product_configuration.dart';
+import 'package:gen/src/environment/product_configuration.dart';
 
 part 'prod_env.g.dart';
 
 @Envied(
   obfuscate: true,
-  path: 'asset/env/.prod.env',
+  path: 'assets/env/.prod.env',
 )
 
 /// Prod env manager
