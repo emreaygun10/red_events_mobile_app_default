@@ -23,6 +23,8 @@ dependencies:
   vexana: ^3.5.4
   widgets:
     path: module/widgets
+  common:
+    path: module/common
 
 dev_dependencies:
   auto_route_generator: ^7.3.2
