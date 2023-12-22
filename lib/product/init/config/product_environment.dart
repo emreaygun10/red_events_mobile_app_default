@@ -3,6 +3,7 @@ import 'package:gen/gen.dart';
 
 /// Product environment manager
 final class ProductEnvironment {
+  /// Environment configuration
   ProductEnvironment.setup({required ProductConfiguration config}) {
     _config = config;
   }
