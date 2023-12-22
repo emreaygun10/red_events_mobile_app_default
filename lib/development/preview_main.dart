@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:red_events_mobile_app_defult/product/init/application_initialze.dart';
 import 'package:red_events_mobile_app_defult/product/init/product_localization.dart';
+import 'package:red_events_mobile_app_defult/product/init/state_initialze.dart';
 import 'package:red_events_mobile_app_defult/product/init/theme/custom_dark_theme.dart';
 import 'package:red_events_mobile_app_defult/product/init/theme/custom_light_theme.dart';
 import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
@@ -12,7 +13,8 @@ void main() async {
   await ApplicationInitialize().setup();
   runApp(
     DevicePreview(
-      builder: (context) => ProductLocalization(child: const _MyApp()),
+      builder: (context) =>
+          ProductLocalization(child: const StateInitialize(child: _MyApp())),
     ),
   );
 }

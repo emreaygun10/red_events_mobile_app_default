@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:kartal/kartal.dart';
 import 'package:logger/logger.dart';
 import 'package:red_events_mobile_app_defult/product/init/config/product_environment.dart';
+import 'package:red_events_mobile_app_defult/product/state/container/product_state_container.dart';
 
 @immutable
 
@@ -37,5 +38,8 @@ final class ApplicationInitialize {
     };
 
     ProductEnvironment.general();
+
+    /// It must be call after [ProductEnvironment]
+    ProductContainer.setup();
   }
 }
