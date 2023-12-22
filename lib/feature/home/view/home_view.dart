@@ -6,6 +6,7 @@ import 'package:red_events_mobile_app_defult/feature/home/wiew_model/mixin/home_
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
 import 'package:red_events_mobile_app_defult/product/init/product_localization.dart';
 import 'package:red_events_mobile_app_defult/product/utility/constants/enums/locales.dart';
+import 'package:widgets/widgets.dart';
 
 part 'widget/home_app_bar.dart';
 
@@ -13,6 +14,7 @@ part 'widget/home_app_bar.dart';
 
 /// Home View
 class HomeView extends StatefulWidget {
+  // ignore: public_member_api_docs
   const HomeView({super.key});
 
   @override
@@ -28,14 +30,17 @@ class _HomeViewState extends State<HomeView> with HomeViewMixin {
         children: [
           Assets.lottie.animZombie.lottie(package: 'gen'),
           const Text('Change Language'),
-          ElevatedButton(
-            onPressed: () {
-              ProductLocalization.updateLanguage(
-                context: context,
-                value: Locales.en,
-              );
-            },
-            child: const Text(LocaleKeys.general_button_save).tr(),
+          Padding(
+            padding: const ProjectPadding.allMedium(),
+            child: ElevatedButton(
+              onPressed: () {
+                ProductLocalization.updateLanguage(
+                  context: context,
+                  value: Locales.en,
+                );
+              },
+              child: const Text(LocaleKeys.general_button_save).tr(),
+            ),
           ),
         ],
       ),
