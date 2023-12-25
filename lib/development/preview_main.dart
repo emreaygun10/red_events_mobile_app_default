@@ -24,6 +24,7 @@ void main() async {
 final class _MyApp extends StatelessWidget {
   const _MyApp();
   static final _appRouter = AppRouter();
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

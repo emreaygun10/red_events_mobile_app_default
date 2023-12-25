@@ -25,7 +25,6 @@ final class _MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      title: 'Flutter Demo',
       themeMode: ThemeMode.light,
       theme: CustomLightTheme().themeData,
       darkTheme: CustomDarkTheme().themeData,
