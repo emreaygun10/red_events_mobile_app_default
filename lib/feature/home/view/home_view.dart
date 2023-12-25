@@ -34,6 +34,26 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
             child: ElevatedButton(
               onPressed: () {
                 productViewModel.changeThemeMode(ThemeMode.dark);
+                productViewModel.fToast.showToast(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 24, vertical: 12),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: Colors.greenAccent,
+                    ),
+                    child: const Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.check),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        Text('Tema değiştirildi !!'),
+                      ],
+                    ),
+                  ),
+                );
                 // ProductLocalization.updateLanguage(
                 //   context: context,
                 //   value: Locales.en,
