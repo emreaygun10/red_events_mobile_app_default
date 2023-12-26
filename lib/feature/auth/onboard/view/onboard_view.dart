@@ -29,6 +29,7 @@ class _OnboardViewState extends BaseState<OnboardView> with OnboardMixin {
         child: Stack(
           children: [
             SizedBox(
+              height: context.sized.height * 0.7,
               child: Stack(
                 children: <Widget>[
                   buildOnboardImage(context, onboardViewModel),
@@ -40,35 +41,39 @@ class _OnboardViewState extends BaseState<OnboardView> with OnboardMixin {
               alignment: FractionalOffset.bottomCenter,
               child: Container(
                 width: context.sized.width,
-                height: context.sized.height * 0.4,
+                height: context.sized.height * 0.5,
                 decoration: buildBottomLinerGradient(),
                 child: Padding(
                   padding: const ProjectPadding.scaffold(),
-                  child: Column(
-                    verticalDirection: VerticalDirection.up,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        flex: 25,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            buildRegisterButton(context),
-                            buildLoginButton(context),
-                          ],
-                        ),
-                      ),
-                      buildListViewPointer(),
-                      buildOnboardDescription(context, onboardViewModel),
-                      buildLogoColumn(context),
-                    ],
-                  ),
+                  child: buildBottomColumn(context),
                 ),
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Column buildBottomColumn(BuildContext context) {
+    return Column(
+      verticalDirection: VerticalDirection.up,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 25,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              buildRegisterButton(context),
+              buildLoginButton(context),
+            ],
+          ),
+        ),
+        buildListViewPointer(),
+        buildOnboardDescription(context, onboardViewModel),
+        buildLogoColumn(context),
+      ],
     );
   }
 
@@ -267,7 +272,6 @@ class _OnboardViewState extends BaseState<OnboardView> with OnboardMixin {
           itemBuilder: (context, index) {
             onboardViewModel.changeCurrentIndex(index);
             return Container(
-              height: context.sized.height * 0.75,
               width: context.sized.width,
               decoration: const BoxDecoration(
                 color: Colors.transparent,
