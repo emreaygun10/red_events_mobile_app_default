@@ -2,16 +2,13 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 final class ProductState extends Equatable {
-  const ProductState({this.themeMode = ThemeMode.light, this.navigatorKey});
+  const ProductState({this.themeMode = ThemeMode.light});
 
   /// Product theme mode
   final ThemeMode themeMode;
 
-  /// Flutter toast key
-  final GlobalKey<ScaffoldMessengerState>? navigatorKey;
-
   @override
-  List<Object?> get props => [themeMode, navigatorKey];
+  List<Object?> get props => [themeMode];
 
   /// Copy with
   ProductState copyWith({
@@ -20,7 +17,6 @@ final class ProductState extends Equatable {
   }) {
     return ProductState(
       themeMode: themeMode ?? this.themeMode,
-      navigatorKey: navigatorKey ?? this.navigatorKey,
     );
   }
 }

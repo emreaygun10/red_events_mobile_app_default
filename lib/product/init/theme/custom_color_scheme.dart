@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gen/gen.dart';
 
 /// Project custom colors
 final class CustomColorScheme {
@@ -7,7 +8,7 @@ final class CustomColorScheme {
   /// Light color scheme set
   static const lightColorScheme = ColorScheme(
     brightness: Brightness.light,
-    primary: Color(0xFF6750A4),
+    primary: ColorName.blueBase,
     onPrimary: Color(0xFFFFFFFF),
     primaryContainer: Color(0xFFEADDFF),
     onPrimaryContainer: Color(0xFF21005D),
@@ -19,7 +20,7 @@ final class CustomColorScheme {
     onTertiary: Color(0xFFFFFFFF),
     tertiaryContainer: Color(0xFFFFD8E4),
     onTertiaryContainer: Color(0xFF31111D),
-    error: Color(0xFFF2B8B5),
+    error: ColorName.redBase,
     onError: Color(0xFFFFFFFF),
     errorContainer: Color(0xFFF9DEDC),
     onErrorContainer: Color(0xFF410E0B),
@@ -39,10 +40,10 @@ final class CustomColorScheme {
     scrim: Color(0xFF000000),
   );
 
-  /// Light dark scheme set
+  /// Dark scheme set
   static const darkColorScheme = ColorScheme(
     brightness: Brightness.dark,
-    primary: Color(0xFFD0BCFF),
+    primary: ColorName.blueBase,
     onPrimary: Color(0xFF381E72),
     primaryContainer: Color(0xFF4F378B),
     onPrimaryContainer: Color(0xFFEADDFF),

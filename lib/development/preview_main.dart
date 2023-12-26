@@ -2,6 +2,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:red_events_mobile_app_defult/product/init/application_initialze.dart';
 import 'package:red_events_mobile_app_defult/product/init/product_localization.dart';
 import 'package:red_events_mobile_app_defult/product/init/state_initialze.dart';
@@ -24,23 +25,19 @@ void main() async {
 final class _MyApp extends StatelessWidget {
   const _MyApp();
   static final _appRouter = AppRouter();
-  static final GlobalKey<ScaffoldMessengerState> navigatorKey =
-      GlobalKey<ScaffoldMessengerState>();
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    context.watch<ProductViewModel>().state.copyWith(
-          navigatorKey: navigatorKey,
-        );
     return MaterialApp.router(
-      builder: CustomResponsive.build,
+      builder: (context, child) {
+        FToastBuilder();
+        return CustomResponsive.build(context, child);
+      },
       routerConfig: _appRouter.config(),
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      scaffoldMessengerKey:
-          context.watch<ProductViewModel>().state.navigatorKey,
       themeMode: context.watch<ProductViewModel>().state.themeMode,
       theme: CustomLightTheme().themeData,
       darkTheme: CustomDarkTheme().themeData,

@@ -1,9 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
-    <color name="gray_70">#EEEEEE</color>
-    <color name="gray_410">#979797</color>
-    <color name="crimson_red" type="material">#CF2A2A</color>
+    <color name="Neutral_900">#0A0D14</color>
+    <color name="Neutral_800">#161922</color>
+    <color name="Neutral_700">#20232D</color>
+    <color name="Neutral_600">#31353F</color>
+    <color name="Neutral_500">#525866</color>
+    <color name="Neutral_400">#868C98</color>
+    <color name="Neutral_300">#CDD0D5</color>
+    <color name="Neutral_200">#E2E4E9</color>
+    <color name="Neutral_100">#F6F8FA</color>
+    <color name="Neutral_0">#FFFFFF</color>
+
+    <color name="Blue_Darker">#162664</color>
+    <color name="Blue_Dark">#253EA7</color>
+    <color name="Blue_Base">#375DFB</color>
+    <color name="Blue_Light">#C2D6FF</color>
+    <color name="Blue_Lighter">#EBF1FF</color>
+
+
+    <color name="Green_Darker">#176448</color>
+    <color name="Green_Dark">#2D9F75</color>
+    <color name="Green_Base">#38C793</color>
+    <color name="Green_Light">#CBF5E5</color>
+    <color name="Green_Lighter">#EFFAF6</color>
+
+    <color name="Orange_Darker">#6E330C</color>
+    <color name="Orange_Dark">#C2540A</color>
+    <color name="Orange_Base">#F17B2C</color>
+    <color name="Orange_Light">#FFDAC2</color>
+    <color name="Orange_Lighter">#FEF3EB</color>
+
+
+    <color name="Yellow_Darker">#693D11</color>
+    <color name="Yellow_Dark">#B47818</color>
+    <color name="Yellow_Base">#F2AE40</color>
+    <color name="Yellow_Light">#FBDFB1</color>
+    <color name="Yellow_Lighter">#FEF7EC</color>
+
+
+    <color name="Red_Darker">#710E21</color>
+    <color name="Red_Dark">#AF1D38</color>
+    <color name="Red_Base">#DF1C41</color>
+    <color name="Red_Light">#F8C9D2</color>
+    <color name="Red_Lighter">#FDEDF0</color>
+
+    <color name="Purple_Darker">#2B1664</color>
+    <color name="Purple_Dark">#5A36BF</color>
+    <color name="Purple_Base">#6E3FF3</color>
+    <color name="Purple_Light">#CAC2FF</color>
+    <color name="Purple_Lighter">#EEEBFF</color>
+
+
+    <color name="Pink_Darker">#620F6C</color>
+    <color name="Pink_Dark">#9C23A9</color>
+    <color name="Pink_Base">#E255F2</color>
+    <color name="Pink_Light">#F9C2FF</color>
+    <color name="Pink_Lighter">#FDEBFF</color>
+
+
+    <color name="Teal_Darker">#164564</color>
+    <color name="Teal_Dark">#1F87AD</color>
+    <color name="Teal_Base">#35B9E9</color>
+    <color name="Teal_Light">#C2EFFF</color>
+    <color name="Teal_Lighter">#EBFAFF</color>
+
+
     <color name="yellow_ocher" type="material material-accent">#DF9527</color>
 </resources>

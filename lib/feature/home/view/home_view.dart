@@ -28,38 +28,25 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
       body: Column(
         children: [
           Assets.lottie.animZombie.lottie(package: 'gen'),
-          const Text('Change Language'),
+          Text(
+            'Change Language',
+            style: Theme.of(context).textTheme.bodySmall!.copyWith(height: 5),
+          ),
           Padding(
             padding: const ProjectPadding.allMedium(),
             child: ElevatedButton(
               onPressed: () {
-                productViewModel.changeThemeMode(ThemeMode.dark);
-                productViewModel.fToast.showToast(
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 24, vertical: 12),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      color: Colors.greenAccent,
-                    ),
-                    child: const Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.check),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Text('Tema değiştirildi !!'),
-                      ],
-                    ),
-                  ),
-                );
+                productViewModel.changeThemeMode();
+                showSuccessToast('Home view success toast');
                 // ProductLocalization.updateLanguage(
                 //   context: context,
                 //   value: Locales.en,
                 // );
               },
-              child: const Text(LocaleKeys.general_button_save).tr(),
+              child: Text(
+                LocaleKeys.general_button_save,
+                style: Theme.of(context).textTheme.titleSmall,
+              ).tr(),
             ),
           ),
         ],
