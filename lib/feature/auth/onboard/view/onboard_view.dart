@@ -1,4 +1,4 @@
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +9,9 @@ import 'package:red_events_mobile_app_defult/feature/auth/onboard/view_model/mix
 import 'package:red_events_mobile_app_defult/feature/auth/onboard/view_model/onboard_view_model.dart';
 import 'package:red_events_mobile_app_defult/feature/auth/onboard/view_model/state/onboard_state.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
+import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
+import 'package:red_events_mobile_app_defult/product/utility/enums/module_enum.dart';
 import 'package:widgets/widgets.dart';
 
 @RoutePage()
@@ -108,31 +110,11 @@ class _OnboardViewState extends BaseState<OnboardView> with OnboardMixin {
     );
   }
 
-  Container buildLogo() {
-    return Container(
+  SizedBox buildLogo() {
+    return SizedBox(
       width: 64,
       height: 64,
-      decoration: ShapeDecoration(
-        gradient: const RadialGradient(
-          center: Alignment.bottomCenter,
-          radius: 0,
-          colors: [
-            Color(0xFF002B41),
-            Color(0xFF112331),
-          ],
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12.80),
-        ),
-        shadows: const [
-          BoxShadow(
-            color: Color(0x33585C5F),
-            blurRadius: 96,
-            offset: Offset(0, 40),
-            spreadRadius: -8,
-          ),
-        ],
-      ),
+      child: Assets.icons.icLogoDark.svg(package: ModuleEnum.gen.value),
     );
   }
 
@@ -219,7 +201,9 @@ class _OnboardViewState extends BaseState<OnboardView> with OnboardMixin {
   Expanded buildRegisterButton(BuildContext context) {
     return Expanded(
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          context.router.push(const SignInRoute());
+        },
         style: const ButtonStyle(
           padding: MaterialStatePropertyAll(
             EdgeInsets.symmetric(

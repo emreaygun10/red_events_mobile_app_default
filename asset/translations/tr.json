@@ -20,5 +20,8 @@
         "desc_two": "Vardiya düzeninizi anlık olarak görüntüleyin",
         "desc_three": "Performansınızı ve finansını hızlı ve kolayca takip edin",
         "productName": "ShiftBox"
+    },
+    "sign": {
+        "sign_desc": "Shiftbox ile uçtan uca tüm IK süreçlerinizi yönetin."
     }
 }

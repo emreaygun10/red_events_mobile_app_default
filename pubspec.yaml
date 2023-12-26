@@ -27,6 +27,7 @@ dependencies:
   kartal: ^3.5.0
   logger: ^2.0.2+1
   vexana: ^3.5.4
+  flutter_screenutil: ^5.9.0
   widgets:
     path: module/widgets
 

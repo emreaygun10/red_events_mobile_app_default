@@ -25,14 +25,20 @@ class $AssetsColorGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
-  /// File path: assets/icons/ic_logo.svg
-  SvgGenImage get icLogo => const SvgGenImage('assets/icons/ic_logo.svg');
+  /// File path: assets/icons/ic_arrow_left_line.svg
+  SvgGenImage get icArrowLeftLine =>
+      const SvgGenImage('assets/icons/ic_arrow_left_line.svg');
 
-  /// File path: assets/icons/ic_love.svg
-  SvgGenImage get icLove => const SvgGenImage('assets/icons/ic_love.svg');
+  /// File path: assets/icons/ic_logo_blue.svg
+  SvgGenImage get icLogoBlue =>
+      const SvgGenImage('assets/icons/ic_logo_blue.svg');
+
+  /// File path: assets/icons/ic_logo_dark.svg
+  SvgGenImage get icLogoDark =>
+      const SvgGenImage('assets/icons/ic_logo_dark.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [icLogo, icLove];
+  List<SvgGenImage> get values => [icArrowLeftLine, icLogoBlue, icLogoDark];
 }
 
 class $AssetsImagesGen {
