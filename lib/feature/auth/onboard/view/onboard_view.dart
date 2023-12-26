@@ -90,19 +90,20 @@ class _OnboardViewState extends BaseState<OnboardView> with OnboardMixin {
   }
 
   BoxDecoration buildBottomLinerGradient() {
-    return const BoxDecoration(
+    return BoxDecoration(
       color: Colors.white,
       gradient: LinearGradient(
         begin: FractionalOffset.bottomCenter,
         end: FractionalOffset.topCenter,
         colors: [
           ColorName.blueBase,
-          Colors.transparent,
+          ColorName.blueLighter.withOpacity(0),
         ],
-        stops: [
+        stops: const [
           0.5,
-          1.0,
+          1,
         ],
+        tileMode: TileMode.mirror,
       ),
     );
   }
