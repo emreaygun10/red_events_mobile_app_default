@@ -10,6 +10,7 @@ final class ProductLocalization extends EasyLocalization {
     super.key,
   }) : super(
           supportedLocales: supportedItems,
+          startLocale: Locales.tr.locale,
           path: _translationPath,
           useOnlyLangCode: true,
         );
@@ -17,7 +18,7 @@ final class ProductLocalization extends EasyLocalization {
   /// Supported locale list
   static final List<Locale> supportedItems = [
     Locales.tr.locale,
-    Locales.en.locale,
+    // Locales.en.locale,
   ];
 
   static const String _translationPath = 'asset/translations';

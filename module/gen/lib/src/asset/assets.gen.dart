@@ -25,11 +25,14 @@ class $AssetsColorGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/ic_logo.svg
+  SvgGenImage get icLogo => const SvgGenImage('assets/icons/ic_logo.svg');
+
   /// File path: assets/icons/ic_love.svg
   SvgGenImage get icLove => const SvgGenImage('assets/icons/ic_love.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [icLove];
+  List<SvgGenImage> get values => [icLogo, icLove];
 }
 
 class $AssetsImagesGen {
@@ -39,8 +42,21 @@ class $AssetsImagesGen {
   AssetGenImage get imgFlags =>
       const AssetGenImage('assets/images/img_flags.png');
 
+  /// File path: assets/images/onboard_one.png
+  AssetGenImage get onboardOne =>
+      const AssetGenImage('assets/images/onboard_one.png');
+
+  /// File path: assets/images/onboard_three.png
+  AssetGenImage get onboardThree =>
+      const AssetGenImage('assets/images/onboard_three.png');
+
+  /// File path: assets/images/onboard_two.png
+  AssetGenImage get onboardTwo =>
+      const AssetGenImage('assets/images/onboard_two.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [imgFlags];
+  List<AssetGenImage> get values =>
+      [imgFlags, onboardOne, onboardThree, onboardTwo];
 }
 
 class $AssetsLottieGen {

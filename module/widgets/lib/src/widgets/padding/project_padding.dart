@@ -20,5 +20,11 @@ final class ProjectPadding extends EdgeInsets {
   const ProjectPadding.allLarge() : super.all(32);
 
   /// Symmetric
+  /// [ProjectPadding.symmetricXSmall] is 4
+  const ProjectPadding.symmetricXSmall() : super.symmetric(horizontal: 5);
+
+  /// [ProjectPadding.scaffold] is 4
+  const ProjectPadding.scaffold() : super.symmetric(horizontal: 20);
+
   /// Only left,right,bottom
 }

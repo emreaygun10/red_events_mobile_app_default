@@ -4,7 +4,9 @@
     },
     "general": {
         "button": {
-            "save": "Kaydet"
+            "save": "Kaydet",
+            "login": "Giriş Yap",
+            "sign_in": "Kayıt Ol"
         },
         "dialog": {
             "version": {
@@ -12,5 +14,11 @@
                 "content": "Versiyon bilgisi"
             }
         }
+    },
+    "onboard": {
+        "desc_one": "Uçtan uca ekibinizi ve onların süreçlerini yönetin",
+        "desc_two": "Vardiya düzeninizi anlık olarak görüntüleyin",
+        "desc_three": "Performansınızı ve finansını hızlı ve kolayca takip edin",
+        "productName": "ShiftBox"
     }
 }
