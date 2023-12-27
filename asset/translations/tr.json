@@ -22,6 +22,14 @@
         "productName": "ShiftBox"
     },
     "sign": {
-        "sign_desc": "Shiftbox ile uçtan uca tüm IK süreçlerinizi yönetin."
+        "sign_desc": "Shiftbox ile uçtan uca tüm IK süreçlerinizi yönetin.",
+        "company_name": "Şirket Adı",
+        "company_e_mail": "Şirket E-posta Adresi",
+        "create_password": "Şifre Oluştur",
+        "existing_account": "Zaten Hesabın Var mı?",
+        "hints": {
+            "company_name_hints": "Şirket adını yazınız",
+            "company_e_mail_hint": "hello@Shiftbox.com"
+        }
     }
 }

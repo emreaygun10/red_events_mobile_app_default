@@ -8,4 +8,7 @@ abstract class CustomTheme {
 
   /// Custom Theme Input Decoration theme data
   InputDecorationTheme get inputDecorationTheme;
+
+  /// Custom Theme Elevated Button theme data
+  ElevatedButtonThemeData get elevatedButtonThemeData;
 }

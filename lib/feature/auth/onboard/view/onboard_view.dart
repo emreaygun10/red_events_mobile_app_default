@@ -3,6 +3,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
 import 'package:kartal/kartal.dart';
 import 'package:red_events_mobile_app_defult/feature/auth/onboard/view_model/mixin/onboard_mixin.dart';
@@ -68,6 +69,9 @@ class _OnboardViewState extends BaseState<OnboardView> with OnboardMixin {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               buildRegisterButton(context),
+              SizedBox(
+                width: 8.w,
+              ),
               buildLoginButton(context),
             ],
           ),
@@ -179,13 +183,8 @@ class _OnboardViewState extends BaseState<OnboardView> with OnboardMixin {
     return Expanded(
       child: ElevatedButton(
         onPressed: () {},
-        style: const ButtonStyle(
-          padding: MaterialStatePropertyAll(
-            EdgeInsets.symmetric(
-              horizontal: 10,
-              vertical: 16,
-            ),
-          ),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: ColorName.neutral0,
         ),
         child: AutoSizeText(
           LocaleKeys.general_button_login.tr(),
@@ -204,20 +203,12 @@ class _OnboardViewState extends BaseState<OnboardView> with OnboardMixin {
         onPressed: () {
           context.router.push(const SignInRoute());
         },
-        style: const ButtonStyle(
-          padding: MaterialStatePropertyAll(
-            EdgeInsets.symmetric(
-              horizontal: 10,
-              vertical: 16,
-            ),
-          ),
-        ),
         child: AutoSizeText(
           LocaleKeys.general_button_sign_in.tr(),
           style: Theme.of(context)
               .textTheme
               .labelMedium!
-              .copyWith(color: ColorName.blueBase),
+              .copyWith(color: ColorName.neutral0),
         ),
       ),
     );

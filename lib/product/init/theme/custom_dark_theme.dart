@@ -15,6 +15,7 @@ final class CustomDarkTheme implements CustomTheme {
         colorScheme: CustomColorScheme.darkColorScheme,
         floatingActionButtonTheme: floatingActionButtonThemeData,
         inputDecorationTheme: inputDecorationTheme,
+        elevatedButtonTheme: elevatedButtonThemeData,
       );
 
   @override
@@ -47,5 +48,18 @@ final class CustomDarkTheme implements CustomTheme {
           ),
         ),
         fillColor: ColorName.blueLight,
+      );
+
+  @override
+  ElevatedButtonThemeData get elevatedButtonThemeData =>
+      ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          textStyle: CustomTextTheme.textTheme.titleLarge!
+              .copyWith(color: ColorName.neutral0),
+          backgroundColor: ColorName.blueBase,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
+          ),
+        ),
       );
 }

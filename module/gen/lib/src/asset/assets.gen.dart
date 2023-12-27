@@ -29,6 +29,19 @@ class $AssetsIconsGen {
   SvgGenImage get icArrowLeftLine =>
       const SvgGenImage('assets/icons/ic_arrow_left_line.svg');
 
+  /// File path: assets/icons/ic_building.svg
+  SvgGenImage get icBuilding =>
+      const SvgGenImage('assets/icons/ic_building.svg');
+
+  /// File path: assets/icons/ic_eye.svg
+  SvgGenImage get icEye => const SvgGenImage('assets/icons/ic_eye.svg');
+
+  /// File path: assets/icons/ic_eye_off.svg
+  SvgGenImage get icEyeOff => const SvgGenImage('assets/icons/ic_eye_off.svg');
+
+  /// File path: assets/icons/ic_lock.svg
+  SvgGenImage get icLock => const SvgGenImage('assets/icons/ic_lock.svg');
+
   /// File path: assets/icons/ic_logo_blue.svg
   SvgGenImage get icLogoBlue =>
       const SvgGenImage('assets/icons/ic_logo_blue.svg');
@@ -37,8 +50,20 @@ class $AssetsIconsGen {
   SvgGenImage get icLogoDark =>
       const SvgGenImage('assets/icons/ic_logo_dark.svg');
 
+  /// File path: assets/icons/ic_mail.svg
+  SvgGenImage get icMail => const SvgGenImage('assets/icons/ic_mail.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [icArrowLeftLine, icLogoBlue, icLogoDark];
+  List<SvgGenImage> get values => [
+        icArrowLeftLine,
+        icBuilding,
+        icEye,
+        icEyeOff,
+        icLock,
+        icLogoBlue,
+        icLogoDark,
+        icMail
+      ];
 }
 
 class $AssetsImagesGen {

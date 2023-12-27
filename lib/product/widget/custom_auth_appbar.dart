@@ -13,6 +13,7 @@ class CustomAuthAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      centerTitle: true,
       backgroundColor: Colors.transparent,
       title: Assets.icons.icLogoDark.svg(
         package: ModuleEnum.gen.value,
