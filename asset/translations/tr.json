@@ -30,6 +30,11 @@
         "hints": {
             "company_name_hints": "Şirket adını yazınız",
             "company_e_mail_hint": "hello@Shiftbox.com"
+        },
+        "password": {
+            "weak": "Zayıf Şifre",
+            "middle": "Orta derecede şifre",
+            "strong": "Güçlü şifre"
         }
     }
 }

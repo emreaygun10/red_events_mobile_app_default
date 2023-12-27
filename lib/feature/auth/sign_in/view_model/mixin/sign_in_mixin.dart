@@ -18,6 +18,18 @@ mixin SignInMixin on BaseState<SignInView> {
   /// View Model Getter
   SignInViewModel get signInViewModel => _signInViewModel;
 
+  /// Form Global Key
+  final GlobalKey<FormState> formKey = GlobalKey();
+
+  /// Text editing controller company name controller
+  final TextEditingController companyNameController = TextEditingController();
+
+  /// Text editing controller company mail controller
+  final TextEditingController companyMailController = TextEditingController();
+
+  /// Text editing controller passwords controller
+  final TextEditingController passwordController = TextEditingController();
+
   @override
   void initState() {
     _signInViewModel = SignInViewModel();
@@ -38,5 +50,23 @@ mixin SignInMixin on BaseState<SignInView> {
   /// Hide Keyboard
   void hideKeyboard() {
     FocusScope.of(context).requestFocus(FocusNode());
+  }
+
+  set changeName(String name) {
+    signInViewModel.setCompanyName(name);
+  }
+
+  set changeMail(String mail) {
+    signInViewModel.setCompanyMail(mail);
+  }
+
+  void changePassword(String password) {
+    signInViewModel.setPassword(password);
+  }
+
+  void postSignIn() {
+    if (formKey.currentState?.validate() ?? false) {
+      /// TODO: send to service
+    } else {}
   }
 }

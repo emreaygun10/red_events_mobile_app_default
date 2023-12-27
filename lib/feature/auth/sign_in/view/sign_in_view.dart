@@ -12,7 +12,9 @@ import 'package:red_events_mobile_app_defult/feature/auth/sign_in/view_model/sta
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
 import 'package:red_events_mobile_app_defult/product/utility/enums/module_enum.dart';
+import 'package:red_events_mobile_app_defult/product/utility/enums/password_enum.dart';
 import 'package:red_events_mobile_app_defult/product/widget/custom_auth_appbar.dart';
+import 'package:red_events_mobile_app_defult/product/widget/custom_auth_text_form_field.dart';
 import 'package:widgets/widgets.dart';
 
 @RoutePage()
@@ -88,7 +90,7 @@ class _SignInViewState extends BaseState<SignInView> with SignInMixin {
 
   SizedBox buildSignInButton(BuildContext context) {
     return SizedBox(
-      height: 56.h,
+      height: 50.h,
       width: context.sized.width,
       child: ElevatedButton(
         onPressed: () {},
@@ -105,6 +107,7 @@ class _SignInViewState extends BaseState<SignInView> with SignInMixin {
 
   Form buildSignInForm(BuildContext context) {
     return Form(
+      key: formKey,
       child: Column(
         children: [
           buildCompanyNameTextFormField(context),
@@ -139,38 +142,139 @@ class _SignInViewState extends BaseState<SignInView> with SignInMixin {
               child: Padding(
                 padding: const ProjectPadding.allXSmall(),
                 child: TextFormField(
-                  focusNode: focusNodePassword,
+                  onChanged: changePassword,
                   obscureText: state.isObscure,
+                  controller: passwordController,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  focusNode: focusNodePassword,
                   decoration: InputDecoration(
                     filled: focusNodePassword.hasFocus,
-                    hintText: '• • • • • • • • • •',
-                    hintStyle: const TextStyle(fontWeight: FontWeight.w100),
                     prefixIcon: Padding(
                       padding: const ProjectPadding.textFormFieldIcon().r,
-                      child: GestureDetector(
-                        child: Assets.icons.icLock.svg(
-                          package: ModuleEnum.gen.value,
-                        ),
+                      child: Assets.icons.icLock.svg(
+                        package: ModuleEnum.gen.value,
                       ),
                     ),
+                    hintText: '• • • • • • • • • •',
                     suffixIcon: Padding(
                       padding: const ProjectPadding.textFormFieldIcon().r,
                       child: GestureDetector(
-                        onTap: () => signInViewModel.changeObscure(),
+                        onTap: signInViewModel.changeObscure,
                         child: state.isObscure
-                            ? Assets.icons.icEye.svg(
-                                package: ModuleEnum.gen.value,
-                              )
-                            : Assets.icons.icEyeOff.svg(
-                                package: ModuleEnum.gen.value,
-                                color: ColorName.neutral400,
-                              ),
+                            ? Assets.icons.icEye
+                                .svg(package: ModuleEnum.gen.value)
+                            : Assets.icons.icEyeOff
+                                .svg(package: ModuleEnum.gen.value),
                       ),
                     ),
                   ),
                 ),
               ),
             );
+          },
+        ),
+        BlocBuilder<SignInViewModel, SignInState>(
+          builder: (context, state) {
+            return state.password.ext.isNotNullOrNoEmpty
+                ? SizedBox(
+                    height: 95.h,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const ProjectPadding.symmetricSmallV(),
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 4.h,
+                                width: context.sized.width * 0.29,
+                                color: state.passwordLevel == PasswordLevel.weak
+                                    ? Colors.red
+                                    : ColorName.neutral300,
+                              ),
+                              Padding(
+                                padding:
+                                    const ProjectPadding.symmetricXSmallH(),
+                                child: Container(
+                                  height: 4.h,
+                                  width: context.sized.width * 0.29,
+                                  color: state.passwordLevel ==
+                                          PasswordLevel.middle
+                                      ? Colors.red
+                                      : ColorName.neutral300,
+                                ),
+                              ),
+                              Container(
+                                height: 4.h,
+                                width: context.sized.width * 0.29,
+                                color:
+                                    state.passwordLevel == PasswordLevel.strong
+                                        ? ColorName.greenBase
+                                        : ColorName.neutral300,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const ProjectPadding.symmetricXSmallH(),
+                          child: AutoSizeText(
+                            '${state.passwordLevel.value.tr()}. Şifre şunları içermelidir: ',
+                          ),
+                        ),
+                        SizedBox(
+                          height: 15.h,
+                          child: const Row(
+                            children: [
+                              Icon(Icons.check),
+                              AutoSizeText('En az 1 büyük harf'),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+
+                // ? Expanded(
+                //     child: SizedBox(
+                //       height: 50.h,
+                //       child: Column(
+                //         children: [
+                //           Row(
+                //             children: [
+                //               Container(
+                //                 height: 4.h,
+                //                 decoration: ShapeDecoration(
+                //                   color: ColorName.redBase,
+                //                   shape: RoundedRectangleBorder(
+                //                     borderRadius: BorderRadius.circular(1.20),
+                //                   ),
+                //                 ),
+                //               ),
+                //               Container(
+                //                 height: 4.h,
+                //                 decoration: ShapeDecoration(
+                //                   color: ColorName.redBase,
+                //                   shape: RoundedRectangleBorder(
+                //                     borderRadius: BorderRadius.circular(1.20),
+                //                   ),
+                //                 ),
+                //               ),
+                //               Container(
+                //                 height: 4.h,
+                //                 decoration: ShapeDecoration(
+                //                   color: ColorName.redBase,
+                //                   shape: RoundedRectangleBorder(
+                //                     borderRadius: BorderRadius.circular(1.20),
+                //                   ),
+                //                 ),
+                //               ),
+                //             ],
+                //           ),
+                //         ],
+                //       ),
+                //     ),
+                //   )
+                : const SizedBox();
           },
         ),
       ],
@@ -180,78 +284,101 @@ class _SignInViewState extends BaseState<SignInView> with SignInMixin {
   Padding buildCompanyEmailTextFormField(BuildContext context) {
     return Padding(
       padding: const ProjectPadding.symmetricLargeV(),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const ProjectPadding.onlyBottomSmall(),
-            child: AutoSizeText(
-              LocaleKeys.sign_company_e_mail.tr(),
-              style: Theme.of(context).textTheme.labelSmall,
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: ColorName.neutral200, width: 2),
-              borderRadius: ProjectBorderRadius.allCircleSmall().r,
-            ),
-            child: Padding(
-              padding: const ProjectPadding.allXSmall(),
-              child: TextFormField(
-                focusNode: focusNodeCompanyMail,
-                decoration: InputDecoration(
-                  filled: focusNodeCompanyMail.hasFocus,
-                  prefixIcon: Padding(
-                    padding: const ProjectPadding.textFormFieldIcon().r,
-                    child: Assets.icons.icMail.svg(
-                      package: ModuleEnum.gen.value,
-                    ),
-                  ),
-                  hintText: LocaleKeys.sign_hints_company_e_mail_hint.tr(),
-                ),
-              ),
-            ),
-          ),
-        ],
+      child: CustomTextFormField(
+        textEditingController: companyMailController,
+        focusNode: focusNodeCompanyMail,
+        hintText: LocaleKeys.sign_hints_company_e_mail_hint.tr(),
+        labelText: LocaleKeys.sign_company_e_mail.tr(),
+        leadingAsset: Assets.icons.icMail.svg(package: ModuleEnum.gen.value),
+        signInViewModel: signInViewModel,
+        isActive: false,
       ),
+      // Column(
+      //   crossAxisAlignment: CrossAxisAlignment.start,
+      //   children: [
+      //     Padding(
+      //       padding: const ProjectPadding.onlyBottomSmall(),
+      //       child: AutoSizeText(
+      //         LocaleKeys.sign_company_e_mail.tr(),
+      //         style: Theme.of(context).textTheme.labelSmall,
+      //       ),
+      //     ),
+      //     Container(
+      //       decoration: BoxDecoration(
+      //         border: Border.all(color: ColorName.neutral200, width: 2),
+      //         borderRadius: ProjectBorderRadius.allCircleSmall().r,
+      //       ),
+      //       child: Padding(
+      //         padding: const ProjectPadding.allXSmall(),
+      //         child: TextFormField(
+      //           controller: companyMailController,
+      //           autovalidateMode: AutovalidateMode.disabled,
+      //           focusNode: focusNodeCompanyMail,
+      //           decoration: InputDecoration(
+      //             filled: focusNodeCompanyMail.hasFocus,
+      //             prefixIcon: Padding(
+      //               padding: const ProjectPadding.textFormFieldIcon().r,
+      //               child: Assets.icons.icMail.svg(
+      //                 package: ModuleEnum.gen.value,
+      //               ),
+      //             ),
+      //             hintText: LocaleKeys.sign_hints_company_e_mail_hint.tr(),
+      //           ),
+      //         ),
+      //       ),
+      //     ),
+      //   ],
+      // ),
     );
   }
 
-  Column buildCompanyNameTextFormField(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const ProjectPadding.onlyBottomSmall(),
-          child: AutoSizeText(
-            LocaleKeys.sign_company_name.tr(),
-            style: Theme.of(context).textTheme.labelSmall,
-          ),
-        ),
-        Container(
-          decoration: BoxDecoration(
-            border: Border.all(color: ColorName.neutral200, width: 2),
-            borderRadius: ProjectBorderRadius.allCircleSmall().r,
-          ),
-          child: Padding(
-            padding: const ProjectPadding.allXSmall(),
-            child: TextFormField(
-              focusNode: focusNodeCompanyName,
-              decoration: InputDecoration(
-                filled: focusNodeCompanyName.hasFocus,
-                prefixIcon: Padding(
-                  padding: const ProjectPadding.textFormFieldIcon().r,
-                  child: Assets.icons.icBuilding.svg(
-                    package: ModuleEnum.gen.value,
-                  ),
-                ),
-                hintText: LocaleKeys.sign_hints_company_name_hints.tr(),
-              ),
-            ),
-          ),
-        ),
-      ],
+  CustomTextFormField buildCompanyNameTextFormField(BuildContext context) {
+    return CustomTextFormField(
+      textEditingController: companyNameController,
+      focusNode: focusNodeCompanyName,
+      hintText: LocaleKeys.sign_hints_company_name_hints.tr(),
+      labelText: LocaleKeys.sign_company_name.tr(),
+      leadingAsset: Assets.icons.icBuilding.svg(package: ModuleEnum.gen.value),
+      signInViewModel: signInViewModel,
+      isActive: false,
     );
+
+    // Column(
+    //   crossAxisAlignment: CrossAxisAlignment.start,
+    //   children: [
+    //     Padding(
+    //       padding: const ProjectPadding.onlyBottomSmall(),
+    //       child: AutoSizeText(
+    //         LocaleKeys.sign_company_name.tr(),
+    //         style: Theme.of(context).textTheme.labelSmall,
+    //       ),
+    //     ),
+    //     Container(
+    //       decoration: BoxDecoration(
+    //         border: Border.all(color: ColorName.neutral200, width: 2),
+    //         borderRadius: ProjectBorderRadius.allCircleSmall().r,
+    //       ),
+    //       child: Padding(
+    //         padding: const ProjectPadding.allXSmall(),
+    //         child: TextFormField(
+    //           controller: companyNameController,
+    //           autovalidateMode: AutovalidateMode.disabled,
+    //           focusNode: focusNodeCompanyName,
+    //           decoration: InputDecoration(
+    //             filled: focusNodeCompanyName.hasFocus,
+    //             prefixIcon: Padding(
+    //               padding: const ProjectPadding.textFormFieldIcon().r,
+    //               child: Assets.icons.icBuilding.svg(
+    //                 package: ModuleEnum.gen.value,
+    //               ),
+    //             ),
+    //             hintText: LocaleKeys.sign_hints_company_name_hints.tr(),
+    //           ),
+    //         ),
+    //       ),
+    //     ),
+    //   ],
+    // );
   }
 
   Stack buildTopStack(BuildContext context) {
