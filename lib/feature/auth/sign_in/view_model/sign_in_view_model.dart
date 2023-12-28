@@ -13,7 +13,7 @@ class SignInViewModel extends BaseCubit<SignInState> {
             isLoading: false,
             isObscure: true,
             passwordLevel: PasswordLevel.weak,
-            isIncludeLetter: false,
+            isIncludeNumber: false,
             isIncludeUpperLetter: false,
             isLengthBiggerThanEight: false,
           ),
@@ -26,18 +26,24 @@ class SignInViewModel extends BaseCubit<SignInState> {
 
   /// change value isIncludeLetter
   void changeIsIncludeNum(bool value) {
-    emit(state.copyWith(isObscure: value));
+    emit(state.copyWith(isIncludeNumber: value));
   }
+
+  bool get isIncNum => state.isIncludeNumber;
 
   /// change value isIncludeUpperLetter
   void changeIsIncludeUpperLetter(bool value) {
-    emit(state.copyWith(isObscure: value));
+    emit(state.copyWith(isIncludeUpperLetter: value));
   }
+
+  bool get isIncUpperLetter => state.isIncludeUpperLetter;
 
   /// change value isLengthBiggerThanEight
   void changeIsLengthBiggerThanEight(bool value) {
-    emit(state.copyWith(isObscure: value));
+    emit(state.copyWith(isLengthBiggerThanEight: value));
   }
+
+  bool get isLengthBiggerThanEight => state.isLengthBiggerThanEight;
 
   /// change value idLoading
   void changeLoading() {
@@ -57,12 +63,14 @@ class SignInViewModel extends BaseCubit<SignInState> {
   /// password setter
   void setPassword(String password) {
     emit(state.copyWith(password: password));
+    checkPasswordLevel();
   }
 
   void changePasswordLevel(PasswordLevel level) {
     emit(state.copyWith(passwordLevel: level));
   }
 
+  /// Control password end change password level
   void checkPasswordLevel() {
     if (state.password.ext.isNotNullOrNoEmpty) {
       if (Regex.upperCase.hasMatch(state.password!)) {
@@ -75,19 +83,19 @@ class SignInViewModel extends BaseCubit<SignInState> {
       } else {
         changeIsIncludeNum(false);
       }
-      if (state.password!.length > 8) {
+      if (state.password!.length >= 8) {
         changeIsLengthBiggerThanEight(true);
       } else {
         changeIsLengthBiggerThanEight(false);
       }
 
-      if (state.isIncludeLetter == true &&
+      if (state.isIncludeNumber == true &&
           state.isIncludeUpperLetter == true &&
           state.isLengthBiggerThanEight == true) {
         changePasswordLevel(PasswordLevel.strong);
-      } else if ((state.isIncludeLetter == true &&
+      } else if ((state.isIncludeNumber == true &&
               state.isIncludeUpperLetter == true) ||
-          (state.isIncludeLetter == true &&
+          (state.isIncludeNumber == true &&
               state.isLengthBiggerThanEight == true) ||
           (state.isIncludeUpperLetter == true &&
               state.isLengthBiggerThanEight == true)) {

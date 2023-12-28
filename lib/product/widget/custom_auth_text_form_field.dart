@@ -1,10 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
 import 'package:red_events_mobile_app_defult/feature/auth/sign_in/view_model/sign_in_view_model.dart';
-import 'package:red_events_mobile_app_defult/feature/auth/sign_in/view_model/state/sign_in_state.dart';
 import 'package:widgets/widgets.dart';
 
 /// Custom sign and login view text form field
@@ -17,7 +15,6 @@ class CustomTextFormField extends StatelessWidget {
     required this.textEditingController,
     required this.focusNode,
     required this.hintText,
-    required this.isActive,
     super.key,
     this.trailingAssetFirst,
     this.autovalidateMode = AutovalidateMode.disabled,
@@ -51,63 +48,61 @@ class CustomTextFormField extends StatelessWidget {
   /// AutoValidede mode default [AutovalidateMode.disabled]
   final AutovalidateMode autovalidateMode;
 
-  /// trailing icon is active
-  final bool isActive;
-
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const ProjectPadding.onlyBottomSmall(),
-          child: AutoSizeText(
-            labelText,
-            style: Theme.of(context).textTheme.labelSmall,
+    return SizedBox(
+      height: 72.h,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const ProjectPadding.onlyBottomSmall(),
+            child: SizedBox(
+              height: 20.h,
+              child: AutoSizeText(
+                labelText,
+                style: Theme.of(context).textTheme.labelSmall,
+              ),
+            ),
           ),
-        ),
-        BlocBuilder<SignInViewModel, SignInState>(
-          builder: (context, state) {
-            return Container(
+          SizedBox(
+            height: 44.h,
+            child: Container(
               decoration: BoxDecoration(
                 border: Border.all(color: ColorName.neutral200, width: 2),
                 borderRadius: ProjectBorderRadius.allCircleSmall().r,
               ),
               child: Padding(
-                padding: const ProjectPadding.allXSmall(),
+                padding: const EdgeInsets.all(1),
                 child: TextFormField(
                   controller: textEditingController,
                   autovalidateMode: autovalidateMode,
                   focusNode: focusNode,
-                  obscureText: state.isObscure,
+                  style: Theme.of(context).textTheme.labelSmall,
+                  keyboardType: TextInputType.text,
                   decoration: InputDecoration(
+                    contentPadding:
+                        const ProjectPadding.textFormFieldPadding().r,
+                    isDense: true,
                     filled: focusNode.hasFocus,
                     hintText: hintText,
-                    hintStyle: const TextStyle(fontWeight: FontWeight.w100),
+                    hintStyle: Theme.of(context)
+                        .textTheme
+                        .bodySmall!
+                        .copyWith(color: ColorName.neutral500),
                     prefixIcon: Padding(
-                      padding: const ProjectPadding.textFormFieldIcon().r,
+                      padding: const ProjectPadding.textFormFieldIcon(),
                       child: GestureDetector(
                         child: leadingAsset,
                       ),
                     ),
-                    suffixIcon: isActive
-                        ? Padding(
-                            padding: const ProjectPadding.textFormFieldIcon().r,
-                            child: GestureDetector(
-                              onTap: signInViewModel.changeObscure,
-                              child: state.isObscure
-                                  ? trailingAssetFirst
-                                  : trailingAssetSecond,
-                            ),
-                          )
-                        : null,
                   ),
                 ),
               ),
-            );
-          },
-        ),
-      ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

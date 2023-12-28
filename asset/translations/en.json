@@ -34,7 +34,11 @@
         "password": {
             "weak": "Zayıf Şifre",
             "middle": "Orta derecede şifre",
-            "strong": "Güçlü şifre"
+            "strong": "Güçlü şifre",
+            "include_password": "Şifre şunları içermelidir:",
+            "min_one_upper_letter": "Must include min 1 upper letter",
+            "min_one_num": "Must include min 1 number",
+            "password_size": "Must min 8 letters"
         }
     }
 }

@@ -33,6 +33,10 @@ class $AssetsIconsGen {
   SvgGenImage get icBuilding =>
       const SvgGenImage('assets/icons/ic_building.svg');
 
+  /// File path: assets/icons/ic_close_circle.svg
+  SvgGenImage get icCloseCircle =>
+      const SvgGenImage('assets/icons/ic_close_circle.svg');
+
   /// File path: assets/icons/ic_eye.svg
   SvgGenImage get icEye => const SvgGenImage('assets/icons/ic_eye.svg');
 
@@ -53,16 +57,22 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_mail.svg
   SvgGenImage get icMail => const SvgGenImage('assets/icons/ic_mail.svg');
 
+  /// File path: assets/icons/ic_select_box_circle.svg
+  SvgGenImage get icSelectBoxCircle =>
+      const SvgGenImage('assets/icons/ic_select_box_circle.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
         icArrowLeftLine,
         icBuilding,
+        icCloseCircle,
         icEye,
         icEyeOff,
         icLock,
         icLogoBlue,
         icLogoDark,
-        icMail
+        icMail,
+        icSelectBoxCircle
       ];
 }
 

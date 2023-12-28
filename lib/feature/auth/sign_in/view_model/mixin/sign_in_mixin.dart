@@ -36,6 +36,7 @@ mixin SignInMixin on BaseState<SignInView> {
     focusNodeCompanyName = FocusNode();
     focusNodeCompanyMail = FocusNode();
     focusNodePassword = FocusNode();
+
     super.initState();
   }
 

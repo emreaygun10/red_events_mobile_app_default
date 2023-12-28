@@ -9,7 +9,7 @@ final class SignInState extends Equatable {
     required this.isObscure,
     required this.passwordLevel,
     required this.isIncludeUpperLetter,
-    required this.isIncludeLetter,
+    required this.isIncludeNumber,
     required this.isLengthBiggerThanEight,
     this.companyName,
     this.mail,
@@ -29,12 +29,22 @@ final class SignInState extends Equatable {
 
   final bool isIncludeUpperLetter;
 
-  final bool isIncludeLetter;
+  final bool isIncludeNumber;
 
   final bool isLengthBiggerThanEight;
 
   @override
-  List<Object?> get props => [isLoading, isObscure];
+  List<Object?> get props => [
+        isLoading,
+        isObscure,
+        companyName,
+        mail,
+        password,
+        passwordLevel,
+        isIncludeNumber,
+        isIncludeUpperLetter,
+        isLengthBiggerThanEight,
+      ];
 
   SignInState copyWith({
     bool? isLoading,
@@ -44,7 +54,7 @@ final class SignInState extends Equatable {
     String? password,
     PasswordLevel? passwordLevel,
     bool? isIncludeUpperLetter,
-    bool? isIncludeLetter,
+    bool? isIncludeNumber,
     bool? isLengthBiggerThanEight,
   }) {
     return SignInState(
@@ -54,7 +64,7 @@ final class SignInState extends Equatable {
       mail: mail ?? this.mail,
       password: password ?? this.password,
       passwordLevel: passwordLevel ?? this.passwordLevel,
-      isIncludeLetter: isIncludeLetter ?? this.isIncludeLetter,
+      isIncludeNumber: isIncludeNumber ?? this.isIncludeNumber,
       isIncludeUpperLetter: isIncludeUpperLetter ?? this.isIncludeUpperLetter,
       isLengthBiggerThanEight:
           isLengthBiggerThanEight ?? this.isLengthBiggerThanEight,
