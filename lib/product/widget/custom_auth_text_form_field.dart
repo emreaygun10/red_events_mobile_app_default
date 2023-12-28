@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
-import 'package:red_events_mobile_app_defult/feature/auth/sign_in/view_model/sign_in_view_model.dart';
 import 'package:widgets/widgets.dart';
 
 /// Custom sign and login view text form field
@@ -10,7 +9,6 @@ class CustomTextFormField extends StatelessWidget {
   // ignore: public_member_api_docs
   const CustomTextFormField({
     required this.labelText,
-    required this.signInViewModel,
     required this.leadingAsset,
     required this.textEditingController,
     required this.focusNode,
@@ -19,13 +17,11 @@ class CustomTextFormField extends StatelessWidget {
     this.trailingAssetFirst,
     this.autovalidateMode = AutovalidateMode.disabled,
     this.trailingAssetSecond,
+    this.keyboardType = TextInputType.text,
   });
 
   /// label string
   final String labelText;
-
-  /// view model
-  final SignInViewModel signInViewModel;
 
   /// leading widget
   final Widget leadingAsset;
@@ -44,6 +40,8 @@ class CustomTextFormField extends StatelessWidget {
 
   ///Hint text
   final String hintText;
+
+  final TextInputType keyboardType;
 
   /// AutoValidede mode default [AutovalidateMode.disabled]
   final AutovalidateMode autovalidateMode;
@@ -79,7 +77,7 @@ class CustomTextFormField extends StatelessWidget {
                   autovalidateMode: autovalidateMode,
                   focusNode: focusNode,
                   style: Theme.of(context).textTheme.labelSmall,
-                  keyboardType: TextInputType.text,
+                  keyboardType: keyboardType,
                   decoration: InputDecoration(
                     contentPadding:
                         const ProjectPadding.textFormFieldPadding().r,

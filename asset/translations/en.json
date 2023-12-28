@@ -7,7 +7,8 @@
             "save": "Save",
             "login": "Login",
             "sign_in": "SignIn",
-            "quick_start": "Start Quickly"
+            "quick_start": "Start Quickly",
+            "create_account": "Create account"
         },
         "dialog": {
             "version": {
@@ -24,14 +25,14 @@
     },
     "sign": {
         "sign_desc": "Shiftbox ile uçtan uca tüm IK süreçlerinizi yönetin.",
-        "company_name": "Company Name",
+        "company_name": "Company Code",
         "company_e_mail": "Company E-mail",
         "create_password": "Create Password",
         "existing_account": "Do you have account?",
         "created_success": "Hesabınız başarılı bir şekilde oluşturuldu.",
         "created_success_desc": "Hemen Shiftbox’a girip, uçtan uca insan kaynakları yönetiminizi başlatabilirsiniz.",
         "hints": {
-            "company_name_hints": "Enter Company Name",
+            "company_name_hints": "Enter Company Code",
             "company_e_mail_hint": "hello@Shiftbox.com"
         },
         "password": {
@@ -43,5 +44,10 @@
             "min_one_num": "Must include min 1 number",
             "password_size": "Must min 8 letters"
         }
+    },
+    "login": {
+        "title_text": "Login",
+        "login_dec": "Shiftbox ile uçtan uca tüm IK süreçlerinizi yönetin.",
+        "isRegistered": "Don't you have account?"
     }
 }

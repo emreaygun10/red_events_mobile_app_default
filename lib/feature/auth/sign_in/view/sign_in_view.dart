@@ -19,7 +19,7 @@ import 'package:red_events_mobile_app_defult/product/widget/custom_top_linear_gr
 import 'package:widgets/widgets.dart';
 
 @RoutePage()
-class SignInView extends StatefulWidget {
+final class SignInView extends StatefulWidget {
   const SignInView({super.key});
 
   @override
@@ -341,7 +341,6 @@ class _SignInViewState extends BaseState<SignInView> with SignInMixin {
         hintText: LocaleKeys.sign_hints_company_e_mail_hint.tr(),
         labelText: LocaleKeys.sign_company_e_mail.tr(),
         leadingAsset: Assets.icons.icMail.svg(package: ModuleEnum.gen.value),
-        signInViewModel: signInViewModel,
       ),
       // Column(
       //   crossAxisAlignment: CrossAxisAlignment.start,
@@ -389,7 +388,6 @@ class _SignInViewState extends BaseState<SignInView> with SignInMixin {
       hintText: LocaleKeys.sign_hints_company_name_hints.tr(),
       labelText: LocaleKeys.sign_company_name.tr(),
       leadingAsset: Assets.icons.icBuilding.svg(package: ModuleEnum.gen.value),
-      signInViewModel: signInViewModel,
     );
 
     // Column(

@@ -182,7 +182,9 @@ class _OnboardViewState extends BaseState<OnboardView> with OnboardMixin {
   Expanded buildLoginButton(BuildContext context) {
     return Expanded(
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          context.router.push(const LoginRoute());
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: ColorName.neutral0,
         ),
