@@ -15,6 +15,7 @@ import 'package:red_events_mobile_app_defult/product/utility/enums/module_enum.d
 import 'package:red_events_mobile_app_defult/product/utility/enums/password_enum.dart';
 import 'package:red_events_mobile_app_defult/product/widget/custom_auth_appbar.dart';
 import 'package:red_events_mobile_app_defult/product/widget/custom_auth_text_form_field.dart';
+import 'package:red_events_mobile_app_defult/product/widget/custom_top_linear_gradient.dart';
 import 'package:widgets/widgets.dart';
 
 @RoutePage()
@@ -432,7 +433,7 @@ class _SignInViewState extends BaseState<SignInView> with SignInMixin {
   Stack buildTopStack(BuildContext context) {
     return Stack(
       children: [
-        buildTopLinearGradient(),
+        const BuildTopLinearGradient(),
         buildBaseTopTexts(context),
       ],
     );
@@ -475,27 +476,6 @@ class _SignInViewState extends BaseState<SignInView> with SignInMixin {
           .textTheme
           .headlineLarge!
           .copyWith(fontWeight: FontWeight.bold),
-    );
-  }
-
-  Container buildTopLinearGradient() {
-    return Container(
-      height: 260.h,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        gradient: LinearGradient(
-          begin: FractionalOffset.topCenter,
-          end: FractionalOffset.bottomCenter,
-          colors: [
-            ColorName.blueBase,
-            ColorName.blueLight.withOpacity(0),
-          ],
-          stops: const [
-            0.2,
-            1.0,
-          ],
-        ),
-      ),
     );
   }
 }

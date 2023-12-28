@@ -6,7 +6,8 @@
         "button": {
             "save": "Save",
             "login": "Login",
-            "sign_in": "SignIn"
+            "sign_in": "SignIn",
+            "quick_start": "Start Quickly"
         },
         "dialog": {
             "version": {
@@ -27,6 +28,8 @@
         "company_e_mail": "Company E-mail",
         "create_password": "Create Password",
         "existing_account": "Do you have account?",
+        "created_success": "Hesabınız başarılı bir şekilde oluşturuldu.",
+        "created_success_desc": "Hemen Shiftbox’a girip, uçtan uca insan kaynakları yönetiminizi başlatabilirsiniz.",
         "hints": {
             "company_name_hints": "Enter Company Name",
             "company_e_mail_hint": "hello@Shiftbox.com"

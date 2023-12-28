@@ -33,6 +33,10 @@ class $AssetsIconsGen {
   SvgGenImage get icBuilding =>
       const SvgGenImage('assets/icons/ic_building.svg');
 
+  /// File path: assets/icons/ic_check_line.svg
+  SvgGenImage get icCheckLine =>
+      const SvgGenImage('assets/icons/ic_check_line.svg');
+
   /// File path: assets/icons/ic_close_circle.svg
   SvgGenImage get icCloseCircle =>
       const SvgGenImage('assets/icons/ic_close_circle.svg');
@@ -65,6 +69,7 @@ class $AssetsIconsGen {
   List<SvgGenImage> get values => [
         icArrowLeftLine,
         icBuilding,
+        icCheckLine,
         icCloseCircle,
         icEye,
         icEyeOff,

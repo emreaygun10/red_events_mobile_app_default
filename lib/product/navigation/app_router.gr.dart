@@ -33,6 +33,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SignInView(),
       );
     },
+    SuccessSignInRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SuccessSignInView(),
+      );
+    },
   };
 }
 
@@ -74,6 +80,20 @@ class SignInRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SignInRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SuccessSignInView]
+class SuccessSignInRoute extends PageRouteInfo<void> {
+  const SuccessSignInRoute({List<PageRouteInfo>? children})
+      : super(
+          SuccessSignInRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SuccessSignInRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

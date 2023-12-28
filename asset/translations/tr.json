@@ -6,7 +6,8 @@
         "button": {
             "save": "Kaydet",
             "login": "Giriş Yap",
-            "sign_in": "Kayıt Ol"
+            "sign_in": "Kayıt Ol",
+            "quick_start": "Hemen Başla"
         },
         "dialog": {
             "version": {
@@ -27,6 +28,8 @@
         "company_e_mail": "Şirket E-posta Adresi",
         "create_password": "Şifre Oluştur",
         "existing_account": "Zaten Hesabın Var mı?",
+        "created_success": "Hesabınız başarılı bir şekilde oluşturuldu.",
+        "created_success_desc": "Hemen Shiftbox’a girip, uçtan uca insan kaynakları yönetiminizi başlatabilirsiniz.",
         "hints": {
             "company_name_hints": "Şirket adını yazınız",
             "company_e_mail_hint": "hello@Shiftbox.com"
