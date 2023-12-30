@@ -40,9 +40,19 @@ final class ProjectPadding extends EdgeInsets {
   /// [ProjectPadding.scaffold] is 4
   const ProjectPadding.scaffold() : super.symmetric(horizontal: 20);
 
+  /// [ProjectPadding.timerPadding] is vertical 24
+  const ProjectPadding.timerPadding() : super.symmetric(vertical: 24);
+
   /// Only left,right,bottom
+
+  /// [ProjectPadding.onlyBottomXSmall] is 4
+  const ProjectPadding.onlyBottomXSmall() : super.only(bottom: 4);
+
   /// [ProjectPadding.onlyBottomSmall] is 8
   const ProjectPadding.onlyBottomSmall() : super.only(bottom: 8);
+
+  /// [ProjectPadding.onlyBottomLarge] is 20
+  const ProjectPadding.onlyBottomLarge() : super.only(bottom: 20);
 
   /// [ProjectPadding.textFormFieldIcon] custom padding for text field form icon
   const ProjectPadding.textFormFieldIcon()

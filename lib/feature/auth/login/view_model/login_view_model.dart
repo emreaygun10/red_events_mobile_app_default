@@ -9,8 +9,14 @@ class LoginViewModel extends BaseCubit<LoginState> {
           const LoginState(
             isLoading: false,
             isObscure: true,
+            passwordFocus: false,
           ),
         );
+
+  /// Changer focus node hasFocus value in state
+  void changePasswordFocusNodeHasFocus(bool value) {
+    emit(state.copyWith(passwordFocus: value));
+  }
 
   /// change value obscure
   void changeObscure() {

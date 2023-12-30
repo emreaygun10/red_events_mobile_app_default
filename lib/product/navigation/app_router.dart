@@ -1,4 +1,7 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:red_events_mobile_app_defult/feature/auth/create_password/view/create_password_view.dart';
+import 'package:red_events_mobile_app_defult/feature/auth/create_password/view/success_created_password_view.dart';
+import 'package:red_events_mobile_app_defult/feature/auth/forget_password/view/forget_password_view.dart';
 import 'package:red_events_mobile_app_defult/feature/auth/login/view/login_view.dart';
 import 'package:red_events_mobile_app_defult/feature/auth/onboard/view/onboard_view.dart';
 import 'package:red_events_mobile_app_defult/feature/auth/sign_in/view/sign_in_success_view.dart';
@@ -18,5 +21,8 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: SignInRoute.page),
         AutoRoute(page: SuccessSignInRoute.page),
         AutoRoute(page: LoginRoute.page),
+        AutoRoute(page: ForgetPasswordRoute.page),
+        AutoRoute(page: CreatePasswordRoute.page),
+        AutoRoute(page: SuccessCreatedPasswordRoute.page),
       ];
 }

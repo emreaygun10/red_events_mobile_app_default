@@ -15,6 +15,18 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    CreatePasswordRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CreatePasswordView(),
+      );
+    },
+    ForgetPasswordRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ForgetPasswordView(),
+      );
+    },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -39,6 +51,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SignInView(),
       );
     },
+    SuccessCreatedPasswordRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SuccessCreatedPasswordView(),
+      );
+    },
     SuccessSignInRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -46,6 +64,34 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
+}
+
+/// generated route for
+/// [CreatePasswordView]
+class CreatePasswordRoute extends PageRouteInfo<void> {
+  const CreatePasswordRoute({List<PageRouteInfo>? children})
+      : super(
+          CreatePasswordRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CreatePasswordRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ForgetPasswordView]
+class ForgetPasswordRoute extends PageRouteInfo<void> {
+  const ForgetPasswordRoute({List<PageRouteInfo>? children})
+      : super(
+          ForgetPasswordRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ForgetPasswordRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -100,6 +146,20 @@ class SignInRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SignInRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SuccessCreatedPasswordView]
+class SuccessCreatedPasswordRoute extends PageRouteInfo<void> {
+  const SuccessCreatedPasswordRoute({List<PageRouteInfo>? children})
+      : super(
+          SuccessCreatedPasswordRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SuccessCreatedPasswordRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

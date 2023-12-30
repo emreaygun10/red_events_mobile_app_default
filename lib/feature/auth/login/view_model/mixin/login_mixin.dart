@@ -5,15 +5,7 @@ import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart'
 
 mixin LoginMixin on BaseState<LoginView> {
   late final LoginViewModel _loginViewModel;
-
-  /// Focus Node from companyName
-  late FocusNode focusNodeCompanyName;
-
-  /// Focus Node from company mail
-  late FocusNode focusNodeCompanyMail;
-
-  /// Focus Node from password
-  late FocusNode focusNodePassword;
+  late final FocusNode passwordFocusNode;
 
   /// View Model Getter
   LoginViewModel get loginViewModel => _loginViewModel;
@@ -33,18 +25,17 @@ mixin LoginMixin on BaseState<LoginView> {
   @override
   void initState() {
     _loginViewModel = LoginViewModel();
-    focusNodeCompanyName = FocusNode();
-    focusNodeCompanyMail = FocusNode();
-    focusNodePassword = FocusNode();
-
+    passwordFocusNode = FocusNode()
+      ..addListener(() {
+        loginViewModel
+            .changePasswordFocusNodeHasFocus(passwordFocusNode.hasFocus);
+      });
     super.initState();
   }
 
   @override
   void dispose() {
-    focusNodePassword.dispose();
-    focusNodeCompanyMail.dispose();
-    focusNodeCompanyName.dispose();
+    passwordFocusNode.dispose();
     super.dispose();
   }
 

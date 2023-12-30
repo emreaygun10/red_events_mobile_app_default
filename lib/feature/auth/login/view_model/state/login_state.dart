@@ -6,6 +6,7 @@ final class LoginState extends Equatable {
   const LoginState({
     required this.isLoading,
     required this.isObscure,
+    required this.passwordFocus,
     this.companyName,
     this.mail,
     this.password,
@@ -20,6 +21,8 @@ final class LoginState extends Equatable {
 
   final String? password;
 
+  final bool passwordFocus;
+
   @override
   List<Object?> get props => [
         isLoading,
@@ -27,6 +30,7 @@ final class LoginState extends Equatable {
         companyName,
         mail,
         password,
+        passwordFocus,
       ];
 
   LoginState copyWith({
@@ -35,6 +39,7 @@ final class LoginState extends Equatable {
     String? companyName,
     String? mail,
     String? password,
+    bool? passwordFocus,
   }) {
     return LoginState(
       isLoading: isLoading ?? this.isLoading,
@@ -42,6 +47,7 @@ final class LoginState extends Equatable {
       companyName: companyName ?? this.companyName,
       mail: mail ?? this.mail,
       password: password ?? this.password,
+      passwordFocus: passwordFocus ?? this.passwordFocus,
     );
   }
 }

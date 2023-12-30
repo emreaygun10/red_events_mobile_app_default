@@ -8,7 +8,9 @@
             "login": "Giriş Yap",
             "sign_in": "Kayıt Ol",
             "quick_start": "Hemen Başla",
-            "create_account": "Hesap oluştur"
+            "create_account": "Hesap oluştur",
+            "clear": "Temizle",
+            "create_password": "Şifremi Oluştur"
         },
         "dialog": {
             "version": {
@@ -48,6 +50,29 @@
     "login": {
         "title_text": "Giriş Yapın",
         "login_dec": "Shiftbox ile uçtan uca tüm IK süreçlerinizi yönetin.",
-        "isRegistered": "Hesabınız yok mu?"
+        "isRegistered": "Hesabınız yok mu?",
+        "forget_password": "Şifremi Unuttum"
+    },
+    "forget_password": {
+        "title": "Şifremi Sıfırla",
+        "desc": "Şifrenizi sıfırlamak için size e-posta göndereceğiz",
+        "code_title": "Doğrulama Kodunu Girin",
+        "code_desc": "Size {mail} gönderdiğimiz 6 haneli doğrulama kodunu giriniz.",
+        "button": {
+            "send_mail": "Sıfırlama Kodu Gönder",
+            "verification": "Doğrula",
+            "send_again": "Tekrar Gönder"
+        }
+    },
+    "create_password": {
+        "title": "Şifrenizi Oluşturun",
+        "desc": "Hesabınız için güçlü bir şifre oluşturun",
+        "success_title": "Şifreniz başarılı bir şekilde değiştirildi.",
+        "success_desc": "",
+        "text_field": {
+            "title_password_new": "Yeni Şifre",
+            "title_password": "Şifre",
+            "approve": "Onaylayın"
+        }
     }
 }

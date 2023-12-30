@@ -1,28 +1,51 @@
 import 'package:kartal/kartal.dart';
-import 'package:red_events_mobile_app_defult/feature/auth/sign_in/view_model/state/sign_in_state.dart';
+import 'package:red_events_mobile_app_defult/feature/auth/create_password/view_model/state/create_password_state.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_cubit.dart';
 import 'package:red_events_mobile_app_defult/product/utility/enums/password_enum.dart';
 import 'package:red_events_mobile_app_defult/product/utility/extension/regexs.dart';
 
 /// SignIn state management class
-class SignInViewModel extends BaseCubit<SignInState> {
+class CreatePasswordViewModel extends BaseCubit<CreatePasswordState> {
   ///
-  SignInViewModel()
+  CreatePasswordViewModel()
       : super(
-          const SignInState(
+          const CreatePasswordState(
             isLoading: false,
             isObscure: true,
             passwordLevel: PasswordLevel.weak,
             isIncludeNumber: false,
             isIncludeUpperLetter: false,
             isLengthBiggerThanEight: false,
-            passwordFocusBool: false,
+            secondIsObscure: false,
+            isPasswordsEqual: false,
+            firstTextFieldFocusNodeBool: false,
+            secondTextFieldFocusNodeBool: false,
           ),
         );
 
   /// change value obscure
   void changeObscure() {
     emit(state.copyWith(isObscure: !state.isObscure));
+  }
+
+  /// change focus node value
+  void changeFirstFocusNodeBool(bool value) {
+    emit(state.copyWith(firstTextFieldFocusNodeBool: value));
+  }
+
+  /// change focus node value
+  void changeSecondFocusNodeBool(bool value) {
+    emit(state.copyWith(isObscure: value));
+  }
+
+  /// change value if passwords equals each other
+  void changeIsPasswordEqual(bool value) {
+    emit(state.copyWith(isPasswordsEqual: value));
+  }
+
+  /// change value second obscure
+  void changeSecondObscure() {
+    emit(state.copyWith(secondIsObscure: !state.secondIsObscure));
   }
 
   /// change value isIncludeLetter
@@ -69,10 +92,6 @@ class SignInViewModel extends BaseCubit<SignInState> {
 
   void changePasswordLevel(PasswordLevel level) {
     emit(state.copyWith(passwordLevel: level));
-  }
-
-  void changeFocusPassword(bool value) {
-    emit(state.copyWith(passwordFocusBool: value));
   }
 
   /// Control password end change password level

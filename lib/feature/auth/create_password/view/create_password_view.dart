@@ -6,60 +6,82 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
 import 'package:kartal/kartal.dart';
-import 'package:red_events_mobile_app_defult/feature/auth/sign_in/view_model/mixin/sign_in_mixin.dart';
-import 'package:red_events_mobile_app_defult/feature/auth/sign_in/view_model/sign_in_view_model.dart';
-import 'package:red_events_mobile_app_defult/feature/auth/sign_in/view_model/state/sign_in_state.dart';
+import 'package:red_events_mobile_app_defult/feature/auth/create_password/view_model/create_password_view_model.dart';
+import 'package:red_events_mobile_app_defult/feature/auth/create_password/view_model/mixin/create_password_mixin.dart';
+import 'package:red_events_mobile_app_defult/feature/auth/create_password/view_model/state/create_password_state.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
+import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
 import 'package:red_events_mobile_app_defult/product/utility/enums/module_enum.dart';
 import 'package:red_events_mobile_app_defult/product/utility/enums/password_enum.dart';
 import 'package:red_events_mobile_app_defult/product/widget/custom_auth_appbar.dart';
-import 'package:red_events_mobile_app_defult/product/widget/custom_auth_text_form_field.dart';
-import 'package:red_events_mobile_app_defult/product/widget/custom_top_linear_gradient.dart';
 import 'package:red_events_mobile_app_defult/product/widget/custom_top_stack.dart';
 import 'package:widgets/widgets.dart';
 
 @RoutePage()
-final class SignInView extends StatefulWidget {
-  const SignInView({super.key});
+class CreatePasswordView extends StatefulWidget {
+  const CreatePasswordView({super.key});
 
   @override
-  State<SignInView> createState() => _SignInViewState();
+  State<CreatePasswordView> createState() => _CreatePasswordView();
 }
 
-class _SignInViewState extends BaseState<SignInView> with SignInMixin {
+class _CreatePasswordView extends BaseState<CreatePasswordView>
+    with CreatePasswordMixin {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => signInViewModel,
+      create: (context) => createPasswordViewModel,
       child: Scaffold(
+        bottomNavigationBar: buildCreatePasswordButton(),
         extendBodyBehindAppBar: true,
-        appBar: CustomAuthAppBar(
-          parentContext: context,
-        ),
+        appBar: CustomAuthAppBar(parentContext: context),
         body: ListView(
           padding: EdgeInsets.zero,
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           children: [
             const CustomTopStack(
-              title: LocaleKeys.general_button_sign_in,
-              desc: LocaleKeys.sign_sign_desc,
+              title: LocaleKeys.create_password_title,
+              desc: LocaleKeys.create_password_desc,
             ),
             SizedBox(
-              height: 550.h,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const ProjectPadding.scaffold().r,
-                    child: buildSignInForm(context),
-                  ),
-                  Padding(
-                    padding: const ProjectPadding.scaffold().r,
-                    child: buildPasswordLevel(),
-                  ),
-                  buildBottomButtonAndTexts(context),
-                ],
+              height: 34.h,
+            ),
+            Padding(
+              padding: const ProjectPadding.scaffold(),
+              child: buildCreatePasswordTextFormField(
+                context: context,
+                createPasswordViewModel: createPasswordViewModel,
+                focusNode: passwordFocusNode,
+                controller: passwordController,
+                func: changePassword,
+                labelString:
+                    LocaleKeys.create_password_text_field_title_password_new,
+                mainPassword: true,
+              ),
+            ),
+            Padding(
+              padding: const ProjectPadding.scaffold(),
+              child: Visibility(
+                visible:
+                    createPasswordViewModel.state.password.ext.isNullOrEmpty,
+                child: buildPasswordLevel(),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 24),
+              child: Padding(
+                padding: const ProjectPadding.scaffold(),
+                child: buildCreatePasswordTextFormField(
+                  context: context,
+                  createPasswordViewModel: createPasswordViewModel,
+                  focusNode: secondPasswordFocusNode,
+                  controller: passwordControllerTwo,
+                  labelString:
+                      LocaleKeys.create_password_text_field_title_password,
+                  mainPassword: false,
+                  func: checkPasswordEqual,
+                ),
               ),
             ),
           ],
@@ -68,102 +90,117 @@ class _SignInViewState extends BaseState<SignInView> with SignInMixin {
     );
   }
 
-  Padding buildBottomButtonAndTexts(BuildContext context) {
+  Padding buildCreatePasswordButton() {
     return Padding(
-      padding: const ProjectPadding.scaffold().r,
-      child: Column(
-        children: [
-          buildSignInButton(context),
-          buildExistingAccountRow(context),
-        ],
-      ),
-    );
-  }
-
-  Row buildExistingAccountRow(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        AutoSizeText(
-          LocaleKeys.sign_existing_account.tr(),
-          style: Theme.of(context).textTheme.titleSmall,
+      padding: const EdgeInsets.only(bottom: 56, right: 20, left: 20).r,
+      child: SizedBox(
+        height: 56.h,
+        child: BlocBuilder<CreatePasswordViewModel, CreatePasswordState>(
+          builder: (context, state) {
+            return ElevatedButton(
+              onPressed: () {
+                /// TODO: send api new password
+                state.isPasswordsEqual ? print('şifreler eşit') : null;
+                context.router.push(const SuccessCreatedPasswordRoute());
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: state.isPasswordsEqual
+                    ? ColorName.blueBase
+                    : ColorName.neutral300,
+              ),
+              child: Text(
+                LocaleKeys.general_button_create_password,
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge!
+                    .copyWith(color: ColorName.neutral0),
+              ).tr(),
+            );
+          },
         ),
-        TextButton(
-          onPressed: () {},
-          child: AutoSizeText(LocaleKeys.general_button_login.tr()),
-        ),
-      ],
-    );
-  }
-
-  SizedBox buildSignInButton(BuildContext context) {
-    return SizedBox(
-      height: 50.h,
-      width: context.sized.width,
-      child: ElevatedButton(
-        onPressed: () {},
-        child: Text(
-          LocaleKeys.general_button_sign_in,
-          style: Theme.of(context)
-              .textTheme
-              .titleLarge!
-              .copyWith(color: ColorName.neutral0),
-        ).tr(),
       ),
     );
   }
 
-  Form buildSignInForm(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: Column(
-        children: [
-          buildCompanyNameTextFormField(context),
-          buildCompanyEmailTextFormField(context),
-          buildCreatePasswordTextFormField(context, signInViewModel),
-        ],
-      ),
-    );
-  }
-
-  SizedBox buildCreatePasswordTextFormField(
-    BuildContext context,
-    SignInViewModel signInViewModel,
-  ) {
+  SizedBox buildCreatePasswordTextFormField({
+    required BuildContext context,
+    required CreatePasswordViewModel createPasswordViewModel,
+    required String labelString,
+    required TextEditingController controller,
+    required FocusNode focusNode,
+    required bool mainPassword,
+    void Function(String value)? func,
+  }) {
     return SizedBox(
       height: 72.h,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const ProjectPadding.onlyBottomSmall().r,
-            child: SizedBox(
-              height: 20.h,
-              child: AutoSizeText(
-                LocaleKeys.sign_create_password.tr(),
-                style: Theme.of(context).textTheme.labelSmall,
-              ),
+            padding: const ProjectPadding.onlyBottomXSmall().r,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    AutoSizeText(
+                      labelString.tr(),
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
+                    Visibility(
+                      visible: !mainPassword,
+                      child: AutoSizeText(
+                        ' (${LocaleKeys.create_password_text_field_approve.tr()})',
+                        style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                              color: ColorName.neutral400,
+                            ),
+                      ),
+                    ),
+                  ],
+                ),
+                GestureDetector(
+                  onTap: () {
+                    controller.text = '';
+                    if (mainPassword) {
+                      if (func != null) {
+                        func('');
+                      }
+                    }
+                  },
+                  child: AutoSizeText(
+                    LocaleKeys.general_button_clear.tr(),
+                    style: Theme.of(context)
+                        .textTheme
+                        .labelSmall!
+                        .copyWith(color: ColorName.blueDark),
+                  ),
+                ),
+              ],
             ),
           ),
-          BlocBuilder<SignInViewModel, SignInState>(
+          BlocBuilder<CreatePasswordViewModel, CreatePasswordState>(
             builder: (context, state) {
               return SizedBox(
-                height: 44.h,
+                height: 48.h,
                 child: Container(
                   decoration: BoxDecoration(
                     border: Border.all(color: ColorName.neutral200, width: 2),
                     borderRadius: ProjectBorderRadius.allCircleSmall().r,
                   ),
                   child: TextFormField(
-                    focusNode: passwordFocusNode,
-                    onChanged: changePassword,
+                    focusNode: focusNode,
+                    onChanged: (value) {
+                      if (func != null) {
+                        func(value);
+                      }
+                    },
                     obscureText: state.isObscure,
-                    controller: passwordController,
+                    controller: controller,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     style: Theme.of(context).textTheme.labelSmall,
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
-                      fillColor: state.passwordFocusBool
+                      fillColor: focusNode.hasFocus
                           ? ColorName.blueLighter
                           : ColorName.neutral0,
                       contentPadding:
@@ -179,7 +216,7 @@ class _SignInViewState extends BaseState<SignInView> with SignInMixin {
                       suffixIcon: Padding(
                         padding: const ProjectPadding.textFormFieldIcon().r,
                         child: GestureDetector(
-                          onTap: signInViewModel.changeObscure,
+                          onTap: createPasswordViewModel.changeObscure,
                           child: state.isObscure
                               ? Assets.icons.icEye
                                   .svg(package: ModuleEnum.gen.value)
@@ -198,18 +235,18 @@ class _SignInViewState extends BaseState<SignInView> with SignInMixin {
     );
   }
 
-  BlocSelector<SignInViewModel, SignInState, SignInState> buildPasswordLevel() {
+  BlocSelector<CreatePasswordViewModel, CreatePasswordState,
+      CreatePasswordState> buildPasswordLevel() {
     final customW = (context.sized.width - 65.w) / 3;
-    return BlocSelector<SignInViewModel, SignInState, SignInState>(
+    return BlocSelector<CreatePasswordViewModel, CreatePasswordState,
+        CreatePasswordState>(
       selector: (state) {
         return state;
       },
       builder: (context, state) {
         return Visibility(
-          visible: state.password.ext.isNotNullOrNoEmpty,
-          maintainSize: true, //NEW
-          maintainAnimation: true, //NEW
-          maintainState: true, //NEW
+          visible:
+              createPasswordViewModel.state.password.ext.isNotNullOrNoEmpty,
           child: SizedBox(
             height: 106.h,
             child: Column(
@@ -266,7 +303,7 @@ class _SignInViewState extends BaseState<SignInView> with SignInMixin {
                   child: Column(
                     children: buildPasswordList(
                       context: context,
-                      state: signInViewModel,
+                      state: createPasswordViewModel,
                     ),
                   ),
                 ),
@@ -274,16 +311,13 @@ class _SignInViewState extends BaseState<SignInView> with SignInMixin {
             ),
           ),
         );
-        // : SizedBox(
-        //     height: 106.h,
-        //   );
       },
     );
   }
 
   List<Widget> buildPasswordList({
     required BuildContext context,
-    required SignInViewModel state,
+    required CreatePasswordViewModel state,
   }) {
     return [
       buildPasswordStrings(
@@ -336,88 +370,6 @@ class _SignInViewState extends BaseState<SignInView> with SignInMixin {
           ),
         ),
       ],
-    );
-  }
-
-  Padding buildCompanyEmailTextFormField(BuildContext context) {
-    return Padding(
-      padding: const ProjectPadding.symmetricLargeV().r,
-      child: BlocBuilder<SignInViewModel, SignInState>(
-        builder: (context, state) {
-          return CustomTextFormField(
-            textEditingController: companyMailController,
-            hintText: LocaleKeys.sign_hints_company_e_mail_hint.tr(),
-            labelText: LocaleKeys.sign_company_e_mail.tr(),
-            leadingAsset:
-                Assets.icons.icMail.svg(package: ModuleEnum.gen.value),
-          );
-        },
-      ),
-    );
-  }
-
-  BlocBuilder<SignInViewModel, SignInState> buildCompanyNameTextFormField(
-    BuildContext context,
-  ) {
-    return BlocBuilder<SignInViewModel, SignInState>(
-      builder: (context, state) {
-        return CustomTextFormField(
-          textEditingController: companyNameController,
-          hintText: LocaleKeys.sign_hints_company_name_hints.tr(),
-          labelText: LocaleKeys.sign_company_name.tr(),
-          leadingAsset:
-              Assets.icons.icBuilding.svg(package: ModuleEnum.gen.value),
-        );
-      },
-    );
-  }
-
-  Stack buildTopStack(BuildContext context) {
-    return Stack(
-      children: [
-        const BuildTopLinearGradient(),
-        buildBaseTopTexts(context),
-      ],
-    );
-  }
-
-  SizedBox buildBaseTopTexts(BuildContext context) {
-    return SizedBox(
-      width: context.sized.width,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 127.h,
-          ),
-          buildTitle(context),
-          buildTitleDesc(context),
-        ],
-      ),
-    );
-  }
-
-  Padding buildTitleDesc(BuildContext context) {
-    return Padding(
-      padding: const ProjectPadding.symmetricSmallV().r,
-      child: SizedBox(
-        width: 242.w,
-        child: AutoSizeText(
-          LocaleKeys.sign_sign_desc.tr(),
-          style: Theme.of(context).textTheme.bodySmall,
-          textAlign: TextAlign.center,
-        ),
-      ),
-    );
-  }
-
-  AutoSizeText buildTitle(BuildContext context) {
-    return AutoSizeText(
-      LocaleKeys.general_button_sign_in.tr(),
-      style: Theme.of(context)
-          .textTheme
-          .headlineLarge!
-          .copyWith(fontWeight: FontWeight.bold),
     );
   }
 }

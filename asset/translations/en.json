@@ -8,7 +8,9 @@
             "login": "Login",
             "sign_in": "SignIn",
             "quick_start": "Start Quickly",
-            "create_account": "Create account"
+            "create_account": "Create account",
+            "clear": "Clear",
+            "create_password": "Create My Password"
         },
         "dialog": {
             "version": {
@@ -48,6 +50,29 @@
     "login": {
         "title_text": "Login",
         "login_dec": "Shiftbox ile uçtan uca tüm IK süreçlerinizi yönetin.",
-        "isRegistered": "Don't you have account?"
+        "isRegistered": "Don't you have account?",
+        "forget_password": "Forget Password"
+    },
+    "forget_password": {
+        "title": "Reset My Password",
+        "desc": "We are sending e-mail for reset your password",
+        "code_title": "Enter the verifification code",
+        "code_desc": "Enter the 6-digit verification code we sent you {mail}.",
+        "button": {
+            "send_mail": "Send Reset Code",
+            "verification": "Verification",
+            "send_again": "Tekrar Gönder"
+        }
+    },
+    "create_password": {
+        "title": "Create Password",
+        "desc": "Create strong password for accounts",
+        "success_title": "Şifreniz başarılı bir şekilde değiştirildi.",
+        "success_desc": "",
+        "text_field": {
+            "title_password_new": "New Password",
+            "title_password": "Password",
+            "approve": "Approve"
+        }
     }
 }

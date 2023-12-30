@@ -15,7 +15,7 @@ import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart'
 import 'package:red_events_mobile_app_defult/product/utility/enums/module_enum.dart';
 import 'package:red_events_mobile_app_defult/product/widget/custom_auth_appbar.dart';
 import 'package:red_events_mobile_app_defult/product/widget/custom_auth_text_form_field.dart';
-import 'package:red_events_mobile_app_defult/product/widget/custom_top_linear_gradient.dart';
+import 'package:red_events_mobile_app_defult/product/widget/custom_top_stack.dart';
 import 'package:widgets/widgets.dart';
 
 @RoutePage()
@@ -40,12 +40,12 @@ class _LoginViewState extends BaseState<LoginView> with LoginMixin {
           padding: EdgeInsets.zero,
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           children: [
-            Flexible(
-              flex: 3,
-              child: buildTopStack(context),
+            const CustomTopStack(
+              title: LocaleKeys.login_title_text,
+              desc: LocaleKeys.login_login_dec,
             ),
-            Flexible(
-              flex: 7,
+            SizedBox(
+              height: 550.h,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -88,16 +88,7 @@ class _LoginViewState extends BaseState<LoginView> with LoginMixin {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const ProjectPadding.onlyBottomSmall().r,
-            child: SizedBox(
-              height: 20.h,
-              child: AutoSizeText(
-                LocaleKeys.sign_create_password.tr(),
-                style: Theme.of(context).textTheme.labelSmall,
-              ),
-            ),
-          ),
+          buildPasswordLabelRow(context),
           BlocBuilder<LoginViewModel, LoginState>(
             builder: (context, state) {
               return SizedBox(
@@ -108,15 +99,17 @@ class _LoginViewState extends BaseState<LoginView> with LoginMixin {
                     borderRadius: ProjectBorderRadius.allCircleSmall().r,
                   ),
                   child: TextFormField(
+                    focusNode: passwordFocusNode,
                     onChanged: changePassword,
                     obscureText: state.isObscure,
                     controller: passwordController,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    focusNode: focusNodePassword,
                     style: Theme.of(context).textTheme.labelSmall,
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
-                      filled: focusNodePassword.hasFocus,
+                      fillColor: passwordFocusNode.hasFocus
+                          ? ColorName.blueLighter
+                          : ColorName.neutral0,
                       contentPadding:
                           const ProjectPadding.textFormFieldPadding().r,
                       isDense: true,
@@ -149,12 +142,49 @@ class _LoginViewState extends BaseState<LoginView> with LoginMixin {
     );
   }
 
+  Padding buildPasswordLabelRow(BuildContext context) {
+    return Padding(
+      padding: const ProjectPadding.onlyBottomSmall().r,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          buildPasswordLabel(context),
+          buildForgetPassword(context),
+        ],
+      ),
+    );
+  }
+
+  SizedBox buildPasswordLabel(BuildContext context) {
+    return SizedBox(
+      height: 20.h,
+      child: AutoSizeText(
+        LocaleKeys.sign_create_password.tr(),
+        style: Theme.of(context).textTheme.labelSmall,
+      ),
+    );
+  }
+
+  GestureDetector buildForgetPassword(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        context.router.push(const ForgetPasswordRoute());
+      },
+      child: SizedBox(
+        height: 20.h,
+        child: AutoSizeText(
+          LocaleKeys.login_forget_password.tr(),
+          style: Theme.of(context).textTheme.labelSmall,
+        ),
+      ),
+    );
+  }
+
   Padding buildCompanyEmailTextFormField(BuildContext context) {
     return Padding(
       padding: const ProjectPadding.symmetricLargeV().r,
       child: CustomTextFormField(
         textEditingController: companyMailController,
-        focusNode: focusNodeCompanyMail,
         hintText: LocaleKeys.sign_hints_company_e_mail_hint.tr(),
         labelText: LocaleKeys.sign_company_e_mail.tr(),
         leadingAsset: Assets.icons.icMail.svg(package: ModuleEnum.gen.value),
@@ -165,7 +195,6 @@ class _LoginViewState extends BaseState<LoginView> with LoginMixin {
   CustomTextFormField buildCompanyNameTextFormField(BuildContext context) {
     return CustomTextFormField(
       textEditingController: companyNameController,
-      focusNode: focusNodeCompanyName,
       hintText: LocaleKeys.sign_hints_company_name_hints.tr(),
       labelText: LocaleKeys.sign_company_name.tr(),
       leadingAsset: Assets.icons.icBuilding.svg(package: ModuleEnum.gen.value),
@@ -226,52 +255,52 @@ class _LoginViewState extends BaseState<LoginView> with LoginMixin {
     );
   }
 
-  Stack buildTopStack(BuildContext context) {
-    return Stack(
-      children: [
-        const BuildTopLinearGradient(),
-        buildBaseTopTexts(context),
-      ],
-    );
-  }
+  // Stack buildTopStack(BuildContext context) {
+  //   return Stack(
+  //     children: [
+  //       const BuildTopLinearGradient(),
+  //       buildBaseTopTexts(context),
+  //     ],
+  //   );
+  // }
 
-  SizedBox buildBaseTopTexts(BuildContext context) {
-    return SizedBox(
-      width: context.sized.width,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 127.h,
-          ),
-          buildTitle(context),
-          buildTitleDesc(context),
-        ],
-      ),
-    );
-  }
+  // SizedBox buildBaseTopTexts(BuildContext context) {
+  //   return SizedBox(
+  //     width: context.sized.width,
+  //     child: Column(
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //       children: [
+  //         SizedBox(
+  //           height: 127.h,
+  //         ),
+  //         buildTitle(context),
+  //         buildTitleDesc(context),
+  //       ],
+  //     ),
+  //   );
+  // }
 
-  Padding buildTitleDesc(BuildContext context) {
-    return Padding(
-      padding: const ProjectPadding.symmetricSmallV().r,
-      child: SizedBox(
-        width: 242.w,
-        child: AutoSizeText(
-          LocaleKeys.login_login_dec.tr(),
-          style: Theme.of(context).textTheme.bodySmall,
-          textAlign: TextAlign.center,
-        ),
-      ),
-    );
-  }
+  // Padding buildTitleDesc(BuildContext context) {
+  //   return Padding(
+  //     padding: const ProjectPadding.symmetricSmallV().r,
+  //     child: SizedBox(
+  //       width: 242.w,
+  //       child: AutoSizeText(
+  //         LocaleKeys.login_login_dec.tr(),
+  //         style: Theme.of(context).textTheme.bodySmall,
+  //         textAlign: TextAlign.center,
+  //       ),
+  //     ),
+  //   );
+  // }
 
-  AutoSizeText buildTitle(BuildContext context) {
-    return AutoSizeText(
-      LocaleKeys.login_title_text.tr(),
-      style: Theme.of(context)
-          .textTheme
-          .headlineLarge!
-          .copyWith(fontWeight: FontWeight.bold),
-    );
-  }
+  // AutoSizeText buildTitle(BuildContext context) {
+  //   return AutoSizeText(
+  //     LocaleKeys.login_title_text.tr(),
+  //     style: Theme.of(context)
+  //         .textTheme
+  //         .headlineLarge!
+  //         .copyWith(fontWeight: FontWeight.bold),
+  //   );
+  // }
 }

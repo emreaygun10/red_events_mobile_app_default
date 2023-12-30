@@ -1,17 +1,18 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
+import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
 import 'package:widgets/widgets.dart';
 
 /// Custom sign and login view text form field
-class CustomTextFormField extends StatelessWidget {
+final class CustomTextFormField extends StatefulWidget {
   // ignore: public_member_api_docs
   const CustomTextFormField({
     required this.labelText,
     required this.leadingAsset,
     required this.textEditingController,
-    required this.focusNode,
     required this.hintText,
     super.key,
     this.trailingAssetFirst,
@@ -35,9 +36,6 @@ class CustomTextFormField extends StatelessWidget {
   /// controller
   final TextEditingController textEditingController;
 
-  /// focus node
-  final FocusNode focusNode;
-
   ///Hint text
   final String hintText;
 
@@ -45,6 +43,22 @@ class CustomTextFormField extends StatelessWidget {
 
   /// AutoValidede mode default [AutovalidateMode.disabled]
   final AutovalidateMode autovalidateMode;
+
+  @override
+  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
+}
+
+class _CustomTextFormFieldState extends BaseState<CustomTextFormField> {
+  late final FocusNode focusNode = FocusNode()
+    ..addListener(() {
+      setState(() {});
+    });
+
+  @override
+  void dispose() {
+    focusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +72,7 @@ class CustomTextFormField extends StatelessWidget {
             child: SizedBox(
               height: 20.h,
               child: AutoSizeText(
-                labelText,
+                widget.labelText.tr(),
                 style: Theme.of(context).textTheme.labelSmall,
               ),
             ),
@@ -73,17 +87,19 @@ class CustomTextFormField extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(1),
                 child: TextFormField(
-                  controller: textEditingController,
-                  autovalidateMode: autovalidateMode,
                   focusNode: focusNode,
+                  controller: widget.textEditingController,
+                  autovalidateMode: widget.autovalidateMode,
                   style: Theme.of(context).textTheme.labelSmall,
-                  keyboardType: keyboardType,
+                  keyboardType: widget.keyboardType,
                   decoration: InputDecoration(
+                    fillColor: focusNode.hasFocus
+                        ? ColorName.blueLighter
+                        : ColorName.neutral0,
                     contentPadding:
                         const ProjectPadding.textFormFieldPadding().r,
                     isDense: true,
-                    filled: focusNode.hasFocus,
-                    hintText: hintText,
+                    hintText: widget.hintText.tr(),
                     hintStyle: Theme.of(context)
                         .textTheme
                         .bodySmall!
@@ -91,7 +107,7 @@ class CustomTextFormField extends StatelessWidget {
                     prefixIcon: Padding(
                       padding: const ProjectPadding.textFormFieldIcon(),
                       child: GestureDetector(
-                        child: leadingAsset,
+                        child: widget.leadingAsset,
                       ),
                     ),
                   ),

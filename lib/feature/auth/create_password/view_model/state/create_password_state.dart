@@ -3,26 +3,25 @@
 import 'package:equatable/equatable.dart';
 import 'package:red_events_mobile_app_defult/product/utility/enums/password_enum.dart';
 
-final class SignInState extends Equatable {
-  const SignInState({
+final class CreatePasswordState extends Equatable {
+  const CreatePasswordState({
     required this.isLoading,
     required this.isObscure,
+    required this.secondIsObscure,
     required this.passwordLevel,
     required this.isIncludeUpperLetter,
     required this.isIncludeNumber,
     required this.isLengthBiggerThanEight,
-    required this.passwordFocusBool,
-    this.companyName,
-    this.mail,
+    required this.isPasswordsEqual,
+    required this.firstTextFieldFocusNodeBool,
+    required this.secondTextFieldFocusNodeBool,
     this.password,
   });
   final bool isLoading;
 
   final bool isObscure;
 
-  final String? companyName;
-
-  final String? mail;
+  final bool secondIsObscure;
 
   final String? password;
 
@@ -34,23 +33,28 @@ final class SignInState extends Equatable {
 
   final bool isLengthBiggerThanEight;
 
-  final bool passwordFocusBool;
+  final bool isPasswordsEqual;
+
+  final bool firstTextFieldFocusNodeBool;
+
+  final bool secondTextFieldFocusNodeBool;
 
   @override
   List<Object?> get props => [
         isLoading,
         isObscure,
-        companyName,
-        mail,
         password,
         passwordLevel,
         isIncludeNumber,
         isIncludeUpperLetter,
         isLengthBiggerThanEight,
-        passwordFocusBool,
+        secondIsObscure,
+        isPasswordsEqual,
+        firstTextFieldFocusNodeBool,
+        secondTextFieldFocusNodeBool,
       ];
 
-  SignInState copyWith({
+  CreatePasswordState copyWith({
     bool? isLoading,
     bool? isObscure,
     String? companyName,
@@ -60,20 +64,26 @@ final class SignInState extends Equatable {
     bool? isIncludeUpperLetter,
     bool? isIncludeNumber,
     bool? isLengthBiggerThanEight,
-    bool? passwordFocusBool,
+    bool? secondIsObscure,
+    bool? isPasswordsEqual,
+    bool? firstTextFieldFocusNodeBool,
+    bool? secondTextFieldFocusNodeBool,
   }) {
-    return SignInState(
+    return CreatePasswordState(
       isLoading: isLoading ?? this.isLoading,
       isObscure: isObscure ?? this.isObscure,
-      companyName: companyName ?? this.companyName,
-      mail: mail ?? this.mail,
       password: password ?? this.password,
       passwordLevel: passwordLevel ?? this.passwordLevel,
       isIncludeNumber: isIncludeNumber ?? this.isIncludeNumber,
       isIncludeUpperLetter: isIncludeUpperLetter ?? this.isIncludeUpperLetter,
       isLengthBiggerThanEight:
           isLengthBiggerThanEight ?? this.isLengthBiggerThanEight,
-      passwordFocusBool: passwordFocusBool ?? this.passwordFocusBool,
+      secondIsObscure: secondIsObscure ?? this.secondIsObscure,
+      isPasswordsEqual: isPasswordsEqual ?? this.isPasswordsEqual,
+      firstTextFieldFocusNodeBool:
+          firstTextFieldFocusNodeBool ?? this.firstTextFieldFocusNodeBool,
+      secondTextFieldFocusNodeBool:
+          secondTextFieldFocusNodeBool ?? this.secondTextFieldFocusNodeBool,
     );
   }
 }

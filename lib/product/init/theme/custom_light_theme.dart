@@ -25,14 +25,8 @@ final class CustomLightTheme implements CustomTheme {
 
   @override
   InputDecorationTheme get inputDecorationTheme => InputDecorationTheme(
-        // border: const OutlineInputBorder(
-        //   borderRadius: BorderRadius.all(Radius.circular(10)),
-        //   borderSide: BorderSide(
-        //     color: ColorName.neutral200,
-        //   ),
-        // ),
         border: InputBorder.none,
-        fillColor: ColorName.blueLighter,
+        fillColor: ColorName.neutral0,
         outlineBorder: const BorderSide(color: ColorName.neutral400),
         labelStyle: TextStyle(
           color: ColorName.neutral900,
@@ -44,12 +38,8 @@ final class CustomLightTheme implements CustomTheme {
             color: ColorName.redBase,
           ),
         ),
-        // enabledBorder: const OutlineInputBorder(
-        //   borderRadius: BorderRadius.all(Radius.circular(10)),
-        //   borderSide: BorderSide(
-        //     color: ColorName.neutral200,
-        //   ),
-        // ),
+        filled: true,
+        focusColor: ColorName.blueBase,
         focusedBorder: OutlineInputBorder(
           borderRadius: ProjectBorderRadius.allCircleSmall(),
           borderSide: const BorderSide(

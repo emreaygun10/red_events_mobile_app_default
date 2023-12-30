@@ -5,14 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
+import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:red_events_mobile_app_defult/product/utility/enums/module_enum.dart';
 import 'package:red_events_mobile_app_defult/product/widget/custom_circle_shape.dart';
 import 'package:red_events_mobile_app_defult/product/widget/custom_top_linear_gradient.dart';
 import 'package:widgets/widgets.dart';
 
 @RoutePage()
-class SuccessSignInView extends StatelessWidget {
-  const SuccessSignInView({super.key});
+class SuccessCreatedPasswordView extends StatelessWidget {
+  const SuccessCreatedPasswordView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,21 +35,21 @@ class SuccessSignInView extends StatelessWidget {
                   ),
                   buildTitle(
                     context,
-                    LocaleKeys.sign_created_success,
+                    LocaleKeys.create_password_success_title,
                   ),
                   SizedBox(
                     height: 4.h,
                   ),
                   buildDescription(
                     context,
-                    LocaleKeys.sign_created_success_desc,
+                    LocaleKeys.create_password_success_desc,
                   ),
                   SizedBox(
                     height: 40.h,
                   ),
                   buildElevatedButton(
                     context,
-                    LocaleKeys.general_button_quick_start,
+                    LocaleKeys.general_button_login,
                   ),
                 ],
               ),
@@ -76,7 +77,9 @@ class SuccessSignInView extends StatelessWidget {
       height: 56.h,
       width: 200.w,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          context.router.push(const LoginRoute());
+        },
         child: AutoSizeText(
           text.tr(),
           style: Theme.of(context)
