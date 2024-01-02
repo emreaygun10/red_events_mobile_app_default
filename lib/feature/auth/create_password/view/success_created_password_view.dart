@@ -78,7 +78,11 @@ class SuccessCreatedPasswordView extends StatelessWidget {
       width: 200.w,
       child: ElevatedButton(
         onPressed: () {
-          context.router.push(const LoginRoute());
+          context.router.pushAndPopUntil(
+            const LoginRoute(),
+            scopedPopUntil: true,
+            predicate: (Route<dynamic> route) => false,
+          );
         },
         child: AutoSizeText(
           text.tr(),

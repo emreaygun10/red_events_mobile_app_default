@@ -18,7 +18,7 @@ class OnboardViewModel extends BaseCubit<OnboardState> {
               OnboardModel(
                 image: Assets.images.onboardOne.image(
                   package: ModuleEnum.gen.value,
-                  fit: BoxFit.fitHeight,
+                  fit: BoxFit.fill,
                 ),
                 description: LocaleKeys.onboard_desc_one.tr(),
               ),

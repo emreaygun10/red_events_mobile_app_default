@@ -10,6 +10,12 @@ final class ProjectBorderRadius extends BorderRadius {
   /// [ProjectBorderRadius.allCircleSmall] is 10
   ProjectBorderRadius.allCircleSmall() : super.circular(10);
 
+  /// [ProjectBorderRadius.allCircleMedium] is 10
+  ProjectBorderRadius.allCircleMedium() : super.circular(12);
+
+  /// [ProjectBorderRadius.allCircleNormal] is 10
+  ProjectBorderRadius.allCircleNormal() : super.circular(20);
+
   /// [ProjectBorderRadius.allCircleLarge] is 30
   ProjectBorderRadius.allCircleLarge() : super.circular(30);
 }

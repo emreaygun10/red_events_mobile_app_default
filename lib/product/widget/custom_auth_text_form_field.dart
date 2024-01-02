@@ -68,7 +68,7 @@ class _CustomTextFormFieldState extends BaseState<CustomTextFormField> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const ProjectPadding.onlyBottomSmall(),
+            padding: const ProjectPadding.onlyBottomSmall().r,
             child: SizedBox(
               height: 20.h,
               child: AutoSizeText(
@@ -81,11 +81,11 @@ class _CustomTextFormFieldState extends BaseState<CustomTextFormField> {
             height: 44.h,
             child: Container(
               decoration: BoxDecoration(
-                border: Border.all(color: ColorName.neutral200, width: 2),
+                border: Border.all(color: ColorName.neutral200, width: 2.r),
                 borderRadius: ProjectBorderRadius.allCircleSmall().r,
               ),
               child: Padding(
-                padding: const EdgeInsets.all(1),
+                padding: const EdgeInsets.all(1).r,
                 child: TextFormField(
                   focusNode: focusNode,
                   controller: widget.textEditingController,
@@ -105,7 +105,7 @@ class _CustomTextFormFieldState extends BaseState<CustomTextFormField> {
                         .bodySmall!
                         .copyWith(color: ColorName.neutral500),
                     prefixIcon: Padding(
-                      padding: const ProjectPadding.textFormFieldIcon(),
+                      padding: const ProjectPadding.textFormFieldIcon().r,
                       child: GestureDetector(
                         child: widget.leadingAsset,
                       ),

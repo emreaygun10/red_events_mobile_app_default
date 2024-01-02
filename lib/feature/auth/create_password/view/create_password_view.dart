@@ -44,17 +44,14 @@ class _CreatePasswordView extends BaseState<CreatePasswordView>
               title: LocaleKeys.create_password_title,
               desc: LocaleKeys.create_password_desc,
             ),
-            SizedBox(
-              height: 34.h,
-            ),
             Padding(
-              padding: const ProjectPadding.scaffold(),
+              padding: const ProjectPadding.scaffold().r,
               child: buildCreatePasswordTextFormField(
                 context: context,
                 createPasswordViewModel: createPasswordViewModel,
                 focusNode: passwordFocusNode,
                 controller: passwordController,
-                func: changePassword,
+                clearButtonFunc: changePassword,
                 labelString:
                     LocaleKeys.create_password_text_field_title_password_new,
                 mainPassword: true,
@@ -69,9 +66,9 @@ class _CreatePasswordView extends BaseState<CreatePasswordView>
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 24),
+              padding: const EdgeInsets.only(top: 24).r,
               child: Padding(
-                padding: const ProjectPadding.scaffold(),
+                padding: const ProjectPadding.scaffold().r,
                 child: buildCreatePasswordTextFormField(
                   context: context,
                   createPasswordViewModel: createPasswordViewModel,
@@ -80,7 +77,7 @@ class _CreatePasswordView extends BaseState<CreatePasswordView>
                   labelString:
                       LocaleKeys.create_password_text_field_title_password,
                   mainPassword: false,
-                  func: checkPasswordEqual,
+                  clearButtonFunc: checkPasswordEqual,
                 ),
               ),
             ),
@@ -129,7 +126,7 @@ class _CreatePasswordView extends BaseState<CreatePasswordView>
     required TextEditingController controller,
     required FocusNode focusNode,
     required bool mainPassword,
-    void Function(String value)? func,
+    void Function(String value)? clearButtonFunc,
   }) {
     return SizedBox(
       height: 72.h,
@@ -138,51 +135,56 @@ class _CreatePasswordView extends BaseState<CreatePasswordView>
         children: [
           Padding(
             padding: const ProjectPadding.onlyBottomXSmall().r,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    AutoSizeText(
-                      labelString.tr(),
-                      style: Theme.of(context).textTheme.labelSmall,
-                    ),
-                    Visibility(
-                      visible: !mainPassword,
-                      child: AutoSizeText(
-                        ' (${LocaleKeys.create_password_text_field_approve.tr()})',
-                        style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                              color: ColorName.neutral400,
-                            ),
+            child: SizedBox(
+              height: 16.h,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      AutoSizeText(
+                        labelString.tr(),
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
-                    ),
-                  ],
-                ),
-                GestureDetector(
-                  onTap: () {
-                    controller.text = '';
-                    if (mainPassword) {
-                      if (func != null) {
-                        func('');
-                      }
-                    }
-                  },
-                  child: AutoSizeText(
-                    LocaleKeys.general_button_clear.tr(),
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .copyWith(color: ColorName.blueDark),
+                      Visibility(
+                        visible: !mainPassword,
+                        child: AutoSizeText(
+                          ' (${LocaleKeys.create_password_text_field_approve.tr()})',
+                          style:
+                              Theme.of(context).textTheme.labelSmall!.copyWith(
+                                    color: ColorName.neutral400,
+                                  ),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-              ],
+                  GestureDetector(
+                    onTap: () {
+                      controller.text = '';
+                      if (mainPassword) {
+                        if (clearButtonFunc != null) {
+                          clearButtonFunc('');
+                        }
+                      }
+                    },
+                    child: AutoSizeText(
+                      LocaleKeys.general_button_clear.tr(),
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelSmall!
+                          .copyWith(color: ColorName.blueDark),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           BlocBuilder<CreatePasswordViewModel, CreatePasswordState>(
             builder: (context, state) {
               return SizedBox(
-                height: 48.h,
+                height: 52.h,
                 child: Container(
+                  padding: const EdgeInsets.all(2).r,
                   decoration: BoxDecoration(
                     border: Border.all(color: ColorName.neutral200, width: 2),
                     borderRadius: ProjectBorderRadius.allCircleSmall().r,
@@ -190,8 +192,8 @@ class _CreatePasswordView extends BaseState<CreatePasswordView>
                   child: TextFormField(
                     focusNode: focusNode,
                     onChanged: (value) {
-                      if (func != null) {
-                        func(value);
+                      if (clearButtonFunc != null) {
+                        clearButtonFunc(value);
                       }
                     },
                     obscureText: state.isObscure,

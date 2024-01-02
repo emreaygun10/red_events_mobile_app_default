@@ -52,7 +52,6 @@ final class CustomLightTheme implements CustomTheme {
   ElevatedButtonThemeData get elevatedButtonThemeData =>
       ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 16),
           backgroundColor: ColorName.blueBase,
           shape: RoundedRectangleBorder(
             borderRadius: ProjectBorderRadius.allCircleLarge(),

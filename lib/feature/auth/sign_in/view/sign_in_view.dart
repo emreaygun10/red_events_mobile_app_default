@@ -90,7 +90,13 @@ class _SignInViewState extends BaseState<SignInView> with SignInMixin {
         ),
         TextButton(
           onPressed: () {},
-          child: AutoSizeText(LocaleKeys.general_button_login.tr()),
+          child: AutoSizeText(
+            LocaleKeys.general_button_login.tr(),
+            style: Theme.of(context)
+                .textTheme
+                .titleSmall!
+                .copyWith(color: ColorName.blueBase),
+          ),
         ),
       ],
     );
@@ -102,13 +108,16 @@ class _SignInViewState extends BaseState<SignInView> with SignInMixin {
       width: context.sized.width,
       child: ElevatedButton(
         onPressed: () {},
-        child: Text(
-          LocaleKeys.general_button_sign_in,
+        style: ElevatedButton.styleFrom(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 16).r,
+        ),
+        child: AutoSizeText(
+          LocaleKeys.general_button_sign_in.tr(),
           style: Theme.of(context)
               .textTheme
               .titleLarge!
               .copyWith(color: ColorName.neutral0),
-        ).tr(),
+        ),
       ),
     );
   }

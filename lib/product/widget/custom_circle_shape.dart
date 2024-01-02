@@ -31,7 +31,7 @@ class CustomBuildCircleShape extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
                 child: Padding(
-                  padding: const ProjectPadding.allMedium(),
+                  padding: const ProjectPadding.allSmall().r,
                   child: Assets.icons.icCheckLine
                       .svg(package: ModuleEnum.gen.value),
                 ),

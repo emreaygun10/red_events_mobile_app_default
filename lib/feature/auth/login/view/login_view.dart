@@ -243,14 +243,17 @@ class _LoginViewState extends BaseState<LoginView> with LoginMixin {
       height: 50.h,
       width: context.sized.width,
       child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 16).r,
+        ),
         onPressed: () {},
-        child: Text(
+        child: AutoSizeText(
           LocaleKeys.general_button_login.tr(),
           style: Theme.of(context)
               .textTheme
               .titleLarge!
               .copyWith(color: ColorName.neutral0),
-        ).tr(),
+        ),
       ),
     );
   }

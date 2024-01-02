@@ -56,19 +56,18 @@ class _ForgetPasswordViewState extends BaseState<ForgetPasswordView>
       // padding: EdgeInsets.zero,
       // keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
       children: [
-        SizedBox(
-          height: 220.h,
-          child: const CustomTopStack(
-            title: LocaleKeys.forget_password_title,
-            desc: LocaleKeys.forget_password_desc,
-          ),
+        const CustomTopStack(
+          title: LocaleKeys.forget_password_title,
+          desc: LocaleKeys.forget_password_desc,
         ),
-        SizedBox(height: 34.h),
+        const Spacer(),
         Padding(
           padding: const ProjectPadding.scaffold().r,
           child: buildLoginForm(context),
         ),
-        const Spacer(),
+        const Spacer(
+          flex: 7,
+        ),
         Padding(
           padding: const ProjectPadding.symmetricNormalV(),
           child: buildForgetPasswordButton(
@@ -95,13 +94,13 @@ class _ForgetPasswordViewState extends BaseState<ForgetPasswordView>
           desc: LocaleKeys.forget_password_code_desc,
           descArgs: {'mail': 'emreaygun1157@gmail.com'},
         ),
-        SizedBox(height: 34.h),
-        buildOtpTextField(otpStyles),
-        Padding(
-          padding: const ProjectPadding.timerPadding().r,
-          child: buildTimerRow(context),
-        ),
         const Spacer(),
+        buildOtpTextField(otpStyles),
+        const Spacer(),
+        buildTimerRow(context),
+        const Spacer(
+          flex: 7,
+        ),
         buildVerificationButton(context),
       ],
     );
@@ -110,7 +109,7 @@ class _ForgetPasswordViewState extends BaseState<ForgetPasswordView>
   Padding buildVerificationButton(BuildContext context) {
     return Padding(
       padding: MediaQuery.of(context).viewInsets.bottom == 0
-          ? const ProjectPadding.onlyBottomLarge()
+          ? const ProjectPadding.onlyBottomLarge().r
           : EdgeInsets.zero,
       child: SizedBox(
         height: 50.h,
@@ -198,14 +197,15 @@ class _ForgetPasswordViewState extends BaseState<ForgetPasswordView>
       padding: const ProjectPadding.scaffold(),
       child: SizedBox(
         height: 64.h,
-        width: 335.w,
+        width: context.sized.width,
         child: OtpTextField(
           numberOfFields: 6,
           borderColor: ColorName.neutral200,
-          fieldWidth: 48.w,
+          fieldWidth: context.sized.width / 8,
           showFieldAsBox: true,
           borderRadius: BorderRadius.circular(10),
           styles: otpStyles,
+
           focusedBorderColor: ColorName.blueBase,
           fillColor: ColorName.blueLighter,
           onCodeChanged: (String code) {
