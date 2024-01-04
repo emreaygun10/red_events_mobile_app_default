@@ -54,7 +54,7 @@ class _LoginViewState extends BaseState<LoginView> with LoginMixin {
                     child: buildLoginForm(context),
                   ),
                   SizedBox(
-                    height: 100.h,
+                    height: 85.h,
                   ),
                   buildBottomButtonAndTexts(context),
                 ],
@@ -246,7 +246,7 @@ class _LoginViewState extends BaseState<LoginView> with LoginMixin {
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 16).r,
         ),
-        onPressed: () {},
+        onPressed: authenticate,
         child: AutoSizeText(
           LocaleKeys.general_button_login.tr(),
           style: Theme.of(context)

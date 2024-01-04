@@ -51,7 +51,9 @@
         "title_text": "Login",
         "login_dec": "Shiftbox ile uçtan uca tüm IK süreçlerinizi yönetin.",
         "isRegistered": "Don't you have account?",
-        "forget_password": "Forget Password"
+        "forget_password": "Forget Password",
+        "authentication_access": "Biometric authentication required",
+        "authentication_cancel": "Cancel"
     },
     "forget_password": {
         "title": "Reset My Password",

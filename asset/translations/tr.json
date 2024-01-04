@@ -51,7 +51,9 @@
         "title_text": "Giriş Yapın",
         "login_dec": "Shiftbox ile uçtan uca tüm IK süreçlerinizi yönetin.",
         "isRegistered": "Hesabınız yok mu?",
-        "forget_password": "Şifremi Unuttum"
+        "forget_password": "Şifremi Unuttum",
+        "authentication_access": "Biyometrik giriş gereklidir",
+        "authentication_cancel": "İptal"
     },
     "forget_password": {
         "title": "Şifremi Sıfırla",

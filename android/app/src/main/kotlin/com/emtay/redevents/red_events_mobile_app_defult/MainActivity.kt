@@ -1,6 +1,6 @@
 package com.emtay.redevents.red_events_mobile_app_defult
 
-import io.flutter.embedding.android.FlutterActivity
+import io.flutter.embedding.android.FlutterFragmentActivity;
 
-class MainActivity: FlutterActivity() {
+class MainActivity:  FlutterFragmentActivity() {
 }

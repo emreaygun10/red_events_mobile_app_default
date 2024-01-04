@@ -1,6 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:local_auth/local_auth.dart';
+import 'package:local_auth_android/local_auth_android.dart';
+import 'package:local_auth_ios/local_auth_ios.dart';
 import 'package:red_events_mobile_app_defult/feature/auth/login/view/login_view.dart';
 import 'package:red_events_mobile_app_defult/feature/auth/login/view_model/login_view_model.dart';
+import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
 
 mixin LoginMixin on BaseState<LoginView> {
@@ -22,14 +28,26 @@ mixin LoginMixin on BaseState<LoginView> {
   /// Text editing controller passwords controller
   final TextEditingController passwordController = TextEditingController();
 
+  late final LocalAuthentication auth;
+
+  late bool _supportState;
+
   @override
   void initState() {
+    _supportState = false;
     _loginViewModel = LoginViewModel();
     passwordFocusNode = FocusNode()
       ..addListener(() {
         loginViewModel
             .changePasswordFocusNodeHasFocus(passwordFocusNode.hasFocus);
       });
+    auth = LocalAuthentication();
+    auth.isDeviceSupported().then(
+          (bool isSupported) => setState(() {
+            _supportState = isSupported;
+          }),
+        );
+
     super.initState();
   }
 
@@ -61,5 +79,39 @@ mixin LoginMixin on BaseState<LoginView> {
     if (formKey.currentState?.validate() ?? false) {
       /// TODO: send to service
     } else {}
+  }
+
+  Future<void> getAvailableBiometrics() async {
+    final avaibleBiometrics = await auth.getAvailableBiometrics();
+
+    print('List of avaibleBiometrics: $avaibleBiometrics');
+
+    if (!mounted) {
+      return;
+    }
+  }
+
+  Future<void> authenticate() async {
+    try {
+      final authenticated = await auth.authenticate(
+        localizedReason: 'Use Face Id for authenticate',
+        options: const AuthenticationOptions(
+          stickyAuth: true,
+          biometricOnly: true,
+        ),
+        authMessages: <AuthMessages>[
+          AndroidAuthMessages(
+            signInTitle: LocaleKeys.login_authentication_access.tr(),
+            cancelButton: LocaleKeys.login_authentication_cancel.tr(),
+          ),
+          IOSAuthMessages(
+            cancelButton: LocaleKeys.login_authentication_cancel.tr(),
+          ),
+        ],
+      );
+      print('Authenticated : $authenticated');
+    } on PlatformException catch (e) {
+      print(e.message);
+    }
   }
 }
