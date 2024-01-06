@@ -11,7 +11,7 @@ class BuildTopLinearGradient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 260.h,
+      height: 280.h,
       decoration: BoxDecoration(
         color: Colors.white,
         gradient: LinearGradient(
@@ -22,7 +22,7 @@ class BuildTopLinearGradient extends StatelessWidget {
             ColorName.blueLight.withOpacity(0),
           ],
           stops: const [
-            0.2,
+            0.3,
             1.0,
           ],
         ),

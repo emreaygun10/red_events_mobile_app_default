@@ -15,6 +15,18 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    AddPersonnelRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AddPersonnelView(),
+      );
+    },
+    BaseInformationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const BaseInformationView(),
+      );
+    },
     CreatePasswordRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -64,6 +76,34 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
+}
+
+/// generated route for
+/// [AddPersonnelView]
+class AddPersonnelRoute extends PageRouteInfo<void> {
+  const AddPersonnelRoute({List<PageRouteInfo>? children})
+      : super(
+          AddPersonnelRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddPersonnelRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [BaseInformationView]
+class BaseInformationRoute extends PageRouteInfo<void> {
+  const BaseInformationRoute({List<PageRouteInfo>? children})
+      : super(
+          BaseInformationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'BaseInformationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

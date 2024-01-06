@@ -24,6 +24,7 @@ dependencies:
     path: module/gen
   get_it: ^7.6.4
   google_fonts: ^6.1.0
+  image_picker: ^1.0.6
   kartal: ^3.5.0
   logger: ^2.0.2+1
   flutter_otp_text_field: ^1.1.1

@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:red_events_mobile_app_defult/feature/add_personnel/view/add_personnel_view.dart';
+import 'package:red_events_mobile_app_defult/feature/add_personnel/view/base_informations_view.dart';
 import 'package:red_events_mobile_app_defult/feature/auth/create_password/view/create_password_view.dart';
 import 'package:red_events_mobile_app_defult/feature/auth/create_password/view/success_created_password_view.dart';
 import 'package:red_events_mobile_app_defult/feature/auth/forget_password/view/forget_password_view.dart';
@@ -17,12 +19,14 @@ class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(page: HomeRoute.page),
-        AutoRoute(page: OnboardRoute.page, initial: true),
+        AutoRoute(page: OnboardRoute.page),
         AutoRoute(page: SignInRoute.page),
         AutoRoute(page: SuccessSignInRoute.page),
         AutoRoute(page: LoginRoute.page),
         AutoRoute(page: ForgetPasswordRoute.page),
         AutoRoute(page: CreatePasswordRoute.page),
         AutoRoute(page: SuccessCreatedPasswordRoute.page),
+        AutoRoute(page: AddPersonnelRoute.page, initial: true),
+        AutoRoute(page: BaseInformationRoute.page),
       ];
 }

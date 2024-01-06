@@ -27,7 +27,7 @@ class CustomTopStack extends StatelessWidget {
 
   SizedBox buildTopStack(BuildContext context) {
     return SizedBox(
-      height: context.sized.height / 3.2,
+      height: context.sized.height / 3.9,
       child: Stack(
         children: [
           const BuildTopLinearGradient(),
@@ -43,7 +43,6 @@ class CustomTopStack extends StatelessWidget {
       child: SizedBox(
         width: context.sized.width,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
               height: 127.h,

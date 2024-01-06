@@ -29,9 +29,16 @@ class $AssetsIconsGen {
   SvgGenImage get icArrowLeftLine =>
       const SvgGenImage('assets/icons/ic_arrow_left_line.svg');
 
+  /// File path: assets/icons/ic_arrow_right.svg
+  SvgGenImage get icArrowRight =>
+      const SvgGenImage('assets/icons/ic_arrow_right.svg');
+
   /// File path: assets/icons/ic_building.svg
   SvgGenImage get icBuilding =>
       const SvgGenImage('assets/icons/ic_building.svg');
+
+  /// File path: assets/icons/ic_camera.svg
+  SvgGenImage get icCamera => const SvgGenImage('assets/icons/ic_camera.svg');
 
   /// File path: assets/icons/ic_check_line.svg
   SvgGenImage get icCheckLine =>
@@ -47,6 +54,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_eye_off.svg
   SvgGenImage get icEyeOff => const SvgGenImage('assets/icons/ic_eye_off.svg');
 
+  /// File path: assets/icons/ic_folder_open.svg
+  SvgGenImage get icFolderOpen =>
+      const SvgGenImage('assets/icons/ic_folder_open.svg');
+
   /// File path: assets/icons/ic_lock.svg
   SvgGenImage get icLock => const SvgGenImage('assets/icons/ic_lock.svg');
 
@@ -61,23 +72,39 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_mail.svg
   SvgGenImage get icMail => const SvgGenImage('assets/icons/ic_mail.svg');
 
+  /// File path: assets/icons/ic_page.svg
+  SvgGenImage get icPage => const SvgGenImage('assets/icons/ic_page.svg');
+
+  /// File path: assets/icons/ic_pick_person.svg
+  SvgGenImage get icPickPerson =>
+      const SvgGenImage('assets/icons/ic_pick_person.svg');
+
   /// File path: assets/icons/ic_select_box_circle.svg
   SvgGenImage get icSelectBoxCircle =>
       const SvgGenImage('assets/icons/ic_select_box_circle.svg');
 
+  /// File path: assets/icons/ic_todo.svg
+  SvgGenImage get icTodo => const SvgGenImage('assets/icons/ic_todo.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
         icArrowLeftLine,
+        icArrowRight,
         icBuilding,
+        icCamera,
         icCheckLine,
         icCloseCircle,
         icEye,
         icEyeOff,
+        icFolderOpen,
         icLock,
         icLogoBlue,
         icLogoDark,
         icMail,
-        icSelectBoxCircle
+        icPage,
+        icPickPerson,
+        icSelectBoxCircle,
+        icTodo
       ];
 }
 

@@ -76,5 +76,30 @@
             "title_password": "Password",
             "approve": "Approve"
         }
+    },
+    "add_personnel": {
+        "title": "Yeni Personel Ekle",
+        "desc": "Birkaç adımda yeni personeli ekleyin",
+        "base_information": "Temel Bilgiler",
+        "hr_information": "IK Bilgileri",
+        "documents": "Documents",
+        "buttons": {
+            "personnel_add_card_": "Personel Kartı Aç",
+            "continue": "Devam Et"
+        },
+        "base_inform": {
+            "linear_progress": "Adım {}/3",
+            "name_surname": "Ad Soyad",
+            "name_surname_hint": "Lütfen Giriniz",
+            "tc": "TC Kimlik No",
+            "tc_hint": "Ör:23423423443",
+            "birt_date": "Doğum Tarihi",
+            "birt_date_hint": "12.04.2002",
+            "tel_no": "Telefon Numarası",
+            "tel_no_hint": "(555) 000 00 00",
+            "city": "Şehir",
+            "neighborhood": "Semt",
+            "city_hint": "Lütfen Seçiniz"
+        }
     }
 }
