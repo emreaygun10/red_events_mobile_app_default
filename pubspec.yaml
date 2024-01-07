@@ -25,15 +25,19 @@ dependencies:
   get_it: ^7.6.4
   google_fonts: ^6.1.0
   image_picker: ^1.0.6
+  # intl_phone_number_input: ^0.7.4
+  intl_phone_field: ^3.2.0
   kartal: ^3.5.0
   logger: ^2.0.2+1
   flutter_otp_text_field: ^1.1.1
   stop_watch_timer: ^3.0.2
+  syncfusion_flutter_datepicker: ^24.1.44
   vexana: ^3.5.4
   flutter_screenutil: ^5.9.0
   widgets:
     path: module/widgets
   local_auth: ^2.1.7
+  
 
 dev_dependencies:
   auto_route_generator: ^7.3.2

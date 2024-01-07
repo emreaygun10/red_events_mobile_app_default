@@ -46,6 +46,12 @@ final class CustomLightTheme implements CustomTheme {
             color: ColorName.blueBase,
           ),
         ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: ProjectBorderRadius.allCircleSmall(),
+          borderSide: const BorderSide(
+            color: ColorName.neutral300,
+          ),
+        ),
       );
 
   @override

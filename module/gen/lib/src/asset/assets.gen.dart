@@ -37,6 +37,10 @@ class $AssetsIconsGen {
   SvgGenImage get icBuilding =>
       const SvgGenImage('assets/icons/ic_building.svg');
 
+  /// File path: assets/icons/ic_calendar.svg
+  SvgGenImage get icCalendar =>
+      const SvgGenImage('assets/icons/ic_calendar.svg');
+
   /// File path: assets/icons/ic_camera.svg
   SvgGenImage get icCamera => const SvgGenImage('assets/icons/ic_camera.svg');
 
@@ -91,6 +95,7 @@ class $AssetsIconsGen {
         icArrowLeftLine,
         icArrowRight,
         icBuilding,
+        icCalendar,
         icCamera,
         icCheckLine,
         icCloseCircle,

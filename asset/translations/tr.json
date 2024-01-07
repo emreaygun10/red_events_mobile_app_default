@@ -10,7 +10,9 @@
             "quick_start": "Hemen Başla",
             "create_account": "Hesap oluştur",
             "clear": "Temizle",
-            "create_password": "Şifremi Oluştur"
+            "create_password": "Şifremi Oluştur",
+            "camera": "Kamera",
+            "gallery": "Galeriden Seç"
         },
         "dialog": {
             "version": {
@@ -94,12 +96,14 @@
             "tc": "TC Kimlik No",
             "tc_hint": "Ör:23423423443",
             "birt_date": "Doğum Tarihi",
-            "birt_date_hint": "12.04.2002",
+            "birt_date_hint": "Örn: 12.04.2002",
             "tel_no": "Telefon Numarası",
             "tel_no_hint": "(555) 000 00 00",
             "city": "Şehir",
             "neighborhood": "Semt",
-            "city_hint": "Lütfen Seçiniz"
+            "city_hint": "Lütfen Seçiniz",
+            "phone_dial": "Ülke ismi ve ya dial koduyla arayın",
+            "invalid_phone_numer": "Geçersiz telefon numarası"
         }
     }
 }

@@ -3,17 +3,24 @@
 import 'dart:io';
 
 import 'package:equatable/equatable.dart';
+import 'package:intl_phone_field/phone_number.dart';
 
 final class AddPersonnelState extends Equatable {
   const AddPersonnelState({
     required this.isLoading,
     required this.isObscure,
-    required this.passwordFocus,
+    required this.nameSurnameFocus,
     required this.isImageSelected,
+    required this.tcFocus,
+    required this.birthDateFocus,
+    required this.phoneNumberFocus,
+    required this.cityFocus,
+    required this.neighborhoodFocus,
     this.companyName,
     this.mail,
     this.password,
     this.imageFile,
+    this.phoneNumber,
   });
   final bool isLoading;
 
@@ -25,11 +32,23 @@ final class AddPersonnelState extends Equatable {
 
   final String? password;
 
-  final bool passwordFocus;
+  final bool nameSurnameFocus;
+
+  final bool tcFocus;
+
+  final bool birthDateFocus;
+
+  final bool phoneNumberFocus;
+
+  final bool cityFocus;
+
+  final bool neighborhoodFocus;
 
   final File? imageFile;
 
   final bool isImageSelected;
+
+  final PhoneNumber? phoneNumber;
 
   @override
   List<Object?> get props => [
@@ -38,9 +57,16 @@ final class AddPersonnelState extends Equatable {
         companyName,
         mail,
         password,
-        passwordFocus,
+        nameSurnameFocus,
         imageFile,
         isImageSelected,
+        nameSurnameFocus,
+        tcFocus,
+        birthDateFocus,
+        phoneNumberFocus,
+        cityFocus,
+        neighborhoodFocus,
+        phoneNumber,
       ];
 
   AddPersonnelState copyWith({
@@ -52,6 +78,13 @@ final class AddPersonnelState extends Equatable {
     bool? passwordFocus,
     File? imageFile,
     bool? isImageSelected,
+    bool? nameSurnameFocus,
+    bool? tcFocus,
+    bool? birthDateFocus,
+    bool? phoneNumberFocus,
+    bool? cityFocus,
+    bool? neighborhoodFocus,
+    PhoneNumber? phoneNumber,
   }) {
     return AddPersonnelState(
       isLoading: isLoading ?? this.isLoading,
@@ -59,9 +92,15 @@ final class AddPersonnelState extends Equatable {
       companyName: companyName ?? this.companyName,
       mail: mail ?? this.mail,
       password: password ?? this.password,
-      passwordFocus: passwordFocus ?? this.passwordFocus,
+      nameSurnameFocus: passwordFocus ?? this.nameSurnameFocus,
       imageFile: imageFile ?? this.imageFile,
       isImageSelected: isImageSelected ?? this.isImageSelected,
+      birthDateFocus: birthDateFocus ?? this.birthDateFocus,
+      cityFocus: cityFocus ?? this.cityFocus,
+      neighborhoodFocus: neighborhoodFocus ?? this.neighborhoodFocus,
+      phoneNumberFocus: phoneNumberFocus ?? this.phoneNumberFocus,
+      tcFocus: tcFocus ?? this.tcFocus,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
     );
   }
 }

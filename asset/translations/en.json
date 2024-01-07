@@ -10,7 +10,9 @@
             "quick_start": "Start Quickly",
             "create_account": "Create account",
             "clear": "Clear",
-            "create_password": "Create My Password"
+            "create_password": "Create My Password",
+            "camera": "Camera",
+            "gallery": "Take Galley"
         },
         "dialog": {
             "version": {
@@ -94,12 +96,14 @@
             "tc": "TC Kimlik No",
             "tc_hint": "Ör:23423423443",
             "birt_date": "Doğum Tarihi",
-            "birt_date_hint": "12.04.2002",
+            "birt_date_hint": "Exp: 12.04.2002",
             "tel_no": "Telefon Numarası",
             "tel_no_hint": "(555) 000 00 00",
             "city": "Şehir",
             "neighborhood": "Semt",
-            "city_hint": "Lütfen Seçiniz"
+            "city_hint": "Lütfen Seçiniz",
+            "phone_dial": "Search by country name or dial code",
+            "invalid_phone_numer": "Invalid Mobile Number"
         }
     }
 }
