@@ -12,7 +12,8 @@
             "clear": "Temizle",
             "create_password": "Şifremi Oluştur",
             "camera": "Kamera",
-            "gallery": "Galeriden Seç"
+            "gallery": "Galeriden Seç",
+            "create_personnel": "Personel Oluştur"
         },
         "dialog": {
             "version": {
@@ -104,6 +105,27 @@
             "city_hint": "Lütfen Seçiniz",
             "phone_dial": "Ülke ismi ve ya dial koduyla arayın",
             "invalid_phone_numer": "Geçersiz telefon numarası"
+        },
+        "hr_inform": {
+            "hr_inform": "IK Bilgileri",
+            "started_date": "Başlangıç Tarihi",
+            "departmant": "Departman",
+            "departmant_hint": "Ör.Food & Beverage",
+            "section": "Bölüm",
+            "section_hint": "Ör: Lobi",
+            "work_type": "Çalışma Şekli",
+            "work_type_hint": "Ör:Full time",
+            "part": "Görev",
+            "part_hint": "Ör: Garson",
+            "price_information": {
+                "mountly_price_information": "Aylık Ücret Bilgisi",
+                "daily_price_information": "Günlük Ücret Bilgisi",
+                "hourly_price_information": "Saatlik Ücret Bilgisi"
+            }
+        },
+        "document": {
+            "title": "Evraklar",
+            "desc": "BELGELERİM"
         }
     }
 }

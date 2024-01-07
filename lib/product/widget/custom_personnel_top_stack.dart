@@ -10,8 +10,10 @@ import 'package:red_events_mobile_app_defult/product/widget/custom_top_linear_gr
 import 'package:widgets/widgets.dart';
 
 class CustomPersonnelTopStack extends StatelessWidget {
-  const CustomPersonnelTopStack({required this.linearProgressEnum, super.key});
+  const CustomPersonnelTopStack(
+      {required this.linearProgressEnum, required this.text, super.key});
   final LinearProgressEnum linearProgressEnum;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +22,13 @@ class CustomPersonnelTopStack extends StatelessWidget {
       child: Stack(
         children: [
           const BuildTopLinearGradient(),
-          buildBaseTopTexts(context),
+          buildBaseTopTexts(context, text),
         ],
       ),
     );
   }
 
-  Padding buildBaseTopTexts(BuildContext context) {
+  Padding buildBaseTopTexts(BuildContext context, String text) {
     return Padding(
       padding: const ProjectPadding.scaffold().r,
       child: SizedBox(
@@ -36,7 +38,7 @@ class CustomPersonnelTopStack extends StatelessWidget {
             SizedBox(
               height: 127.h,
             ),
-            buildTitle(context),
+            buildTitle(context, text),
             SizedBox(
               height: 8.h,
             ),
@@ -80,10 +82,10 @@ class CustomPersonnelTopStack extends StatelessWidget {
   }
 }
 
-Flexible buildTitle(BuildContext context) {
+Flexible buildTitle(BuildContext context, String text) {
   return Flexible(
     child: AutoSizeText(
-      LocaleKeys.add_personnel_base_information.tr(),
+      text.tr(),
       style: Theme.of(context)
           .textTheme
           .headlineLarge!

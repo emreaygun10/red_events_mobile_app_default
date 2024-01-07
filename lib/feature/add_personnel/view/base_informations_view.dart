@@ -10,6 +10,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:red_events_mobile_app_defult/feature/add_personnel/view/documents_view.dart';
+import 'package:red_events_mobile_app_defult/feature/add_personnel/view/hr_informations_view.dart';
 import 'package:red_events_mobile_app_defult/feature/add_personnel/view_model/add_personnel_view_model.dart';
 import 'package:red_events_mobile_app_defult/feature/add_personnel/view_model/mixin/add_personnel_mixin.dart';
 import 'package:red_events_mobile_app_defult/feature/add_personnel/view_model/state/add_personnel_state.dart';
@@ -48,9 +50,12 @@ class _BaseInformationViewState extends BaseState<BaseInformationView>
               case 0:
                 return buildFirstPageBaseInformation(context);
               case 1:
-                return buildFirstPageBaseInformation(context);
+                return HrInformationView(
+                  context: context,
+                  pageController: pageController,
+                );
               case 2:
-                return buildFirstPageBaseInformation(context);
+                return DocumentsView(context: context);
             }
             return null;
           },
@@ -68,6 +73,7 @@ class _BaseInformationViewState extends BaseState<BaseInformationView>
           builder: (context, state) {
             return CustomPersonnelTopStack(
               linearProgressEnum: state.linearProgressEnum,
+              text: LocaleKeys.add_personnel_base_information,
             );
           },
         ),

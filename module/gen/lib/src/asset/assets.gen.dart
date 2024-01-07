@@ -62,6 +62,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_eye_off.svg
   SvgGenImage get icEyeOff => const SvgGenImage('assets/icons/ic_eye_off.svg');
 
+  /// File path: assets/icons/ic_file.svg
+  SvgGenImage get icFile => const SvgGenImage('assets/icons/ic_file.svg');
+
   /// File path: assets/icons/ic_folder_open.svg
   SvgGenImage get icFolderOpen =>
       const SvgGenImage('assets/icons/ic_folder_open.svg');
@@ -94,6 +97,9 @@ class $AssetsIconsGen {
   SvgGenImage get icPickPerson =>
       const SvgGenImage('assets/icons/ic_pick_person.svg');
 
+  /// File path: assets/icons/ic_plus.svg
+  SvgGenImage get icPlus => const SvgGenImage('assets/icons/ic_plus.svg');
+
   /// File path: assets/icons/ic_select_box_circle.svg
   SvgGenImage get icSelectBoxCircle =>
       const SvgGenImage('assets/icons/ic_select_box_circle.svg');
@@ -113,6 +119,7 @@ class $AssetsIconsGen {
         icDownArrow,
         icEye,
         icEyeOff,
+        icFile,
         icFolderOpen,
         icHome,
         icHomeOffice,
@@ -122,6 +129,7 @@ class $AssetsIconsGen {
         icMail,
         icPage,
         icPickPerson,
+        icPlus,
         icSelectBoxCircle,
         icTodo
       ];
