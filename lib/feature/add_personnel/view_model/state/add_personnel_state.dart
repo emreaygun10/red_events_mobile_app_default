@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:equatable/equatable.dart';
 import 'package:intl_phone_field/phone_number.dart';
+import 'package:red_events_mobile_app_defult/product/utility/enums/linearprogress_enums.dart';
 
 final class AddPersonnelState extends Equatable {
   const AddPersonnelState({
@@ -16,6 +17,7 @@ final class AddPersonnelState extends Equatable {
     required this.phoneNumberFocus,
     required this.cityFocus,
     required this.neighborhoodFocus,
+    required this.linearProgressEnum,
     this.companyName,
     this.mail,
     this.password,
@@ -50,6 +52,8 @@ final class AddPersonnelState extends Equatable {
 
   final PhoneNumber? phoneNumber;
 
+  final LinearProgressEnum linearProgressEnum;
+
   @override
   List<Object?> get props => [
         isLoading,
@@ -67,6 +71,7 @@ final class AddPersonnelState extends Equatable {
         cityFocus,
         neighborhoodFocus,
         phoneNumber,
+        linearProgressEnum,
       ];
 
   AddPersonnelState copyWith({
@@ -85,6 +90,7 @@ final class AddPersonnelState extends Equatable {
     bool? cityFocus,
     bool? neighborhoodFocus,
     PhoneNumber? phoneNumber,
+    LinearProgressEnum? linearProgressEnum,
   }) {
     return AddPersonnelState(
       isLoading: isLoading ?? this.isLoading,
@@ -101,6 +107,7 @@ final class AddPersonnelState extends Equatable {
       phoneNumberFocus: phoneNumberFocus ?? this.phoneNumberFocus,
       tcFocus: tcFocus ?? this.tcFocus,
       phoneNumber: phoneNumber ?? this.phoneNumber,
+      linearProgressEnum: linearProgressEnum ?? this.linearProgressEnum,
     );
   }
 }

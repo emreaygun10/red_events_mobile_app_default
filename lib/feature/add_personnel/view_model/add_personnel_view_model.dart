@@ -4,6 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl_phone_field/phone_number.dart';
 import 'package:red_events_mobile_app_defult/feature/add_personnel/view_model/state/add_personnel_state.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_cubit.dart';
+import 'package:red_events_mobile_app_defult/product/utility/enums/linearprogress_enums.dart';
 
 /// Add Personnel state management class
 class AddPersonnelViewModel extends BaseCubit<AddPersonnelState> {
@@ -20,6 +21,7 @@ class AddPersonnelViewModel extends BaseCubit<AddPersonnelState> {
             phoneNumberFocus: false,
             tcFocus: false,
             isImageSelected: false,
+            linearProgressEnum: LinearProgressEnum.levelOne,
           ),
         );
 
@@ -88,6 +90,10 @@ class AddPersonnelViewModel extends BaseCubit<AddPersonnelState> {
   /// Change image file
   void assigmentImageToFile(XFile xFile) {
     emit(state.copyWith(imageFile: File(xFile.path)));
+  }
+
+  void changeLinearProgress(LinearProgressEnum linearProgressEnum) {
+    emit(state.copyWith(linearProgressEnum: linearProgressEnum));
   }
 
   /// company name setter

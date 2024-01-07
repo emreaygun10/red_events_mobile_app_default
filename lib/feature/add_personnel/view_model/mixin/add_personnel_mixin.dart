@@ -32,6 +32,9 @@ mixin AddPersonnelMixin on BaseState<BaseInformationView> {
   /// Text editing controller birthDate controller
   final TextEditingController phoneEditingController = TextEditingController();
 
+  /// Page Controller
+  final PageController pageController = PageController();
+
   /// Phone initial Country
   final String? initialCountry = 'TR';
 
@@ -113,6 +116,11 @@ mixin AddPersonnelMixin on BaseState<BaseInformationView> {
   //   }
   //   return null;
   // }
+  /// jump page to page with PageView controller
+  void jumpPage(int index) {
+    pageController.jumpToPage(index);
+  }
+
   Future<File?> getPhoto(ImageSource source) async {
     final selected = await ImagePicker().pickImage(source: source);
     if (selected == null) {

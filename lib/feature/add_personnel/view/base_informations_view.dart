@@ -39,38 +39,70 @@ class _BaseInformationViewState extends BaseState<BaseInformationView>
       child: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: buildAppBar(),
-        body: ListView(
-          padding: EdgeInsets.zero,
-          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-          children: [
-            const CustomPersonnelTopStack(
-              linearProgressEnum: LinearProgressEnum.levelOne,
+        body: PageView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: LinearProgressEnum.values.length,
+          controller: pageController,
+          itemBuilder: (context, index) {
+            switch (index) {
+              case 0:
+                return buildFirstPageBaseInformation(context);
+              case 1:
+                return buildFirstPageBaseInformation(context);
+              case 2:
+                return buildFirstPageBaseInformation(context);
+            }
+            return null;
+          },
+        ),
+      ),
+    );
+  }
+
+  ListView buildFirstPageBaseInformation(BuildContext context) {
+    return ListView(
+      padding: EdgeInsets.zero,
+      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+      children: [
+        BlocBuilder<AddPersonnelViewModel, AddPersonnelState>(
+          builder: (context, state) {
+            return CustomPersonnelTopStack(
+              linearProgressEnum: state.linearProgressEnum,
+            );
+          },
+        ),
+        buildPhotoSelector(),
+        Padding(
+          padding: const ProjectPadding.scaffold(),
+          child: buildForm(context),
+        ),
+        buildButton(context),
+      ],
+    );
+  }
+
+  Padding buildButton(BuildContext context) {
+    return Padding(
+      padding: const ProjectPadding.symmetricLargeV(),
+      child: Padding(
+        padding: const ProjectPadding.scaffold(),
+        child: SizedBox(
+          height: 56.h,
+          child: ElevatedButton(
+            onPressed: () {
+              jumpPage(1);
+              addPersonnelViewModel.changeLinearProgress(
+                LinearProgressEnum.levelTwo,
+              );
+            },
+            child: AutoSizeText(
+              LocaleKeys.add_personnel_buttons_continue.tr(),
+              style: Theme.of(context)
+                  .textTheme
+                  .titleLarge!
+                  .copyWith(color: ColorName.neutral0),
             ),
-            buildPhotoSelector(),
-            Padding(
-              padding: const ProjectPadding.scaffold(),
-              child: buildForm(context),
-            ),
-            Padding(
-              padding: const ProjectPadding.symmetricLargeV(),
-              child: Padding(
-                padding: const ProjectPadding.scaffold(),
-                child: SizedBox(
-                  height: 56.h,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: AutoSizeText(
-                      LocaleKeys.add_personnel_buttons_continue.tr(),
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge!
-                          .copyWith(color: ColorName.neutral0),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -133,6 +165,7 @@ class _BaseInformationViewState extends BaseState<BaseInformationView>
               child: BlocBuilder<AddPersonnelViewModel, AddPersonnelState>(
                 builder: (context, state) {
                   return TextFormField(
+                    keyboardType: TextInputType.none,
                     showCursor: false,
                     focusNode: focusNodes[4],
                     decoration: InputDecoration(
@@ -180,6 +213,7 @@ class _BaseInformationViewState extends BaseState<BaseInformationView>
               child: BlocBuilder<AddPersonnelViewModel, AddPersonnelState>(
                 builder: (context, state) {
                   return TextFormField(
+                    keyboardType: TextInputType.none,
                     focusNode: focusNodes[5],
                     showCursor: false,
                     decoration: InputDecoration(

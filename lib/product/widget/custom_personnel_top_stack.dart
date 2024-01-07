@@ -71,7 +71,7 @@ class CustomPersonnelTopStack extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .titleSmall!
-                  .copyWith(color: ColorName.neutral300),
+                  .copyWith(color: ColorName.neutral400),
             ),
           ],
         ),
