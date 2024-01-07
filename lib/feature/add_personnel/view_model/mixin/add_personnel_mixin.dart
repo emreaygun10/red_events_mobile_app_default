@@ -11,7 +11,6 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 mixin AddPersonnelMixin on BaseState<BaseInformationView> {
   late final AddPersonnelViewModel _addPersonnelViewModel;
-  late final FocusNode passwordFocusNode;
 
   /// View Model Getter
   AddPersonnelViewModel get addPersonnelViewModel => _addPersonnelViewModel;
@@ -69,7 +68,6 @@ mixin AddPersonnelMixin on BaseState<BaseInformationView> {
 
   @override
   void dispose() {
-    passwordFocusNode.dispose();
     for (final focusNode in focusNodes) {
       focusNode.dispose();
     }

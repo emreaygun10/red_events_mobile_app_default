@@ -54,6 +54,15 @@ final class ProjectPadding extends EdgeInsets {
   /// [ProjectPadding.onlyBottomLarge] is 20
   const ProjectPadding.onlyBottomLarge() : super.only(bottom: 20);
 
+  /// [ProjectPadding.onlyTopXSmall] is 4
+  const ProjectPadding.onlyTopXSmall() : super.only(top: 4);
+
+  /// [ProjectPadding.onlyTopSmall] is 8
+  const ProjectPadding.onlyTopSmall() : super.only(top: 8);
+
+  /// [ProjectPadding.onlyTopLarge] is 16
+  const ProjectPadding.onlyTopLarge() : super.only(bottom: 16);
+
   /// [ProjectPadding.textFormFieldIcon] custom padding for text field form icon
   const ProjectPadding.textFormFieldIcon()
       : super.only(left: 12, top: 10, right: 8, bottom: 10);

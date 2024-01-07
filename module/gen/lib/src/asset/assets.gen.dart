@@ -52,6 +52,10 @@ class $AssetsIconsGen {
   SvgGenImage get icCloseCircle =>
       const SvgGenImage('assets/icons/ic_close_circle.svg');
 
+  /// File path: assets/icons/ic_down_arrow.svg
+  SvgGenImage get icDownArrow =>
+      const SvgGenImage('assets/icons/ic_down_arrow.svg');
+
   /// File path: assets/icons/ic_eye.svg
   SvgGenImage get icEye => const SvgGenImage('assets/icons/ic_eye.svg');
 
@@ -61,6 +65,13 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_folder_open.svg
   SvgGenImage get icFolderOpen =>
       const SvgGenImage('assets/icons/ic_folder_open.svg');
+
+  /// File path: assets/icons/ic_home.svg
+  SvgGenImage get icHome => const SvgGenImage('assets/icons/ic_home.svg');
+
+  /// File path: assets/icons/ic_home_office.svg
+  SvgGenImage get icHomeOffice =>
+      const SvgGenImage('assets/icons/ic_home_office.svg');
 
   /// File path: assets/icons/ic_lock.svg
   SvgGenImage get icLock => const SvgGenImage('assets/icons/ic_lock.svg');
@@ -99,9 +110,12 @@ class $AssetsIconsGen {
         icCamera,
         icCheckLine,
         icCloseCircle,
+        icDownArrow,
         icEye,
         icEyeOff,
         icFolderOpen,
+        icHome,
+        icHomeOffice,
         icLock,
         icLogoBlue,
         icLogoDark,

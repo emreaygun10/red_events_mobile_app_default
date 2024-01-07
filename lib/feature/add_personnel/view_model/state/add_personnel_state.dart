@@ -92,7 +92,7 @@ final class AddPersonnelState extends Equatable {
       companyName: companyName ?? this.companyName,
       mail: mail ?? this.mail,
       password: password ?? this.password,
-      nameSurnameFocus: passwordFocus ?? this.nameSurnameFocus,
+      nameSurnameFocus: nameSurnameFocus ?? this.nameSurnameFocus,
       imageFile: imageFile ?? this.imageFile,
       isImageSelected: isImageSelected ?? this.isImageSelected,
       birthDateFocus: birthDateFocus ?? this.birthDateFocus,

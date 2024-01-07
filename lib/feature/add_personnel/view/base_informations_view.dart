@@ -130,12 +130,30 @@ class _BaseInformationViewState extends BaseState<BaseInformationView>
             ),
             child: Padding(
               padding: const ProjectPadding.allXSmall(),
-              child: DropdownButtonFormField(
-                hint: AutoSizeText(
-                  LocaleKeys.add_personnel_base_inform_city_hint.tr(),
-                ),
-                items: const [],
-                onChanged: (_) {},
+              child: BlocBuilder<AddPersonnelViewModel, AddPersonnelState>(
+                builder: (context, state) {
+                  return TextFormField(
+                    showCursor: false,
+                    focusNode: focusNodes[4],
+                    decoration: InputDecoration(
+                      prefixIcon: Padding(
+                        padding: const ProjectPadding.allXSmall(),
+                        child: Assets.icons.icHome.svg(
+                          package: ModuleEnum.gen.value,
+                        ),
+                      ),
+                      suffixIcon: Assets.icons.icDownArrow
+                          .svg(package: ModuleEnum.gen.value),
+                      filled: state.cityFocus,
+                      fillColor: ColorName.blueLighter,
+                      hintText:
+                          LocaleKeys.add_personnel_base_inform_city_hint.tr(),
+                    ),
+                    onTap: () {
+                      /// TODO: showBottomModelView for cities
+                    },
+                  );
+                },
               ),
             ),
           ),
@@ -159,12 +177,29 @@ class _BaseInformationViewState extends BaseState<BaseInformationView>
             ),
             child: Padding(
               padding: const ProjectPadding.allXSmall(),
-              child: DropdownButtonFormField(
-                hint: AutoSizeText(
-                  LocaleKeys.add_personnel_base_inform_city_hint.tr(),
-                ),
-                items: const [],
-                onChanged: (_) {},
+              child: BlocBuilder<AddPersonnelViewModel, AddPersonnelState>(
+                builder: (context, state) {
+                  return TextFormField(
+                    focusNode: focusNodes[5],
+                    showCursor: false,
+                    decoration: InputDecoration(
+                      prefixIcon: Padding(
+                        padding: const ProjectPadding.allXSmall(),
+                        child: Assets.icons.icHomeOffice
+                            .svg(package: ModuleEnum.gen.value),
+                      ),
+                      hintText:
+                          LocaleKeys.add_personnel_base_inform_city_hint.tr(),
+                      suffixIcon: Assets.icons.icDownArrow
+                          .svg(package: ModuleEnum.gen.value),
+                      filled: state.neighborhoodFocus,
+                      fillColor: ColorName.blueLighter,
+                    ),
+                    onTap: () {
+                      /// TODO: showBottomModelView for neighborhoods
+                    },
+                  );
+                },
               ),
             ),
           ),
@@ -178,37 +213,36 @@ class _BaseInformationViewState extends BaseState<BaseInformationView>
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         buildAutoSize(LocaleKeys.add_personnel_base_inform_tel_no),
-        Padding(
-          padding: const ProjectPadding.symmetricSmallV(),
-          child: BlocBuilder<AddPersonnelViewModel, AddPersonnelState>(
-            builder: (context, state) {
-              return SizedBox(
-                child: Padding(
-                  padding: const ProjectPadding.allXSmall(),
-                  child: IntlPhoneField(
-                    invalidNumberMessage: LocaleKeys
-                        .add_personnel_base_inform_invalid_phone_numer
-                        .tr(),
-                    dropdownDecoration: const BoxDecoration(
-                      color: ColorName.blueLighter,
-                    ),
-                    controller: phoneEditingController,
-                    decoration: InputDecoration(
-                      hintText:
-                          LocaleKeys.add_personnel_base_inform_tel_no_hint.tr(),
-                      isDense: true,
-                      contentPadding:
-                          const EdgeInsets.fromLTRB(0, 10, 10, 10).r,
-                    ),
-                    initialCountryCode: initialCountry,
-                    searchText:
-                        LocaleKeys.add_personnel_base_inform_phone_dial.tr(),
-                    onChanged: changePhoneNumber,
+        BlocBuilder<AddPersonnelViewModel, AddPersonnelState>(
+          builder: (context, state) {
+            return SizedBox(
+              child: Padding(
+                padding: const ProjectPadding.allXSmall(),
+                child: IntlPhoneField(
+                  focusNode: focusNodes[3],
+                  invalidNumberMessage: LocaleKeys
+                      .add_personnel_base_inform_invalid_phone_numer
+                      .tr(),
+                  dropdownDecoration: const BoxDecoration(
+                    color: ColorName.blueLighter,
                   ),
+                  controller: phoneEditingController,
+                  decoration: InputDecoration(
+                    fillColor: ColorName.blueLighter,
+                    filled: state.phoneNumberFocus,
+                    hintText:
+                        LocaleKeys.add_personnel_base_inform_tel_no_hint.tr(),
+                    isDense: true,
+                    contentPadding: const EdgeInsets.fromLTRB(0, 10, 10, 10).r,
+                  ),
+                  initialCountryCode: initialCountry,
+                  searchText:
+                      LocaleKeys.add_personnel_base_inform_phone_dial.tr(),
+                  onChanged: changePhoneNumber,
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
       ],
     );
@@ -229,23 +263,32 @@ class _BaseInformationViewState extends BaseState<BaseInformationView>
             ),
             child: Padding(
               padding: const ProjectPadding.allXSmall(),
-              child: TextFormField(
-                onTap: () => buildShowModalBottomSheetBirthDate(context),
-                showCursor: false,
-                keyboardType: TextInputType.none,
-                controller: birthDateEditingController,
-                decoration: InputDecoration(
-                  prefixIcon: Padding(
-                    padding: const ProjectPadding.allSmall(),
-                    child: Assets.icons.icCalendar.svg(
-                      package: ModuleEnum.gen.value,
+              child: BlocBuilder<AddPersonnelViewModel, AddPersonnelState>(
+                builder: (context, state) {
+                  return TextFormField(
+                    focusNode: focusNodes[2],
+                    onTap: () => buildShowModalBottomSheetBirthDate(context),
+                    showCursor: false,
+                    keyboardType: TextInputType.none,
+                    controller: birthDateEditingController,
+                    decoration: InputDecoration(
+                      fillColor: ColorName.blueLighter,
+                      filled: state.birthDateFocus,
+                      prefixIcon: Padding(
+                        padding: const ProjectPadding.allSmall(),
+                        child: Assets.icons.icCalendar.svg(
+                          package: ModuleEnum.gen.value,
+                        ),
+                      ),
+                      hintText: LocaleKeys
+                          .add_personnel_base_inform_birt_date_hint
+                          .tr(),
+                      isDense: true,
+                      contentPadding:
+                          const EdgeInsets.fromLTRB(15, 15, 10, 15).r,
                     ),
-                  ),
-                  hintText:
-                      LocaleKeys.add_personnel_base_inform_birt_date_hint.tr(),
-                  isDense: true,
-                  contentPadding: const EdgeInsets.fromLTRB(15, 15, 10, 15).r,
-                ),
+                  );
+                },
               ),
             ),
           ),
@@ -306,14 +349,23 @@ class _BaseInformationViewState extends BaseState<BaseInformationView>
             ),
             child: Padding(
               padding: const ProjectPadding.allXSmall(),
-              child: TextFormField(
-                keyboardType: TextInputType.number,
-                controller: controller,
-                decoration: InputDecoration(
-                  hintText: LocaleKeys.add_personnel_base_inform_tc_hint.tr(),
-                  isDense: true,
-                  contentPadding: const EdgeInsets.fromLTRB(15, 15, 10, 15).r,
-                ),
+              child: BlocBuilder<AddPersonnelViewModel, AddPersonnelState>(
+                builder: (context, state) {
+                  return TextFormField(
+                    keyboardType: TextInputType.number,
+                    focusNode: focusNodes[1],
+                    controller: controller,
+                    decoration: InputDecoration(
+                      fillColor: ColorName.blueLighter,
+                      filled: state.tcFocus,
+                      hintText:
+                          LocaleKeys.add_personnel_base_inform_tc_hint.tr(),
+                      isDense: true,
+                      contentPadding:
+                          const EdgeInsets.fromLTRB(15, 15, 10, 15).r,
+                    ),
+                  );
+                },
               ),
             ),
           ),
@@ -346,7 +398,7 @@ class _BaseInformationViewState extends BaseState<BaseInformationView>
                     focusNode: focusNodes[0],
                     controller: controller,
                     decoration: InputDecoration(
-                      fillColor: ColorName.blueLight,
+                      fillColor: ColorName.blueLighter,
                       filled: state.nameSurnameFocus,
                       hintText: LocaleKeys
                           .add_personnel_base_inform_name_surname_hint
