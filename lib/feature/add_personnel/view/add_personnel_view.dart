@@ -60,6 +60,8 @@ class AddPersonnelView extends StatelessWidget {
             text: LocaleKeys.add_personnel_base_information,
           ),
         ),
+
+        /// TODO: Üyelik leveline göre burayı kapat
         CustomListContainer(
           preFix: Assets.icons.icTodo.svg(package: ModuleEnum.gen.value),
           text: LocaleKeys.add_personnel_base_information,

@@ -44,9 +44,11 @@ final class ProjectPadding extends EdgeInsets {
   const ProjectPadding.timerPadding() : super.symmetric(vertical: 24);
 
   /// Only left,right,bottom
-
   /// [ProjectPadding.onlyBottomXSmall] is 4
   const ProjectPadding.onlyBottomXSmall() : super.only(bottom: 4);
+
+  /// [ProjectPadding.onlyRightSmall] is 8
+  const ProjectPadding.onlyRightSmall() : super.only(right: 8);
 
   /// [ProjectPadding.onlyBottomSmall] is 8
   const ProjectPadding.onlyBottomSmall() : super.only(bottom: 8);

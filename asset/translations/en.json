@@ -117,6 +117,7 @@
             "work_type_hint": "Ör:Full time",
             "part": "Görev",
             "part_hint": "Ör: Garson",
+            "price_info": "Price Information",
             "price_information": {
                 "mountly_price_information": "Aylık Ücret Bilgisi",
                 "daily_price_information": "Günlük Ücret Bilgisi",

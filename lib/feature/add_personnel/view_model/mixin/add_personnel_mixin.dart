@@ -41,6 +41,9 @@ mixin AddPersonnelMixin on BaseState<BaseInformationView> {
   /// Phone initial Country
   final String? initialDialCode = '+90';
 
+  /// Page view current page view
+  int currentPage = 0;
+
   /// FormFocusNodes
   final List<FocusNode> focusNodes = [
     FocusNode(),

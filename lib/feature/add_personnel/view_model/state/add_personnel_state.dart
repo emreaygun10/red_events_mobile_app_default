@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:equatable/equatable.dart';
 import 'package:intl_phone_field/phone_number.dart';
+import 'package:red_events_mobile_app_defult/feature/add_personnel/view_model/mixin/hr_informations_mixin.dart';
 import 'package:red_events_mobile_app_defult/product/utility/enums/linearprogress_enums.dart';
 
 final class AddPersonnelState extends Equatable {
@@ -23,6 +24,7 @@ final class AddPersonnelState extends Equatable {
     this.password,
     this.imageFile,
     this.phoneNumber,
+    this.currencyValue,
   });
   final bool isLoading;
 
@@ -54,6 +56,8 @@ final class AddPersonnelState extends Equatable {
 
   final LinearProgressEnum linearProgressEnum;
 
+  final CustomCurrency? currencyValue;
+
   @override
   List<Object?> get props => [
         isLoading,
@@ -72,6 +76,7 @@ final class AddPersonnelState extends Equatable {
         neighborhoodFocus,
         phoneNumber,
         linearProgressEnum,
+        currencyValue,
       ];
 
   AddPersonnelState copyWith({
@@ -91,6 +96,7 @@ final class AddPersonnelState extends Equatable {
     bool? neighborhoodFocus,
     PhoneNumber? phoneNumber,
     LinearProgressEnum? linearProgressEnum,
+    CustomCurrency? currencyValue,
   }) {
     return AddPersonnelState(
       isLoading: isLoading ?? this.isLoading,
@@ -108,6 +114,7 @@ final class AddPersonnelState extends Equatable {
       tcFocus: tcFocus ?? this.tcFocus,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       linearProgressEnum: linearProgressEnum ?? this.linearProgressEnum,
+      currencyValue: currencyValue ?? this.currencyValue,
     );
   }
 }

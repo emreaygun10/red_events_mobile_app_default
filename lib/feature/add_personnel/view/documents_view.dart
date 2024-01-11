@@ -45,57 +45,76 @@ class _DocumentsViewState extends BaseState<DocumentsView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AutoSizeText(
-                    LocaleKeys.add_personnel_document_desc.tr(),
-                    style: Theme.of(context).textTheme.labelSmall,
-                  ),
-                  SizedBox(
-                    height: 72.h,
-                    child: DottedBorder(
-                      color: ColorName.neutral400,
-                      borderType: BorderType.RRect,
-                      radius: const Radius.circular(20),
-                      dashPattern: const [12, 12, 12, 12],
-                      child: Padding(
-                        padding: const ProjectPadding.allMedium(),
-                        child: Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(10).r,
-                                height: 40.h,
-                                width: 40.h,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: ColorName.neutral300,
-                                ),
-                                child: Assets.icons.icFile
-                                    .svg(package: ModuleEnum.gen.value),
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width: 209.w,
-                                    child: const AutoSizeText('Sabıka Kaydı'),
-                                  ),
-                                  const AutoSizeText('Maks 10 mb'),
-                                ],
-                              ),
-                              Assets.icons.icPlus
-                                  .svg(package: ModuleEnum.gen.value),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  buildFormTitle(context),
+                  const CustomDocumentItem(),
                 ],
               ),
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  AutoSizeText buildFormTitle(BuildContext context) {
+    return AutoSizeText(
+      LocaleKeys.add_personnel_document_desc.tr(),
+      style: Theme.of(context).textTheme.labelSmall,
+    );
+  }
+}
+
+class CustomDocumentItem extends StatelessWidget {
+  const CustomDocumentItem({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 72.h,
+      child: DottedBorder(
+        color: ColorName.neutral400,
+        borderType: BorderType.RRect,
+        radius: const Radius.circular(20),
+        dashPattern: const [12, 12, 12, 12],
+        child: Padding(
+          padding: const ProjectPadding.allMedium(),
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // Container(
+                //   padding: const EdgeInsets.all(10).r,
+                //   height: 40.h,
+                //   width: 40.h,
+                //   decoration: const BoxDecoration(
+                //     shape: BoxShape.circle,
+                //     color: ColorName.neutral300,
+                //   ),
+                //   child: Assets.icons.icFile
+                //       .svg(package: ModuleEnum.gen.value),
+                // ),
+                Assets.icons.icPdfTemp.svg(
+                  package: ModuleEnum.gen.value,
+                  height: 40.h,
+                  width: 40.w,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: 209.w,
+                      child: const AutoSizeText('Sabıka Kaydı'),
+                    ),
+                    const AutoSizeText('Maks 10 mb'),
+                  ],
+                ),
+                Assets.icons.icPlus.svg(package: ModuleEnum.gen.value),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

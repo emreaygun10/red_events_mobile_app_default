@@ -6,9 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
 import 'package:kartal/kartal.dart';
-import 'package:red_events_mobile_app_defult/feature/add_personnel/view_model/add_personnel_view_model.dart';
+import 'package:red_events_mobile_app_defult/feature/add_personnel/view_model/hr_information_view_model.dart';
 import 'package:red_events_mobile_app_defult/feature/add_personnel/view_model/mixin/hr_informations_mixin.dart';
-import 'package:red_events_mobile_app_defult/feature/add_personnel/view_model/state/add_personnel_state.dart';
+import 'package:red_events_mobile_app_defult/feature/add_personnel/view_model/state/hr_information_state.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
 import 'package:red_events_mobile_app_defult/product/utility/enums/linearprogress_enums.dart';
@@ -35,61 +35,227 @@ class _HrInformationViewState extends BaseState<HrInformationView>
     with HrInformationMixin {
   @override
   Widget build(BuildContext context) {
-    const selectedValue = '';
-    return ListView(
-      padding: EdgeInsets.zero,
-      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+    const selectedValue = 'EURO';
+    return BlocProvider(
+      create: (context) => hrInformationViewModel,
+      child: ListView(
+        padding: EdgeInsets.zero,
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        children: [
+          BlocBuilder<HrInformationCubit, HrInformationState>(
+            builder: (context, state) {
+              return CustomPersonnelTopStack(
+                linearProgressEnum: state.linearProgressEnum,
+                text: LocaleKeys.add_personnel_hr_inform_hr_inform,
+              );
+            },
+          ),
+          Padding(
+            padding: const ProjectPadding.scaffold(),
+            child: Form(
+              child: Column(
+                children: [
+                  buildStartedDateTextFormField(context),
+                  Padding(
+                    padding: const ProjectPadding.symmetricLargeV(),
+                    child: buildCustomDropdown(
+                      selectedValue: selectedValue,
+                      title: LocaleKeys.add_personnel_hr_inform_departmant,
+                      hint: LocaleKeys.add_personnel_hr_inform_departmant_hint,
+                      items: List.empty(),
+                    ),
+                  ),
+                  buildCustomDropdown(
+                    selectedValue: selectedValue,
+                    title: LocaleKeys.add_personnel_hr_inform_section,
+                    hint: LocaleKeys.add_personnel_hr_inform_section_hint,
+                    items: List.empty(),
+                  ),
+                  Padding(
+                    padding: const ProjectPadding.symmetricLargeV(),
+                    child: buildCustomDropdown(
+                      selectedValue: selectedValue,
+                      title: LocaleKeys.add_personnel_hr_inform_work_type,
+                      hint: LocaleKeys.add_personnel_hr_inform_work_type_hint,
+                      items: List.empty(),
+                    ),
+                  ),
+                  buildCustomDropdown(
+                    selectedValue: selectedValue,
+                    title: LocaleKeys.add_personnel_hr_inform_part,
+                    hint: LocaleKeys.add_personnel_hr_inform_part_hint,
+                    items: List.empty(),
+                  ),
+                  buildBlocPriceInfoColumn(),
+                  buildContinueButton(context, widget.pageController),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  BlocBuilder<HrInformationCubit, HrInformationState>
+      buildBlocPriceInfoColumn() {
+    return BlocBuilder<HrInformationCubit, HrInformationState>(
+      builder: (context, state) {
+        if (hrInformationViewModel.state.isPriceInfoBool) {
+          return buildPriceInfoColumn(context);
+        } else {
+          return const SizedBox();
+        }
+      },
+    );
+  }
+
+  Column buildPriceInfoColumn(
+    BuildContext context,
+  ) {
+    return Column(
       children: [
-        BlocBuilder<AddPersonnelViewModel, AddPersonnelState>(
-          builder: (context, state) {
-            return CustomPersonnelTopStack(
-              linearProgressEnum: state.linearProgressEnum,
-              text: LocaleKeys.add_personnel_hr_inform_hr_inform,
-            );
-          },
+        Padding(
+          padding: const ProjectPadding.symmetricLargeV(),
+          child: buildPriceInfoText(context),
+        ),
+        buildCurrencyColumn(
+          LocaleKeys
+              .add_personnel_hr_inform_price_information_mountly_price_information,
+        ),
+        buildCurrencyColumn(
+          LocaleKeys
+              .add_personnel_hr_inform_price_information_mountly_price_information,
+        ),
+        buildCurrencyColumn(
+          LocaleKeys
+              .add_personnel_hr_inform_price_information_mountly_price_information,
+        ),
+      ],
+    );
+  }
+
+  Row buildPriceInfoText(BuildContext context) {
+    return Row(
+      children: [
+        AutoSizeText(
+          LocaleKeys.add_personnel_hr_inform_price_info.tr(),
+          style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                color: ColorName.neutral400,
+              ),
+        ),
+      ],
+    );
+  }
+
+  Column buildCurrencyColumn(String title) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        buildAutoSize(
+          title,
         ),
         Padding(
-          padding: const ProjectPadding.scaffold(),
-          child: Form(
-            child: Column(
-              children: [
-                buildStartedDateTextFormField(context),
-                Padding(
-                  padding: const ProjectPadding.symmetricLargeV(),
-                  child: buildCustomDropdown(
-                    selectedValue: selectedValue,
-                    title: LocaleKeys.add_personnel_hr_inform_departmant,
-                    hint: LocaleKeys.add_personnel_hr_inform_departmant_hint,
-                    items: List.empty(),
-                  ),
-                ),
-                buildCustomDropdown(
-                  selectedValue: selectedValue,
-                  title: LocaleKeys.add_personnel_hr_inform_section,
-                  hint: LocaleKeys.add_personnel_hr_inform_section_hint,
-                  items: List.empty(),
-                ),
-                Padding(
-                  padding: const ProjectPadding.symmetricLargeV(),
-                  child: buildCustomDropdown(
-                    selectedValue: selectedValue,
-                    title: LocaleKeys.add_personnel_hr_inform_work_type,
-                    hint: LocaleKeys.add_personnel_hr_inform_work_type_hint,
-                    items: List.empty(),
-                  ),
-                ),
-                buildCustomDropdown(
-                  selectedValue: selectedValue,
-                  title: LocaleKeys.add_personnel_hr_inform_part,
-                  hint: LocaleKeys.add_personnel_hr_inform_part_hint,
-                  items: List.empty(),
-                ),
-                buildContinueButton(context, widget.pageController),
-              ],
+          padding: const ProjectPadding.symmetricSmallV(),
+          child: Container(
+            height: 40.h,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20).r,
+              border: Border.all(
+                width: 2,
+                color: ColorName.neutral300,
+              ),
             ),
+            child: buildTextFormFieldRow(),
           ),
         ),
       ],
+    );
+  }
+
+  Row buildTextFormFieldRow() {
+    return Row(
+      children: [
+        Padding(
+          padding: const ProjectPadding.allXSmall(),
+          child: SizedBox(
+            width: 180.w,
+            child: TextFormField(
+              decoration: InputDecoration(
+                contentPadding: const ProjectPadding.allSmall(),
+                border: const OutlineInputBorder(
+                  borderSide: BorderSide(color: ColorName.neutral0),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    const Radius.circular(24).r,
+                  ).r,
+                  borderSide: const BorderSide(
+                    color: ColorName.neutral0,
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.only(
+                    topLeft: const Radius.circular(24).r,
+                    bottomLeft: const Radius.circular(24).r,
+                  ).r,
+                  borderSide: const BorderSide(
+                    color: ColorName.blueBase,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const ProjectPadding.onlyRightSmall(),
+          child: VerticalDivider(
+            color: ColorName.neutral300,
+            width: 1.w,
+          ),
+        ),
+        buildDropDownButton(),
+      ],
+    );
+  }
+
+  SizedBox buildDropDownButton() {
+    return SizedBox(
+      width: 140.w,
+      height: 40.h,
+      child: BlocBuilder<HrInformationCubit, HrInformationState>(
+        builder: (context, state) {
+          return DropdownButton<CustomCurrency>(
+            icon: Assets.icons.icDownArrow.svg(package: ModuleEnum.gen.value),
+            underline: const SizedBox(),
+            borderRadius: BorderRadius.circular(
+              24,
+            ).r,
+            value: state.customCurrency,
+            onChanged: (CustomCurrency? newValue) {
+              hrInformationViewModel
+                  .changeCurrencyValue(newValue ?? currencyList.first);
+            },
+            items: currencyList
+                .map<DropdownMenuItem<CustomCurrency>>((CustomCurrency value) {
+              return DropdownMenuItem<CustomCurrency>(
+                value: value,
+                child: SizedBox(
+                  width: 100.w,
+                  height: 40.h,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      value.flag,
+                      Text(value.currency),
+                    ],
+                  ),
+                ),
+              );
+            }).toList(),
+          );
+        },
+      ),
     );
   }
 
@@ -163,7 +329,7 @@ class _HrInformationViewState extends BaseState<HrInformationView>
             ),
             child: Padding(
               padding: const ProjectPadding.allXSmall(),
-              child: BlocBuilder<AddPersonnelViewModel, AddPersonnelState>(
+              child: BlocBuilder<HrInformationCubit, HrInformationState>(
                 builder: (context, state) {
                   return TextFormField(
                     focusNode: focusNodes[2],
@@ -173,7 +339,7 @@ class _HrInformationViewState extends BaseState<HrInformationView>
                     controller: birthDateEditingController,
                     decoration: InputDecoration(
                       fillColor: ColorName.blueLighter,
-                      filled: state.birthDateFocus,
+                      filled: state.startedDateFocus,
                       prefixIcon: Padding(
                         padding: const ProjectPadding.allSmall(),
                         child: Assets.icons.icCalendar.svg(
@@ -243,13 +409,24 @@ class _HrInformationViewState extends BaseState<HrInformationView>
           width: context.sized.width,
           child: ElevatedButton(
             onPressed: () {
-              pageController.jumpToPage(2);
-              addPersonnelViewModel.changeLinearProgress(
-                LinearProgressEnum.levelThree,
-              );
+              if (!hrInformationViewModel.state.isPriceInfoBool) {
+                hrInformationViewModel.changeIsPriceInfo(value: true);
+              } else {
+                hrInformationViewModel.changeLinearProgress(
+                  LinearProgressEnum.levelThree,
+                );
+                pageController.nextPage(
+                  duration: Durations.short4,
+                  curve: Curves.linear,
+                );
+              }
+
+              /// TODO: Kullanıcı seviyesi
             },
             child: AutoSizeText(
-              LocaleKeys.add_personnel_buttons_continue.tr(),
+              hrInformationViewModel.state.isPriceInfoBool
+                  ? LocaleKeys.general_button_create_personnel.tr()
+                  : LocaleKeys.add_personnel_buttons_continue.tr(),
               style: Theme.of(context)
                   .textTheme
                   .titleLarge!

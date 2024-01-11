@@ -44,6 +44,20 @@ class _BaseInformationViewState extends BaseState<BaseInformationView>
         body: PageView.builder(
           physics: const NeverScrollableScrollPhysics(),
           itemCount: LinearProgressEnum.values.length,
+          onPageChanged: (int page) {
+            currentPage = page;
+            switch (page) {
+              case 0:
+                addPersonnelViewModel
+                    .changeLinearProgress(LinearProgressEnum.levelOne);
+              case 1:
+                addPersonnelViewModel
+                    .changeLinearProgress(LinearProgressEnum.levelTwo);
+              case 2:
+                addPersonnelViewModel
+                    .changeLinearProgress(LinearProgressEnum.levelThree);
+            }
+          },
           controller: pageController,
           itemBuilder: (context, index) {
             switch (index) {
@@ -96,7 +110,10 @@ class _BaseInformationViewState extends BaseState<BaseInformationView>
           height: 56.h,
           child: ElevatedButton(
             onPressed: () {
-              jumpPage(1);
+              pageController.nextPage(
+                duration: Durations.short4,
+                curve: Easing.linear,
+              );
               addPersonnelViewModel.changeLinearProgress(
                 LinearProgressEnum.levelTwo,
               );
@@ -519,7 +536,16 @@ class _BaseInformationViewState extends BaseState<BaseInformationView>
       backgroundColor: Colors.transparent,
       leadingWidth: 70.w,
       leading: InkWell(
-        onTap: () => context.router.pop(),
+        onTap: () {
+          if (currentPage != 0) {
+            pageController.previousPage(
+              duration: Durations.short4,
+              curve: Curves.linear,
+            );
+          } else {
+            context.router.pop();
+          }
+        },
         child: Padding(
           padding: const ProjectPadding.scaffold(),
           child: Container(

@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:gen/gen.dart';
 import 'package:red_events_mobile_app_defult/feature/add_personnel/view/hr_informations_view.dart';
-import 'package:red_events_mobile_app_defult/feature/add_personnel/view_model/add_personnel_view_model.dart';
+import 'package:red_events_mobile_app_defult/feature/add_personnel/view_model/hr_information_view_model.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
+import 'package:red_events_mobile_app_defult/product/utility/enums/module_enum.dart';
 
 mixin HrInformationMixin on BaseState<HrInformationView> {
-  late final AddPersonnelViewModel _addPersonnelViewModel;
+  late final HrInformationCubit _hrInformationView;
 
   /// View Model Getter
-  AddPersonnelViewModel get addPersonnelViewModel => _addPersonnelViewModel;
+  HrInformationCubit get hrInformationViewModel => _hrInformationView;
 
   /// Form Global Key
   final GlobalKey<FormState> formKey = GlobalKey();
@@ -23,9 +25,24 @@ mixin HrInformationMixin on BaseState<HrInformationView> {
   final TextEditingController birthDateEditingController =
       TextEditingController();
 
+  /// Currency items list
+  final List<CustomCurrency> currencyList = <CustomCurrency>[
+    CustomCurrency(
+      currency: 'TRY',
+      flag: Assets.icons.icTr.svg(package: ModuleEnum.gen.value),
+    ),
+    CustomCurrency(
+      currency: 'EURO',
+      flag: Assets.icons.icEu.svg(package: ModuleEnum.gen.value),
+    ),
+    CustomCurrency(
+      currency: 'DOLLAR',
+      flag: Assets.icons.icUs.svg(package: ModuleEnum.gen.value),
+    ),
+  ];
+
   /// FormFocusNodes
   final List<FocusNode> focusNodes = [
-    FocusNode(),
     FocusNode(),
     FocusNode(),
     FocusNode(),
@@ -35,17 +52,11 @@ mixin HrInformationMixin on BaseState<HrInformationView> {
 
   @override
   void initState() {
-    _addPersonnelViewModel = AddPersonnelViewModel();
-
+    _hrInformationView = HrInformationCubit();
+    _hrInformationView.changeCurrencyValue(currencyList.first);
     for (final focusNode in focusNodes) {
       focusNode.addListener(() {
-        addPersonnelViewModel
-          ..changeNameSurnameFocus(value: focusNodes[0].hasFocus)
-          ..changeTcFocus(value: focusNodes[1].hasFocus)
-          ..changeBirthDateFocus(value: focusNodes[2].hasFocus)
-          ..changePhoneNumberFocus(value: focusNodes[3].hasFocus)
-          ..changeCityFocus(value: focusNodes[4].hasFocus)
-          ..changeNeighborhoodFocus(value: focusNodes[5].hasFocus);
+        hrInformationViewModel.changeFocusNodes(focusNodes);
       });
     }
     super.initState();
@@ -59,20 +70,12 @@ mixin HrInformationMixin on BaseState<HrInformationView> {
     super.dispose();
   }
 
-  set changeName(String name) {
-    _addPersonnelViewModel.setCompanyName(name);
-  }
-
-  set changeMail(String mail) {
-    _addPersonnelViewModel.setCompanyMail(mail);
-  }
-
-  /// Todo Furure<bool>
-  void postLogin() {
-    if (formKey.currentState?.validate() ?? false) {
-      /// TODO: send to service
-    } else {}
-  }
-
   /// jump page to page with PageView controller
+}
+
+class CustomCurrency {
+  CustomCurrency({required this.currency, required this.flag});
+
+  final String currency;
+  final Widget flag;
 }

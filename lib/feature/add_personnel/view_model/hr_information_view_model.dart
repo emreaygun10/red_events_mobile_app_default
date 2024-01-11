@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+import 'package:red_events_mobile_app_defult/feature/add_personnel/view_model/mixin/hr_informations_mixin.dart';
 import 'package:red_events_mobile_app_defult/feature/add_personnel/view_model/state/hr_information_state.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_cubit.dart';
 import 'package:red_events_mobile_app_defult/product/utility/enums/linearprogress_enums.dart';
@@ -14,11 +16,23 @@ class HrInformationCubit extends BaseCubit<HrInformationState> {
             sectionFocus: false,
             startedDateFocus: false,
             workTypeFocus: false,
+            isPriceInfoBool: false,
             linearProgressEnum: LinearProgressEnum.levelTwo,
           ),
         );
 
   /// change bool values part
+  void changeFocusNodes(List<FocusNode> focusNodes) {
+    emit(
+      state.copyWith(
+        startedDateFocus: focusNodes[0].hasFocus,
+        departmentFocus: focusNodes[1].hasFocus,
+        sectionFocus: focusNodes[2].hasFocus,
+        workTypeFocus: focusNodes[3].hasFocus,
+        partFocus: focusNodes[4].hasFocus,
+      ),
+    );
+  }
 
   /// change value idLoading
   void changeLoading() {
@@ -50,7 +64,18 @@ class HrInformationCubit extends BaseCubit<HrInformationState> {
     emit(state.copyWith(startedDateFocus: value));
   }
 
+  /// Change linear progress
   void changeLinearProgress(LinearProgressEnum linearProgressEnum) {
     emit(state.copyWith(linearProgressEnum: linearProgressEnum));
+  }
+
+  /// change isPriceInfo value
+  void changeIsPriceInfo({required bool value}) {
+    emit(state.copyWith(isPriceInfoBool: value));
+  }
+
+  /// change currency value
+  void changeCurrencyValue(CustomCurrency value) {
+    emit(state.copyWith(customCurrency: value));
   }
 }

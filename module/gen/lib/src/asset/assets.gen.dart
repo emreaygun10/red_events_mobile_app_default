@@ -56,6 +56,9 @@ class $AssetsIconsGen {
   SvgGenImage get icDownArrow =>
       const SvgGenImage('assets/icons/ic_down_arrow.svg');
 
+  /// File path: assets/icons/ic_eu.svg
+  SvgGenImage get icEu => const SvgGenImage('assets/icons/ic_eu.svg');
+
   /// File path: assets/icons/ic_eye.svg
   SvgGenImage get icEye => const SvgGenImage('assets/icons/ic_eye.svg');
 
@@ -93,6 +96,13 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_page.svg
   SvgGenImage get icPage => const SvgGenImage('assets/icons/ic_page.svg');
 
+  /// File path: assets/icons/ic_pdf.svg
+  SvgGenImage get icPdf => const SvgGenImage('assets/icons/ic_pdf.svg');
+
+  /// File path: assets/icons/ic_pdf_temp.svg
+  SvgGenImage get icPdfTemp =>
+      const SvgGenImage('assets/icons/ic_pdf_temp.svg');
+
   /// File path: assets/icons/ic_pick_person.svg
   SvgGenImage get icPickPerson =>
       const SvgGenImage('assets/icons/ic_pick_person.svg');
@@ -107,6 +117,12 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_todo.svg
   SvgGenImage get icTodo => const SvgGenImage('assets/icons/ic_todo.svg');
 
+  /// File path: assets/icons/ic_tr.svg
+  SvgGenImage get icTr => const SvgGenImage('assets/icons/ic_tr.svg');
+
+  /// File path: assets/icons/ic_us.svg
+  SvgGenImage get icUs => const SvgGenImage('assets/icons/ic_us.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
         icArrowLeftLine,
@@ -117,6 +133,7 @@ class $AssetsIconsGen {
         icCheckLine,
         icCloseCircle,
         icDownArrow,
+        icEu,
         icEye,
         icEyeOff,
         icFile,
@@ -128,10 +145,14 @@ class $AssetsIconsGen {
         icLogoDark,
         icMail,
         icPage,
+        icPdf,
+        icPdfTemp,
         icPickPerson,
         icPlus,
         icSelectBoxCircle,
-        icTodo
+        icTodo,
+        icTr,
+        icUs
       ];
 }
 
