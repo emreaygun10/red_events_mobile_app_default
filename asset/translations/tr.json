@@ -128,5 +128,8 @@
             "title": "Evraklar",
             "desc": "BELGELERİM"
         }
+    },
+    "profile": {
+        "account_operations": "Hesap İşlemleri"
     }
 }

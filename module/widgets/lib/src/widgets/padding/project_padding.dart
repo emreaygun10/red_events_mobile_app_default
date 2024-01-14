@@ -22,6 +22,19 @@ final class ProjectPadding extends EdgeInsets {
   const ProjectPadding.allLarge() : super.all(32);
 
   /// Symmetric
+  ///
+  /// [ProjectPadding.symmetricSmallH] is 8
+  const ProjectPadding.symmetricSmallH() : super.symmetric(horizontal: 8);
+
+  /// [ProjectPadding.symmetricMediumH] is 12
+  const ProjectPadding.symmetricMediumH() : super.symmetric(horizontal: 12);
+
+  /// [ProjectPadding.symmetricNormalH] is 16
+  const ProjectPadding.symmetricNormalH() : super.symmetric(horizontal: 16);
+
+  /// [ProjectPadding.symmetricLargeH] is 24
+  const ProjectPadding.symmetricLargeH() : super.symmetric(horizontal: 24);
+
   /// [ProjectPadding.symmetricXSmallH] is 5
   const ProjectPadding.symmetricXSmallH() : super.symmetric(horizontal: 5);
 
@@ -37,7 +50,12 @@ final class ProjectPadding extends EdgeInsets {
   /// [ProjectPadding.symmetricLargeV] is 24
   const ProjectPadding.symmetricLargeV() : super.symmetric(vertical: 24);
 
-  /// [ProjectPadding.scaffold] is 4
+  /// [ProjectPadding.symmetricLargeV] custom chip padding horizontal : 8
+  ///  vertical: 4
+  const ProjectPadding.customChipPadding()
+      : super.symmetric(vertical: 4, horizontal: 8);
+
+  /// [ProjectPadding.scaffold] is 20
   const ProjectPadding.scaffold() : super.symmetric(horizontal: 20);
 
   /// [ProjectPadding.timerPadding] is vertical 24

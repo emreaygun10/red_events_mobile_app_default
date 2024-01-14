@@ -33,6 +33,10 @@ class $AssetsIconsGen {
   SvgGenImage get icArrowRight =>
       const SvgGenImage('assets/icons/ic_arrow_right.svg');
 
+  /// File path: assets/icons/ic_arrow_right_s.svg
+  SvgGenImage get icArrowRightS =>
+      const SvgGenImage('assets/icons/ic_arrow_right_s.svg');
+
   /// File path: assets/icons/ic_building.svg
   SvgGenImage get icBuilding =>
       const SvgGenImage('assets/icons/ic_building.svg');
@@ -52,9 +56,16 @@ class $AssetsIconsGen {
   SvgGenImage get icCloseCircle =>
       const SvgGenImage('assets/icons/ic_close_circle.svg');
 
+  /// File path: assets/icons/ic_dot.svg
+  SvgGenImage get icDot => const SvgGenImage('assets/icons/ic_dot.svg');
+
   /// File path: assets/icons/ic_down_arrow.svg
   SvgGenImage get icDownArrow =>
       const SvgGenImage('assets/icons/ic_down_arrow.svg');
+
+  /// File path: assets/icons/ic_edit_line.svg
+  SvgGenImage get icEditLine =>
+      const SvgGenImage('assets/icons/ic_edit_line.svg');
 
   /// File path: assets/icons/ic_eu.svg
   SvgGenImage get icEu => const SvgGenImage('assets/icons/ic_eu.svg');
@@ -71,6 +82,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_folder_open.svg
   SvgGenImage get icFolderOpen =>
       const SvgGenImage('assets/icons/ic_folder_open.svg');
+
+  /// File path: assets/icons/ic_folder_shield_line.svg
+  SvgGenImage get icFolderShieldLine =>
+      const SvgGenImage('assets/icons/ic_folder_shield_line.svg');
 
   /// File path: assets/icons/ic_home.svg
   SvgGenImage get icHome => const SvgGenImage('assets/icons/ic_home.svg');
@@ -114,6 +129,18 @@ class $AssetsIconsGen {
   SvgGenImage get icSelectBoxCircle =>
       const SvgGenImage('assets/icons/ic_select_box_circle.svg');
 
+  /// File path: assets/icons/ic_star_empty.svg
+  SvgGenImage get icStarEmpty =>
+      const SvgGenImage('assets/icons/ic_star_empty.svg');
+
+  /// File path: assets/icons/ic_star_fill.svg
+  SvgGenImage get icStarFill =>
+      const SvgGenImage('assets/icons/ic_star_fill.svg');
+
+  /// File path: assets/icons/ic_suitcase_line.svg
+  SvgGenImage get icSuitcaseLine =>
+      const SvgGenImage('assets/icons/ic_suitcase_line.svg');
+
   /// File path: assets/icons/ic_todo.svg
   SvgGenImage get icTodo => const SvgGenImage('assets/icons/ic_todo.svg');
 
@@ -123,21 +150,29 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_us.svg
   SvgGenImage get icUs => const SvgGenImage('assets/icons/ic_us.svg');
 
+  /// File path: assets/icons/ic_whatsApp.svg
+  SvgGenImage get icWhatsApp =>
+      const SvgGenImage('assets/icons/ic_whatsApp.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
         icArrowLeftLine,
         icArrowRight,
+        icArrowRightS,
         icBuilding,
         icCalendar,
         icCamera,
         icCheckLine,
         icCloseCircle,
+        icDot,
         icDownArrow,
+        icEditLine,
         icEu,
         icEye,
         icEyeOff,
         icFile,
         icFolderOpen,
+        icFolderShieldLine,
         icHome,
         icHomeOffice,
         icLock,
@@ -150,9 +185,13 @@ class $AssetsIconsGen {
         icPickPerson,
         icPlus,
         icSelectBoxCircle,
+        icStarEmpty,
+        icStarFill,
+        icSuitcaseLine,
         icTodo,
         icTr,
-        icUs
+        icUs,
+        icWhatsApp
       ];
 }
 
