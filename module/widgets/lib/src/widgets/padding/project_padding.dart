@@ -50,10 +50,15 @@ final class ProjectPadding extends EdgeInsets {
   /// [ProjectPadding.symmetricLargeV] is 24
   const ProjectPadding.symmetricLargeV() : super.symmetric(vertical: 24);
 
-  /// [ProjectPadding.symmetricLargeV] custom chip padding horizontal : 8
+  /// [ProjectPadding.customChipPadding] custom chip padding horizontal : 8
   ///  vertical: 4
   const ProjectPadding.customChipPadding()
       : super.symmetric(vertical: 4, horizontal: 8);
+
+  /// [ProjectPadding.customChipPadding] custom chip padding horizontal : 16
+  ///  vertical: 8
+  const ProjectPadding.customChipPaddingLarge()
+      : super.symmetric(vertical: 8, horizontal: 16);
 
   /// [ProjectPadding.scaffold] is 20
   const ProjectPadding.scaffold() : super.symmetric(horizontal: 20);

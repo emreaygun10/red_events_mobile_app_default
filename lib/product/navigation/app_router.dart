@@ -9,6 +9,7 @@ import 'package:red_events_mobile_app_defult/feature/auth/onboard/view/onboard_v
 import 'package:red_events_mobile_app_defult/feature/auth/sign_in/view/sign_in_success_view.dart';
 import 'package:red_events_mobile_app_defult/feature/auth/sign_in/view/sign_in_view.dart';
 import 'package:red_events_mobile_app_defult/feature/home/view/home_view.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/profile_education_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_view.dart';
 
 part 'app_router.gr.dart';
@@ -29,6 +30,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: SuccessCreatedPasswordRoute.page),
         AutoRoute(page: AddPersonnelRoute.page),
         AutoRoute(page: BaseInformationRoute.page),
-        AutoRoute(page: ProfileRoute.page, initial: true),
+        AutoRoute(page: ProfileRoute.page),
+        AutoRoute(page: ProfileEducationRoute.page, initial: true),
       ];
 }

@@ -4,7 +4,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
-import 'package:red_events_mobile_app_defult/product/utility/enums/module_enum.dart';
 import 'package:widgets/widgets.dart';
 
 final class CustomProfileImageRow extends StatelessWidget {
@@ -19,22 +18,8 @@ final class CustomProfileImageRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(right: 60).r,
-          child: Row(
-            children: [
-              Assets.icons.icStarFill.svg(
-                package: ModuleEnum.gen.value,
-              ),
-              AutoSizeText(
-                '4.2',
-                style: Theme.of(context).textTheme.labelLarge,
-              ),
-            ],
-          ),
-        ),
         SizedBox(
           height: 88.h,
           child: Stack(
@@ -47,7 +32,9 @@ final class CustomProfileImageRow extends StatelessWidget {
                   border: Border.all(color: ColorName.greenLight, width: 3),
                   shape: BoxShape.circle,
                 ),
-                child: const CircleAvatar(),
+                child: const CircleAvatar(
+                  child: Icon(Icons.supervised_user_circle_outlined),
+                ),
               ),
               Align(
                 alignment: Alignment.bottomCenter,

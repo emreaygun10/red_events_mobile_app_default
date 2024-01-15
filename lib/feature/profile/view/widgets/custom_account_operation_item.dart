@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
@@ -48,7 +49,7 @@ class CustomAccountOperationItem extends StatelessWidget {
                 Padding(
                   padding: const ProjectPadding.symmetricNormalH(),
                   child: AutoSizeText(
-                    text,
+                    text.tr(),
                     style: Theme.of(context)
                         .textTheme
                         .labelMedium!
@@ -58,7 +59,9 @@ class CustomAccountOperationItem extends StatelessWidget {
               ],
             ),
             Assets.icons.icArrowRightS.svg(
-                package: ModuleEnum.gen.value, color: ColorName.neutral900),
+              package: ModuleEnum.gen.value,
+              color: ColorName.neutral900,
+            ),
           ],
         ),
       ),

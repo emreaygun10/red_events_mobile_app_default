@@ -25,6 +25,10 @@ class $AssetsColorGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/ic_arroe_left_s.svg
+  SvgGenImage get icArroeLeftS =>
+      const SvgGenImage('assets/icons/ic_arroe_left_s.svg');
+
   /// File path: assets/icons/ic_arrow_left_line.svg
   SvgGenImage get icArrowLeftLine =>
       const SvgGenImage('assets/icons/ic_arrow_left_line.svg');
@@ -37,6 +41,10 @@ class $AssetsIconsGen {
   SvgGenImage get icArrowRightS =>
       const SvgGenImage('assets/icons/ic_arrow_right_s.svg');
 
+  /// File path: assets/icons/ic_bank_card_line.svg
+  SvgGenImage get icBankCardLine =>
+      const SvgGenImage('assets/icons/ic_bank_card_line.svg');
+
   /// File path: assets/icons/ic_building.svg
   SvgGenImage get icBuilding =>
       const SvgGenImage('assets/icons/ic_building.svg');
@@ -44,6 +52,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_calendar.svg
   SvgGenImage get icCalendar =>
       const SvgGenImage('assets/icons/ic_calendar.svg');
+
+  /// File path: assets/icons/ic_calendar_event_line.svg
+  SvgGenImage get icCalendarEventLine =>
+      const SvgGenImage('assets/icons/ic_calendar_event_line.svg');
 
   /// File path: assets/icons/ic_camera.svg
   SvgGenImage get icCamera => const SvgGenImage('assets/icons/ic_camera.svg');
@@ -79,6 +91,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_file.svg
   SvgGenImage get icFile => const SvgGenImage('assets/icons/ic_file.svg');
 
+  /// File path: assets/icons/ic_file_mark_line.svg
+  SvgGenImage get icFileMarkLine =>
+      const SvgGenImage('assets/icons/ic_file_mark_line.svg');
+
   /// File path: assets/icons/ic_folder_open.svg
   SvgGenImage get icFolderOpen =>
       const SvgGenImage('assets/icons/ic_folder_open.svg');
@@ -108,6 +124,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_mail.svg
   SvgGenImage get icMail => const SvgGenImage('assets/icons/ic_mail.svg');
 
+  /// File path: assets/icons/ic_null_education.svg
+  SvgGenImage get icNullEducation =>
+      const SvgGenImage('assets/icons/ic_null_education.svg');
+
   /// File path: assets/icons/ic_page.svg
   SvgGenImage get icPage => const SvgGenImage('assets/icons/ic_page.svg');
 
@@ -128,6 +148,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_select_box_circle.svg
   SvgGenImage get icSelectBoxCircle =>
       const SvgGenImage('assets/icons/ic_select_box_circle.svg');
+
+  /// File path: assets/icons/ic_shield_star_line.svg
+  SvgGenImage get icShieldStarLine =>
+      const SvgGenImage('assets/icons/ic_shield_star_line.svg');
 
   /// File path: assets/icons/ic_star_empty.svg
   SvgGenImage get icStarEmpty =>
@@ -156,11 +180,14 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [
+        icArroeLeftS,
         icArrowLeftLine,
         icArrowRight,
         icArrowRightS,
+        icBankCardLine,
         icBuilding,
         icCalendar,
+        icCalendarEventLine,
         icCamera,
         icCheckLine,
         icCloseCircle,
@@ -171,6 +198,7 @@ class $AssetsIconsGen {
         icEye,
         icEyeOff,
         icFile,
+        icFileMarkLine,
         icFolderOpen,
         icFolderShieldLine,
         icHome,
@@ -179,12 +207,14 @@ class $AssetsIconsGen {
         icLogoBlue,
         icLogoDark,
         icMail,
+        icNullEducation,
         icPage,
         icPdf,
         icPdfTemp,
         icPickPerson,
         icPlus,
         icSelectBoxCircle,
+        icShieldStarLine,
         icStarEmpty,
         icStarFill,
         icSuitcaseLine,

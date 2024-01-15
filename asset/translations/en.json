@@ -130,6 +130,21 @@
         }
     },
     "profile": {
-        "account_operations": "Hesap İşlemleri"
+        "account_operations": "Hesap İşlemleri",
+        "list": {
+            "progress_payment": "Hakediş",
+            "files": "Evraklar",
+            "request": "Talepler",
+            "performance": "Performans",
+            "educations": "Eğitimler"
+        },
+        "education": {
+            "chip": {
+                "waiting": "Bekleyen",
+                "continue": "Devam Edenler",
+                "completed": "Tamamlandı"
+            },
+            "empy_list": "{} eğitiminiz bulunmamaktadır"
+        }
     }
 }

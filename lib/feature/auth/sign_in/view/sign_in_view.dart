@@ -10,6 +10,7 @@ import 'package:red_events_mobile_app_defult/feature/auth/sign_in/view_model/mix
 import 'package:red_events_mobile_app_defult/feature/auth/sign_in/view_model/sign_in_view_model.dart';
 import 'package:red_events_mobile_app_defult/feature/auth/sign_in/view_model/state/sign_in_state.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
+import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
 import 'package:red_events_mobile_app_defult/product/utility/enums/module_enum.dart';
 import 'package:red_events_mobile_app_defult/product/utility/enums/password_enum.dart';
@@ -89,7 +90,9 @@ class _SignInViewState extends BaseState<SignInView> with SignInMixin {
           style: Theme.of(context).textTheme.titleSmall,
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            context.router.push(const LoginRoute());
+          },
           child: AutoSizeText(
             LocaleKeys.general_button_login.tr(),
             style: Theme.of(context)
@@ -208,7 +211,7 @@ class _SignInViewState extends BaseState<SignInView> with SignInMixin {
   }
 
   BlocSelector<SignInViewModel, SignInState, SignInState> buildPasswordLevel() {
-    final customW = (context.sized.width - 65.w) / 3;
+    final customW = (context.sized.width - 95.w) / 3;
     return BlocSelector<SignInViewModel, SignInState, SignInState>(
       selector: (state) {
         return state;
