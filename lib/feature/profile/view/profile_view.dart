@@ -10,6 +10,7 @@ import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_profile_image_row.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_second_description_row.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
+import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:red_events_mobile_app_defult/product/utility/enums/module_enum.dart';
 import 'package:widgets/widgets.dart';
 
@@ -87,15 +88,17 @@ class ProfileView extends StatelessWidget {
               labelIcon: Assets.icons.icFolderShieldLine.svg(
                 package: ModuleEnum.gen.value,
               ),
+              pageRouteInfo: const ProfilePerformanceRoute(),
               text: LocaleKeys.profile_list_performance,
             ),
           ),
           Padding(
             padding: const ProjectPadding.symmetricMediumV(),
             child: CustomAccountOperationItem(
-              labelIcon: Assets.icons.icFolderShieldLine.svg(
+              labelIcon: Assets.icons.icFileMarkLine.svg(
                 package: ModuleEnum.gen.value,
               ),
+              pageRouteInfo: const ProfileEducationRoute(),
               text: LocaleKeys.profile_list_educations,
             ),
           ),

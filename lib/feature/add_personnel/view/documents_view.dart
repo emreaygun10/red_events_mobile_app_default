@@ -76,7 +76,7 @@ class CustomDocumentItem extends StatelessWidget {
       child: DottedBorder(
         color: ColorName.neutral400,
         borderType: BorderType.RRect,
-        radius: const Radius.circular(20),
+        radius: const Radius.circular(20).r,
         dashPattern: const [12, 12, 12, 12],
         child: Padding(
           padding: const ProjectPadding.allMedium(),
@@ -95,19 +95,26 @@ class CustomDocumentItem extends StatelessWidget {
                 //   child: Assets.icons.icFile
                 //       .svg(package: ModuleEnum.gen.value),
                 // ),
-                Assets.icons.icPdfTemp.svg(
-                  package: ModuleEnum.gen.value,
-                  height: 40.h,
-                  width: 40.w,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
                   children: [
-                    SizedBox(
-                      width: 209.w,
-                      child: const AutoSizeText('Sabıka Kaydı'),
+                    Assets.icons.icPdfTemp.svg(
+                      package: ModuleEnum.gen.value,
+                      height: 40.h,
+                      width: 40.w,
                     ),
-                    const AutoSizeText('Maks 10 mb'),
+                    const Padding(
+                      padding: ProjectPadding.symmetricMediumH(),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Flexible(
+                            flex: 2,
+                            child: AutoSizeText('Sabıka Kaydı'),
+                          ),
+                          Flexible(child: AutoSizeText('Maks 10 mb')),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
                 Assets.icons.icPlus.svg(package: ModuleEnum.gen.value),

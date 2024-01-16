@@ -155,7 +155,12 @@ class _ForgetPasswordViewState extends BaseState<ForgetPasswordView>
 
   TextButton buildSendAgainText(BuildContext context) {
     return TextButton(
-      onPressed: reStartTimer,
+      onPressed: () {
+        reStartTimer();
+        forgetPasswordModelView
+          ..changeIsClearOtp(value: true)
+          ..changeIsCompletedOtp(value: false);
+      },
       child: AutoSizeText(
         LocaleKeys.forget_password_button_send_again.tr(),
         style: Theme.of(context).textTheme.bodySmall!.copyWith(
@@ -195,32 +200,40 @@ class _ForgetPasswordViewState extends BaseState<ForgetPasswordView>
   Padding buildOtpTextField(List<TextStyle?> otpStyles) {
     return Padding(
       padding: const ProjectPadding.scaffold(),
-      child: SizedBox(
-        height: 64.h,
-        width: context.sized.width,
-        child: OtpTextField(
-          numberOfFields: 6,
-          borderColor: ColorName.neutral200,
-          fieldWidth: context.sized.width / 8,
-          showFieldAsBox: true,
-          borderRadius: BorderRadius.circular(10),
-          styles: otpStyles,
+      child: BlocBuilder<ForgetPasswordModelView, ForgetPasswordState>(
+        builder: (context, state) {
+          return SizedBox(
+            height: 64.h,
+            width: context.sized.width,
+            child: OtpTextField(
+              numberOfFields: 6,
+              borderColor: ColorName.neutral200,
+              fieldWidth: context.sized.width / 8,
+              showFieldAsBox: true,
+              clearText: state.isClearOtp,
+              borderRadius: BorderRadius.circular(10),
+              styles: otpStyles,
+              autoFocus: true,
+              focusedBorderColor: ColorName.blueBase,
+              fillColor: ColorName.blueLighter,
+              onCodeChanged: (String code) {
+                print('box: $code');
+                if (forgetPasswordModelView.state.isClearOtp) {
+                  forgetPasswordModelView.changeIsClearOtp(value: false);
+                }
+                forgetPasswordModelView.changeIsCompletedOtp(value: false);
+              },
+              //runs when every textfield is filled
+              onSubmit: (String verificationCode) {
+                print('full code: $verificationCode');
+                stopWatchTimer.onStopTimer();
+                changeSetWatchSecond(0);
 
-          focusedBorderColor: ColorName.blueBase,
-          fillColor: ColorName.blueLighter,
-          onCodeChanged: (String code) {
-            print('box: $code');
-            forgetPasswordModelView.changeIsCompletedOtp(false);
-          },
-          //runs when every textfield is filled
-          onSubmit: (String verificationCode) {
-            print('full code: $verificationCode');
-            stopWatchTimer.onStopTimer();
-            changeSetWatchSecond(0);
-
-            forgetPasswordModelView.changeIsCompletedOtp(true);
-          },
-        ),
+                forgetPasswordModelView.changeIsCompletedOtp(value: true);
+              },
+            ),
+          );
+        },
       ),
     );
   }
@@ -258,6 +271,7 @@ class _ForgetPasswordViewState extends BaseState<ForgetPasswordView>
             /// TODO: SEND MESSAGE
             ///
             forgetPasswordModelView.changeIsSend();
+            forgetPasswordModelView.state.isSend ? reStartTimer() : null;
           },
           child: AutoSizeText(
             LocaleKeys.forget_password_button_send_mail.tr(),

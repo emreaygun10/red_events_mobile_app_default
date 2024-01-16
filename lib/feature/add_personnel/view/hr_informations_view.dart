@@ -159,6 +159,7 @@ class _HrInformationViewState extends BaseState<HrInformationView>
           padding: const ProjectPadding.symmetricSmallV(),
           child: Container(
             height: 40.h,
+            width: context.sized.width,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20).r,
               border: Border.all(
@@ -221,7 +222,6 @@ class _HrInformationViewState extends BaseState<HrInformationView>
 
   SizedBox buildDropDownButton() {
     return SizedBox(
-      width: 140.w,
       height: 40.h,
       child: BlocBuilder<HrInformationCubit, HrInformationState>(
         builder: (context, state) {

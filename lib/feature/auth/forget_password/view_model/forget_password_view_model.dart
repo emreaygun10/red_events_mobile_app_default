@@ -10,6 +10,7 @@ class ForgetPasswordModelView extends BaseCubit<ForgetPasswordState> {
             isLoading: false,
             isSend: false,
             isCompletedOtp: false,
+            isClearOtp: false,
           ),
         );
 
@@ -19,7 +20,7 @@ class ForgetPasswordModelView extends BaseCubit<ForgetPasswordState> {
   }
 
   /// change value isCompletedOtp
-  void changeIsCompletedOtp(bool value) {
+  void changeIsCompletedOtp({required bool value}) {
     emit(state.copyWith(isCompletedOtp: value));
   }
 
@@ -32,6 +33,11 @@ class ForgetPasswordModelView extends BaseCubit<ForgetPasswordState> {
   /// If code send to mail, isSend is True
   void changeIsSend() {
     emit(state.copyWith(isSend: !state.isSend));
+  }
+
+  /// change is clearOtp for opt text fields reset
+  void changeIsClearOtp({required bool value}) {
+    emit(state.copyWith(isClearOtp: !state.isClearOtp));
   }
 
   /// password setter

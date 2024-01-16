@@ -239,7 +239,7 @@ class _CreatePasswordView extends BaseState<CreatePasswordView>
 
   BlocSelector<CreatePasswordViewModel, CreatePasswordState,
       CreatePasswordState> buildPasswordLevel() {
-    final customW = (context.sized.width - 90.w) / 3;
+    const customW = 106;
     return BlocSelector<CreatePasswordViewModel, CreatePasswordState,
         CreatePasswordState>(
       selector: (state) {

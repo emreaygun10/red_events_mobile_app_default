@@ -23,7 +23,7 @@ class AddPersonnelView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: buildAppBar(),
+      appBar: buildAppBar(context),
       body: Column(
         children: [
           const CustomTopStack(
@@ -93,7 +93,7 @@ class AddPersonnelView extends StatelessWidget {
   }
 }
 
-AppBar buildAppBar() {
+AppBar buildAppBar(BuildContext context) {
   return AppBar(
     backgroundColor: Colors.transparent,
     centerTitle: true,
@@ -102,5 +102,16 @@ AppBar buildAppBar() {
       height: 40,
       width: 40,
     ),
+    actions: [
+      TextButton(
+        onPressed: () {
+          context.router.push(const ProfileRoute());
+        },
+        child: const Text(
+          'Profil',
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+    ],
   );
 }

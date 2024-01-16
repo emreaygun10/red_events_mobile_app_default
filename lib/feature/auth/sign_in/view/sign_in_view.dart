@@ -211,7 +211,7 @@ class _SignInViewState extends BaseState<SignInView> with SignInMixin {
   }
 
   BlocSelector<SignInViewModel, SignInState, SignInState> buildPasswordLevel() {
-    final customW = (context.sized.width - 95.w) / 3;
+    const customW = 106;
     return BlocSelector<SignInViewModel, SignInState, SignInState>(
       selector: (state) {
         return state;
@@ -219,9 +219,9 @@ class _SignInViewState extends BaseState<SignInView> with SignInMixin {
       builder: (context, state) {
         return Visibility(
           visible: state.password.ext.isNotNullOrNoEmpty,
-          maintainSize: true, //NEW
-          maintainAnimation: true, //NEW
-          maintainState: true, //NEW
+          maintainSize: true,
+          maintainAnimation: true,
+          maintainState: true,
           child: SizedBox(
             height: 106.h,
             child: Column(
