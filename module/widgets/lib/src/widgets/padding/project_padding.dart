@@ -35,8 +35,11 @@ final class ProjectPadding extends EdgeInsets {
   /// [ProjectPadding.symmetricLargeH] is 24
   const ProjectPadding.symmetricLargeH() : super.symmetric(horizontal: 24);
 
-  /// [ProjectPadding.symmetricXSmallH] is 5
-  const ProjectPadding.symmetricXSmallH() : super.symmetric(horizontal: 5);
+  /// [ProjectPadding.symmetricXSmallH] is 4
+  const ProjectPadding.symmetricXSmallH() : super.symmetric(horizontal: 4);
+
+  /// [ProjectPadding.symmetricXSmallV] is 4
+  const ProjectPadding.symmetricXSmallV() : super.symmetric(vertical: 4);
 
   /// [ProjectPadding.symmetricSmallV] is 8
   const ProjectPadding.symmetricSmallV() : super.symmetric(vertical: 8);

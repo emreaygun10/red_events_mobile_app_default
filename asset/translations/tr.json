@@ -145,6 +145,14 @@
                 "completed": "Tamamlandı"
             },
             "empy_list": "{} eğitiminiz bulunmamaktadır"
+        },
+        "performance": {
+            "total_point": "Total Puan",
+            "criteria": "Kriterler",
+            "point": "Puanlama",
+            "manager_point": "Müdür Puanı",
+            "latest_shift": "Geç kaldığı shift",
+            "debit": "Zimmet"
         }
     }
 }

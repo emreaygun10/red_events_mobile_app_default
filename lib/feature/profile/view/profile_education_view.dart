@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
-import 'package:kartal/kartal.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_education_cart.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_profile_header.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view_model/cubit/profile_education_bloc.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view_model/mixin/profile_education_mixin.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view_model/state/profile_education_state.dart';
@@ -34,20 +34,14 @@ class _ProfileEducationViewState extends BaseState<ProfileEducationView>
         appBar: buildAppBar(context),
         body: Column(
           children: [
-            Container(
-              height: 104.h,
-              width: context.sized.width,
-              color: ColorName.neutral0,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 16.h,
-                  ),
-                  buildTitleText(),
-                  buildChipList(),
-                ],
-              ),
+            CustomProfileHeader(
+              columnList: [
+                const SizedBox(
+                  height: 16,
+                ),
+                buildTitleText(),
+                buildChipList(),
+              ],
             ),
             Padding(
               padding: const ProjectPadding.symmetricLargeV(),
