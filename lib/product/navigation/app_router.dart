@@ -11,6 +11,7 @@ import 'package:red_events_mobile_app_defult/feature/auth/sign_in/view/sign_in_v
 import 'package:red_events_mobile_app_defult/feature/home/view/home_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_education_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_performance_view.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/profile_request_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_view.dart';
 
 part 'app_router.gr.dart';
@@ -22,7 +23,7 @@ class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(page: HomeRoute.page),
-        AutoRoute(page: OnboardRoute.page, initial: true),
+        AutoRoute(page: OnboardRoute.page),
         AutoRoute(page: SignInRoute.page),
         AutoRoute(page: SuccessSignInRoute.page),
         AutoRoute(page: LoginRoute.page),
@@ -31,8 +32,9 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: SuccessCreatedPasswordRoute.page),
         AutoRoute(page: AddPersonnelRoute.page),
         AutoRoute(page: BaseInformationRoute.page),
-        AutoRoute(page: ProfileRoute.page),
+        AutoRoute(page: ProfileRoute.page, initial: true),
         AutoRoute(page: ProfileEducationRoute.page),
         AutoRoute(page: ProfilePerformanceRoute.page),
+        AutoRoute(page: ProfileRequestRoute.page),
       ];
 }

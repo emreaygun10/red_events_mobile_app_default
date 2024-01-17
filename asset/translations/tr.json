@@ -153,6 +153,24 @@
             "manager_point": "Müdür Puanı",
             "latest_shift": "Geç kaldığı shift",
             "debit": "Zimmet"
+        },
+        "requests": {
+            "title": "Talepler",
+            "chip": {
+                "waiting": "Bekleyen",
+                "approved": "Onaylanan",
+                "rejected": "Reddedilen"
+            },
+            "empy_list": "{} eğitiminiz bulunmamaktadır",
+            "sum": "Toplam",
+            "piece": "{} adet",
+            "have_request": "{} talebin var",
+            "request_type": {
+                "request_to_leave": "Ayrılma Talebi",
+                "request_to_permission": "İzin Talebi",
+                "request_to_advance_payment": "Avans Talebi",
+                "report_notification": "Rapor Bildirimi"
+            }
         }
     }
 }

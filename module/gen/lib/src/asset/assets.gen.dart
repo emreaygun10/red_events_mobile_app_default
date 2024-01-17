@@ -124,6 +124,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_mail.svg
   SvgGenImage get icMail => const SvgGenImage('assets/icons/ic_mail.svg');
 
+  /// File path: assets/icons/ic_newspaper.svg
+  SvgGenImage get icNewspaper =>
+      const SvgGenImage('assets/icons/ic_newspaper.svg');
+
   /// File path: assets/icons/ic_null_education.svg
   SvgGenImage get icNullEducation =>
       const SvgGenImage('assets/icons/ic_null_education.svg');
@@ -161,6 +165,10 @@ class $AssetsIconsGen {
   SvgGenImage get icStarFill =>
       const SvgGenImage('assets/icons/ic_star_fill.svg');
 
+  /// File path: assets/icons/ic_sticky_note_line.svg
+  SvgGenImage get icStickyNoteLine =>
+      const SvgGenImage('assets/icons/ic_sticky_note_line.svg');
+
   /// File path: assets/icons/ic_suitcase_line.svg
   SvgGenImage get icSuitcaseLine =>
       const SvgGenImage('assets/icons/ic_suitcase_line.svg');
@@ -173,6 +181,10 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/ic_us.svg
   SvgGenImage get icUs => const SvgGenImage('assets/icons/ic_us.svg');
+
+  /// File path: assets/icons/ic_user_shared.svg
+  SvgGenImage get icUserShared =>
+      const SvgGenImage('assets/icons/ic_user_shared.svg');
 
   /// File path: assets/icons/ic_whatsApp.svg
   SvgGenImage get icWhatsApp =>
@@ -207,6 +219,7 @@ class $AssetsIconsGen {
         icLogoBlue,
         icLogoDark,
         icMail,
+        icNewspaper,
         icNullEducation,
         icPage,
         icPdf,
@@ -217,10 +230,12 @@ class $AssetsIconsGen {
         icShieldStarLine,
         icStarEmpty,
         icStarFill,
+        icStickyNoteLine,
         icSuitcaseLine,
         icTodo,
         icTr,
         icUs,
+        icUserShared,
         icWhatsApp
       ];
 }

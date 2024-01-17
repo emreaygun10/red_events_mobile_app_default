@@ -79,6 +79,7 @@ class ProfileView extends StatelessWidget {
               labelIcon: Assets.icons.icCalendarEventLine.svg(
                 package: ModuleEnum.gen.value,
               ),
+              pageRouteInfo: const ProfileRequestRoute(),
               text: LocaleKeys.profile_list_request,
             ),
           ),

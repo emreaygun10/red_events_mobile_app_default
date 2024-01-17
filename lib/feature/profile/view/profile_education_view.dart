@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_education_cart.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_profile_header.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/empty_list_card.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view_model/cubit/profile_education_bloc.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view_model/mixin/profile_education_mixin.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view_model/state/profile_education_state.dart';
@@ -57,39 +58,15 @@ class _ProfileEducationViewState extends BaseState<ProfileEducationView>
                             },
                           ),
                         )
-                      : buildListEmptyWarningWidget(state);
+                      : EmptyListWarning(
+                          textTheme: textTheme,
+                          chipText: LocaleKeys.profile_education_empy_list.tr(
+                            args: [
+                              EducationChips.values[state.chipIndex].value.tr(),
+                            ],
+                          ),
+                        );
                 },
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Container buildListEmptyWarningWidget(ProfileEducationState state) {
-    return Container(
-      height: 401.h,
-      color: ColorName.neutral0,
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Assets.icons.icNullEducation.svg(package: ModuleEnum.gen.value),
-            Padding(
-              padding: const ProjectPadding.symmetricNormalV(),
-              child: SizedBox(
-                width: 182.w,
-                child: AutoSizeText(
-                  LocaleKeys.profile_education_empy_list.tr(
-                    args: [
-                      EducationChips.values[state.chipIndex].value.tr(),
-                    ],
-                  ),
-                  textAlign: TextAlign.center,
-                  maxLines: 2,
-                  style: textTheme.labelMedium,
-                ),
               ),
             ),
           ],
