@@ -69,6 +69,17 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ProfilePerformanceView(),
       );
     },
+    ProfileRequestDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<ProfileRequestDetailRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ProfileRequestDetailView(
+          permissionColor: args.permissionColor,
+          iconColor: args.iconColor,
+          key: args.key,
+        ),
+      );
+    },
     ProfileRequestRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -226,6 +237,50 @@ class ProfilePerformanceRoute extends PageRouteInfo<void> {
   static const String name = 'ProfilePerformanceRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ProfileRequestDetailView]
+class ProfileRequestDetailRoute
+    extends PageRouteInfo<ProfileRequestDetailRouteArgs> {
+  ProfileRequestDetailRoute({
+    required Color permissionColor,
+    required Color iconColor,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ProfileRequestDetailRoute.name,
+          args: ProfileRequestDetailRouteArgs(
+            permissionColor: permissionColor,
+            iconColor: iconColor,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfileRequestDetailRoute';
+
+  static const PageInfo<ProfileRequestDetailRouteArgs> page =
+      PageInfo<ProfileRequestDetailRouteArgs>(name);
+}
+
+class ProfileRequestDetailRouteArgs {
+  const ProfileRequestDetailRouteArgs({
+    required this.permissionColor,
+    required this.iconColor,
+    this.key,
+  });
+
+  final Color permissionColor;
+
+  final Color iconColor;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ProfileRequestDetailRouteArgs{permissionColor: $permissionColor, iconColor: $iconColor, key: $key}';
+  }
 }
 
 /// generated route for

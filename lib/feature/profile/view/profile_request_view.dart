@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_profile_header.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_request_card.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_show_modal_bottom_sheet.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view_model/cubit/profile_request_bloc.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view_model/mixin/profile_request_mixin.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view_model/state/profil_request_state.dart';
@@ -29,6 +30,35 @@ class _ProfileRequestViewState extends BaseState<ProfileRequestView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: GestureDetector(
+        onTap: () {
+          showModalBottomSheet<Widget>(
+            isScrollControlled: true,
+            context: context,
+            showDragHandle: true,
+            builder: (BuildContext context) {
+              return const Wrap(
+                children: [
+                  CustomShowModalBottomSheet(),
+                ],
+              );
+            },
+          );
+        },
+        child: Container(
+          height: 60.h,
+          width: 60.w,
+          padding: const ProjectPadding.allMedium(),
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            color: ColorName.blueBase,
+          ),
+          child: const Icon(
+            Icons.add,
+            color: ColorName.neutral0,
+          ),
+        ),
+      ),
       appBar: buildAppBar(context),
       body: BlocProvider(
         create: (context) => profileRequestBloc,

@@ -10,6 +10,7 @@ import 'package:widgets/widgets.dart';
 final class CustomLightTheme implements CustomTheme {
   @override
   ThemeData get themeData => ThemeData(
+        unselectedWidgetColor: ColorName.neutral200,
         useMaterial3: true,
         fontFamily: FontFamily.inter.value,
         textTheme: CustomTextTheme.textTheme,

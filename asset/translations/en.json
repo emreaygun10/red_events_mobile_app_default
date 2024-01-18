@@ -170,6 +170,17 @@
                 "request_to_permission": "İzin Talebi",
                 "request_to_advance_payment": "Avans Talebi",
                 "report_notification": "Rapor Bildirimi"
+            },
+            "detail_page": {
+                "title": "Talep Detayı",
+                "detail_label": "TALEP DETAYLARI",
+                "station_request_label": "TALEP DURUMU",
+                "permission_type": "İzin Türü",
+                "permission_date": "İzin Tarihi",
+                "sum_day": "Toplam Gün",
+                "station": "Durum",
+                "approving": "Onaycı",
+                "reason_for_rejection": "Red Nedeni"
             }
         }
     }

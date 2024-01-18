@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
+import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:widgets/widgets.dart';
 
 class CustomRequestCard extends StatelessWidget {
@@ -11,6 +13,7 @@ class CustomRequestCard extends StatelessWidget {
     required this.date,
     required this.description,
     required this.explanation,
+    this.isReportRequest = false,
     super.key,
   });
   final Widget icon;
@@ -18,38 +21,47 @@ class CustomRequestCard extends StatelessWidget {
   final String date;
   final String description;
   final String explanation;
+  final bool isReportRequest;
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Container(
-        height: 125.h,
-        width: 335.w,
-        padding: const ProjectPadding.allNormal(),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20).r,
-          color: ColorName.neutral0,
+      child: GestureDetector(
+        onTap: () => context.router.push(
+          ProfileRequestDetailRoute(
+            permissionColor: ColorName.redLight,
+            iconColor: ColorName.redBase,
+          ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                buildCircleImage(),
-                Padding(
-                  padding: const ProjectPadding.symmetricMediumH(),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      buildTitleRow(),
-                      buildDescription(),
-                    ],
+        child: Container(
+          // height: 125.h,
+          width: 335.w,
+          padding: const ProjectPadding.allNormal(),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20).r,
+            color: ColorName.neutral0,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  buildCircleImage(),
+                  Padding(
+                    padding: const ProjectPadding.symmetricMediumH(),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        buildTitleRow(),
+                        buildDescription(),
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-            buildDivider(),
-            buildExplanation(),
-          ],
+                ],
+              ),
+              if (!isReportRequest) buildDivider() else const SizedBox(),
+              if (!isReportRequest) buildExplanation() else const SizedBox(),
+            ],
+          ),
         ),
       ),
     );

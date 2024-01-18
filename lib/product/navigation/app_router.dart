@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 import 'package:red_events_mobile_app_defult/feature/add_personnel/view/add_personnel_view.dart';
 import 'package:red_events_mobile_app_defult/feature/add_personnel/view/base_informations_view.dart';
 import 'package:red_events_mobile_app_defult/feature/auth/create_password/view/create_password_view.dart';
@@ -12,6 +13,7 @@ import 'package:red_events_mobile_app_defult/feature/home/view/home_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_education_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_performance_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_request_view.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/profile_request_view_detail_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_view.dart';
 
 part 'app_router.gr.dart';
@@ -36,5 +38,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: ProfileEducationRoute.page),
         AutoRoute(page: ProfilePerformanceRoute.page),
         AutoRoute(page: ProfileRequestRoute.page),
+        AutoRoute(page: ProfileRequestDetailRoute.page),
       ];
 }
