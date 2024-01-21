@@ -162,34 +162,37 @@ class _ProfilePerformanceViewState extends BaseState<ProfilePerformanceView>
     );
   }
 
-  SizedBox buildListViewChip() {
-    return SizedBox(
-      height: 32.h,
-      child: BlocBuilder<ProfilePerformanceBloc, ProfilePerformanceState>(
-        builder: (context, state) {
-          return ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 3,
-            itemBuilder: (BuildContext context, int index) {
-              return Padding(
-                padding: const ProjectPadding.symmetricXSmallH(),
-                child: GestureDetector(
-                  onTap: () => profilePerformanceBloc.changeChipIndex(index),
-                  child: Chip(
-                    shape: const StadiumBorder(),
-                    side: BorderSide.none,
-                    backgroundColor: state.chipIndex == index
-                        ? ColorName.blueBase
-                        : ColorName.neutral200,
-                    label: AutoSizeText(
-                      (currentYear - index).toString(),
+  Padding buildListViewChip() {
+    return Padding(
+      padding: const ProjectPadding.scaffold().copyWith(top: 8).r,
+      child: SizedBox(
+        height: 32.h,
+        child: BlocBuilder<ProfilePerformanceBloc, ProfilePerformanceState>(
+          builder: (context, state) {
+            return ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 3,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                  padding: const ProjectPadding.symmetricXSmallH(),
+                  child: GestureDetector(
+                    onTap: () => profilePerformanceBloc.changeChipIndex(index),
+                    child: Chip(
+                      shape: const StadiumBorder(),
+                      side: BorderSide.none,
+                      backgroundColor: state.chipIndex == index
+                          ? ColorName.blueBase
+                          : ColorName.neutral200,
+                      label: AutoSizeText(
+                        (currentYear - index).toString(),
+                      ),
                     ),
                   ),
-                ),
-              );
-            },
-          );
-        },
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }

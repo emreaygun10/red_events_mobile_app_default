@@ -1,3 +1,4 @@
+import 'package:animated_custom_dropdown/custom_dropdown.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -158,12 +159,11 @@ class _HrInformationViewState extends BaseState<HrInformationView>
         Padding(
           padding: const ProjectPadding.symmetricSmallV(),
           child: Container(
-            height: 40.h,
+            height: 45.h,
             width: context.sized.width,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20).r,
+              borderRadius: ProjectBorderRadius.allCircleMedium().r,
               border: Border.all(
-                width: 2,
                 color: ColorName.neutral300,
               ),
             ),
@@ -183,22 +183,24 @@ class _HrInformationViewState extends BaseState<HrInformationView>
             width: 180.w,
             child: TextFormField(
               decoration: InputDecoration(
+                fillColor: ColorName.neutral100,
                 contentPadding: const ProjectPadding.allSmall(),
                 border: const OutlineInputBorder(
-                  borderSide: BorderSide(color: ColorName.neutral0),
+                  borderSide: BorderSide(color: ColorName.neutral100),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    const Radius.circular(24).r,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: const Radius.circular(12).r,
+                    topLeft: const Radius.circular(12).r,
                   ).r,
                   borderSide: const BorderSide(
-                    color: ColorName.neutral0,
+                    color: ColorName.neutral100,
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.only(
-                    topLeft: const Radius.circular(24).r,
-                    bottomLeft: const Radius.circular(24).r,
+                    topLeft: const Radius.circular(12).r,
+                    bottomLeft: const Radius.circular(12).r,
                   ).r,
                   borderSide: const BorderSide(
                     color: ColorName.blueBase,
@@ -273,42 +275,60 @@ class _HrInformationViewState extends BaseState<HrInformationView>
         ),
         Padding(
           padding: const ProjectPadding.symmetricSmallV(),
-          child: SizedBox(
-            height: 40.h,
-            child: DropdownButtonFormField<String>(
-              icon: Assets.icons.icDownArrow.svg(
-                package: ModuleEnum.gen.value,
-              ),
-              decoration: InputDecoration(
-                hintText: hint.tr(),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    color: ColorName.neutral300,
-                    width: 2,
-                  ),
-                  borderRadius: BorderRadius.circular(20),
+          child: DropdownButtonHideUnderline(
+            child: CustomDropdown<String>.search(
+              hintText: hint.tr(),
+              searchHintText: LocaleKeys.add_personnel_hr_inform_search.tr(),
+              items: dummyItem,
+              excludeSelected: false,
+              decoration: CustomDropdownDecoration(
+                closedFillColor: ColorName.neutral100,
+                closedBorder: Border.all(
+                  color: ColorName.neutral300,
                 ),
-                border: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    color: ColorName.neutral300,
-                    width: 2,
-                  ),
-                  borderRadius: BorderRadius.circular(20),
+                closedBorderRadius: ProjectBorderRadius.allCircleMedium(),
+                expandedBorder: Border.all(color: ColorName.blueBase),
+                listItemDecoration: const ListItemDecoration(
+                  selectedColor: ColorName.blueBase,
                 ),
-                filled: focusNodes[1].hasFocus,
-                fillColor: ColorName.blueLighter,
-                isDense: true,
-                contentPadding: const EdgeInsets.fromLTRB(15, 15, 10, 15).r,
               ),
-              validator: (value) => value == null ? 'Select a country' : null,
-              dropdownColor: ColorName.blueLighter,
-              value: selectedValue,
-              onChanged: (String? newValue) {
-                /// TODO selected = new
+              onChanged: (value) {
+                print('changing value to: $value');
               },
-              items: const [],
             ),
           ),
+
+          //  DropdownButtonFormField<String>(
+          //   style: textTheme.titleMedium,
+          //   decoration: InputDecoration(
+          //     hintText: hint.tr(),
+          //     enabledBorder: OutlineInputBorder(
+          //       borderSide: const BorderSide(
+          //         color: ColorName.neutral300,
+          //         width: 2,
+          //       ),
+          //       borderRadius: ProjectBorderRadius.allCircleMedium(),
+          //     ),
+          //     border: OutlineInputBorder(
+          //       borderSide: const BorderSide(
+          //         color: ColorName.neutral300,
+          //         width: 2,
+          //       ),
+          //       borderRadius: ProjectBorderRadius.allCircleMedium(),
+          //     ),
+          //     filled: focusNodes[1].hasFocus,
+          //     fillColor: ColorName.blueLighter,
+          //     isDense: true,
+          //     contentPadding: const EdgeInsets.fromLTRB(12, 8, 12, 8).r,
+          //   ),
+          //   validator: (value) => value == null ? 'Select a country' : null,
+          //   dropdownColor: ColorName.blueLighter,
+          //   value: selectedValue,
+          //   onChanged: (String? newValue) {
+          //     /// TODO selected = new
+          //   },
+          //   items: const [],
+          // ),
         ),
       ],
     );
@@ -322,7 +342,7 @@ class _HrInformationViewState extends BaseState<HrInformationView>
         Padding(
           padding: const ProjectPadding.symmetricSmallV(),
           child: Container(
-            height: 40.h,
+            height: 50.h,
             decoration: BoxDecoration(
               border: Border.all(color: ColorName.neutral200, width: 2),
               borderRadius: ProjectBorderRadius.allCircleSmall().r,

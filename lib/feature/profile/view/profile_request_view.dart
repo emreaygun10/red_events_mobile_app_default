@@ -8,6 +8,7 @@ import 'package:gen/gen.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_profile_header.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_request_card.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_show_modal_bottom_sheet.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/empty_list_card.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view_model/cubit/profile_request_bloc.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view_model/mixin/profile_request_mixin.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view_model/state/profil_request_state.dart';
@@ -73,21 +74,43 @@ class _ProfileRequestViewState extends BaseState<ProfileRequestView>
                 buildChipList(),
               ],
             ),
-            SizedBox(
-              height: 30.h,
-            ),
-            buildDescriptiveTopCard(),
-            CustomRequestCard(
-              icon: Assets.icons.icUserShared
-                  .toGetSvgWithColor(ColorName.orangeBase),
-              date: '13/04/2023',
-              description: 'Hello desc',
-              explanation: 'bu nedenlerden dolayı',
-              request: 'Ayrılma talebi',
-            ),
+            buildMainPage(),
           ],
         ),
       ),
+    );
+  }
+
+  BlocBuilder<ProfileRequestBloc, ProfileRequestState> buildMainPage() {
+    return BlocBuilder<ProfileRequestBloc, ProfileRequestState>(
+      builder: (context, state) {
+        return selectText(state.chipIndex) != null
+            ? Column(
+                children: [
+                  SizedBox(
+                    height: 30.h,
+                  ),
+                  buildDescriptiveTopCard(),
+                  CustomRequestCard(
+                    icon: Assets.icons.icUserShared
+                        .toGetSvgWithColor(color: ColorName.orangeBase),
+                    date: '13/04/2023',
+                    description: 'Hello desc',
+                    explanation: 'bu nedenlerden dolayı',
+                    request: 'Ayrılma talebi',
+                  ),
+                ],
+              )
+            : EmptyListWarning(
+                icon: Assets.icons.icRequestEmpytList.toGetSvg(),
+                textTheme: textTheme,
+                chipText: LocaleKeys.profile_requests_empy_list.tr(
+                  args: [
+                    RequestChips.values[state.chipIndex].value.tr(),
+                  ],
+                ),
+              );
+      },
     );
   }
 

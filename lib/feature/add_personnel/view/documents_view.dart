@@ -46,6 +46,9 @@ class _DocumentsViewState extends BaseState<DocumentsView> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   buildFormTitle(context),
+                  const SizedBox(
+                    height: 16,
+                  ),
                   const CustomDocumentItem(),
                 ],
               ),

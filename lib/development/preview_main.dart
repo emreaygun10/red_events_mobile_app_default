@@ -1,7 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:red_events_mobile_app_defult/product/init/application_initialze.dart';
@@ -10,7 +9,6 @@ import 'package:red_events_mobile_app_defult/product/init/state_initialze.dart';
 import 'package:red_events_mobile_app_defult/product/init/theme/custom_dark_theme.dart';
 import 'package:red_events_mobile_app_defult/product/init/theme/custom_light_theme.dart';
 import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
-import 'package:red_events_mobile_app_defult/product/state/view_model/product_view_model.dart';
 import 'package:widgets/widgets.dart';
 
 void main() async {
@@ -41,7 +39,8 @@ final class _MyApp extends StatelessWidget {
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
-        themeMode: context.watch<ProductViewModel>().state.themeMode,
+        themeMode: ThemeMode
+            .light, //context.watch<ProductViewModel>().state.themeMode,
         theme: CustomLightTheme().themeData,
         darkTheme: CustomDarkTheme().themeData,
       ),

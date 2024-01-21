@@ -1,6 +1,7 @@
 {
     "home": {
-        "title": "Ana Sayfa"
+        "profile": "Profil",
+        "app_name": "ShiftBox"
     },
     "general": {
         "button": {
@@ -118,6 +119,7 @@
             "part": "Görev",
             "part_hint": "Ör: Garson",
             "price_info": "Ücret Bilgileri",
+            "search": "Ara",
             "price_information": {
                 "mountly_price_information": "Aylık Ücret Bilgisi",
                 "daily_price_information": "Günlük Ücret Bilgisi",
@@ -161,7 +163,7 @@
                 "approved": "Onaylanan",
                 "rejected": "Reddedilen"
             },
-            "empy_list": "{} eğitiminiz bulunmamaktadır",
+            "empy_list": "{} talebiniz bulunmamaktadır.",
             "sum": "Toplam",
             "piece": "{} adet",
             "have_request": "{} talebin var",
@@ -182,6 +184,24 @@
                 "approving": "Onaycı",
                 "reason_for_rejection": "Red Nedeni"
             }
+        },
+        "progress_payment": {
+            "chips": {
+                "payment": "Hakediş",
+                "payroll": "Bordro"
+            },
+            "salary": "Maaş",
+            "daily_salary": "Günlük",
+            "working_hour": "Mesai saati",
+            "sum": "Toplam",
+            "break_time": "Mola",
+            "performing": "İcra",
+            "advance_payment": "Avans",
+            "amount": "Tutar",
+            "overtime_amount": "Mesai Tutarı",
+            "departmant": "Bölüm",
+            "reports": "BORDROLARIM",
+            "empty_list": "Ouşturulmuş bordronuz bulunmamaktadır."
         }
     }
 }

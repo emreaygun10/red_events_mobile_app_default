@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:red_events_mobile_app_defult/feature/add_personnel/view/documents_view.dart';
 import 'package:red_events_mobile_app_defult/feature/add_personnel/view/hr_informations_view.dart';
@@ -272,32 +273,42 @@ class _BaseInformationViewState extends BaseState<BaseInformationView>
         buildAutoSize(LocaleKeys.add_personnel_base_inform_tel_no),
         BlocBuilder<AddPersonnelViewModel, AddPersonnelState>(
           builder: (context, state) {
-            return SizedBox(
-              child: Padding(
-                padding: const ProjectPadding.allXSmall(),
-                child: IntlPhoneField(
-                  focusNode: focusNodes[3],
-                  invalidNumberMessage: LocaleKeys
-                      .add_personnel_base_inform_invalid_phone_numer
-                      .tr(),
-                  dropdownDecoration: const BoxDecoration(
-                    color: ColorName.blueLighter,
-                  ),
-                  controller: phoneEditingController,
-                  decoration: InputDecoration(
-                    fillColor: ColorName.blueLighter,
-                    filled: state.phoneNumberFocus,
-                    hintText:
-                        LocaleKeys.add_personnel_base_inform_tel_no_hint.tr(),
-                    isDense: true,
-                    contentPadding: const EdgeInsets.fromLTRB(0, 10, 10, 10).r,
-                  ),
-                  initialCountryCode: initialCountry,
-                  searchText:
-                      LocaleKeys.add_personnel_base_inform_phone_dial.tr(),
-                  onChanged: changePhoneNumber,
-                ),
+            return IntlPhoneField(
+              focusNode: focusNodes[3],
+              invalidNumberMessage:
+                  LocaleKeys.add_personnel_base_inform_invalid_phone_numer.tr(),
+              pickerDialogStyle: PickerDialogStyle(
+                backgroundColor: ColorName.neutral0,
+                padding: const ProjectPadding.allLarge(),
+                countryNameStyle: textTheme.titleLarge,
+                countryCodeStyle: textTheme.labelMedium,
               ),
+              dropdownDecoration: state.phoneNumberFocus
+                  ? BoxDecoration(
+                      border: const Border(
+                        left: BorderSide(color: ColorName.blueBase),
+                        top: BorderSide(color: ColorName.blueBase),
+                        bottom: BorderSide(color: ColorName.blueBase),
+                      ),
+                      borderRadius: BorderRadius.only(
+                        topLeft: const Radius.circular(8).r,
+                        bottomLeft: const Radius.circular(8).r,
+                      ),
+                      color: ColorName.blueLighter,
+                    )
+                  : const BoxDecoration(),
+              controller: phoneEditingController,
+              decoration: InputDecoration(
+                fillColor: ColorName.blueLighter,
+                filled: state.phoneNumberFocus,
+                hintText: LocaleKeys.add_personnel_base_inform_tel_no_hint.tr(),
+                isDense: true,
+                contentPadding: const EdgeInsets.fromLTRB(0, 10, 10, 0).r,
+              ),
+              initialCountryCode: initialCountry,
+              searchText: LocaleKeys.add_personnel_base_inform_phone_dial.tr(),
+              onChanged: changePhoneNumber,
+              style: textTheme.titleMedium,
             );
           },
         ),
@@ -418,9 +429,9 @@ class _BaseInformationViewState extends BaseState<BaseInformationView>
                       hintText:
                           LocaleKeys.add_personnel_base_inform_tc_hint.tr(),
                       isDense: true,
-                      contentPadding:
-                          const EdgeInsets.fromLTRB(15, 15, 10, 15).r,
+                      contentPadding: const EdgeInsets.fromLTRB(15, 0, 0, 15).r,
                     ),
+                    style: textTheme.titleMedium,
                   );
                 },
               ),
@@ -461,9 +472,9 @@ class _BaseInformationViewState extends BaseState<BaseInformationView>
                           .add_personnel_base_inform_name_surname_hint
                           .tr(),
                       isDense: true,
-                      contentPadding:
-                          const EdgeInsets.fromLTRB(15, 15, 10, 15).r,
+                      contentPadding: const EdgeInsets.fromLTRB(15, 0, 0, 15).r,
                     ),
+                    style: textTheme.titleMedium,
                   );
                 },
               ),

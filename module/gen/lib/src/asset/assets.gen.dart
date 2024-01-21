@@ -75,12 +75,19 @@ class $AssetsIconsGen {
   SvgGenImage get icDownArrow =>
       const SvgGenImage('assets/icons/ic_down_arrow.svg');
 
+  /// File path: assets/icons/ic_download.svg
+  SvgGenImage get icDownload =>
+      const SvgGenImage('assets/icons/ic_download.svg');
+
   /// File path: assets/icons/ic_edit_line.svg
   SvgGenImage get icEditLine =>
       const SvgGenImage('assets/icons/ic_edit_line.svg');
 
   /// File path: assets/icons/ic_eu.svg
   SvgGenImage get icEu => const SvgGenImage('assets/icons/ic_eu.svg');
+
+  /// File path: assets/icons/ic_excel.svg
+  SvgGenImage get icExcel => const SvgGenImage('assets/icons/ic_excel.svg');
 
   /// File path: assets/icons/ic_eye.svg
   SvgGenImage get icEye => const SvgGenImage('assets/icons/ic_eye.svg');
@@ -149,6 +156,17 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_plus.svg
   SvgGenImage get icPlus => const SvgGenImage('assets/icons/ic_plus.svg');
 
+  /// File path: assets/icons/ic_progress_payment_empty_list.svg
+  SvgGenImage get icProgressPaymentEmptyList =>
+      const SvgGenImage('assets/icons/ic_progress_payment_empty_list.svg');
+
+  /// File path: assets/icons/ic_qr_code.svg
+  SvgGenImage get icQrCode => const SvgGenImage('assets/icons/ic_qr_code.svg');
+
+  /// File path: assets/icons/ic_request_empyt_list.svg
+  SvgGenImage get icRequestEmpytList =>
+      const SvgGenImage('assets/icons/ic_request_empyt_list.svg');
+
   /// File path: assets/icons/ic_select_box_circle.svg
   SvgGenImage get icSelectBoxCircle =>
       const SvgGenImage('assets/icons/ic_select_box_circle.svg');
@@ -182,6 +200,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_us.svg
   SvgGenImage get icUs => const SvgGenImage('assets/icons/ic_us.svg');
 
+  /// File path: assets/icons/ic_user_fill.svg
+  SvgGenImage get icUserFill =>
+      const SvgGenImage('assets/icons/ic_user_fill.svg');
+
   /// File path: assets/icons/ic_user_shared.svg
   SvgGenImage get icUserShared =>
       const SvgGenImage('assets/icons/ic_user_shared.svg');
@@ -189,6 +211,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_whatsApp.svg
   SvgGenImage get icWhatsApp =>
       const SvgGenImage('assets/icons/ic_whatsApp.svg');
+
+  /// File path: assets/icons/ic_word.svg
+  SvgGenImage get icWord => const SvgGenImage('assets/icons/ic_word.svg');
 
   /// List of all assets
   List<SvgGenImage> get values => [
@@ -205,8 +230,10 @@ class $AssetsIconsGen {
         icCloseCircle,
         icDot,
         icDownArrow,
+        icDownload,
         icEditLine,
         icEu,
+        icExcel,
         icEye,
         icEyeOff,
         icFile,
@@ -226,6 +253,9 @@ class $AssetsIconsGen {
         icPdfTemp,
         icPickPerson,
         icPlus,
+        icProgressPaymentEmptyList,
+        icQrCode,
+        icRequestEmpytList,
         icSelectBoxCircle,
         icShieldStarLine,
         icStarEmpty,
@@ -235,8 +265,10 @@ class $AssetsIconsGen {
         icTodo,
         icTr,
         icUs,
+        icUserFill,
         icUserShared,
-        icWhatsApp
+        icWhatsApp,
+        icWord
       ];
 }
 

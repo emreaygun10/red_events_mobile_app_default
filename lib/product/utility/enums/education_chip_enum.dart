@@ -33,16 +33,31 @@ enum RequestStringEnum {
   /// chips text
   requestToLeave(LocaleKeys.profile_requests_request_type_request_to_leave),
   requestToPermisson(
-      LocaleKeys.profile_requests_request_type_request_to_permission),
+    LocaleKeys.profile_requests_request_type_request_to_permission,
+  ),
   requestToAdvancePayment(
     LocaleKeys.profile_requests_request_type_request_to_advance_payment,
   ),
   reportNotification(
-      LocaleKeys.profile_requests_request_type_report_notification);
+    LocaleKeys.profile_requests_request_type_report_notification,
+  );
 
   ///font value
   final String value;
 
   // ignore: sort_constructors_first
   const RequestStringEnum(this.value);
+}
+
+/// Progress Payment Chip enum
+enum ProgressPaymentChipEnum {
+  /// chips text
+  progress(LocaleKeys.profile_progress_payment_chips_payment),
+  payroll(LocaleKeys.profile_progress_payment_chips_payroll);
+
+  ///font value
+  final String value;
+
+  // ignore: sort_constructors_first
+  const ProgressPaymentChipEnum(this.value);
 }

@@ -22,13 +22,39 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      //extendBodyBehindAppBar: true,
       appBar: buildAppBar(),
-      body: ListView(
+      body: Column(
+        //physics: const NeverScrollableScrollPhysics(),
+        //padding: EdgeInsets.zero,
         children: [
-          buildProfileTopContainer(context),
-          buildAccountOperationText(context),
-          buildOperationsList(),
+          Container(
+            height: 255.h,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              gradient: LinearGradient(
+                begin: FractionalOffset.topCenter,
+                end: FractionalOffset.bottomCenter,
+                colors: [
+                  ColorName.blueBase,
+                  ColorName.neutral0,
+                ],
+                stops: [
+                  0.0,
+                  0.8,
+                ],
+              ),
+            ),
+            child: buildProfileTopContainer(context),
+          ),
+          Expanded(
+            child: ListView(
+              children: [
+                buildAccountOperationText(context),
+                buildOperationsList(),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -37,8 +63,9 @@ class ProfileView extends StatelessWidget {
   /// App Bar
   AppBar buildAppBar() {
     return AppBar(
+      surfaceTintColor: Colors.transparent,
       automaticallyImplyLeading: false,
-      backgroundColor: Colors.transparent,
+      backgroundColor: ColorName.blueBase,
       actions: [
         Padding(
           padding: const ProjectPadding.scaffold(),
@@ -56,16 +83,17 @@ class ProfileView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const ProjectPadding.symmetricMediumV(),
+            padding: const ProjectPadding.symmetricSmallV(),
             child: CustomAccountOperationItem(
               labelIcon: Assets.icons.icBankCardLine.svg(
                 package: ModuleEnum.gen.value,
               ),
+              pageRouteInfo: const ProfileProgressPaymentRoute(),
               text: LocaleKeys.profile_list_progress_payment,
             ),
           ),
           Padding(
-            padding: const ProjectPadding.symmetricMediumV(),
+            padding: const ProjectPadding.symmetricSmallV(),
             child: CustomAccountOperationItem(
               labelIcon: Assets.icons.icFolderShieldLine.svg(
                 package: ModuleEnum.gen.value,
@@ -74,7 +102,7 @@ class ProfileView extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const ProjectPadding.symmetricMediumV(),
+            padding: const ProjectPadding.symmetricSmallV(),
             child: CustomAccountOperationItem(
               labelIcon: Assets.icons.icCalendarEventLine.svg(
                 package: ModuleEnum.gen.value,
@@ -84,7 +112,7 @@ class ProfileView extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const ProjectPadding.symmetricMediumV(),
+            padding: const ProjectPadding.symmetricSmallV(),
             child: CustomAccountOperationItem(
               labelIcon: Assets.icons.icFolderShieldLine.svg(
                 package: ModuleEnum.gen.value,
@@ -94,7 +122,7 @@ class ProfileView extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const ProjectPadding.symmetricMediumV(),
+            padding: const ProjectPadding.symmetricSmallV(),
             child: CustomAccountOperationItem(
               labelIcon: Assets.icons.icFileMarkLine.svg(
                 package: ModuleEnum.gen.value,
@@ -124,23 +152,19 @@ class ProfileView extends StatelessWidget {
   ///include user information
   Container buildProfileTopContainer(BuildContext context) {
     return Container(
-      color: ColorName.neutral0,
-      height: 261.h,
+      color: Colors.transparent,
       child: Column(
         children: [
           const CustomProfileImageRow(jobText: 'Garson'),
-          const SizedBox(
-            height: 10,
-          ),
-          SizedBox(
-            height: 67.h,
-            width: 267.w,
-            child: buildDescriptionStringColumn(context),
-          ),
-          SizedBox(
-            height: 32.h,
+          const Spacer(),
+          buildDescriptionStringColumn(context),
+          const Spacer(
+            flex: 3,
           ),
           buildChipRow(),
+          const Spacer(
+            flex: 3,
+          ),
         ],
       ),
     );

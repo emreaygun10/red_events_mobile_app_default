@@ -59,6 +59,8 @@ class _ProfileEducationViewState extends BaseState<ProfileEducationView>
                           ),
                         )
                       : EmptyListWarning(
+                          icon: Assets.icons.icNullEducation
+                              .svg(package: ModuleEnum.gen.value),
                           textTheme: textTheme,
                           chipText: LocaleKeys.profile_education_empy_list.tr(
                             args: [

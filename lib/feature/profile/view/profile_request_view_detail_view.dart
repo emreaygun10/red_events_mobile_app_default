@@ -66,7 +66,8 @@ class ProfileRequestDetailView extends StatelessWidget {
                 color: permissionColor,
                 shape: BoxShape.circle,
               ),
-              child: Assets.icons.icCalendar.toGetSvgWithColor(iconColor),
+              child:
+                  Assets.icons.icCalendar.toGetSvgWithColor(color: iconColor),
             ),
           ),
         ],

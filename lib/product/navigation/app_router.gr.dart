@@ -27,6 +27,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const BaseInformationView(),
       );
     },
+    BottomNAvigationBarRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const BottomNAvigationBarView(),
+      );
+    },
     CreatePasswordRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -67,6 +73,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const ProfilePerformanceView(),
+      );
+    },
+    ProfileProgressPaymentRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ProfileProgressPaymentView(),
       );
     },
     ProfileRequestDetailRoute.name: (routeData) {
@@ -137,6 +149,20 @@ class BaseInformationRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'BaseInformationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [BottomNAvigationBarView]
+class BottomNAvigationBarRoute extends PageRouteInfo<void> {
+  const BottomNAvigationBarRoute({List<PageRouteInfo>? children})
+      : super(
+          BottomNAvigationBarRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'BottomNAvigationBarRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -235,6 +261,20 @@ class ProfilePerformanceRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ProfilePerformanceRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ProfileProgressPaymentView]
+class ProfileProgressPaymentRoute extends PageRouteInfo<void> {
+  const ProfileProgressPaymentRoute({List<PageRouteInfo>? children})
+      : super(
+          ProfileProgressPaymentRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfileProgressPaymentRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

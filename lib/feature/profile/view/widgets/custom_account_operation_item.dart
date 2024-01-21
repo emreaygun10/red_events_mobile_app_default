@@ -36,7 +36,12 @@ class CustomAccountOperationItem extends StatelessWidget {
                 Container(
                   height: 42.h,
                   width: 42.w,
-                  padding: const ProjectPadding.allSmall(),
+                  padding: const EdgeInsets.only(
+                    top: 10,
+                    bottom: 10,
+                    right: 10,
+                    left: 10,
+                  ),
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: ColorName.neutral200,
