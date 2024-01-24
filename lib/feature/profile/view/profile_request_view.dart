@@ -15,7 +15,6 @@ import 'package:red_events_mobile_app_defult/feature/profile/view_model/state/pr
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
 import 'package:red_events_mobile_app_defult/product/utility/enums/education_chip_enum.dart';
-import 'package:red_events_mobile_app_defult/product/utility/enums/module_enum.dart';
 import 'package:widgets/widgets.dart';
 
 @RoutePage()
@@ -160,6 +159,7 @@ class _ProfileRequestViewState extends BaseState<ProfileRequestView>
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
+      surfaceTintColor: Colors.transparent,
       backgroundColor: ColorName.neutral0,
       leading: GestureDetector(
         onTap: () async {
@@ -175,10 +175,8 @@ class _ProfileRequestViewState extends BaseState<ProfileRequestView>
                 color: ColorName.neutral200,
                 shape: BoxShape.circle,
               ),
-              child: Assets.icons.icArroeLeftS.svg(
-                package: ModuleEnum.gen.value,
-                color: ColorName.neutral900,
-              ),
+              child: Assets.icons.icArroeLeftS
+                  .toGetSvgWithColor(color: ColorName.neutral900),
             ),
           ),
         ),
@@ -203,7 +201,7 @@ class _ProfileRequestViewState extends BaseState<ProfileRequestView>
     return Padding(
       padding: const ProjectPadding.scaffold(),
       child: SizedBox(
-        height: 56.h,
+        height: 47.h,
         child: BlocBuilder<ProfileRequestBloc, ProfileRequestState>(
           builder: (context, state) {
             return ListView.builder(

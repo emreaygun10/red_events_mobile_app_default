@@ -113,6 +113,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_home.svg
   SvgGenImage get icHome => const SvgGenImage('assets/icons/ic_home.svg');
 
+  /// File path: assets/icons/ic_home_bottom_bar.svg
+  SvgGenImage get icHomeBottomBar =>
+      const SvgGenImage('assets/icons/ic_home_bottom_bar.svg');
+
   /// File path: assets/icons/ic_home_office.svg
   SvgGenImage get icHomeOffice =>
       const SvgGenImage('assets/icons/ic_home_office.svg');
@@ -241,6 +245,7 @@ class $AssetsIconsGen {
         icFolderOpen,
         icFolderShieldLine,
         icHome,
+        icHomeBottomBar,
         icHomeOffice,
         icLock,
         icLogoBlue,

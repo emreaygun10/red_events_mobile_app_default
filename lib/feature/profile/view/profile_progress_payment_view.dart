@@ -478,6 +478,7 @@ class _ProfileProgressPaymentViewState
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
+      surfaceTintColor: Colors.transparent,
       backgroundColor: ColorName.neutral0,
       leading: GestureDetector(
         onTap: () async {
@@ -520,7 +521,7 @@ class _ProfileProgressPaymentViewState
     return Padding(
       padding: const ProjectPadding.scaffold(),
       child: SizedBox(
-        height: 56.h,
+        height: 47.h,
         child: BlocBuilder<ProfileProgressPaymentBloc,
             ProfileProgressPaymentState>(
           builder: (context, state) {

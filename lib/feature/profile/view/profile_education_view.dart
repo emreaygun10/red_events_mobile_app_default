@@ -81,7 +81,7 @@ class _ProfileEducationViewState extends BaseState<ProfileEducationView>
     return Padding(
       padding: const ProjectPadding.scaffold(),
       child: SizedBox(
-        height: 56.h,
+        height: 47.h,
         child: BlocBuilder<ProfileEducationBloc, ProfileEducationState>(
           builder: (context, state) {
             return ListView.builder(

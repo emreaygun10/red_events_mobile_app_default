@@ -85,9 +85,8 @@ class ProfileView extends StatelessWidget {
           Padding(
             padding: const ProjectPadding.symmetricSmallV(),
             child: CustomAccountOperationItem(
-              labelIcon: Assets.icons.icBankCardLine.svg(
-                package: ModuleEnum.gen.value,
-              ),
+              labelIcon: Assets.icons.icBankCardLine
+                  .toGetSvgWithColor(color: ColorName.blueBase),
               pageRouteInfo: const ProfileProgressPaymentRoute(),
               text: LocaleKeys.profile_list_progress_payment,
             ),
@@ -95,18 +94,17 @@ class ProfileView extends StatelessWidget {
           Padding(
             padding: const ProjectPadding.symmetricSmallV(),
             child: CustomAccountOperationItem(
-              labelIcon: Assets.icons.icFolderShieldLine.svg(
-                package: ModuleEnum.gen.value,
-              ),
+              labelIcon: Assets.icons.icFolderShieldLine
+                  .toGetSvgWithColor(color: ColorName.blueBase),
+              pageRouteInfo: const ProfileDocumentsRoute(),
               text: LocaleKeys.profile_list_files,
             ),
           ),
           Padding(
             padding: const ProjectPadding.symmetricSmallV(),
             child: CustomAccountOperationItem(
-              labelIcon: Assets.icons.icCalendarEventLine.svg(
-                package: ModuleEnum.gen.value,
-              ),
+              labelIcon: Assets.icons.icCalendarEventLine
+                  .toGetSvgWithColor(color: ColorName.blueBase),
               pageRouteInfo: const ProfileRequestRoute(),
               text: LocaleKeys.profile_list_request,
             ),
@@ -114,9 +112,8 @@ class ProfileView extends StatelessWidget {
           Padding(
             padding: const ProjectPadding.symmetricSmallV(),
             child: CustomAccountOperationItem(
-              labelIcon: Assets.icons.icFolderShieldLine.svg(
-                package: ModuleEnum.gen.value,
-              ),
+              labelIcon: Assets.icons.icFolderShieldLine
+                  .toGetSvgWithColor(color: ColorName.blueBase),
               pageRouteInfo: const ProfilePerformanceRoute(),
               text: LocaleKeys.profile_list_performance,
             ),
@@ -124,9 +121,8 @@ class ProfileView extends StatelessWidget {
           Padding(
             padding: const ProjectPadding.symmetricSmallV(),
             child: CustomAccountOperationItem(
-              labelIcon: Assets.icons.icFileMarkLine.svg(
-                package: ModuleEnum.gen.value,
-              ),
+              labelIcon: Assets.icons.icFileMarkLine
+                  .toGetSvgWithColor(color: ColorName.blueBase),
               pageRouteInfo: const ProfileEducationRoute(),
               text: LocaleKeys.profile_list_educations,
             ),

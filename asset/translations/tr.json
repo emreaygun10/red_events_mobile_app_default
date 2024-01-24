@@ -128,7 +128,9 @@
         },
         "document": {
             "title": "Evraklar",
-            "desc": "BELGELERİM"
+            "desc": "BELGELERİM",
+            "loaded_documents": "Yüklü Evraklar",
+            "missing_documents": "Eksik Evraklar"
         }
     },
     "profile": {

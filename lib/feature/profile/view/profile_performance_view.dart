@@ -166,7 +166,7 @@ class _ProfilePerformanceViewState extends BaseState<ProfilePerformanceView>
     return Padding(
       padding: const ProjectPadding.scaffold().copyWith(top: 8).r,
       child: SizedBox(
-        height: 32.h,
+        height: 47.h,
         child: BlocBuilder<ProfilePerformanceBloc, ProfilePerformanceState>(
           builder: (context, state) {
             return ListView.builder(

@@ -28,10 +28,6 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
       body: Column(
         children: [
           Assets.lottie.animZombie.lottie(package: 'gen'),
-          Text(
-            'Change Language',
-            style: Theme.of(context).textTheme.bodySmall!.copyWith(height: 5),
-          ),
           Padding(
             padding: const ProjectPadding.allMedium(),
             child: ElevatedButton(

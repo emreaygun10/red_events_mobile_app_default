@@ -14,7 +14,7 @@ mixin BottomNavigationBarMixin on BaseState<BottomNAvigationBarView> {
 
   ///Bottom bar icons
   final List<Widget> iconList = [
-    Assets.icons.icHome.toGetSvg(),
+    Assets.icons.icHomeBottomBar.toGetSvg(),
     Assets.icons.icUserFill.toGetSvgWithColor(
       color: ColorName.neutral300,
     ),
@@ -22,7 +22,7 @@ mixin BottomNavigationBarMixin on BaseState<BottomNAvigationBarView> {
 
   ///Bottom bar icons
   final List<Widget> iconSelectedList = [
-    Assets.icons.icHome.toGetSvgWithColor(
+    Assets.icons.icHomeBottomBar.toGetSvgWithColor(
       color: ColorName.blueBase,
     ),
     Assets.icons.icUserFill.toGetSvgWithColor(

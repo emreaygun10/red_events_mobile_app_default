@@ -77,10 +77,10 @@ class CustomDocumentItem extends StatelessWidget {
     return SizedBox(
       height: 72.h,
       child: DottedBorder(
-        color: ColorName.neutral400,
+        color: ColorName.neutral300,
         borderType: BorderType.RRect,
-        radius: const Radius.circular(20).r,
-        dashPattern: const [12, 12, 12, 12],
+        radius: const Radius.circular(12).r,
+        dashPattern: const [8, 8, 8, 8],
         child: Padding(
           padding: const ProjectPadding.allMedium(),
           child: Center(
