@@ -8,14 +8,14 @@ class ProfileDocumentsBloc extends BaseCubit<ProfileDocumentsState> {
       : super(
           const ProfileDocumentsState(
             isLoading: false,
-            chipIndex: 0,
+            chipIndex: true,
             missingDocumentsCounter: 2,
           ),
         );
 
   /// change value obscure
-  void changeChipIndex(int index) {
-    emit(state.copyWith(chipIndex: index));
+  void changeChipIndex() {
+    emit(state.copyWith(chipIndex: !state.chipIndex));
   }
 
   ///change response list to list

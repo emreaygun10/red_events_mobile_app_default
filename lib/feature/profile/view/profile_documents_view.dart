@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_container_chip.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_missing_document_item.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_profile_header.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view_model/cubit/profile_documents_bloc.dart';
@@ -12,7 +13,6 @@ import 'package:red_events_mobile_app_defult/feature/profile/view_model/mixin/pr
 import 'package:red_events_mobile_app_defult/feature/profile/view_model/state/profile_documents_state.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
-import 'package:red_events_mobile_app_defult/product/utility/enums/documents_chip_enum.dart';
 import 'package:widgets/widgets.dart';
 
 @RoutePage()
@@ -39,12 +39,13 @@ class _DocumentsViewState extends BaseState<ProfileDocumentsView>
                   height: 16,
                 ),
                 buildTitleText(),
-                buildChipList(),
+                buildChipList(profileDocumentsBloc),
               ],
             ),
             SizedBox(
               height: 16.h,
             ),
+            buildListViewTitle(),
             buildListView(),
           ],
         ),
@@ -58,36 +59,87 @@ class _DocumentsViewState extends BaseState<ProfileDocumentsView>
         builder: (context, state) {
           return ColoredBox(
             color: ColorName.neutral0,
-            child: state.chipIndex == 1
-                ? ListView(
+            child: state.chipIndex
+                ? ListView.builder(
+                    itemCount: 5,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const ProjectPadding.scaffold()
+                            .copyWith(top: 12, bottom: 12),
+                        child: Container(
+                          height: 72.h,
+                          padding: const ProjectPadding.allMedium(),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: ColorName.neutral200),
+                            borderRadius: ProjectBorderRadius.allCircleMedium(),
+                          ),
+                          child: Row(
+                            children: [
+                              Assets.icons.icPdfTemp.toGetSvg(),
+                              Padding(
+                                padding:
+                                    const ProjectPadding.symmetricMediumH(),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const AutoSizeText('Diploma'),
+                                    Row(
+                                      children: [
+                                        const AutoSizeText('120 KB'),
+                                        Padding(
+                                          padding: const ProjectPadding
+                                              .symmetricXSmallH(),
+                                          child: Assets
+                                              .icons.icSelectBoxCircleFill
+                                              .toGetSvg(),
+                                        ),
+                                        const AutoSizeText('Complated'),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  )
+                : ListView(
                     children: [
-                      SizedBox(
-                        height: 16.h,
-                      ),
-                      buildListViewTitle(state),
-                      SizedBox(height: 16.h),
                       CustomMissingDocumentItem(
                         title: 'Sağlık Raporu',
                         desc: 'Maks 10 Mb',
                         textTheme: textTheme,
                       ),
                     ],
-                  )
-                : const SizedBox(),
+                  ),
           );
         },
       ),
     );
   }
 
-  Padding buildListViewTitle(ProfileDocumentsState state) {
+  Padding buildListViewTitle() {
     return Padding(
-      padding: const ProjectPadding.scaffold(),
-      child: AutoSizeText(
-        state.chipIndex == 0
-            ? LocaleKeys.add_personnel_document_loaded_documents.tr()
-            : LocaleKeys.add_personnel_document_missing_documents.tr(),
-        style: textTheme.headlineMedium,
+      padding: const ProjectPadding.scaffold().r,
+      child: ColoredBox(
+        color: ColorName.neutral0,
+        child: Row(
+          children: [
+            BlocBuilder<ProfileDocumentsBloc, ProfileDocumentsState>(
+              builder: (context, state) {
+                return AutoSizeText(
+                  state.chipIndex
+                      ? LocaleKeys.add_personnel_document_loaded_documents.tr()
+                      : LocaleKeys.add_personnel_document_missing_documents
+                          .tr(),
+                  style: textTheme.headlineMedium,
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -116,6 +168,24 @@ class _DocumentsViewState extends BaseState<ProfileDocumentsView>
           ),
         ),
       ),
+      actions: [
+        Padding(
+          padding: const ProjectPadding.scaffold(),
+          child: Container(
+            height: 32.h,
+            width: 32.h,
+            padding: const EdgeInsets.all(4).r,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: ColorName.blueBase,
+            ),
+            child: const Icon(
+              Icons.add,
+              color: ColorName.neutral0,
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -132,63 +202,29 @@ class _DocumentsViewState extends BaseState<ProfileDocumentsView>
     );
   }
 
-  Padding buildChipList() {
+  Padding buildChipList(ProfileDocumentsBloc profileDocumentsBloc) {
     return Padding(
-      padding: const ProjectPadding.scaffold(),
-      child: SizedBox(
-        height: 47.h,
-        child: BlocBuilder<ProfileDocumentsBloc, ProfileDocumentsState>(
-          builder: (context, state) {
-            return ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: DocumentsChipEnum.values.length,
-              itemBuilder: (BuildContext context, int index) {
-                return buildChip(index, state);
-              },
-            );
-          },
-        ),
-      ),
-    );
-  }
-
-  Padding buildChip(int index, ProfileDocumentsState state) {
-    return Padding(
-      padding: const ProjectPadding.symmetricXSmallH(),
-      child: GestureDetector(
-        onTap: () {
-          profileDocumentsBloc.changeChipIndex(index);
-        },
-        child: Chip(
-          padding: const ProjectPadding.customChipPaddingLarge(),
-          shape: const StadiumBorder(),
-          side: BorderSide.none,
-          backgroundColor: state.chipIndex == index
-              ? ColorName.blueBase
-              : ColorName.neutral200,
-          label: Row(
+      padding: const ProjectPadding.scaffold().copyWith(top: 12, bottom: 12).r,
+      child: BlocBuilder<ProfileDocumentsBloc, ProfileDocumentsState>(
+        builder: (context, state) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              AutoSizeText(
-                DocumentsChipEnum.values[index].value.tr(),
+              CustomContainerChip(
+                textTheme: textTheme,
+                chipIndex: state.chipIndex,
+                text: LocaleKeys.add_personnel_document_loaded_documents,
+                onTap: profileDocumentsBloc.changeChipIndex,
               ),
-              if (selectText(index) != null)
-                Padding(
-                  padding: const EdgeInsets.only(left: 5).r,
-                  child: Badge.count(
-                    count: selectText(index) ?? 0,
-                    backgroundColor: selectChipBackgroundColor(index),
-                    alignment: Alignment.center,
-                    smallSize: 18,
-                    largeSize: 20,
-                    textColor: ColorName.neutral0,
-                    textStyle: const TextStyle(fontSize: 11),
-                  ),
-                )
-              else
-                const SizedBox(),
+              CustomContainerChip(
+                textTheme: textTheme,
+                chipIndex: !state.chipIndex,
+                text: LocaleKeys.add_personnel_document_missing_documents,
+                onTap: profileDocumentsBloc.changeChipIndex,
+              ),
             ],
-          ),
-        ),
+          );
+        },
       ),
     );
   }

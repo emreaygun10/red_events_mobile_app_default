@@ -170,10 +170,12 @@
             "piece": "{} adet",
             "have_request": "{} talebin var",
             "request_type": {
+                "title": "Talep Oluştur",
                 "request_to_leave": "Ayrılma Talebi",
                 "request_to_permission": "İzin Talebi",
                 "request_to_advance_payment": "Avans Talebi",
-                "report_notification": "Rapor Bildirimi"
+                "report_notification": "Rapor Bildirimi",
+                "others": "Others"
             },
             "detail_page": {
                 "title": "Talep Detayı",
@@ -185,6 +187,16 @@
                 "station": "Durum",
                 "approving": "Onaycı",
                 "reason_for_rejection": "Red Nedeni"
+            },
+            "request_permission": {
+                "dates": "Tarihler",
+                "explanation": "Açıklama",
+                "optional": "Opsiyonel",
+                "start_date": "İzin başlangıç tarihi",
+                "end_date": "İzin bitiş tarihi",
+                "sum_permission_days": "Toplam izin günü",
+                "select_permission": "Lütfen talep türünüzü seçiniz",
+                "button": "İzin Talebi Oluştur"
             }
         },
         "progress_payment": {

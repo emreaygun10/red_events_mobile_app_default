@@ -98,6 +98,12 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ProfileRequestPermissionRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ProfileRequestPermissionView(),
+      );
+    },
     ProfileRequestRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -341,6 +347,20 @@ class ProfileRequestDetailRouteArgs {
   String toString() {
     return 'ProfileRequestDetailRouteArgs{permissionColor: $permissionColor, iconColor: $iconColor, key: $key}';
   }
+}
+
+/// generated route for
+/// [ProfileRequestPermissionView]
+class ProfileRequestPermissionRoute extends PageRouteInfo<void> {
+  const ProfileRequestPermissionRoute({List<PageRouteInfo>? children})
+      : super(
+          ProfileRequestPermissionRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfileRequestPermissionRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

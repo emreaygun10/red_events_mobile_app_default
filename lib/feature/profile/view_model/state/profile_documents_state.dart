@@ -9,7 +9,7 @@ final class ProfileDocumentsState extends Equatable {
     this.data,
     this.missingDocumentsCounter,
   });
-  final int chipIndex;
+  final bool chipIndex;
   final bool isLoading;
   final String? data;
   final int? missingDocumentsCounter;
@@ -23,7 +23,7 @@ final class ProfileDocumentsState extends Equatable {
       ];
 
   ProfileDocumentsState copyWith({
-    int? chipIndex,
+    bool? chipIndex,
     bool? isLoading,
     String? data,
     int? missingDocumentsCounter,

@@ -175,6 +175,10 @@ class $AssetsIconsGen {
   SvgGenImage get icSelectBoxCircle =>
       const SvgGenImage('assets/icons/ic_select_box_circle.svg');
 
+  /// File path: assets/icons/ic_select_box_circle_fill.svg
+  SvgGenImage get icSelectBoxCircleFill =>
+      const SvgGenImage('assets/icons/ic_select_box_circle_fill.svg');
+
   /// File path: assets/icons/ic_shield_star_line.svg
   SvgGenImage get icShieldStarLine =>
       const SvgGenImage('assets/icons/ic_shield_star_line.svg');
@@ -262,6 +266,7 @@ class $AssetsIconsGen {
         icQrCode,
         icRequestEmpytList,
         icSelectBoxCircle,
+        icSelectBoxCircleFill,
         icShieldStarLine,
         icStarEmpty,
         icStarFill,
