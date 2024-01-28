@@ -14,7 +14,9 @@
             "create_password": "Create My Password",
             "camera": "Camera",
             "gallery": "Take Galley",
-            "create_personnel": "Create Personnel"
+            "create_personnel": "Create Personnel",
+            "okay": "Okay",
+            "continue": "Continue"
         },
         "dialog": {
             "version": {
@@ -196,7 +198,18 @@
                 "end_date": "İzin bitiş tarihi",
                 "sum_permission_days": "Toplam izin günü",
                 "select_permission": "Lütfen talep türünüzü seçiniz",
-                "button": "İzin Talebi Oluştur"
+                "button": "İzin Talebi Oluştur",
+                "information": "Bilgilendirme",
+                "management_info": "İzin talebiniz müdürünüze gönderildi."
+            },
+            "request_advance_payment": {
+                "advance_amount": "Avans Miktarı",
+                "button": "Avans Talebi Gönder"
+            },
+            "report_notification": {
+                "report_type": "Rapor Türü",
+                "select_report_type": "Rapor Türünüzü Seçiniz",
+                "button": "Rapor Bildirimini Gönder"
             }
         },
         "progress_payment": {

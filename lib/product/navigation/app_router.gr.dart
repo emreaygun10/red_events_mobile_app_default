@@ -87,6 +87,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ProfileProgressPaymentView(),
       );
     },
+    ProfileRequestAdvancePaymentRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ProfileRequestAdvancePaymentView(),
+      );
+    },
     ProfileRequestDetailRoute.name: (routeData) {
       final args = routeData.argsAs<ProfileRequestDetailRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -102,6 +108,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const ProfileRequestPermissionView(),
+      );
+    },
+    ProfileRequestReportRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ProfileRequestReportView(),
       );
     },
     ProfileRequestRoute.name: (routeData) {
@@ -306,6 +318,20 @@ class ProfileProgressPaymentRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ProfileRequestAdvancePaymentView]
+class ProfileRequestAdvancePaymentRoute extends PageRouteInfo<void> {
+  const ProfileRequestAdvancePaymentRoute({List<PageRouteInfo>? children})
+      : super(
+          ProfileRequestAdvancePaymentRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfileRequestAdvancePaymentRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [ProfileRequestDetailView]
 class ProfileRequestDetailRoute
     extends PageRouteInfo<ProfileRequestDetailRouteArgs> {
@@ -359,6 +385,20 @@ class ProfileRequestPermissionRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ProfileRequestPermissionRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ProfileRequestReportView]
+class ProfileRequestReportRoute extends PageRouteInfo<void> {
+  const ProfileRequestReportRoute({List<PageRouteInfo>? children})
+      : super(
+          ProfileRequestReportRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfileRequestReportRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

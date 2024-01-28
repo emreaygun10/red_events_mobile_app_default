@@ -162,17 +162,21 @@ class _CustomShowModalBottomSheetState
       width: context.sized.width,
       child: ElevatedButton(
         onPressed: () {
-          //context.router.push(const HomeRoute());
+          context.router.pop();
           switch (state.groupIndex) {
             case 1:
               context.router.push(const ProfileRequestPermissionRoute());
+            case 2:
+              context.router.push(const ProfileRequestAdvancePaymentRoute());
+            case 3:
+              context.router.push(const ProfileRequestReportRoute());
 
             default:
           }
         },
         child: AutoSizeText(
-          'Devam',
-          style: textTheme.labelSmall,
+          LocaleKeys.general_button_continue.tr(),
+          style: textTheme.labelSmall!.copyWith(color: ColorName.neutral0),
         ),
       ),
     );

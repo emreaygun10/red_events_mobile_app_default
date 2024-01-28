@@ -9,6 +9,9 @@ import 'package:kartal/kartal.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/cubit/profile_request_permission_bloc.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/mixins/profile_request_permission_mixin.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/state/profile_request_permission_state.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_autosizetext_for_title.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_multiline_textformfield.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_show_manager_bottom_sheet.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
 import 'package:red_events_mobile_app_defult/product/widget/custom_divider.dart';
@@ -32,43 +35,7 @@ class _ProfileRequestPermissionViewState
     return BlocProvider(
       create: (context) => profileRequestPermissionBloc,
       child: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 72.h,
-          leadingWidth: 80.w,
-          surfaceTintColor: ColorName.neutral0,
-          leading: Padding(
-            padding: const ProjectPadding.scaffold(),
-            child: GestureDetector(
-              onTap: () => context.router.pop(),
-              child: Container(
-                height: 24.h,
-                width: 24.w,
-                padding: const ProjectPadding.allSmall(),
-                decoration: const BoxDecoration(
-                  color: ColorName.neutral200,
-                  shape: BoxShape.circle,
-                ),
-                child: Assets.icons.icArroeLeftS.toGetSvg(),
-              ),
-            ),
-          ),
-          title: Column(
-            children: [
-              AutoSizeText(
-                LocaleKeys.profile_requests_request_type_title.tr(),
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              AutoSizeText(
-                LocaleKeys.profile_requests_request_type_request_to_permission
-                    .tr(),
-                style: Theme.of(context)
-                    .textTheme
-                    .titleMedium!
-                    .copyWith(color: ColorName.neutral400),
-              ),
-            ],
-          ),
-        ),
+        appBar: buildAppBar(context),
         body: Padding(
           padding: const ProjectPadding.scaffold(),
           child: Form(
@@ -78,8 +45,7 @@ class _ProfileRequestPermissionViewState
                 SizedBox(
                   height: 30.h,
                 ),
-                buildLabel(
-                  context: context,
+                const CustomAutoSizeTextForTitle(
                   text: LocaleKeys.profile_requests_detail_page_permission_type,
                 ),
                 Padding(
@@ -112,8 +78,7 @@ class _ProfileRequestPermissionViewState
                 Padding(
                   padding: const ProjectPadding.symmetricLargeV()
                       .copyWith(bottom: 8),
-                  child: buildLabel(
-                    context: context,
+                  child: const CustomAutoSizeTextForTitle(
                     text: LocaleKeys.profile_requests_request_permission_dates,
                   ),
                 ),
@@ -153,8 +118,7 @@ class _ProfileRequestPermissionViewState
                 Padding(
                   padding: const ProjectPadding.symmetricLargeV()
                       .copyWith(bottom: 0),
-                  child: buildLabel(
-                    context: context,
+                  child: CustomAutoSizeTextForTitle(
                     text: LocaleKeys
                         .profile_requests_request_permission_explanation
                         .tr(),
@@ -162,7 +126,9 @@ class _ProfileRequestPermissionViewState
                 ),
                 Padding(
                   padding: const ProjectPadding.symmetricSmallV(),
-                  child: buildMultilineTextFormField(context),
+                  child: CustomMultilineTextFormField(
+                    controller: textEditingControllerExplanation,
+                  ),
                 ),
                 const Spacer(
                   flex: 6,
@@ -187,8 +153,11 @@ class _ProfileRequestPermissionViewState
                     },
                     builder: (context, state) {
                       return ElevatedButton(
-                        onPressed: () {
-                          state.buttonIsEnabled ? print('Tıklandı') : null;
+                        onPressed: () async {
+                          if (state.buttonIsEnabled) {
+                            await buildShowBottomSheetRequest(context);
+                            await context.router.pop();
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: state.buttonIsEnabled
@@ -217,18 +186,53 @@ class _ProfileRequestPermissionViewState
     );
   }
 
-  TextFormField buildMultilineTextFormField(BuildContext context) {
-    return TextFormField(
-      style: Theme.of(context).textTheme.titleMedium,
-      keyboardType: TextInputType.multiline,
-      maxLines: 5,
-      controller: textEditingControllerExplanation,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: ProjectBorderRadius.allCircleMedium().r,
+  AppBar buildAppBar(BuildContext context) {
+    return AppBar(
+      toolbarHeight: 72.h,
+      leadingWidth: 80.w,
+      surfaceTintColor: ColorName.neutral0,
+      leading: Padding(
+        padding: const ProjectPadding.scaffold(),
+        child: GestureDetector(
+          onTap: () => context.router.pop(),
+          child: Container(
+            height: 24.h,
+            width: 24.w,
+            padding: const ProjectPadding.allSmall(),
+            decoration: const BoxDecoration(
+              color: ColorName.neutral200,
+              shape: BoxShape.circle,
+            ),
+            child: Assets.icons.icArroeLeftS.toGetSvg(),
+          ),
         ),
-        hintText: LocaleKeys.profile_requests_request_permission_optional.tr(),
       ),
+      title: Column(
+        children: [
+          AutoSizeText(
+            LocaleKeys.profile_requests_request_type_title.tr(),
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+          AutoSizeText(
+            LocaleKeys.profile_requests_request_type_request_to_permission.tr(),
+            style: Theme.of(context)
+                .textTheme
+                .titleMedium!
+                .copyWith(color: ColorName.neutral400),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<Widget?> buildShowBottomSheetRequest(BuildContext context) {
+    return showModalBottomSheet<Widget>(
+      isScrollControlled: true,
+      context: context,
+      showDragHandle: true,
+      builder: (BuildContext context) {
+        return const CustomShowManagerBottomSheet();
+      },
     );
   }
 
@@ -253,16 +257,6 @@ class _ProfileRequestPermissionViewState
           hintText: text.tr(),
         ),
       ),
-    );
-  }
-
-  AutoSizeText buildLabel({
-    required BuildContext context,
-    required String text,
-  }) {
-    return AutoSizeText(
-      text.tr(),
-      style: Theme.of(context).textTheme.titleLarge,
     );
   }
 
