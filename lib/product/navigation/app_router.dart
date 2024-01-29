@@ -19,6 +19,8 @@ import 'package:red_events_mobile_app_defult/feature/profile/view/profile_reques
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_request_view_detail_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_advance_payment_view.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_leave_view.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_others_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_permission_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_report_view.dart';
 
@@ -51,5 +53,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: ProfileRequestPermissionRoute.page),
         AutoRoute(page: ProfileRequestAdvancePaymentRoute.page),
         AutoRoute(page: ProfileRequestReportRoute.page),
+        AutoRoute(page: ProfileRequestLeaveRoute.page),
+        AutoRoute(page: ProfileRequestOthersRoute.page),
       ];
 }

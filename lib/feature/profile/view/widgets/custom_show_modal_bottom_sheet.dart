@@ -170,6 +170,10 @@ class _CustomShowModalBottomSheetState
               context.router.push(const ProfileRequestAdvancePaymentRoute());
             case 3:
               context.router.push(const ProfileRequestReportRoute());
+            case 4:
+              context.router.push(const ProfileRequestLeaveRoute());
+            case 5:
+              context.router.push(const ProfileRequestOthersRoute());
 
             default:
           }

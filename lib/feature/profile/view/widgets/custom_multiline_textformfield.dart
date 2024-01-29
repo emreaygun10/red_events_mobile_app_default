@@ -9,10 +9,13 @@ import 'package:widgets/widgets.dart';
 class CustomMultilineTextFormField extends StatelessWidget {
   const CustomMultilineTextFormField({
     required TextEditingController controller,
+    ValueChanged<String?>? valueChanged,
     super.key,
-  }) : _controller = controller;
+  })  : _controller = controller,
+        _valueChanged = valueChanged;
 
   final TextEditingController _controller;
+  final ValueChanged<String?>? _valueChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +23,7 @@ class CustomMultilineTextFormField extends StatelessWidget {
       style: Theme.of(context).textTheme.titleMedium,
       keyboardType: TextInputType.multiline,
       maxLines: 5,
+      onChanged: _valueChanged,
       controller: _controller,
       decoration: InputDecoration(
         border: OutlineInputBorder(

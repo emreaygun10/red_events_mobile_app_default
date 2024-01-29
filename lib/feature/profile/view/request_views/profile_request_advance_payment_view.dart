@@ -8,7 +8,7 @@ import 'package:gen/gen.dart';
 import 'package:kartal/kartal.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/cubit/profile_request_advance_payment.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/mixins/profile_request_payment_mixin.dart';
-import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/state/profile_request_advance_payment_view.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/state/profile_request_advance_payment_state.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_autosizetext_for_title.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_multiline_textformfield.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_show_manager_bottom_sheet.dart';
@@ -17,7 +17,7 @@ import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart'
 import 'package:widgets/widgets.dart';
 
 @RoutePage()
-class ProfileRequestAdvancePaymentView extends StatefulWidget {
+final class ProfileRequestAdvancePaymentView extends StatefulWidget {
   const ProfileRequestAdvancePaymentView({super.key});
 
   @override
@@ -40,57 +40,67 @@ class _ProfileRequestAdvancePaymentState
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: 30.h,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 4),
-                  child: CustomAutoSizeTextForTitle(
-                    text: LocaleKeys
-                        .profile_requests_request_advance_payment_advance_amount,
-                  ),
-                ),
-                Container(
-                  height: 52.h,
-                  width: context.sized.width,
-                  padding: const ProjectPadding.allXSmall().copyWith(top: 4).r,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: ColorName.neutral200,
-                    ),
-                    borderRadius: ProjectBorderRadius.allCircleMedium(),
-                  ),
-                  child: TextFormField(
-                    autofocus: true,
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.fromLTRB(16, 0, 0, 10),
-                      prefix: Text(
-                        '₺',
-                        textAlign: TextAlign.center,
-                        style: textTheme.bodyLarge,
+                Expanded(
+                  child: ListView(
+                    keyboardDismissBehavior:
+                        ScrollViewKeyboardDismissBehavior.onDrag,
+                    padding: const ProjectPadding.onlyTopXLarge(),
+                    children: [
+                      SizedBox(
+                        height: 30.h,
                       ),
-                    ),
-                    controller: textEditingControllerAdvanceAmount,
-                    onChanged:
-                        profileRequestAdvancePaymentBloc.changePaymentAmount,
-                    keyboardType: TextInputType.number,
+                      const Padding(
+                        padding: EdgeInsets.only(bottom: 4),
+                        child: CustomAutoSizeTextForTitle(
+                          text: LocaleKeys
+                              .profile_requests_request_advance_payment_advance_amount,
+                        ),
+                      ),
+                      Container(
+                        height: 52.h,
+                        width: context.sized.width,
+                        padding:
+                            const ProjectPadding.allXSmall().copyWith(top: 4).r,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: ColorName.neutral200,
+                          ),
+                          borderRadius: ProjectBorderRadius.allCircleMedium(),
+                        ),
+                        child: TextFormField(
+                          autofocus: true,
+                          decoration: InputDecoration(
+                            contentPadding:
+                                const EdgeInsets.fromLTRB(16, 0, 0, 10),
+                            prefix: Text(
+                              '₺',
+                              textAlign: TextAlign.center,
+                              style: textTheme.bodyLarge,
+                            ),
+                          ),
+                          controller: textEditingControllerAdvanceAmount,
+                          onChanged: profileRequestAdvancePaymentBloc
+                              .changePaymentAmount,
+                          keyboardType: TextInputType.number,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 4, top: 24).r,
+                        child: const CustomAutoSizeTextForTitle(
+                          text: LocaleKeys
+                              .profile_requests_request_permission_optional,
+                        ),
+                      ),
+                      CustomMultilineTextFormField(
+                        controller: textEditingControllerExplanation,
+                      ),
+                    ],
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 4, top: 24).r,
-                  child: const CustomAutoSizeTextForTitle(
-                    text:
-                        LocaleKeys.profile_requests_request_permission_optional,
-                  ),
+                  padding: const ProjectPadding.onlyBottomLarge(),
+                  child: buildButton(context),
                 ),
-                CustomMultilineTextFormField(
-                  controller: textEditingControllerExplanation,
-                ),
-                const Spacer(
-                  flex: 8,
-                ),
-                buildButton(context),
-                const Spacer(),
               ],
             ),
           ),

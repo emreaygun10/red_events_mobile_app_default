@@ -9,13 +9,13 @@ class ProfileProgressPaymentBloc
       : super(
           const ProfileProgressPaymentState(
             isLoading: false,
-            chipIndex: 0,
+            chipIndex: false,
             isEmptyBordro: true,
           ),
         );
 
   /// change value obscure
-  void changeChipIndex(int? index) {
-    emit(state.copyWith(chipIndex: index));
+  void changeChipIndex() {
+    emit(state.copyWith(chipIndex: !state.chipIndex));
   }
 }

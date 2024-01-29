@@ -65,7 +65,8 @@ class _DocumentsViewState extends BaseState<ProfileDocumentsView>
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const ProjectPadding.scaffold()
-                            .copyWith(top: 12, bottom: 12),
+                            .copyWith(top: 12, bottom: 12)
+                            .r,
                         child: Container(
                           height: 72.h,
                           padding: const ProjectPadding.allMedium(),
@@ -82,10 +83,19 @@ class _DocumentsViewState extends BaseState<ProfileDocumentsView>
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const AutoSizeText('Diploma'),
+                                    AutoSizeText(
+                                      'Diploma',
+                                      style: textTheme.titleLarge,
+                                    ),
                                     Row(
                                       children: [
-                                        const AutoSizeText('120 KB'),
+                                        AutoSizeText(
+                                          '120 KB',
+                                          style:
+                                              textTheme.titleMedium!.copyWith(
+                                            color: ColorName.neutral600,
+                                          ),
+                                        ),
                                         Padding(
                                           padding: const ProjectPadding
                                               .symmetricXSmallH(),
@@ -93,7 +103,13 @@ class _DocumentsViewState extends BaseState<ProfileDocumentsView>
                                               .icons.icSelectBoxCircleFill
                                               .toGetSvg(),
                                         ),
-                                        const AutoSizeText('Complated'),
+                                        AutoSizeText(
+                                          'Complated',
+                                          style:
+                                              textTheme.titleMedium!.copyWith(
+                                            color: ColorName.neutral600,
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ],
@@ -148,23 +164,20 @@ class _DocumentsViewState extends BaseState<ProfileDocumentsView>
     return AppBar(
       surfaceTintColor: Colors.transparent,
       backgroundColor: ColorName.neutral0,
-      leading: GestureDetector(
-        onTap: () async {
-          await context.router.pop();
-        },
-        child: Padding(
-          padding: const ProjectPadding.allSmall(),
-          child: SizedBox(
+      leadingWidth: 80.w,
+      leading: Padding(
+        padding: const ProjectPadding.scaffold(),
+        child: GestureDetector(
+          onTap: () => context.router.pop(),
+          child: Container(
             height: 24.h,
             width: 24.w,
-            child: Container(
-              decoration: const BoxDecoration(
-                color: ColorName.neutral200,
-                shape: BoxShape.circle,
-              ),
-              child: Assets.icons.icArroeLeftS
-                  .toGetSvgWithColor(color: ColorName.neutral900),
+            padding: const ProjectPadding.allSmall(),
+            decoration: const BoxDecoration(
+              color: ColorName.neutral200,
+              shape: BoxShape.circle,
             ),
+            child: Assets.icons.icArroeLeftS.toGetSvg(),
           ),
         ),
       ),

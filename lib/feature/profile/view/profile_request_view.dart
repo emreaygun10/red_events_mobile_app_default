@@ -161,23 +161,20 @@ class _ProfileRequestViewState extends BaseState<ProfileRequestView>
     return AppBar(
       surfaceTintColor: Colors.transparent,
       backgroundColor: ColorName.neutral0,
-      leading: GestureDetector(
-        onTap: () async {
-          await context.router.pop();
-        },
-        child: Padding(
-          padding: const ProjectPadding.allSmall(),
-          child: SizedBox(
+      leadingWidth: 80.w,
+      leading: Padding(
+        padding: const ProjectPadding.scaffold(),
+        child: GestureDetector(
+          onTap: () => context.router.pop(),
+          child: Container(
             height: 24.h,
             width: 24.w,
-            child: Container(
-              decoration: const BoxDecoration(
-                color: ColorName.neutral200,
-                shape: BoxShape.circle,
-              ),
-              child: Assets.icons.icArroeLeftS
-                  .toGetSvgWithColor(color: ColorName.neutral900),
+            padding: const ProjectPadding.allSmall(),
+            decoration: const BoxDecoration(
+              color: ColorName.neutral200,
+              shape: BoxShape.circle,
             ),
+            child: Assets.icons.icArroeLeftS.toGetSvg(),
           ),
         ),
       ),

@@ -18,7 +18,7 @@ import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart'
 import 'package:widgets/widgets.dart';
 
 @RoutePage()
-class ProfileRequestReportView extends StatefulWidget {
+final class ProfileRequestReportView extends StatefulWidget {
   const ProfileRequestReportView({super.key});
 
   @override
@@ -40,98 +40,108 @@ class _ProfileRequestReportViewState extends BaseState<ProfileRequestReportView>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: 30.h,
-                ),
-                const CustomAutoSizeTextForTitle(
-                  text: LocaleKeys.profile_requests_detail_page_permission_type,
-                ),
-                buildCustomTextFormFieldList(),
-                Container(
-                  height: 72.h,
-                  padding: const ProjectPadding.allMedium(),
-                  decoration: BoxDecoration(
-                    color: ColorName.neutral0,
-                    border: Border.all(color: ColorName.neutral200),
-                    borderRadius: ProjectBorderRadius.allCircleMedium(),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Expanded(
+                  child: ListView(
+                    padding: const ProjectPadding.onlyTopXLarge(),
+                    keyboardDismissBehavior:
+                        ScrollViewKeyboardDismissBehavior.onDrag,
                     children: [
-                      Row(
-                        children: [
-                          Container(
-                            height: 40.h,
-                            width: 40.w,
-                            padding: const ProjectPadding.allSmall(),
-                            decoration: const BoxDecoration(
-                              color: ColorName.neutral200,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Assets.icons.icFile.toGetSvg(),
-                          ),
-                          SizedBox(
-                            width: 8.w,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              AutoSizeText(
-                                'Rapor',
-                                style: textTheme.labelMedium,
-                              ),
-                              AutoSizeText(
-                                'data',
-                                style: textTheme.bodySmall,
-                              ),
-                            ],
-                          ),
-                        ],
+                      const CustomAutoSizeTextForTitle(
+                        text: LocaleKeys
+                            .profile_requests_detail_page_permission_type,
                       ),
-                      SizedBox(
-                        height: 40.h,
-                        width: 40.w,
-                        child: Center(
-                          child: DottedBorder(
-                            color: ColorName.blueBase,
-                            padding: const ProjectPadding.allSmall(),
-                            dashPattern: const [6, 6, 6, 6],
-                            borderType: BorderType.Circle,
-                            child: const Icon(
-                              Icons.add,
-                              color: ColorName.blueBase,
-                            ),
-                          ),
+                      buildCustomTextFormFieldList(),
+                      buildLoadReportFile(),
+                      Padding(
+                        padding: const ProjectPadding.symmetricLargeV()
+                            .copyWith(bottom: 0),
+                        child: CustomAutoSizeTextForTitle(
+                          text: LocaleKeys
+                              .profile_requests_request_permission_explanation
+                              .tr(),
+                        ),
+                      ),
+                      Padding(
+                        padding: const ProjectPadding.symmetricSmallV(),
+                        child: CustomMultilineTextFormField(
+                          controller: textEditingControllerExplanation,
                         ),
                       ),
                     ],
                   ),
                 ),
                 Padding(
-                  padding: const ProjectPadding.symmetricLargeV()
-                      .copyWith(bottom: 0),
-                  child: CustomAutoSizeTextForTitle(
-                    text: LocaleKeys
-                        .profile_requests_request_permission_explanation
-                        .tr(),
-                  ),
+                  padding: const ProjectPadding.onlyBottomLarge(),
+                  child: buildButton(context),
                 ),
-                Padding(
-                  padding: const ProjectPadding.symmetricSmallV(),
-                  child: CustomMultilineTextFormField(
-                    controller: textEditingControllerExplanation,
-                  ),
-                ),
-                const Spacer(
-                  flex: 7,
-                ),
-                buildButton(context),
-                const Spacer(),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Container buildLoadReportFile() {
+    return Container(
+      height: 72.h,
+      padding: const ProjectPadding.allMedium(),
+      decoration: BoxDecoration(
+        color: ColorName.neutral0,
+        border: Border.all(color: ColorName.neutral200),
+        borderRadius: ProjectBorderRadius.allCircleMedium(),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              Container(
+                height: 40.h,
+                width: 40.w,
+                padding: const ProjectPadding.allSmall(),
+                decoration: const BoxDecoration(
+                  color: ColorName.neutral200,
+                  shape: BoxShape.circle,
+                ),
+                child: Assets.icons.icFile.toGetSvg(),
+              ),
+              SizedBox(
+                width: 8.w,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  AutoSizeText(
+                    'Rapor',
+                    style: textTheme.labelMedium,
+                  ),
+                  AutoSizeText(
+                    'data',
+                    style: textTheme.bodySmall,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 40.h,
+            width: 40.w,
+            child: Center(
+              child: DottedBorder(
+                color: ColorName.blueBase,
+                padding: const ProjectPadding.allSmall(),
+                dashPattern: const [6, 6, 6, 6],
+                borderType: BorderType.Circle,
+                child: const Icon(
+                  Icons.add,
+                  color: ColorName.blueBase,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
 import 'package:kartal/kartal.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_container_chip.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_profile_header.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/empty_list_card.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view_model/cubit/profile_progress_payment_bloc.dart';
@@ -13,7 +14,6 @@ import 'package:red_events_mobile_app_defult/feature/profile/view_model/mixin/pr
 import 'package:red_events_mobile_app_defult/feature/profile/view_model/state/profile_progress_payment_state.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
-import 'package:red_events_mobile_app_defult/product/utility/enums/education_chip_enum.dart';
 import 'package:red_events_mobile_app_defult/product/utility/enums/module_enum.dart';
 import 'package:widgets/widgets.dart';
 
@@ -43,7 +43,7 @@ class _ProfileProgressPaymentViewState
                   height: 16,
                 ),
                 buildTitleText(),
-                buildChipList(),
+                buildChipList(profileProgressPaymentBloc),
               ],
             ),
             SizedBox(
@@ -52,15 +52,13 @@ class _ProfileProgressPaymentViewState
             BlocBuilder<ProfileProgressPaymentBloc,
                 ProfileProgressPaymentState>(
               builder: (context, state) {
-                return state.chipIndex == 0
-                    ? buildSummarySalary()
-                    : buildTitle();
+                return state.chipIndex ? buildSummarySalary() : buildTitle();
               },
             ),
             BlocBuilder<ProfileProgressPaymentBloc,
                 ProfileProgressPaymentState>(
               builder: (context, state) {
-                return state.chipIndex == 0
+                return state.chipIndex
                     ? buildMainPage(context)
                     : state.isEmptyBordro
                         ? Expanded(
@@ -463,14 +461,19 @@ class _ProfileProgressPaymentViewState
 
   Column buildCustomAmount({required String amount, required String type}) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        AutoSizeText(
-          '$amount ₺',
-          style: textTheme.labelMedium,
+        Expanded(
+          child: AutoSizeText(
+            '$amount ₺',
+            style: textTheme.labelMedium,
+          ),
         ),
-        AutoSizeText(
-          type.tr(),
-          style: textTheme.labelSmall!.copyWith(color: ColorName.neutral400),
+        Expanded(
+          child: AutoSizeText(
+            type.tr(),
+            style: textTheme.labelSmall!.copyWith(color: ColorName.neutral400),
+          ),
         ),
       ],
     );
@@ -480,24 +483,20 @@ class _ProfileProgressPaymentViewState
     return AppBar(
       surfaceTintColor: Colors.transparent,
       backgroundColor: ColorName.neutral0,
-      leading: GestureDetector(
-        onTap: () async {
-          await context.router.pop();
-        },
-        child: Padding(
-          padding: const ProjectPadding.allSmall(),
-          child: SizedBox(
+      leadingWidth: 80.w,
+      leading: Padding(
+        padding: const ProjectPadding.scaffold(),
+        child: GestureDetector(
+          onTap: () => context.router.pop(),
+          child: Container(
             height: 24.h,
             width: 24.w,
-            child: Container(
-              decoration: const BoxDecoration(
-                color: ColorName.neutral200,
-                shape: BoxShape.circle,
-              ),
-              child: Assets.icons.icArroeLeftS.toGetSvgWithColor(
-                color: ColorName.neutral900,
-              ),
+            padding: const ProjectPadding.allSmall(),
+            decoration: const BoxDecoration(
+              color: ColorName.neutral200,
+              shape: BoxShape.circle,
             ),
+            child: Assets.icons.icArroeLeftS.toGetSvg(),
           ),
         ),
       ),
@@ -517,45 +516,74 @@ class _ProfileProgressPaymentViewState
     );
   }
 
-  Padding buildChipList() {
-    return Padding(
-      padding: const ProjectPadding.scaffold(),
-      child: SizedBox(
-        height: 47.h,
-        child: BlocBuilder<ProfileProgressPaymentBloc,
-            ProfileProgressPaymentState>(
-          builder: (context, state) {
-            return ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: ProgressPaymentChipEnum.values.length,
-              itemBuilder: (BuildContext context, int index) {
-                return buildChip(index, state);
-              },
-            );
-          },
-        ),
-      ),
-    );
-  }
+  // Padding buildChipList() {
+  //   return Padding(
+  //     padding: const ProjectPadding.scaffold(),
+  //     child: SizedBox(
+  //       height: 47.h,
+  //       child: BlocBuilder<ProfileProgressPaymentBloc,
+  //           ProfileProgressPaymentState>(
+  //         builder: (context, state) {
+  //           return ListView.builder(
+  //             scrollDirection: Axis.horizontal,
+  //             itemCount: ProgressPaymentChipEnum.values.length,
+  //             itemBuilder: (BuildContext context, int index) {
+  //               return buildChip(index, state);
+  //             },
+  //           );
+  //         },
+  //       ),
+  //     ),
+  //   );
+  // }
 
-  Padding buildChip(int index, ProfileProgressPaymentState state) {
+  // Padding buildChip(int index, ProfileProgressPaymentState state) {
+  //   return Padding(
+  //     padding: const ProjectPadding.symmetricXSmallH(),
+  //     child: GestureDetector(
+  //       onTap: () {
+  //         profileProgressPaymentBloc.changeChipIndex(index);
+  //       },
+  //       child: Container(
+  //         padding: const ProjectPadding.customChipPaddingLarge(),
+  //         decoration: BoxDecoration(
+  //           borderRadius: ProjectBorderRadius.allCircleMedium(),
+  //           color: state.chipIndex == index
+  //               ? ColorName.blueBase
+  //               : ColorName.neutral200,
+  //         ),
+  //         child: AutoSizeText(
+  //           ProgressPaymentChipEnum.values[index].value.tr(),
+  //           style: textTheme.,
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
+  Padding buildChipList(ProfileProgressPaymentBloc profileProgressPaymentBloc) {
     return Padding(
-      padding: const ProjectPadding.symmetricXSmallH(),
-      child: GestureDetector(
-        onTap: () {
-          profileProgressPaymentBloc.changeChipIndex(index);
+      padding: const ProjectPadding.scaffold().copyWith(top: 12, bottom: 12).r,
+      child:
+          BlocBuilder<ProfileProgressPaymentBloc, ProfileProgressPaymentState>(
+        builder: (context, state) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              CustomContainerChip(
+                textTheme: textTheme,
+                chipIndex: state.chipIndex,
+                text: LocaleKeys.add_personnel_document_loaded_documents,
+                onTap: profileProgressPaymentBloc.changeChipIndex,
+              ),
+              CustomContainerChip(
+                textTheme: textTheme,
+                chipIndex: !state.chipIndex,
+                text: LocaleKeys.add_personnel_document_missing_documents,
+                onTap: profileProgressPaymentBloc.changeChipIndex,
+              ),
+            ],
+          );
         },
-        child: Chip(
-          padding: const ProjectPadding.customChipPaddingLarge(),
-          shape: const StadiumBorder(),
-          side: BorderSide.none,
-          backgroundColor: state.chipIndex == index
-              ? ColorName.blueBase
-              : ColorName.neutral200,
-          label: AutoSizeText(
-            ProgressPaymentChipEnum.values[index].value.tr(),
-          ),
-        ),
       ),
     );
   }

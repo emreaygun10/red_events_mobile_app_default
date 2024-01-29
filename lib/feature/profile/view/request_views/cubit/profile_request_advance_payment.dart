@@ -1,4 +1,4 @@
-import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/state/profile_request_advance_payment_view.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/state/profile_request_advance_payment_state.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_cubit.dart';
 
 /// Profile Education state management class

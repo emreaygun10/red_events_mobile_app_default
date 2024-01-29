@@ -8,7 +8,7 @@ final class ProfileProgressPaymentState extends Equatable {
     required this.isLoading,
     required this.isEmptyBordro,
   });
-  final int? chipIndex;
+  final bool chipIndex;
   final bool isLoading;
   final bool isEmptyBordro;
 
@@ -20,7 +20,7 @@ final class ProfileProgressPaymentState extends Equatable {
       ];
 
   ProfileProgressPaymentState copyWith({
-    int? chipIndex,
+    bool? chipIndex,
     bool? isLoading,
     bool? isEmptyBordro,
   }) {

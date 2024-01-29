@@ -42,146 +42,168 @@ class _ProfileRequestPermissionViewState
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Expanded(
+                  child: ListView(
+                    keyboardDismissBehavior:
+                        ScrollViewKeyboardDismissBehavior.onDrag,
+                    padding: const ProjectPadding.onlyTopXLarge(),
+                    children: [
+                      const CustomAutoSizeTextForTitle(
+                        text: LocaleKeys
+                            .profile_requests_detail_page_permission_type,
+                      ),
+                      Padding(
+                        padding: const ProjectPadding.symmetricSmallV(),
+                        child: SizedBox(
+                          height: 40.h,
+                          child: TextFormField(
+                            showCursor: false,
+                            keyboardType: TextInputType.none,
+                            onTap: () {
+                              profileRequestPermissionBloc
+                                  .selectPermissionType(2);
+                            },
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius:
+                                    ProjectBorderRadius.allCircleMedium().r,
+                              ),
+                              suffixIcon: Padding(
+                                padding: const ProjectPadding.allSmall(),
+                                child: Container(
+                                  child: Assets.icons.icDownArrow.toGetSvg(),
+                                ),
+                              ),
+                              hintText: LocaleKeys
+                                  .profile_requests_request_permission_select_permission
+                                  .tr(),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const ProjectPadding.symmetricLargeV()
+                            .copyWith(bottom: 8),
+                        child: const CustomAutoSizeTextForTitle(
+                          text: LocaleKeys
+                              .profile_requests_request_permission_dates,
+                        ),
+                      ),
+                      buildDateTextField(
+                        text: LocaleKeys
+                            .profile_requests_request_permission_start_date,
+                        textEditingController: textEditingControllerStartDate,
+                        onTap: () =>
+                            buildShowModalBottomSheetStartDate(context),
+                      ),
+                      Padding(
+                        padding: const ProjectPadding.symmetricMediumV(),
+                        child: buildDateTextField(
+                          text: LocaleKeys
+                              .profile_requests_request_permission_end_date,
+                          textEditingController: textEditingControllerEndDate,
+                          onTap: () =>
+                              buildShowModalBottomSheetEndDate(context),
+                        ),
+                      ),
+                      BlocListener<ProfileRequestPermissionBloc,
+                          ProfileRequestPermissionState>(
+                        listener: (context, state) {
+                          if (state.endDate != null &&
+                              state.startDate != null) {
+                            textEditingControllerSumDate.text = state.endDate!
+                                .difference(state.startDate!)
+                                .inDays
+                                .toString();
+                          }
+                        },
+                        child: buildDateTextField(
+                          readOnly: true,
+                          textEditingController: textEditingControllerSumDate,
+                          text: LocaleKeys
+                              .profile_requests_request_permission_sum_permission_days,
+                          onTap: () {},
+                        ),
+                      ),
+                      Padding(
+                        padding: const ProjectPadding.symmetricLargeV()
+                            .copyWith(bottom: 0),
+                        child: CustomAutoSizeTextForTitle(
+                          text: LocaleKeys
+                              .profile_requests_request_permission_explanation
+                              .tr(),
+                        ),
+                      ),
+                      Padding(
+                        padding: const ProjectPadding.symmetricSmallV(),
+                        child: CustomMultilineTextFormField(
+                          controller: textEditingControllerExplanation,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 SizedBox(
                   height: 30.h,
                 ),
-                const CustomAutoSizeTextForTitle(
-                  text: LocaleKeys.profile_requests_detail_page_permission_type,
-                ),
+
+                // const Spacer(
+                //   flex: 6,
+                // ),
                 Padding(
-                  padding: const ProjectPadding.symmetricSmallV(),
-                  child: SizedBox(
-                    height: 40.h,
-                    child: TextFormField(
-                      showCursor: false,
-                      keyboardType: TextInputType.none,
-                      onTap: () {
-                        profileRequestPermissionBloc.selectPermissionType(2);
-                      },
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: ProjectBorderRadius.allCircleMedium().r,
-                        ),
-                        suffixIcon: Padding(
-                          padding: const ProjectPadding.allSmall(),
-                          child: Container(
-                            child: Assets.icons.icDownArrow.toGetSvg(),
-                          ),
-                        ),
-                        hintText: LocaleKeys
-                            .profile_requests_request_permission_select_permission
-                            .tr(),
-                      ),
-                    ),
-                  ),
+                  padding: const ProjectPadding.onlyBottomLarge(),
+                  child: buidButton(context),
                 ),
-                Padding(
-                  padding: const ProjectPadding.symmetricLargeV()
-                      .copyWith(bottom: 8),
-                  child: const CustomAutoSizeTextForTitle(
-                    text: LocaleKeys.profile_requests_request_permission_dates,
-                  ),
-                ),
-                buildDateTextField(
-                  text:
-                      LocaleKeys.profile_requests_request_permission_start_date,
-                  textEditingController: textEditingControllerStartDate,
-                  onTap: () => buildShowModalBottomSheetStartDate(context),
-                ),
-                Padding(
-                  padding: const ProjectPadding.symmetricMediumV(),
-                  child: buildDateTextField(
-                    text:
-                        LocaleKeys.profile_requests_request_permission_end_date,
-                    textEditingController: textEditingControllerEndDate,
-                    onTap: () => buildShowModalBottomSheetEndDate(context),
-                  ),
-                ),
-                BlocListener<ProfileRequestPermissionBloc,
-                    ProfileRequestPermissionState>(
-                  listener: (context, state) {
-                    if (state.endDate != null && state.startDate != null) {
-                      textEditingControllerSumDate.text = state.endDate!
-                          .difference(state.startDate!)
-                          .inDays
-                          .toString();
-                    }
-                  },
-                  child: buildDateTextField(
-                    readOnly: true,
-                    textEditingController: textEditingControllerSumDate,
-                    text: LocaleKeys
-                        .profile_requests_request_permission_sum_permission_days,
-                    onTap: () {},
-                  ),
-                ),
-                Padding(
-                  padding: const ProjectPadding.symmetricLargeV()
-                      .copyWith(bottom: 0),
-                  child: CustomAutoSizeTextForTitle(
-                    text: LocaleKeys
-                        .profile_requests_request_permission_explanation
-                        .tr(),
-                  ),
-                ),
-                Padding(
-                  padding: const ProjectPadding.symmetricSmallV(),
-                  child: CustomMultilineTextFormField(
-                    controller: textEditingControllerExplanation,
-                  ),
-                ),
-                const Spacer(
-                  flex: 6,
-                ),
-                SizedBox(
-                  height: 56.h,
-                  width: context.sized.width,
-                  child: BlocConsumer<ProfileRequestPermissionBloc,
-                      ProfileRequestPermissionState>(
-                    listener: (context, state) {
-                      if (state.endDate != null &&
-                          state.startDate != null &&
-                          state.permissionType != null) {
-                        profileRequestPermissionBloc.changeButtonEnable(
-                          value: true,
-                        );
-                      } else {
-                        profileRequestPermissionBloc.changeButtonEnable(
-                          value: false,
-                        );
-                      }
-                    },
-                    builder: (context, state) {
-                      return ElevatedButton(
-                        onPressed: () async {
-                          if (state.buttonIsEnabled) {
-                            await buildShowBottomSheetRequest(context);
-                            await context.router.pop();
-                          }
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: state.buttonIsEnabled
-                              ? ColorName.blueBase
-                              : ColorName.neutral300,
-                        ),
-                        child: AutoSizeText(
-                          LocaleKeys.profile_requests_request_permission_button
-                              .tr(),
-                          style: textTheme.titleLarge!.copyWith(
-                            color: state.buttonIsEnabled
-                                ? ColorName.neutral0
-                                : ColorName.neutral500,
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                const Spacer(),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  SizedBox buidButton(BuildContext context) {
+    return SizedBox(
+      height: 56.h,
+      width: context.sized.width,
+      child: BlocConsumer<ProfileRequestPermissionBloc,
+          ProfileRequestPermissionState>(
+        listener: (context, state) {
+          if (state.endDate != null &&
+              state.startDate != null &&
+              state.permissionType != null) {
+            profileRequestPermissionBloc.changeButtonEnable(
+              value: true,
+            );
+          } else {
+            profileRequestPermissionBloc.changeButtonEnable(
+              value: false,
+            );
+          }
+        },
+        builder: (context, state) {
+          return ElevatedButton(
+            onPressed: () async {
+              if (state.buttonIsEnabled) {
+                await buildShowBottomSheetRequest(context);
+                await context.router.pop();
+              }
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: state.buttonIsEnabled
+                  ? ColorName.blueBase
+                  : ColorName.neutral300,
+            ),
+            child: AutoSizeText(
+              LocaleKeys.profile_requests_request_permission_button.tr(),
+              style: textTheme.titleLarge!.copyWith(
+                color: state.buttonIsEnabled
+                    ? ColorName.neutral0
+                    : ColorName.neutral500,
+              ),
+            ),
+          );
+        },
       ),
     );
   }

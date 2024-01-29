@@ -104,6 +104,18 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ProfileRequestLeaveRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ProfileRequestLeaveView(),
+      );
+    },
+    ProfileRequestOthersRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ProfileRequestOthersView(),
+      );
+    },
     ProfileRequestPermissionRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -373,6 +385,34 @@ class ProfileRequestDetailRouteArgs {
   String toString() {
     return 'ProfileRequestDetailRouteArgs{permissionColor: $permissionColor, iconColor: $iconColor, key: $key}';
   }
+}
+
+/// generated route for
+/// [ProfileRequestLeaveView]
+class ProfileRequestLeaveRoute extends PageRouteInfo<void> {
+  const ProfileRequestLeaveRoute({List<PageRouteInfo>? children})
+      : super(
+          ProfileRequestLeaveRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfileRequestLeaveRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ProfileRequestOthersView]
+class ProfileRequestOthersRoute extends PageRouteInfo<void> {
+  const ProfileRequestOthersRoute({List<PageRouteInfo>? children})
+      : super(
+          ProfileRequestOthersRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfileRequestOthersRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
