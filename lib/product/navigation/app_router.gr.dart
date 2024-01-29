@@ -140,6 +140,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ProfileView(),
       );
     },
+    QRCameraRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const QRCameraView(),
+      );
+    },
     SignInRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -467,6 +473,20 @@ class ProfileRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ProfileRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [QRCameraView]
+class QRCameraRoute extends PageRouteInfo<void> {
+  const QRCameraRoute({List<PageRouteInfo>? children})
+      : super(
+          QRCameraRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'QRCameraRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

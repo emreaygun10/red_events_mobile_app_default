@@ -9,7 +9,7 @@ class ProfileProgressPaymentBloc
       : super(
           const ProfileProgressPaymentState(
             isLoading: false,
-            chipIndex: false,
+            chipIndex: true,
             isEmptyBordro: true,
           ),
         );

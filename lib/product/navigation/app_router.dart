@@ -11,6 +11,7 @@ import 'package:red_events_mobile_app_defult/feature/auth/sign_in/view/sign_in_s
 import 'package:red_events_mobile_app_defult/feature/auth/sign_in/view/sign_in_view.dart';
 import 'package:red_events_mobile_app_defult/feature/home/view/bottom_navigation_bar_view.dart';
 import 'package:red_events_mobile_app_defult/feature/home/view/home_view.dart';
+import 'package:red_events_mobile_app_defult/feature/home/view/qr_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_documents_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_education_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_performance_view.dart';
@@ -55,5 +56,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: ProfileRequestReportRoute.page),
         AutoRoute(page: ProfileRequestLeaveRoute.page),
         AutoRoute(page: ProfileRequestOthersRoute.page),
+        AutoRoute(page: QRCameraRoute.page),
       ];
 }

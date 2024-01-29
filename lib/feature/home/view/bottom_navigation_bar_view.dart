@@ -9,6 +9,7 @@ import 'package:gen/gen.dart';
 import 'package:red_events_mobile_app_defult/feature/home/wiew_model/bottom_navigation_view_model.dart';
 import 'package:red_events_mobile_app_defult/feature/home/wiew_model/mixin/bottom_navigation_bar_mixin.dart';
 import 'package:red_events_mobile_app_defult/feature/home/wiew_model/state/bottom_navigation_bar_state.dart';
+import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
 import 'package:widgets/widgets.dart';
 
@@ -36,14 +37,14 @@ class _BottomNAvigationBarViewState extends BaseState<BottomNAvigationBarView>
               shape: const CircleBorder(),
               child: Assets.icons.icQrCode.toGetSvg(),
               onPressed: () {
-                print('QR oku');
+                context.router.push(const QRCameraRoute());
               },
             ),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked,
             bottomNavigationBar: AnimatedBottomNavigationBar.builder(
               itemCount: iconList.length,
-              height: 45.h,
+              height: 55.h,
               tabBuilder: (index, value) {
                 return Padding(
                   padding: const ProjectPadding.allSmall(),
