@@ -20,6 +20,7 @@ class CustomMultilineTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLength: 200,
       style: Theme.of(context).textTheme.titleMedium,
       keyboardType: TextInputType.multiline,
       maxLines: 5,

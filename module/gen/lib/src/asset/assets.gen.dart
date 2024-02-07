@@ -64,6 +64,9 @@ class $AssetsIconsGen {
   SvgGenImage get icCheckLine =>
       const SvgGenImage('assets/icons/ic_check_line.svg');
 
+  /// File path: assets/icons/ic_close.svg
+  SvgGenImage get icClose => const SvgGenImage('assets/icons/ic_close.svg');
+
   /// File path: assets/icons/ic_close_circle.svg
   SvgGenImage get icCloseCircle =>
       const SvgGenImage('assets/icons/ic_close_circle.svg');
@@ -179,6 +182,10 @@ class $AssetsIconsGen {
   SvgGenImage get icSelectBoxCircleFill =>
       const SvgGenImage('assets/icons/ic_select_box_circle_fill.svg');
 
+  /// File path: assets/icons/ic_share_box_fill.svg
+  SvgGenImage get icShareBoxFill =>
+      const SvgGenImage('assets/icons/ic_share_box_fill.svg');
+
   /// File path: assets/icons/ic_shield_star_line.svg
   SvgGenImage get icShieldStarLine =>
       const SvgGenImage('assets/icons/ic_shield_star_line.svg');
@@ -235,6 +242,7 @@ class $AssetsIconsGen {
         icCalendarEventLine,
         icCamera,
         icCheckLine,
+        icClose,
         icCloseCircle,
         icDot,
         icDownArrow,
@@ -267,6 +275,7 @@ class $AssetsIconsGen {
         icRequestEmpytList,
         icSelectBoxCircle,
         icSelectBoxCircleFill,
+        icShareBoxFill,
         icShieldStarLine,
         icStarEmpty,
         icStarFill,

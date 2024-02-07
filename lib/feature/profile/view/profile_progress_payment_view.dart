@@ -7,14 +7,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
 import 'package:kartal/kartal.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_container_chip.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_payroll_list_item.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_profile_header.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/empty_list_card.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view_model/cubit/profile_progress_payment_bloc.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view_model/mixin/profile_progress_paymnet_mixin.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view_model/state/profile_progress_payment_state.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
+import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
-import 'package:red_events_mobile_app_defult/product/utility/enums/module_enum.dart';
+import 'package:red_events_mobile_app_defult/product/widget/custom_divider.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:widgets/widgets.dart';
 
 @RoutePage()
@@ -33,6 +36,7 @@ class _ProfileProgressPaymentViewState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context),
+      // bottomNavigationBar: buildBottomNavigation(),
       body: BlocProvider(
         create: (context) => profileProgressPaymentBloc,
         child: Column(
@@ -46,13 +50,19 @@ class _ProfileProgressPaymentViewState
                 buildChipList(profileProgressPaymentBloc),
               ],
             ),
-            SizedBox(
-              height: 16.h,
+            BlocBuilder<ProfileProgressPaymentBloc,
+                ProfileProgressPaymentState>(
+              builder: (context, state) {
+                if (state.chipIndex) {
+                  return buildDateRow();
+                }
+                return const SizedBox();
+              },
             ),
             BlocBuilder<ProfileProgressPaymentBloc,
                 ProfileProgressPaymentState>(
               builder: (context, state) {
-                return state.chipIndex ? buildSummarySalary() : buildTitle();
+                return state.chipIndex ? const SizedBox() : buildTitle();
               },
             ),
             BlocBuilder<ProfileProgressPaymentBloc,
@@ -61,65 +71,7 @@ class _ProfileProgressPaymentViewState
                 return state.chipIndex
                     ? buildMainPage(context)
                     : state.isEmptyBordro
-                        ? Expanded(
-                            child: Padding(
-                              padding: const ProjectPadding.scaffold(),
-                              child: ListView.builder(
-                                itemCount: 3,
-                                itemBuilder: (context, index) => Padding(
-                                  padding:
-                                      const ProjectPadding.symmetricNormalV(),
-                                  child: Container(
-                                    padding: const ProjectPadding.allMedium(),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: ColorName.neutral200,
-                                      ),
-                                      borderRadius:
-                                          ProjectBorderRadius.allCircleNormal(),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Assets.icons.icPdfTemp.svg(
-                                              package: ModuleEnum.gen.value,
-                                              height: 40,
-                                              width: 40,
-                                            ),
-                                            Padding(
-                                              padding: const ProjectPadding
-                                                  .symmetricSmallH(),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  AutoSizeText(
-                                                    'Aralık 2023',
-                                                    style:
-                                                        textTheme.labelMedium,
-                                                  ),
-                                                  AutoSizeText(
-                                                    '120 mb',
-                                                    style: textTheme.labelSmall!
-                                                        .copyWith(
-                                                      color:
-                                                          ColorName.neutral400,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Assets.icons.icDownload.toGetSvg(),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
+                        ? buildPayrollPage()
                         : EmptyListWarning(
                             icon: Assets.icons.icProgressPaymentEmptyList
                                 .toGetSvg(),
@@ -131,6 +83,76 @@ class _ProfileProgressPaymentViewState
               },
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Expanded buildPayrollPage() {
+    return Expanded(
+      child: Padding(
+        padding: const ProjectPadding.scaffold(),
+        child: ListView.builder(
+          itemCount: 3,
+          itemBuilder: (context, index) => Padding(
+            padding: const ProjectPadding.symmetricNormalV(),
+            child: CustomPayrollListItem(
+              textTheme: textTheme,
+              text: 'Aralık 2023',
+              subText: '120 Mb',
+              isOk: index == 0 ? true : false,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Padding buildDateRow() {
+    return Padding(
+      padding: const ProjectPadding.scaffold().copyWith(top: 24, bottom: 12).r,
+      child: Container(
+        padding: const ProjectPadding.allSmall(),
+        decoration: BoxDecoration(
+          color: ColorName.neutral0,
+          borderRadius: ProjectBorderRadius.allCircleMedium().r,
+        ),
+        child: BlocBuilder<ProfileProgressPaymentBloc,
+            ProfileProgressPaymentState>(
+          builder: (context, state) {
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GestureDetector(
+                  onTap: subtractDate,
+                  child: Assets.icons.icArroeLeftS.toGetSvg(),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    buildShowModalBottomSheetDate(context);
+                  },
+                  child: Row(
+                    children: [
+                      Assets.icons.icCalendar.toGetSvg(),
+                      BlocConsumer<ProfileProgressPaymentBloc,
+                          ProfileProgressPaymentState>(
+                        listener: (context, state) {
+                          fixDateFormat(state.selectedMonth);
+                        },
+                        builder: (context, state) {
+                          return AutoSizeText(selectedDateString);
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+                GestureDetector(
+                  onTap: addDate,
+                  child: Assets.icons.icArrowRightS.toGetSvg(),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
@@ -162,11 +184,7 @@ class _ProfileProgressPaymentViewState
                 Container(
                   decoration: BoxDecoration(
                     color: ColorName.neutral0,
-                    border: Border.all(
-                      color: ColorName.neutral200,
-                      width: 2,
-                    ),
-                    borderRadius: ProjectBorderRadius.allCircleNormal().r,
+                    borderRadius: ProjectBorderRadius.allCircleMedium().r,
                   ),
                   width: context.sized.width,
                   padding: const ProjectPadding.symmetricNormalH()
@@ -176,20 +194,23 @@ class _ProfileProgressPaymentViewState
                     children: [
                       buildSalarySum(),
                       buildSalaryDetailCard(),
+                      // Padding(
+                      //   padding: const ProjectPadding.symmetricMediumV(),
+                      //   child: buildSalaryDetailCard(),
+                      // ),
+                      // buildSalaryDetailCard(),
+                      // buildSumLine(
+                      //   amount: '39.000',
+                      //   amountColor: ColorName.neutral900,
+                      // ),
                       Padding(
                         padding: const ProjectPadding.symmetricMediumV(),
-                        child: buildSalaryDetailCard(),
+                        child: buildExpenseCard(),
                       ),
-                      buildSalaryDetailCard(),
-                      buildSumLine(
-                        amount: '39.000',
-                        amountColor: ColorName.neutral900,
-                      ),
-                      buildExpenseCard(),
-                      buildSumLine(
-                        amount: '7.000 TL',
-                        amountColor: ColorName.redBase,
-                      ),
+                      // buildSumLine(
+                      //   amount: '7.000 TL',
+                      //   amountColor: ColorName.redBase,
+                      // ),
                     ],
                   ),
                 ),
@@ -203,45 +224,59 @@ class _ProfileProgressPaymentViewState
 
   Container buildExpenseCard() {
     return Container(
-      padding: const EdgeInsets.all(12).r,
+      // padding: const EdgeInsets.all(12).r,
       decoration: BoxDecoration(
         border: Border.all(color: ColorName.neutral200),
         borderRadius: ProjectBorderRadius.allCircleNormal().r,
       ),
       child: Column(
         children: [
-          Row(
-            children: [
-              AutoSizeText(
-                '12 Ekim',
-                style: textTheme.bodySmall,
-              ),
-              Padding(
-                padding: const ProjectPadding.symmetricSmallH(),
-                child: AutoSizeText(
-                  '07:00 - 17:00',
-                  style: textTheme.bodySmall!.copyWith(
-                    color: ColorName.neutral400,
-                  ),
-                ),
-              ),
-            ],
-          ),
+          // Row(
+          //   children: [
+          //     AutoSizeText(
+          //       '12 Ekim',
+          //       style: textTheme.bodySmall,
+          //     ),
+          //     Padding(
+          //       padding: const ProjectPadding.symmetricSmallH(),
+          //       child: AutoSizeText(
+          //         '07:00 - 17:00',
+          //         style: textTheme.bodySmall!.copyWith(
+          //           color: ColorName.neutral400,
+          //         ),
+          //       ),
+          //     ),
+          //   ],
+          // ),
+          buildSumLineText(leftText: 'Net Maaş', rightText: '', showIcon: true),
           const Divider(
             color: ColorName.neutral200,
             height: 2,
           ),
           buildLineTexRed(
-            label: LocaleKeys.profile_progress_payment_break_time,
+            label: LocaleKeys.profile_progress_payment_sum__expense_progress,
             text: '-500 TL',
           ),
           buildLineTexRed(
-            label: LocaleKeys.profile_progress_payment_performing,
+            label: LocaleKeys.profile_progress_payment_sum_expense_food,
             text: '-2.500 TL',
           ),
           buildLineTexRed(
-            label: LocaleKeys.profile_progress_payment_advance_payment,
+            label: LocaleKeys.profile_progress_payment_break_time,
             text: '-7.500 TL',
+          ),
+          buildLineTexRed(
+            label: LocaleKeys.profile_progress_payment_sum_avans,
+            text: '-7.500 TL',
+          ),
+          const Divider(
+            color: ColorName.neutral200,
+            height: 2,
+          ),
+          buildColorSumLineText(
+            leftString: LocaleKeys.profile_progress_payment_sum_progress,
+            rightText: '-4.000 TL',
+            textColor: ColorName.redBase,
           ),
         ],
       ),
@@ -279,65 +314,115 @@ class _ProfileProgressPaymentViewState
     );
   }
 
-  Container buildSalaryDetailCard() {
-    return Container(
-      padding: const EdgeInsets.all(12).r,
-      decoration: BoxDecoration(
-        border: Border.all(color: ColorName.neutral200),
-        borderRadius: ProjectBorderRadius.allCircleNormal().r,
+  GestureDetector buildSalaryDetailCard() {
+    return GestureDetector(
+      onTap: () => context.router.push(
+        ProgressPaymentDetailRoute(
+          appBarTitle: LocaleKeys.profile_progress_payment_daily_detail,
+        ),
       ),
-      child: Column(
+      child: Container(
+        // padding: const EdgeInsets.all(12).r,
+        decoration: BoxDecoration(
+          border: Border.all(color: ColorName.neutral200),
+          borderRadius: ProjectBorderRadius.allCircleNormal().r,
+        ),
+        child: Column(
+          children: [
+            buildSumLineText(
+              leftText: 'Günlük Hakediş',
+              rightText: '29.000,00 TL',
+              showIcon: true,
+            ),
+            const Divider(
+              color: ColorName.neutral200,
+              height: 2,
+            ),
+            buildLineText(
+              label: LocaleKeys.profile_progress_payment_sum_progress,
+              text: '20.000,00',
+            ),
+            buildLineText(
+              label: LocaleKeys.profile_progress_payment_sum_day,
+              text: '4 gün',
+            ),
+            buildLineText(
+              label: LocaleKeys.profile_progress_payment_sum_work_hour,
+              text: '1 saat',
+            ),
+            buildLineText(
+              label: LocaleKeys.profile_progress_payment_sum_work_amount,
+              text: '1.000,00',
+            ),
+            const Divider(
+              color: ColorName.neutral200,
+              height: 2,
+            ),
+            buildColorSumLineText(
+              leftString: LocaleKeys.profile_progress_payment_sum_progress,
+              rightText: '29.000,00 TL',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Container buildColorSumLineText({
+    required String leftString,
+    required String rightText,
+    Color? textColor,
+  }) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: ColorName.neutral200,
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(20),
+          bottomRight: Radius.circular(20),
+        ),
+      ),
+      child: buildSumLineText(
+        leftText: leftString,
+        rightText: rightText,
+        textColor: textColor,
+      ),
+    );
+  }
+
+  Padding buildSumLineText({
+    required String leftText,
+    required String rightText,
+    bool showIcon = false,
+    Color? textColor,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12).r,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          AutoSizeText(
+            leftText.tr(),
+            style: textTheme.titleMedium!.copyWith(
+              color: ColorName.neutral700,
+              fontWeight: FontWeight.w900,
+            ),
+          ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                children: [
-                  AutoSizeText(
-                    '12 Ekim',
-                    style: textTheme.bodySmall,
-                  ),
-                  Padding(
-                    padding: const ProjectPadding.symmetricSmallH(),
-                    child: AutoSizeText(
-                      '07:00 - 17:00',
-                      style: textTheme.bodySmall!.copyWith(
-                        color: ColorName.neutral400,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Chip(
-                shape: const StadiumBorder(),
-                labelStyle: textTheme.labelSmall,
-                backgroundColor: ColorName.greenLight,
-                side: BorderSide.none,
-                label: const AutoSizeText(
-                  'Maaş',
+              AutoSizeText(
+                rightText,
+                style: textTheme.titleMedium!.copyWith(
+                  color: textColor ?? ColorName.neutral700,
+                  fontWeight: FontWeight.w900,
                 ),
               ),
+              if (showIcon)
+                Padding(
+                  padding: const ProjectPadding.symmetricXSmallH(),
+                  child: Assets.icons.icEye
+                      .toGetSvgWithColor(color: ColorName.blueBase),
+                ),
             ],
-          ),
-          const Divider(
-            color: ColorName.neutral200,
-            height: 2,
-          ),
-          buildLineText(
-            label: LocaleKeys.profile_progress_payment_departmant,
-            text: 'Manzara Restaurant',
-          ),
-          buildLineText(
-            label: LocaleKeys.profile_progress_payment_amount,
-            text: '20.000,00',
-          ),
-          buildLineText(
-            label: LocaleKeys.profile_progress_payment_working_hour,
-            text: 'Manzara Restaurant',
-          ),
-          buildLineText(
-            label: LocaleKeys.profile_progress_payment_overtime_amount,
-            text: 'Manzara Restaurant',
           ),
         ],
       ),
@@ -358,9 +443,25 @@ class _ProfileProgressPaymentViewState
             style: textTheme.headlineLarge,
           ),
         ),
-        AutoSizeText(
-          '${LocaleKeys.profile_progress_payment_working_hour.tr()}:',
-          style: textTheme.labelSmall!.copyWith(color: ColorName.neutral400),
+        const Padding(
+          padding: ProjectPadding.symmetricSmallV(),
+          child: Divider(
+            color: ColorName.neutral200,
+            height: 2,
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            buildSumColumn(
+              title: LocaleKeys.profile_progress_payment_sum_progress,
+              amount: '4.000 TL',
+            ),
+            buildSumColumn(
+              title: LocaleKeys.profile_progress_payment_sum_missing_progress,
+              amount: '4.000 TL',
+            ),
+          ],
         ),
         SizedBox(
           height: 24.h,
@@ -369,9 +470,25 @@ class _ProfileProgressPaymentViewState
     );
   }
 
+  Column buildSumColumn({required String amount, required String title}) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        AutoSizeText(
+          title.tr(),
+          style: textTheme.labelSmall!.copyWith(color: ColorName.neutral400),
+        ),
+        AutoSizeText(
+          amount,
+          style: textTheme.labelMedium,
+        ),
+      ],
+    );
+  }
+
   Padding buildLineText({required String label, required String text}) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10).r,
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12).r,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -395,7 +512,7 @@ class _ProfileProgressPaymentViewState
 
   Padding buildLineTexRed({required String label, required String text}) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10).r,
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12).r,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -414,68 +531,6 @@ class _ProfileProgressPaymentViewState
           ),
         ],
       ),
-    );
-  }
-
-  Expanded buildSummarySalary() {
-    return Expanded(
-      child: Padding(
-        padding: const ProjectPadding.scaffold(),
-        child: ListView(
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(12).r,
-              height: 64.h,
-              decoration: BoxDecoration(
-                color: ColorName.neutral0,
-                border: Border.all(color: ColorName.neutral200, width: 2),
-                borderRadius: ProjectBorderRadius.allCircleNormal().r,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  buildCustomAmount(
-                    amount: '20.000',
-                    type: LocaleKeys.profile_progress_payment_salary,
-                  ),
-                  const VerticalDivider(),
-                  buildCustomAmount(
-                    amount: '500',
-                    type: LocaleKeys.profile_progress_payment_daily_salary,
-                  ),
-                  const VerticalDivider(),
-                  buildCustomAmount(
-                    amount: '80',
-                    type: LocaleKeys.profile_progress_payment_working_hour,
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Column buildCustomAmount({required String amount, required String type}) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Expanded(
-          child: AutoSizeText(
-            '$amount ₺',
-            style: textTheme.labelMedium,
-          ),
-        ),
-        Expanded(
-          child: AutoSizeText(
-            type.tr(),
-            style: textTheme.labelSmall!.copyWith(color: ColorName.neutral400),
-          ),
-        ),
-      ],
     );
   }
 
@@ -516,50 +571,6 @@ class _ProfileProgressPaymentViewState
     );
   }
 
-  // Padding buildChipList() {
-  //   return Padding(
-  //     padding: const ProjectPadding.scaffold(),
-  //     child: SizedBox(
-  //       height: 47.h,
-  //       child: BlocBuilder<ProfileProgressPaymentBloc,
-  //           ProfileProgressPaymentState>(
-  //         builder: (context, state) {
-  //           return ListView.builder(
-  //             scrollDirection: Axis.horizontal,
-  //             itemCount: ProgressPaymentChipEnum.values.length,
-  //             itemBuilder: (BuildContext context, int index) {
-  //               return buildChip(index, state);
-  //             },
-  //           );
-  //         },
-  //       ),
-  //     ),
-  //   );
-  // }
-
-  // Padding buildChip(int index, ProfileProgressPaymentState state) {
-  //   return Padding(
-  //     padding: const ProjectPadding.symmetricXSmallH(),
-  //     child: GestureDetector(
-  //       onTap: () {
-  //         profileProgressPaymentBloc.changeChipIndex(index);
-  //       },
-  //       child: Container(
-  //         padding: const ProjectPadding.customChipPaddingLarge(),
-  //         decoration: BoxDecoration(
-  //           borderRadius: ProjectBorderRadius.allCircleMedium(),
-  //           color: state.chipIndex == index
-  //               ? ColorName.blueBase
-  //               : ColorName.neutral200,
-  //         ),
-  //         child: AutoSizeText(
-  //           ProgressPaymentChipEnum.values[index].value.tr(),
-  //           style: textTheme.,
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
   Padding buildChipList(ProfileProgressPaymentBloc profileProgressPaymentBloc) {
     return Padding(
       padding: const ProjectPadding.scaffold().copyWith(top: 12, bottom: 12).r,
@@ -572,19 +583,72 @@ class _ProfileProgressPaymentViewState
               CustomContainerChip(
                 textTheme: textTheme,
                 chipIndex: state.chipIndex,
-                text: LocaleKeys.add_personnel_document_loaded_documents,
+                text: LocaleKeys.profile_progress_payment_chips_payment,
                 onTap: profileProgressPaymentBloc.changeChipIndex,
               ),
               CustomContainerChip(
                 textTheme: textTheme,
                 chipIndex: !state.chipIndex,
-                text: LocaleKeys.add_personnel_document_missing_documents,
+                text: LocaleKeys.profile_progress_payment_chips_payroll,
                 onTap: profileProgressPaymentBloc.changeChipIndex,
               ),
             ],
           );
         },
       ),
+    );
+  }
+
+  Future<void> buildShowModalBottomSheetDate(BuildContext context) {
+    return showModalBottomSheet<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          height: 350.h,
+          decoration: const BoxDecoration(
+            color: ColorName.neutral0,
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(30),
+              topLeft: Radius.circular(30),
+            ),
+          ),
+          child: Padding(
+            padding: const ProjectPadding.allMedium().r,
+            child: Column(
+              children: [
+                const Padding(
+                  padding: ProjectPadding.symmetricSmallV(),
+                  child: CustomDivider(),
+                ),
+                SfDateRangePicker(
+                  controller: datePickerController,
+                  showNavigationArrow: true,
+                  headerStyle: DateRangePickerHeaderStyle(
+                    textStyle: textTheme.headlineSmall!
+                        .copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  view: DateRangePickerView.year,
+                  onViewChanged: (DateRangePickerViewChangedArgs args) {
+                    if (args.view.index < 1 || args.view.index > 2) {
+                      changeDate(args.visibleDateRange.startDate!);
+                      context.router.pop();
+                      datePickerController.view = DateRangePickerView.year;
+                    }
+                  },
+                  yearCellStyle: const DateRangePickerYearCellStyle(
+                    todayCellDecoration:
+                        BoxDecoration(color: ColorName.neutral0),
+                    todayTextStyle: TextStyle(color: ColorName.neutral700),
+                  ),
+                  minDate: minDate,
+                  initialSelectedDate: selectedDate,
+                  maxDate: maxDate,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

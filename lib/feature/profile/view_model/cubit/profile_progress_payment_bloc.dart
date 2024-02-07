@@ -7,15 +7,21 @@ class ProfileProgressPaymentBloc
   ///
   ProfileProgressPaymentBloc()
       : super(
-          const ProfileProgressPaymentState(
+          ProfileProgressPaymentState(
             isLoading: false,
             chipIndex: true,
             isEmptyBordro: true,
+            selectedMonth: DateTime.now(),
           ),
         );
 
   /// change value obscure
   void changeChipIndex() {
     emit(state.copyWith(chipIndex: !state.chipIndex));
+  }
+
+  /// For change selected date
+  void changeMonth(DateTime date) {
+    emit(state.copyWith(selectedMonth: date));
   }
 }

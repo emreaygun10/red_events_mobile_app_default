@@ -10,10 +10,10 @@ class CustomDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 60.w,
+      width: 40.w,
       child: Divider(
         color: ColorName.neutral900,
-        height: 10.h,
+        height: 13.h,
       ),
     );
   }

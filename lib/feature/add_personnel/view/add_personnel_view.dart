@@ -57,14 +57,14 @@ class AddPersonnelView extends StatelessWidget {
           child: CustomListContainer(
             preFix:
                 Assets.icons.icFolderOpen.svg(package: ModuleEnum.gen.value),
-            text: LocaleKeys.add_personnel_base_information,
+            text: LocaleKeys.add_personnel_hr_information,
           ),
         ),
 
         /// TODO: Üyelik leveline göre burayı kapat
         CustomListContainer(
           preFix: Assets.icons.icTodo.svg(package: ModuleEnum.gen.value),
-          text: LocaleKeys.add_personnel_base_information,
+          text: LocaleKeys.add_personnel_documents,
         ),
       ],
     );
@@ -105,7 +105,7 @@ AppBar buildAppBar(BuildContext context) {
     actions: [
       TextButton(
         onPressed: () {
-          context.router.push(const ProfileRoute());
+          context.router.push(const BottomNAvigationBarRoute());
         },
         child: const Text(
           'Profil',

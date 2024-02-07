@@ -4,6 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_logger/easy_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:kartal/kartal.dart';
 import 'package:logger/logger.dart';
 import 'package:red_events_mobile_app_defult/product/init/config/product_environment.dart';
@@ -29,6 +30,7 @@ final class ApplicationInitialize {
     await SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp],
     );
+    await Jiffy.setLocale('tr');
 
     /// TODO: init package move to splash
     await DeviceUtility.instance.initPackageInfo();

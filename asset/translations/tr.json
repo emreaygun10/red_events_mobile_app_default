@@ -16,7 +16,9 @@
             "gallery": "Galeriden Seç",
             "create_personnel": "Personel Oluştur",
             "okay": "Tamam",
-            "continue": "Devam"
+            "continue": "Devam",
+            "approve": "Onayla",
+            "oppose": "İtiraz Et"
         },
         "dialog": {
             "version": {
@@ -177,6 +179,7 @@
                 "request_to_permission": "İzin Talebi",
                 "request_to_advance_payment": "Avans Talebi",
                 "report_notification": "Rapor Bildirimi",
+                "payroll_request": "Bordro İtiraz Talebi",
                 "others": "Diğer"
             },
             "detail_page": {
@@ -215,12 +218,16 @@
         "progress_payment": {
             "chips": {
                 "payment": "Hakediş",
-                "payroll": "Bordro"
+                "payroll": "Bordro",
+                "manager_selection": "Yönetici Seçimi",
+                "max_manager": "En fazla 2 yönetici seçebiliriniz",
+                "button": "Talebi Gönder",
+                "info": "Bordro itiraz talebiniz başarıyla gönderildi."
             },
             "salary": "Maaş",
             "daily_salary": "Günlük",
             "working_hour": "Mesai saati",
-            "sum": "Toplam",
+            "sum": "Kalan Tutar",
             "break_time": "Mola",
             "performing": "İcra",
             "advance_payment": "Avans",
@@ -228,7 +235,19 @@
             "overtime_amount": "Mesai Tutarı",
             "departmant": "Bölüm",
             "reports": "BORDROLARIM",
-            "empty_list": "Ouşturulmuş bordronuz bulunmamaktadır."
+            "empty_list": "Ouşturulmuş bordronuz bulunmamaktadır.",
+            "success_toast": "Bordronuzu Onayladınız",
+            "sum_progress": "Toplam Kazanç",
+            "sum_missing_progress": "Toplam Kesinti",
+            "sum_day": "Toplam Çalıştığı Gün",
+            "sum_work_hour": "Toplam Mesai Saati",
+            "sum_work_amount": "Toplam Mesai Tutarı",
+            "sum__expense_progress": "Toplam İcra",
+            "sum_expense_food": "Toplam Yemek",
+            "sum_expense_break_time": "Toplam Mola",
+            "sum_avans": "Toplam Avans",
+            "daily_detail": "Günlük Hakediş Detayı",
+            "sum_summary": "Toplam Tutar"
         }
     }
 }

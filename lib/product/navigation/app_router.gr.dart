@@ -116,6 +116,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ProfileRequestOthersView(),
       );
     },
+    ProfileRequestPayrollRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ProfileRequestPayrollView(),
+      );
+    },
     ProfileRequestPermissionRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -138,6 +144,22 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const ProfileView(),
+      );
+    },
+    ProgressPaymentDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<ProgressPaymentDetailRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ProgressPaymentDetailView(
+          appBarTitle: args.appBarTitle,
+          key: args.key,
+        ),
+      );
+    },
+    ProgressPaymentDocumentReadRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ProgressPaymentDocumentReadView(),
       );
     },
     QRCameraRoute.name: (routeData) {
@@ -422,6 +444,20 @@ class ProfileRequestOthersRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ProfileRequestPayrollView]
+class ProfileRequestPayrollRoute extends PageRouteInfo<void> {
+  const ProfileRequestPayrollRoute({List<PageRouteInfo>? children})
+      : super(
+          ProfileRequestPayrollRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfileRequestPayrollRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [ProfileRequestPermissionView]
 class ProfileRequestPermissionRoute extends PageRouteInfo<void> {
   const ProfileRequestPermissionRoute({List<PageRouteInfo>? children})
@@ -473,6 +509,59 @@ class ProfileRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ProfileRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ProgressPaymentDetailView]
+class ProgressPaymentDetailRoute
+    extends PageRouteInfo<ProgressPaymentDetailRouteArgs> {
+  ProgressPaymentDetailRoute({
+    required String appBarTitle,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ProgressPaymentDetailRoute.name,
+          args: ProgressPaymentDetailRouteArgs(
+            appBarTitle: appBarTitle,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ProgressPaymentDetailRoute';
+
+  static const PageInfo<ProgressPaymentDetailRouteArgs> page =
+      PageInfo<ProgressPaymentDetailRouteArgs>(name);
+}
+
+class ProgressPaymentDetailRouteArgs {
+  const ProgressPaymentDetailRouteArgs({
+    required this.appBarTitle,
+    this.key,
+  });
+
+  final String appBarTitle;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ProgressPaymentDetailRouteArgs{appBarTitle: $appBarTitle, key: $key}';
+  }
+}
+
+/// generated route for
+/// [ProgressPaymentDocumentReadView]
+class ProgressPaymentDocumentReadRoute extends PageRouteInfo<void> {
+  const ProgressPaymentDocumentReadRoute({List<PageRouteInfo>? children})
+      : super(
+          ProgressPaymentDocumentReadRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProgressPaymentDocumentReadRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

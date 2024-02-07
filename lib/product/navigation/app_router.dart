@@ -19,9 +19,12 @@ import 'package:red_events_mobile_app_defult/feature/profile/view/profile_progre
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_request_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_request_view_detail_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_view.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/progress_payment_views/progress_payment_detail_view.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/progress_payment_views/progress_payment_document_read_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_advance_payment_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_leave_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_others_view.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_payroll_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_permission_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_report_view.dart';
 
@@ -57,5 +60,8 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: ProfileRequestLeaveRoute.page),
         AutoRoute(page: ProfileRequestOthersRoute.page),
         AutoRoute(page: QRCameraRoute.page),
+        AutoRoute(page: ProfileRequestPayrollRoute.page),
+        AutoRoute(page: ProgressPaymentDetailRoute.page),
+        AutoRoute(page: ProgressPaymentDocumentReadRoute.page),
       ];
 }
