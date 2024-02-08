@@ -6,9 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_account_operation_item.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_chip.dart';
-import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_description_row.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_profile_image_row.dart';
-import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_second_description_row.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
 import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:red_events_mobile_app_defult/product/utility/enums/module_enum.dart';
@@ -22,14 +20,14 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //extendBodyBehindAppBar: true,
-      appBar: buildAppBar(),
+      extendBodyBehindAppBar: true,
+      //appBar: buildAppBar(),
       body: Column(
         //physics: const NeverScrollableScrollPhysics(),
         //padding: EdgeInsets.zero,
         children: [
           Container(
-            height: 255.h,
+            height: 340.h,
             decoration: const BoxDecoration(
               color: Colors.white,
               gradient: LinearGradient(
@@ -41,7 +39,7 @@ class ProfileView extends StatelessWidget {
                 ],
                 stops: [
                   0.0,
-                  0.8,
+                  0.7,
                 ],
               ),
             ),
@@ -49,6 +47,7 @@ class ProfileView extends StatelessWidget {
           ),
           Expanded(
             child: ListView(
+              padding: EdgeInsets.zero,
               children: [
                 buildAccountOperationText(context),
                 buildOperationsList(),
@@ -65,11 +64,12 @@ class ProfileView extends StatelessWidget {
     return AppBar(
       surfaceTintColor: Colors.transparent,
       automaticallyImplyLeading: false,
-      backgroundColor: ColorName.blueBase,
+      backgroundColor: Colors.transparent,
       actions: [
         Padding(
           padding: const ProjectPadding.scaffold(),
-          child: Assets.icons.icEditLine.svg(package: ModuleEnum.gen.value),
+          child: Assets.icons.icNotification4Line
+              .svg(package: ModuleEnum.gen.value),
         ),
       ],
     );
@@ -134,7 +134,7 @@ class ProfileView extends StatelessWidget {
 
   Padding buildAccountOperationText(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 20, bottom: 12, top: 12).r,
+      padding: const EdgeInsets.only(left: 20, bottom: 12, top: 24).r,
       child: AutoSizeText(
         LocaleKeys.profile_account_operations.tr(),
         style: Theme.of(context)
@@ -146,20 +146,29 @@ class ProfileView extends StatelessWidget {
   }
 
   ///include user information
-  Container buildProfileTopContainer(BuildContext context) {
-    return Container(
+  ColoredBox buildProfileTopContainer(BuildContext context) {
+    return ColoredBox(
       color: Colors.transparent,
       child: Column(
         children: [
+          buildAppBar(),
           const CustomProfileImageRow(jobText: 'Garson'),
-          const Spacer(),
           buildDescriptionStringColumn(context),
-          const Spacer(
-            flex: 3,
-          ),
           buildChipRow(),
-          const Spacer(
-            flex: 3,
+          Padding(
+            padding: const ProjectPadding.symmetricMediumV().r,
+            child: TextButton(
+              child: AutoSizeText(
+                LocaleKeys.profile_more_info.tr(),
+                style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      color: ColorName.neutral400,
+                      decoration: TextDecoration.underline,
+                    ),
+              ),
+              onPressed: () {
+                context.router.push(const ProfileDetailRoute());
+              },
+            ),
           ),
         ],
       ),
@@ -170,17 +179,14 @@ class ProfileView extends StatelessWidget {
   SizedBox buildChipRow() {
     return SizedBox(
       height: 28.h,
-      child: Row(
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CustomChip(
             text: 'Food & Beverage',
-            avatar:
-                Assets.icons.icSuitcaseLine.svg(package: ModuleEnum.gen.value),
           ),
           CustomChip(
             text: 'Manzara Restaurant',
-            avatar: Assets.icons.icBuilding.svg(package: ModuleEnum.gen.value),
           ),
         ],
       ),
@@ -188,26 +194,13 @@ class ProfileView extends StatelessWidget {
   }
 
   /// include user description
-  Column buildDescriptionStringColumn(BuildContext context) {
-    return Column(
-      children: [
-        AutoSizeText(
-          'Başak Yılmaz Güven, 35',
-          style: Theme.of(context).textTheme.labelMedium,
-        ),
-        const Padding(
-          padding: ProjectPadding.symmetricSmallV(),
-          child: CustomDescriptionRow(
-            firstText: '53478556344',
-            secondText: 'İstabul, Beşiktaş',
-            rating: '4.2',
-          ),
-        ),
-        const CustomSecondDescriptionRow(
-          firstText: 'ellen.rose@gmail.com',
-          secondText: '+90 (555) 555 55 55',
-        ),
-      ],
+  Padding buildDescriptionStringColumn(BuildContext context) {
+    return Padding(
+      padding: const ProjectPadding.symmetricNormalH().copyWith(bottom: 20).r,
+      child: AutoSizeText(
+        'Başak Yılmaz Güven, 35',
+        style: Theme.of(context).textTheme.labelMedium,
+      ),
     );
   }
 }

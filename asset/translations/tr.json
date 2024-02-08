@@ -139,6 +139,28 @@
     },
     "profile": {
         "account_operations": "Hesap İşlemleri",
+        "more_info": "+ Daha fazla bilgi",
+        "profile_detail": {
+            "button": "Bilgi değişikliği talebinde bulun",
+            "title": "Kişi Detayı",
+            "personel_info": "KİŞİSEL BİLGİLER",
+            "age": "Yaş",
+            "tc": "TC Kimlik No",
+            "address": "Adres",
+            "mail": "Mail",
+            "phone_number": "Telefon Numarası",
+            "bload_type": "Kan Grubu",
+            "emergy_sitation": "Acil Durum"
+        },
+        "work_info": {
+            "title": "ÇALIŞMA BİLGİSİ",
+            "departmanent": "Departman",
+            "Type": "Bölüm",
+            "mission": "Görev",
+            "work_type": "Çalışma Şekli",
+            "started_date": "Başlama Tarihi",
+            "performance": "Performans"
+        },
         "list": {
             "progress_payment": "Hakediş",
             "files": "Evraklar",

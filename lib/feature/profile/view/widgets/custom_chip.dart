@@ -8,12 +8,10 @@ import 'package:widgets/widgets.dart';
 final class CustomChip extends StatelessWidget {
   const CustomChip({
     required this.text,
-    required this.avatar,
     super.key,
   });
 
   final String text;
-  final Widget avatar;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +25,6 @@ final class CustomChip extends StatelessWidget {
             .copyWith(color: ColorName.neutral500),
       ),
       backgroundColor: ColorName.neutral100,
-      avatar: avatar,
       shape: const StadiumBorder(),
       side: BorderSide.none,
     );

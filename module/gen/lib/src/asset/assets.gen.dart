@@ -25,6 +25,12 @@ class $AssetsColorGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/ic_address.svg
+  SvgGenImage get icAddress => const SvgGenImage('assets/icons/ic_address.svg');
+
+  /// File path: assets/icons/ic_age.svg
+  SvgGenImage get icAge => const SvgGenImage('assets/icons/ic_age.svg');
+
   /// File path: assets/icons/ic_arroe_left_s.svg
   SvgGenImage get icArroeLeftS =>
       const SvgGenImage('assets/icons/ic_arroe_left_s.svg');
@@ -53,12 +59,20 @@ class $AssetsIconsGen {
   SvgGenImage get icCalendar =>
       const SvgGenImage('assets/icons/ic_calendar.svg');
 
+  /// File path: assets/icons/ic_calendar_event.svg
+  SvgGenImage get icCalendarEvent =>
+      const SvgGenImage('assets/icons/ic_calendar_event.svg');
+
   /// File path: assets/icons/ic_calendar_event_line.svg
   SvgGenImage get icCalendarEventLine =>
       const SvgGenImage('assets/icons/ic_calendar_event_line.svg');
 
   /// File path: assets/icons/ic_camera.svg
   SvgGenImage get icCamera => const SvgGenImage('assets/icons/ic_camera.svg');
+
+  /// File path: assets/icons/ic_cellphone.svg
+  SvgGenImage get icCellphone =>
+      const SvgGenImage('assets/icons/ic_cellphone.svg');
 
   /// File path: assets/icons/ic_check_line.svg
   SvgGenImage get icCheckLine =>
@@ -70,6 +84,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_close_circle.svg
   SvgGenImage get icCloseCircle =>
       const SvgGenImage('assets/icons/ic_close_circle.svg');
+
+  /// File path: assets/icons/ic_contacts_book.svg
+  SvgGenImage get icContactsBook =>
+      const SvgGenImage('assets/icons/ic_contacts_book.svg');
 
   /// File path: assets/icons/ic_dot.svg
   SvgGenImage get icDot => const SvgGenImage('assets/icons/ic_dot.svg');
@@ -113,6 +131,10 @@ class $AssetsIconsGen {
   SvgGenImage get icFolderShieldLine =>
       const SvgGenImage('assets/icons/ic_folder_shield_line.svg');
 
+  /// File path: assets/icons/ic_heart_pulse.svg
+  SvgGenImage get icHeartPulse =>
+      const SvgGenImage('assets/icons/ic_heart_pulse.svg');
+
   /// File path: assets/icons/ic_home.svg
   SvgGenImage get icHome => const SvgGenImage('assets/icons/ic_home.svg');
 
@@ -123,6 +145,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_home_office.svg
   SvgGenImage get icHomeOffice =>
       const SvgGenImage('assets/icons/ic_home_office.svg');
+
+  /// File path: assets/icons/ic_identity.svg
+  SvgGenImage get icIdentity =>
+      const SvgGenImage('assets/icons/ic_identity.svg');
 
   /// File path: assets/icons/ic_lock.svg
   SvgGenImage get icLock => const SvgGenImage('assets/icons/ic_lock.svg');
@@ -138,9 +164,17 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_mail.svg
   SvgGenImage get icMail => const SvgGenImage('assets/icons/ic_mail.svg');
 
+  /// File path: assets/icons/ic_mail_check_line.svg
+  SvgGenImage get icMailCheckLine =>
+      const SvgGenImage('assets/icons/ic_mail_check_line.svg');
+
   /// File path: assets/icons/ic_newspaper.svg
   SvgGenImage get icNewspaper =>
       const SvgGenImage('assets/icons/ic_newspaper.svg');
+
+  /// File path: assets/icons/ic_notification_4_line.svg
+  SvgGenImage get icNotification4Line =>
+      const SvgGenImage('assets/icons/ic_notification_4_line.svg');
 
   /// File path: assets/icons/ic_null_education.svg
   SvgGenImage get icNullEducation =>
@@ -190,6 +224,9 @@ class $AssetsIconsGen {
   SvgGenImage get icShieldStarLine =>
       const SvgGenImage('assets/icons/ic_shield_star_line.svg');
 
+  /// File path: assets/icons/ic_star.svg
+  SvgGenImage get icStar => const SvgGenImage('assets/icons/ic_star.svg');
+
   /// File path: assets/icons/ic_star_empty.svg
   SvgGenImage get icStarEmpty =>
       const SvgGenImage('assets/icons/ic_star_empty.svg');
@@ -202,9 +239,16 @@ class $AssetsIconsGen {
   SvgGenImage get icStickyNoteLine =>
       const SvgGenImage('assets/icons/ic_sticky_note_line.svg');
 
+  /// File path: assets/icons/ic_suitcase.svg
+  SvgGenImage get icSuitcase =>
+      const SvgGenImage('assets/icons/ic_suitcase.svg');
+
   /// File path: assets/icons/ic_suitcase_line.svg
   SvgGenImage get icSuitcaseLine =>
       const SvgGenImage('assets/icons/ic_suitcase_line.svg');
+
+  /// File path: assets/icons/ic_time.svg
+  SvgGenImage get icTime => const SvgGenImage('assets/icons/ic_time.svg');
 
   /// File path: assets/icons/ic_todo.svg
   SvgGenImage get icTodo => const SvgGenImage('assets/icons/ic_todo.svg');
@@ -214,6 +258,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/ic_us.svg
   SvgGenImage get icUs => const SvgGenImage('assets/icons/ic_us.svg');
+
+  /// File path: assets/icons/ic_user_2.svg
+  SvgGenImage get icUser2 => const SvgGenImage('assets/icons/ic_user_2.svg');
 
   /// File path: assets/icons/ic_user_fill.svg
   SvgGenImage get icUserFill =>
@@ -232,6 +279,8 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [
+        icAddress,
+        icAge,
         icArroeLeftS,
         icArrowLeftLine,
         icArrowRight,
@@ -239,11 +288,14 @@ class $AssetsIconsGen {
         icBankCardLine,
         icBuilding,
         icCalendar,
+        icCalendarEvent,
         icCalendarEventLine,
         icCamera,
+        icCellphone,
         icCheckLine,
         icClose,
         icCloseCircle,
+        icContactsBook,
         icDot,
         icDownArrow,
         icDownload,
@@ -256,14 +308,18 @@ class $AssetsIconsGen {
         icFileMarkLine,
         icFolderOpen,
         icFolderShieldLine,
+        icHeartPulse,
         icHome,
         icHomeBottomBar,
         icHomeOffice,
+        icIdentity,
         icLock,
         icLogoBlue,
         icLogoDark,
         icMail,
+        icMailCheckLine,
         icNewspaper,
+        icNotification4Line,
         icNullEducation,
         icPage,
         icPdf,
@@ -277,13 +333,17 @@ class $AssetsIconsGen {
         icSelectBoxCircleFill,
         icShareBoxFill,
         icShieldStarLine,
+        icStar,
         icStarEmpty,
         icStarFill,
         icStickyNoteLine,
+        icSuitcase,
         icSuitcaseLine,
+        icTime,
         icTodo,
         icTr,
         icUs,
+        icUser2,
         icUserFill,
         icUserShared,
         icWhatsApp,
