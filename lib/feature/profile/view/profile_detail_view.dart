@@ -255,8 +255,10 @@ class ProfileDetailView extends StatelessWidget {
                 height: 64.h,
                 width: 64.w,
                 child: const CircleAvatar(
-                  backgroundImage:
-                      NetworkImage('https://via.placeholder.com/64x64'),
+                  backgroundImage: NetworkImage(
+                    'https://gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
+                  ),
+                  //NetworkImage('https://via.placeholder.com/64x64'),
                 ),
               ),
             ),

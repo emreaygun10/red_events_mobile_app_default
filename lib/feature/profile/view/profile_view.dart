@@ -152,7 +152,11 @@ class ProfileView extends StatelessWidget {
       child: Column(
         children: [
           buildAppBar(),
-          const CustomProfileImageRow(jobText: 'Garson'),
+          const CustomProfileImageRow(
+            jobText: 'Garson',
+            imageUrl:
+                'https://gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
+          ),
           buildDescriptionStringColumn(context),
           buildChipRow(),
           Padding(

@@ -19,6 +19,7 @@ class CustomShowManagerBottomSheet extends StatelessWidget {
           children: [
             AutoSizeText(
               LocaleKeys.profile_requests_request_permission_information.tr(),
+              style: Theme.of(context).textTheme.labelLarge,
             ),
             const Padding(
               padding: ProjectPadding.symmetricSmallV(),
@@ -41,9 +42,9 @@ class CustomShowManagerBottomSheet extends StatelessWidget {
                         height: 88.h,
                         width: 88.w,
                         padding: const ProjectPadding.allMedium(),
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: ColorName.neutral200,
+                          color: ColorName.neutral200.withOpacity(0.5),
                         ),
                       ),
                       Container(
@@ -68,7 +69,9 @@ class CustomShowManagerBottomSheet extends StatelessWidget {
                     flex: 5,
                   ),
                   const CustomOkayElevationButton(),
-                  const Spacer(),
+                  const Spacer(
+                    flex: 2,
+                  ),
                 ],
               ),
             ),

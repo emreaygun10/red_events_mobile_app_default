@@ -10,9 +10,10 @@ import 'package:widgets/widgets.dart';
 
 class CustomOkayElevationButton extends StatelessWidget {
   const CustomOkayElevationButton({
+    this.text = LocaleKeys.general_button_okay,
     super.key,
   });
-
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,8 +26,8 @@ class CustomOkayElevationButton extends StatelessWidget {
             context.router.pop();
           },
           child: AutoSizeText(
-            LocaleKeys.general_button_okay.tr(),
-            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+            text.tr(),
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
                   color: ColorName.neutral0,
                 ),
           ),

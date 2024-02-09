@@ -8,7 +8,7 @@ class BottomNavigationBarViewModel extends BaseCubit<BottomNavigationBarState> {
       : super(
           const BottomNavigationBarState(
             isLoading: false,
-            activePage: 1,
+            activePage: 0,
           ),
         );
 

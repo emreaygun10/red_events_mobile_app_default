@@ -9,11 +9,11 @@ import 'package:widgets/widgets.dart';
 final class CustomProfileImageRow extends StatelessWidget {
   const CustomProfileImageRow({
     required this.jobText,
-    this.imageUrl,
+    required this.imageUrl,
     super.key,
   });
   final String jobText;
-  final String? imageUrl;
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +32,10 @@ final class CustomProfileImageRow extends StatelessWidget {
                   border: Border.all(color: ColorName.greenLight, width: 3),
                   shape: BoxShape.circle,
                 ),
-                child: const CircleAvatar(
-                  child: Icon(Icons.supervised_user_circle_outlined),
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    imageUrl,
+                  ),
                 ),
               ),
               Align(

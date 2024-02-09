@@ -32,11 +32,11 @@ mixin LoginMixin on BaseState<LoginView> {
 
   late final LocalAuthentication auth;
 
-  late bool _supportState;
+  late bool supportState;
 
   @override
   void initState() {
-    _supportState = false;
+    supportState = false;
     _loginViewModel = LoginViewModel();
     passwordFocusNode = FocusNode()
       ..addListener(() {
@@ -46,7 +46,7 @@ mixin LoginMixin on BaseState<LoginView> {
     auth = LocalAuthentication();
     auth.isDeviceSupported().then(
           (bool isSupported) => setState(() {
-            _supportState = isSupported;
+            supportState = isSupported;
           }),
         );
 
