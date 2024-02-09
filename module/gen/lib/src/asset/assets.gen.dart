@@ -89,6 +89,10 @@ class $AssetsIconsGen {
   SvgGenImage get icContactsBook =>
       const SvgGenImage('assets/icons/ic_contacts_book.svg');
 
+  /// File path: assets/icons/ic_delete_bin.svg
+  SvgGenImage get icDeleteBin =>
+      const SvgGenImage('assets/icons/ic_delete_bin.svg');
+
   /// File path: assets/icons/ic_dot.svg
   SvgGenImage get icDot => const SvgGenImage('assets/icons/ic_dot.svg');
 
@@ -296,6 +300,7 @@ class $AssetsIconsGen {
         icClose,
         icCloseCircle,
         icContactsBook,
+        icDeleteBin,
         icDot,
         icDownArrow,
         icDownload,

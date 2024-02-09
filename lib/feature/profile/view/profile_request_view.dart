@@ -128,10 +128,12 @@ class _ProfileRequestViewState extends BaseState<ProfileRequestView>
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AutoSizeText(
-                  LocaleKeys.profile_requests_sum.tr(),
-                  style: textTheme.bodyMedium!
-                      .copyWith(color: ColorName.neutral300),
+                Expanded(
+                  child: AutoSizeText(
+                    LocaleKeys.profile_requests_sum.tr(),
+                    style: textTheme.bodyMedium!
+                        .copyWith(color: ColorName.neutral300),
+                  ),
                 ),
                 Padding(
                   padding: const ProjectPadding.symmetricXSmallV(),
@@ -142,11 +144,13 @@ class _ProfileRequestViewState extends BaseState<ProfileRequestView>
                     style: textTheme.headlineLarge,
                   ),
                 ),
-                AutoSizeText(
-                  LocaleKeys.profile_requests_have_request.tr(
-                    args: [
-                      RequestChips.values[state.chipIndex].value.tr(),
-                    ],
+                Expanded(
+                  child: AutoSizeText(
+                    LocaleKeys.profile_requests_have_request.tr(
+                      args: [
+                        RequestChips.values[state.chipIndex].value.tr(),
+                      ],
+                    ),
                   ),
                 ),
               ],
