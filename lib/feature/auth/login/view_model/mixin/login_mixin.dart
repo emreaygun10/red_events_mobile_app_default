@@ -112,7 +112,7 @@ mixin LoginMixin on BaseState<LoginView> {
         ],
       );
       if (authenticated) {
-        await context.router.push(const AddPersonnelRoute());
+        await context.router.push(const BottomNAvigationBarRoute());
       }
       print('Authenticated : $authenticated');
     } on PlatformException catch (e) {

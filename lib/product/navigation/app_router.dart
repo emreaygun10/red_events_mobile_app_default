@@ -23,6 +23,7 @@ import 'package:red_events_mobile_app_defult/feature/profile/view/profile_view.d
 import 'package:red_events_mobile_app_defult/feature/profile/view/progress_payment_views/progress_payment_detail_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/progress_payment_views/progress_payment_document_read_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_advance_payment_view.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_change_shift_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_leave_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_others_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_payroll_view.dart';
@@ -65,5 +66,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: ProgressPaymentDetailRoute.page),
         AutoRoute(page: ProgressPaymentDocumentReadRoute.page),
         AutoRoute(page: ProfileDetailRoute.page),
+        AutoRoute(page: ProfileRequestChangeShiftRoute.page),
       ];
 }

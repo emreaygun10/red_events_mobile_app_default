@@ -1,4 +1,4 @@
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +11,7 @@ import 'package:red_events_mobile_app_defult/feature/home/wiew_model/mixin/home_
 import 'package:red_events_mobile_app_defult/feature/home/wiew_model/state/home_view_state.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_sheets_bottom_sheet.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
+import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
 import 'package:widgets/widgets.dart';
 
@@ -267,6 +268,7 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
 
   GestureDetector buildChangeButton() {
     return GestureDetector(
+      onTap: () => context.router.push(const ProfileRequestChangeShiftRoute()),
       child: Container(
         height: 40.h,
         width: 143.w,
@@ -307,7 +309,10 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
       context: context,
       showDragHandle: true,
       builder: (BuildContext context) {
-        return const CustomSheetsBottomSheet();
+        return const CustomSheetsBottomSheet(
+          text:
+              '24 Ocak - 4 Şubat shiftinizi onaylamak üzeresiniz. Onaylıyor musunuz?',
+        );
       },
     );
   }

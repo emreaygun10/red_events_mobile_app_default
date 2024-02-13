@@ -99,6 +99,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ProfileRequestAdvancePaymentView(),
       );
     },
+    ProfileRequestChangeShiftRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ProfileRequestChangeShiftView(),
+      );
+    },
     ProfileRequestDetailRoute.name: (routeData) {
       final args = routeData.argsAs<ProfileRequestDetailRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -387,6 +393,20 @@ class ProfileRequestAdvancePaymentRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ProfileRequestAdvancePaymentRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ProfileRequestChangeShiftView]
+class ProfileRequestChangeShiftRoute extends PageRouteInfo<void> {
+  const ProfileRequestChangeShiftRoute({List<PageRouteInfo>? children})
+      : super(
+          ProfileRequestChangeShiftRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfileRequestChangeShiftRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

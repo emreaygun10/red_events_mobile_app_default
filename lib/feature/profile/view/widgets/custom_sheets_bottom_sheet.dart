@@ -9,8 +9,12 @@ import 'package:widgets/widgets.dart';
 
 /// Custom bottom sheet container for manager approval
 class CustomSheetsBottomSheet extends StatelessWidget {
-  const CustomSheetsBottomSheet({super.key});
+  const CustomSheetsBottomSheet({
+    required this.text,
+    super.key,
+  });
 
+  final String text;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -29,7 +33,7 @@ class CustomSheetsBottomSheet extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 330.h,
+            height: 300.h,
             child: Column(
               children: [
                 SizedBox(
@@ -41,7 +45,7 @@ class CustomSheetsBottomSheet extends StatelessWidget {
                   padding: const ProjectPadding.scaffold(),
                   child: AutoSizeText(
                     textAlign: TextAlign.center,
-                    '24 Ocak - 4 Şubat shiftinizi onaylamak üzeresiniz. Onaylıyor musunuz?',
+                    text,
                     maxLines: 4,
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
