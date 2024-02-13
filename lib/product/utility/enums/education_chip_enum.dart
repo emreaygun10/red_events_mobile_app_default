@@ -28,6 +28,20 @@ enum RequestChips {
   const RequestChips(this.value);
 }
 
+/// Notification Chip enum
+enum NotificationChips {
+  /// chips text
+  all(LocaleKeys.profile_notifications_chip_all),
+  notRead(LocaleKeys.profile_notifications_not_read),
+  read(LocaleKeys.profile_notifications_read);
+
+  ///font value
+  final String value;
+
+  // ignore: sort_constructors_first
+  const NotificationChips(this.value);
+}
+
 /// Request Chip enum
 enum RequestStringEnum {
   /// chips text

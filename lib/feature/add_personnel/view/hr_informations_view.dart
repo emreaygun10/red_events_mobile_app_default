@@ -436,7 +436,7 @@ class _HrInformationViewState extends BaseState<HrInformationView>
                   LinearProgressEnum.levelThree,
                 );
                 pageController.nextPage(
-                  duration: Durations.short4,
+                  duration: const Duration(milliseconds: 200),
                   curve: Curves.linear,
                 );
               }

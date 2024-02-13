@@ -70,7 +70,9 @@ class _ProfileRequestViewState extends BaseState<ProfileRequestView>
                   height: 16,
                 ),
                 buildTitleText(),
+                const Spacer(),
                 buildChipList(),
+                const Spacer(),
               ],
             ),
             buildMainPage(),
@@ -202,7 +204,7 @@ class _ProfileRequestViewState extends BaseState<ProfileRequestView>
     return Padding(
       padding: const ProjectPadding.scaffold(),
       child: SizedBox(
-        height: 47.h,
+        height: 32.h,
         child: BlocBuilder<ProfileRequestBloc, ProfileRequestState>(
           builder: (context, state) {
             return ListView.builder(
@@ -225,14 +227,15 @@ class _ProfileRequestViewState extends BaseState<ProfileRequestView>
         onTap: () {
           profileRequestBloc.changeChipIndex(index);
         },
-        child: Chip(
+        child: Container(
           padding: const ProjectPadding.customChipPaddingLarge(),
-          shape: const StadiumBorder(),
-          side: BorderSide.none,
-          backgroundColor: state.chipIndex == index
-              ? ColorName.blueBase
-              : ColorName.neutral200,
-          label: Row(
+          decoration: BoxDecoration(
+            borderRadius: ProjectBorderRadius.allCircleMedium(),
+            color: state.chipIndex == index
+                ? ColorName.blueBase
+                : ColorName.neutral200,
+          ),
+          child: Row(
             children: [
               AutoSizeText(
                 RequestChips.values[index].value.tr(),

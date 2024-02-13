@@ -34,7 +34,7 @@ class ProfileRequestDetailView extends StatelessWidget {
                   alignment: Alignment.bottomCenter,
                   child: Container(
                     width: 335.w,
-                    height: 513.h,
+                    height: 515.h,
                     decoration: BoxDecoration(
                       color: ColorName.neutral100,
                       border: Border.all(color: ColorName.neutral200, width: 2),
@@ -218,6 +218,7 @@ class ProfileRequestDetailView extends StatelessWidget {
                 const Expanded(
                   child: AutoSizeText(
                     'Sed ut perspiciatis unde omnis iste natus error sit ar voluptatem accusantium amet.',
+                    maxLines: 3,
                     style: TextStyle(color: ColorName.neutral400),
                   ),
                 ),
@@ -302,6 +303,13 @@ class ProfileRequestDetailView extends StatelessWidget {
       title: AutoSizeText(
         LocaleKeys.profile_requests_detail_page_title.tr(),
         style: Theme.of(context).textTheme.labelMedium,
+      ),
+      leading: GestureDetector(
+        onTap: () => context.router.pop(),
+        child: Padding(
+          padding: const EdgeInsets.all(12).r,
+          child: Assets.icons.icArroeLeftS.toGetSvg(),
+        ),
       ),
     );
   }

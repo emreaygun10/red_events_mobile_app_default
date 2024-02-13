@@ -112,8 +112,8 @@ class _BaseInformationViewState extends BaseState<BaseInformationView>
           child: ElevatedButton(
             onPressed: () {
               pageController.nextPage(
-                duration: Durations.short4,
-                curve: Easing.linear,
+                duration: const Duration(milliseconds: 200),
+                curve: Curves.linear,
               );
               addPersonnelViewModel.changeLinearProgress(
                 LinearProgressEnum.levelTwo,
@@ -550,7 +550,7 @@ class _BaseInformationViewState extends BaseState<BaseInformationView>
         onTap: () {
           if (currentPage != 0) {
             pageController.previousPage(
-              duration: Durations.short4,
+              duration: const Duration(milliseconds: 200),
               curve: Curves.linear,
             );
           } else {

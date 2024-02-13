@@ -87,30 +87,32 @@ class _DocumentsViewState extends BaseState<ProfileDocumentsView>
                                       'Diploma',
                                       style: textTheme.titleLarge,
                                     ),
-                                    Row(
-                                      children: [
-                                        AutoSizeText(
-                                          '120 KB',
-                                          style:
-                                              textTheme.titleMedium!.copyWith(
-                                            color: ColorName.neutral600,
+                                    Expanded(
+                                      child: Row(
+                                        children: [
+                                          AutoSizeText(
+                                            '120 KB',
+                                            style:
+                                                textTheme.titleMedium!.copyWith(
+                                              color: ColorName.neutral600,
+                                            ),
                                           ),
-                                        ),
-                                        Padding(
-                                          padding: const ProjectPadding
-                                              .symmetricXSmallH(),
-                                          child: Assets
-                                              .icons.icSelectBoxCircleFill
-                                              .toGetSvg(),
-                                        ),
-                                        AutoSizeText(
-                                          'Complated',
-                                          style:
-                                              textTheme.titleMedium!.copyWith(
-                                            color: ColorName.neutral600,
+                                          Padding(
+                                            padding: const ProjectPadding
+                                                .symmetricXSmallH(),
+                                            child: Assets
+                                                .icons.icSelectBoxCircleFill
+                                                .toGetSvg(),
                                           ),
-                                        ),
-                                      ],
+                                          AutoSizeText(
+                                            'Complated',
+                                            style:
+                                                textTheme.titleMedium!.copyWith(
+                                              color: ColorName.neutral600,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),

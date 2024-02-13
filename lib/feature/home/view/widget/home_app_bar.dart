@@ -21,7 +21,7 @@ class _HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       title: ListTile(
-        title: const AutoSizeText('Good Morning, Pınar'),
+        title: const AutoSizeText('Günaydın, Burak'),
         subtitle: AutoSizeText(
           'How can we help you?',
           style: Theme.of(context)
@@ -33,7 +33,7 @@ class _HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         GestureDetector(
           onTap: () {
-            print('Notificaitonss');
+            context.router.push(const ProfileNotificationRoute());
           },
           child: Padding(
             padding: const EdgeInsets.only(right: 16),

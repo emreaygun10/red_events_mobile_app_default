@@ -18,7 +18,9 @@
             "okay": "Okay",
             "continue": "Continue",
             "approve": "Onayla",
-            "oppose": "İtiraz Et"
+            "oppose": "İtiraz Et",
+            "give_up": "Vazgeç",
+            "delete_selected": "Seçilenleri Sil"
         },
         "dialog": {
             "version": {
@@ -270,6 +272,13 @@
             "sum_avans": "Toplam Avans",
             "daily_detail": "Günlük Hakediş Detayı",
             "sum_summary": "Toplam Tutar"
+        },
+        "notifications": {
+            "title": "Bildirimler",
+            "clear": "Temizle",
+            "chip_all": "Tümü",
+            "not_read": "Okunmadı",
+            "read": "Okundu"
         }
     }
 }

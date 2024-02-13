@@ -15,6 +15,7 @@ import 'package:red_events_mobile_app_defult/feature/home/view/qr_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_detail_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_documents_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_education_view.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/profile_notification_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_performance_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_progress_payment_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_request_view.dart';
@@ -65,5 +66,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: ProgressPaymentDetailRoute.page),
         AutoRoute(page: ProgressPaymentDocumentReadRoute.page),
         AutoRoute(page: ProfileDetailRoute.page),
+        AutoRoute(page: ProfileNotificationRoute.page),
       ];
 }

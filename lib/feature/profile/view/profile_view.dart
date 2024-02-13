@@ -60,7 +60,7 @@ class ProfileView extends StatelessWidget {
   }
 
   /// App Bar
-  AppBar buildAppBar() {
+  AppBar buildAppBar(BuildContext context) {
     return AppBar(
       surfaceTintColor: Colors.transparent,
       automaticallyImplyLeading: false,
@@ -68,8 +68,11 @@ class ProfileView extends StatelessWidget {
       actions: [
         Padding(
           padding: const ProjectPadding.scaffold(),
-          child: Assets.icons.icNotification4Line
-              .svg(package: ModuleEnum.gen.value),
+          child: GestureDetector(
+            onTap: () => context.router.push(const ProfileNotificationRoute()),
+            child: Assets.icons.icNotification4Line
+                .svg(package: ModuleEnum.gen.value),
+          ),
         ),
       ],
     );
@@ -151,7 +154,7 @@ class ProfileView extends StatelessWidget {
       color: Colors.transparent,
       child: Column(
         children: [
-          buildAppBar(),
+          buildAppBar(context),
           const CustomProfileImageRow(
             jobText: 'Garson',
             imageUrl:
@@ -202,7 +205,7 @@ class ProfileView extends StatelessWidget {
     return Padding(
       padding: const ProjectPadding.symmetricNormalH().copyWith(bottom: 20).r,
       child: AutoSizeText(
-        'Başak Yılmaz Güven, 35',
+        'Burak Yılmaz Güven, 35',
         style: Theme.of(context).textTheme.labelMedium,
       ),
     );

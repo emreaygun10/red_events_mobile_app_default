@@ -21,7 +21,7 @@ final class CustomProfileImageRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
-          height: 88.h,
+          height: 92.h,
           child: Stack(
             alignment: Alignment.topCenter,
             children: [
@@ -40,18 +40,19 @@ final class CustomProfileImageRow extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: Chip(
-                  backgroundColor: ColorName.neutral900,
-                  label: AutoSizeText(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: ColorName.neutral900,
+                    borderRadius: ProjectBorderRadius.allCircleLarge(),
+                  ),
+                  padding: const ProjectPadding.customChipPaddingLarge(),
+                  child: AutoSizeText(
                     jobText,
                     style: Theme.of(context)
                         .textTheme
                         .titleSmall!
                         .copyWith(color: ColorName.neutral0),
                   ),
-                  padding: const ProjectPadding.symmetricSmallH(),
-                  shape: const StadiumBorder(),
-                  side: BorderSide.none,
                 ),
               ),
             ],

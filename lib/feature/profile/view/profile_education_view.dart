@@ -41,7 +41,9 @@ class _ProfileEducationViewState extends BaseState<ProfileEducationView>
                   height: 16,
                 ),
                 buildTitleText(),
+                const Spacer(),
                 buildChipList(),
+                const Spacer(),
               ],
             ),
             Padding(
@@ -81,7 +83,7 @@ class _ProfileEducationViewState extends BaseState<ProfileEducationView>
     return Padding(
       padding: const ProjectPadding.scaffold(),
       child: SizedBox(
-        height: 47.h,
+        height: 32.h,
         child: BlocBuilder<ProfileEducationBloc, ProfileEducationState>(
           builder: (context, state) {
             return ListView.builder(
@@ -94,35 +96,37 @@ class _ProfileEducationViewState extends BaseState<ProfileEducationView>
                     onTap: () {
                       profileEducationBloc.changeChipIndex(index);
                     },
-                    child: Chip(
+                    child: Container(
                       padding: const ProjectPadding.customChipPaddingLarge(),
-                      shape: const StadiumBorder(),
-                      side: BorderSide.none,
-                      backgroundColor: state.chipIndex == index
-                          ? ColorName.blueBase
-                          : ColorName.neutral200,
-                      label: Row(
+                      decoration: BoxDecoration(
+                        color: state.chipIndex == index
+                            ? ColorName.blueBase
+                            : ColorName.neutral200,
+                        borderRadius: ProjectBorderRadius.allCircleMedium(),
+                      ),
+                      child: Row(
                         children: [
                           AutoSizeText(
                             EducationChips.values[index].value.tr(),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8).r,
-                            child: selectText(index) != null
-                                ? Badge(
-                                    backgroundColor: selectChipBackgroundColor(
-                                      index,
-                                    ),
-                                    smallSize: 16.r,
-                                    largeSize: 20.r,
-                                    textColor: index != 0
-                                        ? ColorName.neutral900
-                                        : ColorName.neutral0,
-                                    child: AutoSizeText(
-                                      selectText(index).toString(),
-                                    ),
-                                  )
-                                : const SizedBox(),
+                          Visibility(
+                            visible: selectText(index) != null,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 8).r,
+                              child: Badge(
+                                backgroundColor: selectChipBackgroundColor(
+                                  index,
+                                ),
+                                smallSize: 16.r,
+                                largeSize: 20.r,
+                                textColor: index != 0
+                                    ? ColorName.neutral900
+                                    : ColorName.neutral0,
+                                child: AutoSizeText(
+                                  selectText(index).toString(),
+                                ),
+                              ),
+                            ),
                           ),
                         ],
                       ),

@@ -7,7 +7,7 @@ final class ProjectBorderRadius extends BorderRadius {
   /// All
 
   /// Circle
-  /// [ProjectBorderRadius.allCircleSmall] is
+  /// [ProjectBorderRadius.allCircleSmall] is 8
   ProjectBorderRadius.allCircleSmall() : super.circular(8);
 
   /// [ProjectBorderRadius.allCircleMedium] is 12

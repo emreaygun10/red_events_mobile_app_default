@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
+import 'package:kartal/kartal.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_profile_cell.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_profile_header.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view_model/cubit/profile_performance_bloc.dart';
@@ -166,7 +167,8 @@ class _ProfilePerformanceViewState extends BaseState<ProfilePerformanceView>
     return Padding(
       padding: const ProjectPadding.scaffold().copyWith(top: 8).r,
       child: SizedBox(
-        height: 47.h,
+        height: 32.h,
+        width: context.sized.width,
         child: BlocBuilder<ProfilePerformanceBloc, ProfilePerformanceState>(
           builder: (context, state) {
             return ListView.builder(
@@ -177,13 +179,15 @@ class _ProfilePerformanceViewState extends BaseState<ProfilePerformanceView>
                   padding: const ProjectPadding.symmetricXSmallH(),
                   child: GestureDetector(
                     onTap: () => profilePerformanceBloc.changeChipIndex(index),
-                    child: Chip(
-                      shape: const StadiumBorder(),
-                      side: BorderSide.none,
-                      backgroundColor: state.chipIndex == index
-                          ? ColorName.blueBase
-                          : ColorName.neutral200,
-                      label: AutoSizeText(
+                    child: Container(
+                      padding: const ProjectPadding.customChipPaddingLarge(),
+                      decoration: BoxDecoration(
+                        borderRadius: ProjectBorderRadius.allCircleMedium(),
+                        color: state.chipIndex == index
+                            ? ColorName.blueBase
+                            : ColorName.neutral200,
+                      ),
+                      child: AutoSizeText(
                         (currentYear - index).toString(),
                       ),
                     ),
