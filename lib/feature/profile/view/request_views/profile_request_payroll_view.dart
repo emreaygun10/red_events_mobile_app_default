@@ -76,7 +76,6 @@ class _ProfileRequestPayrollViewState
                 child: BlocConsumer<ProfileRequestPayrollBloc,
                     ProfileRequestPayrollState>(
                   listener: (context, state) {
-                    print(state.explanation.ext.isNotNullOrNoEmpty);
                     if (state.checkBoxList.isNotEmpty &&
                         state.explanation.ext.isNotNullOrNoEmpty) {
                       profileRequestPayrollBloc.changeButtonEnable(

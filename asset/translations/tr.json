@@ -273,6 +273,17 @@
             "daily_detail": "Günlük Hakediş Detayı",
             "sum_summary": "Toplam Tutar"
         },
+        "change_shift": {
+            "request_title": "Shift Değişikliği Talebi",
+            "manager_selection": "Yönetici Seçimi",
+            "day_selection": "Değişiklik Talep Edilen Günler",
+            "info": "En Fazla 2 yönetici seçebilirsiniz",
+            "description": "Açıklama",
+            "button": "Değişiklik talebi oluştur",
+            "select_hint": "Lütfen Seçiniz",
+            "opsiyonel": "Opsiyonel",
+            "counter_date_text": "{} gün seçildi"
+        },
         "notifications": {
             "title": "Bildirimler",
             "clear": "Temizle",

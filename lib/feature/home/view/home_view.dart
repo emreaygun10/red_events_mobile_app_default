@@ -268,6 +268,7 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
 
   GestureDetector buildChangeButton() {
     return GestureDetector(
+      onTap: () => context.router.push(const ProfileRequestChangeShiftRoute()),
       child: Container(
         height: 40.h,
         width: 143.w,
@@ -308,7 +309,10 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
       context: context,
       showDragHandle: true,
       builder: (BuildContext context) {
-        return const CustomSheetsBottomSheet();
+        return const CustomSheetsBottomSheet(
+          text:
+              '24 Ocak - 4 Şubat shiftinizi onaylamak üzeresiniz. Onaylıyor musunuz?',
+        );
       },
     );
   }
