@@ -9,6 +9,11 @@ class HomeViewModel extends BaseCubit<HomeState> {
           const HomeState(
             isLoading: false,
             activeDayIndex: 0,
+            isAccepted: false,
           ),
         );
+
+  void changeIsAccepted() {
+    emit(state.copyWith(isAccepted: !state.isAccepted));
+  }
 }

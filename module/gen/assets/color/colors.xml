@@ -65,6 +65,6 @@
     <color name="Teal_Light">#C2EFFF</color>
     <color name="Teal_Lighter">#EBFAFF</color>
 
-
+    <color name="Success">#85D28C</color>
     <color name="yellow_ocher" type="material material-accent">#DF9527</color>
 </resources>

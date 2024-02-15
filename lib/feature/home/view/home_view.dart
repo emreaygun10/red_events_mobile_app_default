@@ -39,7 +39,7 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
         child: Column(
           children: [
             buildTopCard(context),
-            buildListDays(),
+            Expanded(child: buildListDays()),
           ],
         ),
       ),
@@ -52,7 +52,6 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
       child: Container(
         padding:
             const ProjectPadding.allNormal().copyWith(left: 16, right: 16).r,
-        height: 350,
         decoration: BoxDecoration(
           color: ColorName.neutral0,
           borderRadius: ProjectBorderRadius.allCircleNormal().r,
@@ -175,71 +174,85 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
     );
   }
 
-  Container buildTopCard(BuildContext context) {
-    return Container(
-      height: 324.h,
-      width: context.sized.width,
-      decoration: buildLinearGradient(),
-      child: Padding(
-        padding: const ProjectPadding.scaffold(),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Container(
-              padding:
-                  const ProjectPadding.symmetricMediumH().copyWith(top: 8).r,
-              decoration: BoxDecoration(
-                color: ColorName.neutral0,
-                borderRadius: ProjectBorderRadius.allCircleNormal().r,
-              ),
-              height: 180.h,
-              width: context.sized.width,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AutoSizeText(
-                    '29 Ocak - 04 Şubat',
-                    style: textTheme.headlineMedium!
-                        .copyWith(fontWeight: FontWeight.w800),
+  BlocBuilder<HomeViewModel, HomeState> buildTopCard(BuildContext context) {
+    return BlocBuilder<HomeViewModel, HomeState>(
+      builder: (context, state) {
+        return Container(
+          padding: const EdgeInsets.only(top: 120).r,
+          width: context.sized.width,
+          decoration: buildLinearGradient(),
+          child: Padding(
+            padding: const ProjectPadding.scaffold(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  padding: const ProjectPadding.symmetricMediumH()
+                      .copyWith(top: 8)
+                      .r,
+                  decoration: BoxDecoration(
+                    color: ColorName.neutral0,
+                    borderRadius: ProjectBorderRadius.allCircleNormal().r,
                   ),
-                  AutoSizeText(
-                    'arası shift listesi',
-                    style: textTheme.titleSmall!
-                        .copyWith(color: ColorName.neutral400),
-                  ),
-                  buildChip(),
-                  SizedBox(
-                    height: 28.h,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  width: context.sized.width,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      buildChangeButton(),
-                      buildAcceptButton(),
+                      AutoSizeText(
+                        '29 Ocak - 04 Şubat',
+                        style: textTheme.headlineMedium!
+                            .copyWith(fontWeight: FontWeight.w800),
+                      ),
+                      AutoSizeText(
+                        'arası shift listesi',
+                        style: textTheme.titleSmall!.copyWith(
+                          color: ColorName.neutral400,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      buildChip(state),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      if (!state.isAccepted)
+                        Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                buildChangeButton(),
+                                buildAcceptButton(),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 16.h,
+                            ),
+                          ],
+                        ),
                     ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 
-  BoxDecoration buildLinearGradient() {
-    return const BoxDecoration(
+  BoxDecoration buildLinearGradient({double lastStep = 0.95}) {
+    return BoxDecoration(
       color: Colors.white,
       gradient: LinearGradient(
         begin: FractionalOffset.topCenter,
         end: FractionalOffset.bottomCenter,
-        colors: [
+        colors: const [
           ColorName.blueBase,
           ColorName.neutral100,
         ],
         stops: [
           0.0,
-          0.95,
+          lastStep,
         ],
       ),
     );
@@ -247,7 +260,10 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
 
   GestureDetector buildAcceptButton() {
     return GestureDetector(
-      onTap: () async => buildShowBottomSheetRequest(context),
+      onTap: () async {
+        await buildShowBottomSheetRequest(context);
+        homeViewModel.changeIsAccepted();
+      },
       child: Container(
         height: 40.h,
         width: 143.w,
@@ -286,18 +302,18 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
     );
   }
 
-  Padding buildChip() {
+  Padding buildChip(HomeState state) {
     return Padding(
       padding: const EdgeInsets.only(top: 8).r,
       child: Container(
         padding: const ProjectPadding.symmetricSmallH().r,
         decoration: BoxDecoration(
           borderRadius: ProjectBorderRadius.allCircleLarge().r,
-          color: ColorName.orangeLight,
+          color: state.isAccepted ? ColorName.success : ColorName.orangeLight,
         ),
         height: 20.h,
-        child: const AutoSizeText(
-          'Onay Bekleniyor',
+        child: AutoSizeText(
+          state.isAccepted ? 'Onaylandı' : 'Onay Bekleniyor',
         ),
       ),
     );

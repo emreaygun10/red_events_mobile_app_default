@@ -176,6 +176,10 @@ class $AssetsIconsGen {
   SvgGenImage get icMailCheckLine =>
       const SvgGenImage('assets/icons/ic_mail_check_line.svg');
 
+  /// File path: assets/icons/ic_menu_line.svg
+  SvgGenImage get icMenuLine =>
+      const SvgGenImage('assets/icons/ic_menu_line.svg');
+
   /// File path: assets/icons/ic_newspaper.svg
   SvgGenImage get icNewspaper =>
       const SvgGenImage('assets/icons/ic_newspaper.svg');
@@ -261,6 +265,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_todo.svg
   SvgGenImage get icTodo => const SvgGenImage('assets/icons/ic_todo.svg');
 
+  /// File path: assets/icons/ic_top_right_start.svg
+  SvgGenImage get icTopRightStart =>
+      const SvgGenImage('assets/icons/ic_top_right_start.svg');
+
   /// File path: assets/icons/ic_tr.svg
   SvgGenImage get icTr => const SvgGenImage('assets/icons/ic_tr.svg');
 
@@ -328,6 +336,7 @@ class $AssetsIconsGen {
         icLogoDark,
         icMail,
         icMailCheckLine,
+        icMenuLine,
         icNewspaper,
         icNotification4Line,
         icNullEducation,
@@ -351,6 +360,7 @@ class $AssetsIconsGen {
         icSuitcaseLine,
         icTime,
         icTodo,
+        icTopRightStart,
         icTr,
         icUs,
         icUser2,

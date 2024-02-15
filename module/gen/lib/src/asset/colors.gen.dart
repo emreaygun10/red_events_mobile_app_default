@@ -133,6 +133,9 @@ class ColorName {
   /// Color: #FDEDF0
   static const Color redLighter = Color(0xFFFDEDF0);
 
+  /// Color: #85D28C
+  static const Color success = Color(0xFF85D28C);
+
   /// Color: #35B9E9
   static const Color tealBase = Color(0xFF35B9E9);
 

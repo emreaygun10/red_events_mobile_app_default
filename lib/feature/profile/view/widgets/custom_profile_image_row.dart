@@ -22,6 +22,7 @@ final class CustomProfileImageRow extends StatelessWidget {
       children: [
         SizedBox(
           height: 92.h,
+          width: 85.w,
           child: Stack(
             alignment: Alignment.topCenter,
             children: [
@@ -29,7 +30,7 @@ final class CustomProfileImageRow extends StatelessWidget {
                 height: 80.h,
                 width: 80.w,
                 decoration: BoxDecoration(
-                  border: Border.all(color: ColorName.greenLight, width: 3),
+                  border: Border.all(color: ColorName.success, width: 5),
                   shape: BoxShape.circle,
                 ),
                 child: CircleAvatar(
@@ -53,6 +54,14 @@ final class CustomProfileImageRow extends StatelessWidget {
                         .titleSmall!
                         .copyWith(color: ColorName.neutral0),
                   ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.topRight,
+                child: SizedBox(
+                  height: 32.h,
+                  width: 32.w,
+                  child: Assets.icons.icTopRightStart.toGetSvg(),
                 ),
               ),
             ],

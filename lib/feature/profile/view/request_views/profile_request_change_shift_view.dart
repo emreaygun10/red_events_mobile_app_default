@@ -132,6 +132,7 @@ class _ProfileRequestChangeShiftViewState
     return AppBar(
       toolbarHeight: 72.h,
       leadingWidth: 80.w,
+      titleSpacing: 0,
       surfaceTintColor: ColorName.neutral0,
       leading: Padding(
         padding: const ProjectPadding.scaffold(),
@@ -150,6 +151,7 @@ class _ProfileRequestChangeShiftViewState
         ),
       ),
       title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AutoSizeText(
             LocaleKeys.profile_requests_request_type_title.tr(),
