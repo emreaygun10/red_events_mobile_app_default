@@ -21,14 +21,14 @@ final class CustomProfileImageRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
-          height: 92.h,
+          height: 100.h,
           width: 85.w,
           child: Stack(
             alignment: Alignment.topCenter,
             children: [
               Container(
-                height: 80.h,
-                width: 80.w,
+                height: 90.h,
+                width: 90.w,
                 decoration: BoxDecoration(
                   border: Border.all(color: ColorName.success, width: 5),
                   shape: BoxShape.circle,

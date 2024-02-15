@@ -162,22 +162,26 @@ class ProfileView extends StatelessWidget {
           ),
           buildDescriptionStringColumn(context),
           buildChipRow(),
-          Padding(
-            padding: const ProjectPadding.symmetricMediumV().r,
-            child: TextButton(
-              child: AutoSizeText(
-                LocaleKeys.profile_more_info.tr(),
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                      color: ColorName.neutral400,
-                      decoration: TextDecoration.underline,
-                    ),
-              ),
-              onPressed: () {
-                context.router.push(const ProfileDetailRoute());
-              },
-            ),
-          ),
+          buildMoreDetailButton(context),
         ],
+      ),
+    );
+  }
+
+  Padding buildMoreDetailButton(BuildContext context) {
+    return Padding(
+      padding: const ProjectPadding.symmetricXSmallV().r,
+      child: TextButton(
+        child: AutoSizeText(
+          LocaleKeys.profile_more_info.tr(),
+          style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                color: ColorName.neutral400,
+                decoration: TextDecoration.underline,
+              ),
+        ),
+        onPressed: () {
+          context.router.push(const ProfileDetailRoute());
+        },
       ),
     );
   }
@@ -203,7 +207,9 @@ class ProfileView extends StatelessWidget {
   /// include user description
   Padding buildDescriptionStringColumn(BuildContext context) {
     return Padding(
-      padding: const ProjectPadding.symmetricNormalH().copyWith(bottom: 20).r,
+      padding: const ProjectPadding.symmetricNormalH()
+          .copyWith(bottom: 20, top: 16)
+          .r,
       child: AutoSizeText(
         'Burak Yılmaz Güven, 35',
         style: Theme.of(context).textTheme.labelMedium,

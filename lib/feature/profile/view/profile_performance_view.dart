@@ -143,14 +143,14 @@ class _ProfilePerformanceViewState extends BaseState<ProfilePerformanceView>
                         LocaleKeys.profile_performance_manager_point.tr(),
                       ),
                     ),
-                    CustomPerformanceCell(
+                    const CustomPerformanceCell(
                       widget: AutoSizeText(
-                        LocaleKeys.profile_performance_latest_shift.tr(),
+                        '3 shift',
                       ),
                     ),
-                    CustomPerformanceCell(
+                    const CustomPerformanceCell(
                       widget: AutoSizeText(
-                        LocaleKeys.profile_performance_debit.tr(),
+                        '8/10',
                       ),
                     ),
                   ],
@@ -171,31 +171,45 @@ class _ProfilePerformanceViewState extends BaseState<ProfilePerformanceView>
         width: context.sized.width,
         child: BlocBuilder<ProfilePerformanceBloc, ProfilePerformanceState>(
           builder: (context, state) {
-            return ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 3,
-              itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: const ProjectPadding.symmetricXSmallH(),
-                  child: GestureDetector(
-                    onTap: () => profilePerformanceBloc.changeChipIndex(index),
-                    child: Container(
-                      padding: const ProjectPadding.customChipPaddingLarge(),
-                      decoration: BoxDecoration(
-                        borderRadius: ProjectBorderRadius.allCircleMedium(),
-                        color: state.chipIndex == index
-                            ? ColorName.blueBase
-                            : ColorName.neutral200,
-                      ),
-                      child: AutoSizeText(
-                        (currentYear - index).toString(),
-                      ),
-                    ),
-                  ),
-                );
-              },
+            // return ListView.builder(
+            //   scrollDirection: Axis.horizontal,
+            //   itemCount: 3,
+            //   itemBuilder: (BuildContext context, int index) {
+            //     return buildChip(index, state);
+            //   },
+            // );
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(child: buildChip(0, state)),
+                Expanded(child: buildChip(1, state)),
+                Expanded(child: buildChip(2, state)),
+              ],
             );
           },
+        ),
+      ),
+    );
+  }
+
+  Padding buildChip(int index, ProfilePerformanceState state) {
+    return Padding(
+      padding: const ProjectPadding.symmetricXSmallH(),
+      child: GestureDetector(
+        onTap: () => profilePerformanceBloc.changeChipIndex(index),
+        child: Container(
+          padding: const ProjectPadding.customChipPaddingLarge(),
+          decoration: BoxDecoration(
+            borderRadius: ProjectBorderRadius.allCircleMedium(),
+            color: state.chipIndex == index
+                ? ColorName.blueBase
+                : ColorName.neutral200,
+          ),
+          child: Center(
+            child: AutoSizeText(
+              (currentYear - index).toString(),
+            ),
+          ),
         ),
       ),
     );

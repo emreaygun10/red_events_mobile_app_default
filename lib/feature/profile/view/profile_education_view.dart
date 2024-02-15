@@ -86,56 +86,71 @@ class _ProfileEducationViewState extends BaseState<ProfileEducationView>
         height: 32.h,
         child: BlocBuilder<ProfileEducationBloc, ProfileEducationState>(
           builder: (context, state) {
-            return ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: EducationChips.values.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: const ProjectPadding.symmetricXSmallH(),
-                  child: GestureDetector(
-                    onTap: () {
-                      profileEducationBloc.changeChipIndex(index);
-                    },
-                    child: Container(
-                      padding: const ProjectPadding.customChipPaddingLarge(),
-                      decoration: BoxDecoration(
-                        color: state.chipIndex == index
-                            ? ColorName.blueBase
-                            : ColorName.neutral200,
-                        borderRadius: ProjectBorderRadius.allCircleMedium(),
-                      ),
-                      child: Row(
-                        children: [
-                          AutoSizeText(
-                            EducationChips.values[index].value.tr(),
-                          ),
-                          Visibility(
-                            visible: selectText(index) != null,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 8).r,
-                              child: Badge(
-                                backgroundColor: selectChipBackgroundColor(
-                                  index,
-                                ),
-                                smallSize: 16.r,
-                                largeSize: 20.r,
-                                textColor: index != 0
-                                    ? ColorName.neutral900
-                                    : ColorName.neutral0,
-                                child: AutoSizeText(
-                                  selectText(index).toString(),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                );
-              },
+            // return ListView.builder(
+            //   scrollDirection: Axis.horizontal,
+            //   itemCount: EducationChips.values.length,
+            //   itemBuilder: (BuildContext context, int index) {
+            //     return buildChip(index, state);
+            //   },
+            // );
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                buildChip(EducationChips.waiting.index, state),
+                buildChip(EducationChips.continuos.index, state),
+                buildChip(EducationChips.completed.index, state),
+              ],
             );
           },
+        ),
+      ),
+    );
+  }
+
+  Padding buildChip(int index, ProfileEducationState state) {
+    return Padding(
+      padding: const ProjectPadding.symmetricXSmallH(),
+      child: GestureDetector(
+        onTap: () {
+          profileEducationBloc.changeChipIndex(index);
+        },
+        child: Container(
+          width: 106.w,
+          padding: const ProjectPadding.customChipPaddingLarge(),
+          decoration: BoxDecoration(
+            color: state.chipIndex == index
+                ? ColorName.blueBase
+                : ColorName.neutral200,
+            borderRadius: ProjectBorderRadius.allCircleMedium(),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Flexible(
+                child: AutoSizeText(
+                  EducationChips.values[index].value.tr(),
+                ),
+              ),
+              Visibility(
+                visible: selectText(index) != null,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8).r,
+                  child: Badge(
+                    backgroundColor: selectChipBackgroundColor(
+                      index,
+                    ),
+                    smallSize: 16.r,
+                    largeSize: 20.r,
+                    textColor:
+                        index != 0 ? ColorName.neutral900 : ColorName.neutral0,
+                    child: AutoSizeText(
+                      selectText(index).toString(),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

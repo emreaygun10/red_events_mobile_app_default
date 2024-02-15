@@ -207,12 +207,20 @@ class _ProfileRequestViewState extends BaseState<ProfileRequestView>
         height: 32.h,
         child: BlocBuilder<ProfileRequestBloc, ProfileRequestState>(
           builder: (context, state) {
-            return ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: RequestChips.values.length,
-              itemBuilder: (BuildContext context, int index) {
-                return buildChip(index, state);
-              },
+            // return ListView.builder(
+            //   scrollDirection: Axis.horizontal,
+            //   itemCount: RequestChips.values.length,
+            //   itemBuilder: (BuildContext context, int index) {
+            //     return buildChip(index, state);
+            //   },
+            // );
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                buildChip(RequestChips.waiting.index, state),
+                buildChip(RequestChips.reject.index, state),
+                buildChip(RequestChips.approved.index, state),
+              ],
             );
           },
         ),
@@ -228,6 +236,8 @@ class _ProfileRequestViewState extends BaseState<ProfileRequestView>
           profileRequestBloc.changeChipIndex(index);
         },
         child: Container(
+          height: 32.h,
+          width: 106.w,
           padding: const ProjectPadding.customChipPaddingLarge(),
           decoration: BoxDecoration(
             borderRadius: ProjectBorderRadius.allCircleMedium(),
@@ -236,12 +246,14 @@ class _ProfileRequestViewState extends BaseState<ProfileRequestView>
                 : ColorName.neutral200,
           ),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AutoSizeText(
                 RequestChips.values[index].value.tr(),
               ),
-              if (selectText(index) != null)
-                Padding(
+              Visibility(
+                visible: selectText(index) != null,
+                child: Padding(
                   padding: const EdgeInsets.only(left: 5).r,
                   child: Badge.count(
                     count: selectText(index) ?? 0,
@@ -252,9 +264,8 @@ class _ProfileRequestViewState extends BaseState<ProfileRequestView>
                     textColor: ColorName.neutral0,
                     textStyle: const TextStyle(fontSize: 11),
                   ),
-                )
-              else
-                const SizedBox(),
+                ),
+              ),
             ],
           ),
         ),
