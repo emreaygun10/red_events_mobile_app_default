@@ -76,7 +76,11 @@ class _BottomNAvigationBarViewState extends BaseState<BottomNAvigationBarView>
               notchSmoothness: NotchSmoothness.defaultEdge,
               onTap: changePage,
             ),
-            body: screens[state.activePage],
+            body: IndexedStack(
+              index: state.activePage,
+              children: screens,
+            ),
+            // body: screens[state.activePage],
           );
         },
       ),

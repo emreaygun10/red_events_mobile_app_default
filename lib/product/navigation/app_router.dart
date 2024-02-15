@@ -40,7 +40,7 @@ class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(page: HomeRoute.page),
-        AutoRoute(page: OnboardRoute.page, initial: true),
+        AutoRoute(page: OnboardRoute.page),
         AutoRoute(page: SignInRoute.page),
         AutoRoute(page: SuccessSignInRoute.page),
         AutoRoute(page: LoginRoute.page),
@@ -55,7 +55,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: ProfileRequestRoute.page),
         AutoRoute(page: ProfileRequestDetailRoute.page),
         AutoRoute(page: ProfileProgressPaymentRoute.page),
-        AutoRoute(page: BottomNAvigationBarRoute.page),
+        AutoRoute(page: BottomNAvigationBarRoute.page, initial: true),
         AutoRoute(page: ProfileDocumentsRoute.page),
         AutoRoute(page: ProfileRequestPermissionRoute.page),
         AutoRoute(page: ProfileRequestAdvancePaymentRoute.page),

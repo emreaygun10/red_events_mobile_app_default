@@ -66,7 +66,8 @@ class _ProfilePerformanceViewState extends BaseState<ProfilePerformanceView>
               children: [
                 AutoSizeText(
                   '4.2',
-                  style: textTheme.headlineLarge,
+                  style: textTheme.headlineLarge!
+                      .copyWith(fontWeight: FontWeight.w700),
                 ),
                 Padding(
                   padding: const ProjectPadding.symmetricSmallV(),

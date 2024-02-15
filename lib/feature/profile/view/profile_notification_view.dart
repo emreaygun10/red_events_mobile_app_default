@@ -104,11 +104,7 @@ class _ProfileNotificationViewState extends BaseState<ProfileNotificationView>
                     style: ElevatedButton.styleFrom(
                       backgroundColor: ColorName.redBase,
                     ),
-                    onPressed: () {
-                      profileNotificationBloc
-                        ..selectedElementDelete()
-                        ..changeIsLongPress(value: false);
-                    },
+                    onPressed: selectedDelete,
                     child: AutoSizeText(
                       LocaleKeys.general_button_delete_selected.tr(),
                       style: textTheme.titleMedium!.copyWith(
@@ -131,7 +127,7 @@ class _ProfileNotificationViewState extends BaseState<ProfileNotificationView>
         builder: (context, state) {
           return state.data != null
               ? ListView.builder(
-                  itemCount: state.data!.length,
+                  itemCount: state.tempList?.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const ProjectPadding.symmetricMediumV()
@@ -145,7 +141,7 @@ class _ProfileNotificationViewState extends BaseState<ProfileNotificationView>
                             iconColor: ColorName.orangeBase,
                           ),
                         ),
-                        child: buildCustomListTile(index),
+                        child: buildCustomListTile(index, state),
                         // child: CustomListTileNotification(
                         //   textTheme: textTheme,
                         //   dataModel: state.data![index],
@@ -162,119 +158,114 @@ class _ProfileNotificationViewState extends BaseState<ProfileNotificationView>
     );
   }
 
-  BlocBuilder<ProfileNotificationBloc, ProfileNotificationState>
-      buildCustomListTile(
+  Container buildCustomListTile(
     int index,
+    ProfileNotificationState state,
   ) {
-    return BlocBuilder<ProfileNotificationBloc, ProfileNotificationState>(
-      builder: (context, state) {
-        return Container(
-          height: 56.h,
-          width: context.sized.width,
-          padding: const ProjectPadding.allSmall(),
-          decoration: BoxDecoration(
-            color: state.data![index].isCheck
-                ? ColorName.blueLight
-                : state.isLongPress
+    return Container(
+      height: 56.h,
+      width: context.sized.width,
+      padding: const ProjectPadding.allSmall(),
+      decoration: BoxDecoration(
+        color: state.tempList![index].isCheck
+            ? ColorName.blueLight
+            : state.isLongPress
+                ? ColorName.neutral0
+                : state.tempList![index].isRead
                     ? ColorName.neutral0
-                    : state.data![index].isRead
-                        ? ColorName.neutral0
-                        : ColorName.orangeLight,
-            borderRadius: ProjectBorderRadius.allCircleMedium(),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    : ColorName.orangeLight,
+        borderRadius: ProjectBorderRadius.allCircleMedium(),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
             children: [
-              Row(
-                children: [
-                  Visibility(
-                    visible: state.isLongPress,
-                    child: Checkbox(
-                      side: MaterialStateBorderSide.resolveWith(
-                        (states) => const BorderSide(
-                          width: 2,
-                          color: ColorName.neutral300,
-                        ),
-                      ),
-                      activeColor: ColorName.blueBase,
-                      value: state.data![index].isCheck,
-                      onChanged: (value) {
-                        profileNotificationBloc.changeModelInList(
-                          model: state.data![index],
-                          value: value ?? false,
-                        );
-                        setState(() {});
-                      },
-                    ),
-                  ),
-                  Container(
-                    height: 40.h,
-                    width: 40.w,
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: state.data![index].isRead
-                            ? ColorName.neutral300
-                            : ColorName.orangeLight,
-                      ),
-                      shape: BoxShape.circle,
-                      color: state.data![index].isRead
-                          ? ColorName.neutral100
-                          : ColorName.orangeBase,
-                    ),
-                    child: Assets.icons.icCloseCircle.toGetSvgWithColor(
-                      color: state.data![index].isRead
-                          ? ColorName.neutral300
-                          : ColorName.neutral0,
-                      height: 20.h,
-                      width: 20.w,
-                    ),
-                  ),
-                  Padding(
-                    padding: const ProjectPadding.symmetricMediumH(),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: AutoSizeText(
-                            state.data![index].title.tr(),
-                            style: textTheme.titleMedium!.copyWith(
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: AutoSizeText(
-                            state.data![index].subTitle.tr(),
-                            style: textTheme.titleSmall!.copyWith(
-                              color: ColorName.neutral400,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
               Visibility(
-                visible: !state.data![index].isRead,
-                child: Container(
+                visible: state.isLongPress,
+                child: Checkbox(
+                  side: MaterialStateBorderSide.resolveWith(
+                    (states) => const BorderSide(
+                      width: 2,
+                      color: ColorName.neutral300,
+                    ),
+                  ),
+                  activeColor: ColorName.blueBase,
+                  value: state.tempList![index].isCheck,
+                  onChanged: (value) => changeModelInList(
+                    model: state.tempList![index],
+                    value: value ?? false,
+                  )
+                  // setState(() {});
+                  ,
+                ),
+              ),
+              Container(
+                height: 40.h,
+                width: 40.w,
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: state.tempList![index].isRead
+                        ? ColorName.neutral300
+                        : ColorName.orangeLight,
+                  ),
+                  shape: BoxShape.circle,
+                  color: state.tempList![index].isRead
+                      ? ColorName.neutral100
+                      : ColorName.orangeBase,
+                ),
+                child: Assets.icons.icCloseCircle.toGetSvgWithColor(
+                  color: state.tempList![index].isRead
+                      ? ColorName.neutral300
+                      : ColorName.neutral0,
                   height: 20.h,
                   width: 20.w,
-                  decoration: BoxDecoration(
-                    color: ColorName.orangeBase,
-                    border: Border.all(
-                      color: ColorName.neutral0,
-                      width: 5,
+                ),
+              ),
+              Padding(
+                padding: const ProjectPadding.symmetricMediumH(),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: AutoSizeText(
+                        state.tempList![index].title.tr(),
+                        style: textTheme.titleMedium!.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
                     ),
-                    shape: BoxShape.circle,
-                  ),
+                    Expanded(
+                      child: AutoSizeText(
+                        state.tempList![index].subTitle.tr(),
+                        style: textTheme.titleSmall!.copyWith(
+                          color: ColorName.neutral400,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
-        );
-      },
+          Visibility(
+            visible: !state.tempList![index].isRead,
+            child: Container(
+              height: 20.h,
+              width: 20.w,
+              decoration: BoxDecoration(
+                color: ColorName.orangeBase,
+                border: Border.all(
+                  color: ColorName.neutral0,
+                  width: 5,
+                ),
+                shape: BoxShape.circle,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -345,7 +336,7 @@ class _ProfileNotificationViewState extends BaseState<ProfileNotificationView>
     ProfileNotificationBloc profileNotificationsBloc,
   ) {
     return GestureDetector(
-      onTap: () => profileNotificationsBloc.changeChipIndex(index),
+      onTap: () => assignTempList(index),
       child: Container(
         padding: const ProjectPadding.customChipPaddingLarge(),
         height: 32.h,

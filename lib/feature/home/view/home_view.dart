@@ -13,6 +13,7 @@ import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
 import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
+import 'package:red_events_mobile_app_defult/product/utility/enums/shift_enum.dart';
 import 'package:widgets/widgets.dart';
 
 part 'widget/home_app_bar.dart';
@@ -58,7 +59,7 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
         ),
         child: ListView.builder(
           padding: EdgeInsets.zero,
-          itemCount: 7,
+          itemCount: workShiftList.length,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 10).r,
@@ -70,7 +71,7 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
                         .copyWith(right: 14, left: 14)
                         .r,
                     decoration: BoxDecoration(
-                      color: state.activeDayIndex == index
+                      color: workShiftList[index].currentDay
                           ? ColorName.blueLighter
                           : ColorName.neutral100,
                       borderRadius: ProjectBorderRadius.allCircleNormal().r,
@@ -79,7 +80,7 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
                           : null,
                     ),
                     child: buildListTileContents(
-                      isActive: state.activeDayIndex == index,
+                      model: workShiftList[index],
                     ),
                   );
                 },
@@ -91,23 +92,35 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
     );
   }
 
-  Row buildListTileContents({required bool isActive}) => Row(
+  Row buildListTileContents({required WorkShiftModel model}) => Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
-              buildPrefixDate(date: '30', day: 'CUM'),
+              buildPrefixDate(date: model.date, day: 'CUM'),
               const VerticalDivider(
                 width: 2,
                 color: ColorName.neutral300,
               ),
-              buildPostfixContents(
-                clock: '07:00 - 15:00',
-                place: 'Manzara Restaurant',
-              ),
+              if (model.shitTime == ShiftTimeEnum.report)
+                Padding(
+                  padding: const EdgeInsets.only(left: 85).w,
+                  child: AutoSizeText(
+                    'Raporlu',
+                    style: textTheme.labelMedium!
+                        .copyWith(color: ColorName.neutral400),
+                  ),
+                )
+              else
+                buildPostfixContents(
+                  clock: model.startEndTime,
+                  place: 'Manzara Restaurant',
+                  workedTime: model.workTime,
+                  shifTime: model.shitTime,
+                ),
             ],
           ),
-          if (isActive)
+          if (model.currentDay)
             Container(
               height: 36.h,
               width: 36.w,
@@ -118,12 +131,26 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
               ),
               child: Assets.icons.icQrCode.toGetSvg(),
             ),
+          if (model.shitTime == ShiftTimeEnum.onTime)
+            Assets.icons.icSelectBoxCircleFill.toGetSvgWithColor(
+              color: ColorName.greenBase,
+              height: 24,
+              width: 24,
+            ),
+          if (model.shitTime == ShiftTimeEnum.late)
+            Assets.icons.icErrorWarningFill.toGetSvgWithColor(
+              color: ColorName.orangeBase,
+              height: 24,
+              width: 24,
+            ),
         ],
       );
 
   Padding buildPostfixContents({
     required String clock,
     required String place,
+    required String workedTime,
+    required ShiftTimeEnum shifTime,
   }) {
     return Padding(
       padding: const ProjectPadding.symmetricSmallH(),
@@ -131,11 +158,34 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AutoSizeText(
-            clock,
-            style: textTheme.titleMedium!.copyWith(
-              color: ColorName.neutral800,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text: clock,
+                      style: textTheme.titleMedium!.copyWith(
+                        color: ColorName.neutral800,
+                      ),
+                    ),
+                    TextSpan(
+                      text: workedTime,
+                      style: textTheme.titleSmall!.copyWith(
+                        color: shifTime == ShiftTimeEnum.onTime
+                            ? ColorName.greenBase
+                            : shifTime == ShiftTimeEnum.late
+                                ? ColorName.orangeBase
+                                : ColorName.neutral100,
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
           AutoSizeText(
             place,

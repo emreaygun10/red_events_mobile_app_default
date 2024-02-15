@@ -439,7 +439,7 @@ class _ProfileProgressPaymentViewState
         Padding(
           padding: const EdgeInsets.only(top: 8),
           child: AutoSizeText(
-            '32.000 TL',
+            '32.000,00 TL',
             style: textTheme.headlineLarge,
           ),
         ),
@@ -455,11 +455,11 @@ class _ProfileProgressPaymentViewState
           children: [
             buildSumColumn(
               title: LocaleKeys.profile_progress_payment_sum_progress,
-              amount: '4.000 TL',
+              amount: '4.000,00 TL',
             ),
             buildSumColumn(
               title: LocaleKeys.profile_progress_payment_sum_missing_progress,
-              amount: '4.000 TL',
+              amount: '4.000,00 TL',
             ),
           ],
         ),

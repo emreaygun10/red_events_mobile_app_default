@@ -7,11 +7,13 @@ final class ProfileNotificationState extends Equatable {
     required this.chipIndex,
     required this.isLoading,
     required this.isLongPress,
+    this.tempList,
     this.data,
   });
   final int chipIndex;
   final bool isLoading;
   final List<DataModel>? data;
+  final List<DataModel>? tempList;
   final bool isLongPress;
   @override
   List<Object?> get props => [
@@ -19,12 +21,14 @@ final class ProfileNotificationState extends Equatable {
         isLoading,
         isLongPress,
         data,
+        tempList,
       ];
 
   ProfileNotificationState copyWith({
     int? chipIndex,
     bool? isLoading,
     List<DataModel>? data,
+    List<DataModel>? tempList,
     bool? isLongPress,
   }) {
     return ProfileNotificationState(
@@ -32,6 +36,7 @@ final class ProfileNotificationState extends Equatable {
       isLoading: isLoading ?? this.isLoading,
       data: data ?? this.data,
       isLongPress: isLongPress ?? this.isLongPress,
+      tempList: tempList ?? this.tempList,
     );
   }
 }

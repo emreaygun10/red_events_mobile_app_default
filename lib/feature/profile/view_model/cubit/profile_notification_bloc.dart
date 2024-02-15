@@ -46,9 +46,13 @@ class ProfileNotificationBloc extends BaseCubit<ProfileNotificationState> {
   }
 
   void selectedElementDelete() {
-    final tempList =
-        state.data!.where((element) => element.isCheck != true).toList();
-
+    final tempList = state.data!;
+    tempList.removeWhere((element) => element.isCheck == true);
     emit(state.copyWith(data: tempList));
+  }
+
+  /// change Temp list
+  void changeTempList(List<DataModel> list) {
+    emit(state.copyWith(tempList: list));
   }
 }
