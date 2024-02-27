@@ -130,6 +130,15 @@ class ProfileView extends StatelessWidget {
               text: LocaleKeys.profile_list_educations,
             ),
           ),
+          Padding(
+            padding: const ProjectPadding.symmetricSmallV(),
+            child: CustomAccountOperationItem(
+              labelIcon: Assets.icons.icFileMarkLine
+                  .toGetSvgWithColor(color: ColorName.blueBase),
+              pageRouteInfo: const ProfileShiftsListRoute(),
+              text: 'Shiftler',
+            ),
+          ),
         ],
       ),
     );

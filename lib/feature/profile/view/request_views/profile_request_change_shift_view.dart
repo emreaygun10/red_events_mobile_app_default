@@ -11,6 +11,7 @@ import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/state/profile_request_change_shift_state.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_autosizetext_for_title.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_multiline_textformfield.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_payroll_request_select_manager.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_show_manager_bottom_sheet.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
 import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
@@ -337,77 +338,7 @@ class _ProfileRequestChangeShiftViewState
       showDragHandle: true,
       enableDrag: false,
       builder: (context) {
-        return StatefulBuilder(
-          builder: (context, setstate) {
-            return SizedBox(
-              height: context.sized.height * 0.45,
-              width: context.sized.width,
-              child: Padding(
-                padding: const ProjectPadding.scaffold(),
-                child: Column(
-                  children: [
-                    AutoSizeText(
-                      LocaleKeys
-                          .profile_progress_payment_chips_manager_selection
-                          .tr(),
-                      style: textTheme.headlineMedium,
-                    ),
-                    AutoSizeText(
-                      LocaleKeys.profile_progress_payment_chips_max_manager
-                          .tr(),
-                      style: textTheme.labelSmall!
-                          .copyWith(color: ColorName.neutral500),
-                    ),
-                    Expanded(
-                      child: ListView.separated(
-                        itemBuilder: (context, index) {
-                          return ListTile(
-                            title: AutoSizeText(
-                              profileRequestChangeShiftBloc
-                                  .state.managerList[index],
-                            ),
-                            leading: Checkbox(
-                              value: profileRequestChangeShiftBloc
-                                  .state.managerCheckBoxList
-                                  .contains(
-                                profileRequestChangeShiftBloc
-                                    .state.managerList[index],
-                              ),
-                              onChanged: (value) {
-                                if (value ?? false) {
-                                  addManager(
-                                    profileRequestChangeShiftBloc
-                                        .state.managerList[index],
-                                  );
-                                  setstate() {}
-                                } else {
-                                  removeManager(
-                                    profileRequestChangeShiftBloc
-                                        .state.managerList[index],
-                                  );
-                                  setstate() {}
-                                }
-                              },
-                            ),
-                          );
-                        },
-                        separatorBuilder: (context, index) {
-                          return const Divider(
-                            color: ColorName.neutral200,
-                            height: 2,
-                          );
-                        },
-                        itemCount: profileRequestChangeShiftBloc
-                            .state.managerList.length,
-                      ),
-                    ),
-                    buildContinueButtonBottomSheet(context),
-                  ],
-                ),
-              ),
-            );
-          },
-        );
+        return const CustomPayrollRequestSelectionBottomSheet();
       },
     );
   }

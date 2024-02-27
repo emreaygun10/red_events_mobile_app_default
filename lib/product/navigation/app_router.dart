@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:red_events_mobile_app_defult/feature/add_personnel/view/add_personnel_view.dart';
 import 'package:red_events_mobile_app_defult/feature/add_personnel/view/base_informations_view.dart';
@@ -20,6 +21,7 @@ import 'package:red_events_mobile_app_defult/feature/profile/view/profile_perfor
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_progress_payment_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_request_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_request_view_detail_view.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/profile_shifts_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/progress_payment_views/progress_payment_detail_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/progress_payment_views/progress_payment_document_read_view.dart';
@@ -30,6 +32,7 @@ import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_payroll_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_permission_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_report_view.dart';
+import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/welcome_wizard_view.dart';
 
 part 'app_router.gr.dart';
 
@@ -40,7 +43,8 @@ class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(page: HomeRoute.page),
-        AutoRoute(page: OnboardRoute.page, initial: true),
+        // ignore: avoid_redundant_argument_values
+        AutoRoute(page: OnboardRoute.page, initial: kReleaseMode),
         AutoRoute(page: SignInRoute.page),
         AutoRoute(page: SuccessSignInRoute.page),
         AutoRoute(page: LoginRoute.page),
@@ -69,5 +73,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: ProfileDetailRoute.page),
         AutoRoute(page: ProfileNotificationRoute.page),
         AutoRoute(page: ProfileRequestChangeShiftRoute.page),
+        AutoRoute(page: ProfileShiftsListRoute.page),
+        AutoRoute(page: WelcomeWizardSetupRoute.page, initial: kDebugMode),
       ];
 }

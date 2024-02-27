@@ -3,6 +3,16 @@
         "operations": "İşlemler",
         "app_name": "ShiftBox"
     },
+    "setup": {
+        "title": "Shiftbox’a hoşgeldiniz",
+        "subTitle": "Hızlı ve kolay bir şekilde şirketinizi tanımlayıp süreçlerinizi uçtan uca yönetin.",
+        "select_package": "Paket Seçimi",
+        "company_info": "Şirket Bilgileri",
+        "work_type": "Çalışma Şekli",
+        "notifications": "Bildirimler",
+        "personnel": "Personeller",
+        "button": "Kuruluma Başla"
+    },
     "general": {
         "button": {
             "save": "Kaydet",
