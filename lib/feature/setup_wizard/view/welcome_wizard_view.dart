@@ -84,37 +84,42 @@ class WelcomeWizardSetupView extends StatelessWidget {
               borderRadius: ProjectBorderRadius.allCircleMedium(),
               color: ColorName.neutral200,
             ),
-            child: Row(
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      height: 36.h,
-                      width: 36.w,
-                      padding: const EdgeInsets.all(6).r,
-                      decoration: const BoxDecoration(
-                        color: ColorName.neutral300,
-                        shape: BoxShape.circle,
-                      ),
-                      child: listIcon[index],
-                    ),
-                    SizedBox(
-                      width: 9.w,
-                    ),
-                    AutoSizeText(
-                      WelcomeSetupListEnum.values[index].value.tr(),
-                      style: Theme.of(context).textTheme.labelSmall,
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            child: buildListTileContents(listIcon, index, context),
           ),
           separatorBuilder: (context, index) => SizedBox(
             height: 8.h,
           ),
         ),
       ),
+    );
+  }
+
+  Row buildListTileContents(
+      List<Widget> listIcon, int index, BuildContext context) {
+    return Row(
+      children: [
+        Row(
+          children: [
+            Container(
+              height: 36.h,
+              width: 36.w,
+              padding: const EdgeInsets.all(6).r,
+              decoration: const BoxDecoration(
+                color: ColorName.neutral300,
+                shape: BoxShape.circle,
+              ),
+              child: listIcon[index],
+            ),
+            SizedBox(
+              width: 9.w,
+            ),
+            AutoSizeText(
+              WelcomeSetupListEnum.values[index].value.tr(),
+              style: Theme.of(context).textTheme.labelSmall,
+            ),
+          ],
+        ),
+      ],
     );
   }
 

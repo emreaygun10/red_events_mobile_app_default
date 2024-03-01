@@ -10,10 +10,15 @@ import 'package:red_events_mobile_app_defult/product/widget/custom_top_linear_gr
 import 'package:widgets/widgets.dart';
 
 class CustomPersonnelTopStack extends StatelessWidget {
-  const CustomPersonnelTopStack(
-      {required this.linearProgressEnum, required this.text, super.key});
+  const CustomPersonnelTopStack({
+    required this.linearProgressEnum,
+    required this.text,
+    this.maxLevel = '3',
+    super.key,
+  });
   final LinearProgressEnum linearProgressEnum;
   final String text;
+  final String maxLevel;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +73,7 @@ class CustomPersonnelTopStack extends StatelessWidget {
             ),
             AutoSizeText(
               LocaleKeys.add_personnel_base_inform_linear_progress.tr(
-                args: [level.step.toString()],
+                args: [level.step.toString(), maxLevel],
               ),
               style: Theme.of(context)
                   .textTheme
@@ -88,8 +93,8 @@ Flexible buildTitle(BuildContext context, String text) {
       text.tr(),
       style: Theme.of(context)
           .textTheme
-          .headlineLarge!
-          .copyWith(fontWeight: FontWeight.bold),
+          .headlineMedium!
+          .copyWith(fontWeight: FontWeight.w500),
       textAlign: TextAlign.center,
       maxLines: 1,
     ),

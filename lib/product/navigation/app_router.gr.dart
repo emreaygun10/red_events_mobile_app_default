@@ -15,6 +15,18 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    AddDepartmentFormRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AddDepartmentFormView(),
+      );
+    },
+    AddDepartmentRoute.name: (routeData) {
+      return AutoRoutePage<DepartmentModel>(
+        routeData: routeData,
+        child: const AddDepartmentView(),
+      );
+    },
     AddPersonnelRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -31,6 +43,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const BottomNAvigationBarView(),
+      );
+    },
+    CompanyInformationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CompanyInformationView(),
       );
     },
     CreatePasswordRoute.name: (routeData) {
@@ -220,6 +238,34 @@ abstract class _$AppRouter extends RootStackRouter {
 }
 
 /// generated route for
+/// [AddDepartmentFormView]
+class AddDepartmentFormRoute extends PageRouteInfo<void> {
+  const AddDepartmentFormRoute({List<PageRouteInfo>? children})
+      : super(
+          AddDepartmentFormRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddDepartmentFormRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AddDepartmentView]
+class AddDepartmentRoute extends PageRouteInfo<void> {
+  const AddDepartmentRoute({List<PageRouteInfo>? children})
+      : super(
+          AddDepartmentRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddDepartmentRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [AddPersonnelView]
 class AddPersonnelRoute extends PageRouteInfo<void> {
   const AddPersonnelRoute({List<PageRouteInfo>? children})
@@ -257,6 +303,20 @@ class BottomNAvigationBarRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'BottomNAvigationBarRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CompanyInformationView]
+class CompanyInformationRoute extends PageRouteInfo<void> {
+  const CompanyInformationRoute({List<PageRouteInfo>? children})
+      : super(
+          CompanyInformationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CompanyInformationRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

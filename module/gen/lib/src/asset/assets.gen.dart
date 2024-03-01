@@ -25,6 +25,9 @@ class $AssetsColorGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/ic_add.svg
+  SvgGenImage get icAdd => const SvgGenImage('assets/icons/ic_add.svg');
+
   /// File path: assets/icons/ic_address.svg
   SvgGenImage get icAddress => const SvgGenImage('assets/icons/ic_address.svg');
 
@@ -166,6 +169,10 @@ class $AssetsIconsGen {
   SvgGenImage get icIdentity =>
       const SvgGenImage('assets/icons/ic_identity.svg');
 
+  /// File path: assets/icons/ic_information_fill.svg
+  SvgGenImage get icInformationFill =>
+      const SvgGenImage('assets/icons/ic_information_fill.svg');
+
   /// File path: assets/icons/ic_lock.svg
   SvgGenImage get icLock => const SvgGenImage('assets/icons/ic_lock.svg');
 
@@ -231,6 +238,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_request_empyt_list.svg
   SvgGenImage get icRequestEmpytList =>
       const SvgGenImage('assets/icons/ic_request_empyt_list.svg');
+
+  /// File path: assets/icons/ic_search.svg
+  SvgGenImage get icSearch => const SvgGenImage('assets/icons/ic_search.svg');
 
   /// File path: assets/icons/ic_secure_payment_line.svg
   SvgGenImage get icSecurePaymentLine =>
@@ -315,6 +325,7 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [
+        icAdd,
         icAddress,
         icAge,
         icArroeLeftS,
@@ -353,6 +364,7 @@ class $AssetsIconsGen {
         icHomeBottomBar,
         icHomeOffice,
         icIdentity,
+        icInformationFill,
         icLock,
         icLogoBlue,
         icLogoDark,
@@ -371,6 +383,7 @@ class $AssetsIconsGen {
         icProgressPaymentEmptyList,
         icQrCode,
         icRequestEmpytList,
+        icSearch,
         icSecurePaymentLine,
         icSelectBoxCircle,
         icSelectBoxCircleFill,

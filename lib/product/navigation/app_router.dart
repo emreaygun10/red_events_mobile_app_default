@@ -32,6 +32,10 @@ import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_payroll_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_permission_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_report_view.dart';
+import 'package:red_events_mobile_app_defult/feature/setup_wizard/model/department_model.dart';
+import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/add_department_form_view.dart';
+import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/add_department_view.dart';
+import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/company_information_view.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/welcome_wizard_view.dart';
 
 part 'app_router.gr.dart';
@@ -74,6 +78,9 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: ProfileNotificationRoute.page),
         AutoRoute(page: ProfileRequestChangeShiftRoute.page),
         AutoRoute(page: ProfileShiftsListRoute.page),
-        AutoRoute(page: WelcomeWizardSetupRoute.page, initial: kDebugMode),
+        AutoRoute(page: CompanyInformationRoute.page, initial: kDebugMode),
+        AutoRoute(page: AddDepartmentRoute.page),
+        AutoRoute(page: WelcomeWizardSetupRoute.page),
+        AutoRoute(page: AddDepartmentFormRoute.page),
       ];
 }

@@ -7,7 +7,29 @@
         "title": "Shiftbox’a hoşgeldiniz",
         "subTitle": "Hızlı ve kolay bir şekilde şirketinizi tanımlayıp süreçlerinizi uçtan uca yönetin.",
         "select_package": "Paket Seçimi",
-        "company_info": "Şirket Bilgileri",
+        "company_info": {
+            "title": "Şirket Bilgileri",
+            "company_name": "Şirket Adı",
+            "sector": "Sektör",
+            "sector_info": "Sektörünüzü seçerek size en ugun çalışma modelini önerilecektir.",
+            "search": "Arama Yap",
+            "sheet_button": "Seç",
+            "sheet_title": "Sektör Seç",
+            "work_model": "Çalışma Modeli",
+            "add_department": "Departman Ekle"
+        },
+        "add_department": {
+            "department_name": "Departman Adı",
+            "department_name_hint": "Departman adını giriniz",
+            "department_manager": "Departman Müdürü",
+            "department_manager_hint": "Departman müdürü",
+            "department_manager_mail": "Department Müdürü E-mail",
+            "department_manager_mail_hint": "hello@ShiftBox.com",
+            "department_manager_gsm": "Department Müdürü GSM",
+            "is_part_of_department": "Departmanın bölümleri var mı?",
+            "is_part_of_department_info": "Lorem ipsum dolor sit amet consectetur.",
+            "part": "BÖLÜM"
+        },
         "work_type": "Çalışma Şekli",
         "notifications": "Bildirimler",
         "personnel": "Personeller",
@@ -108,7 +130,7 @@
             "continue": "Devam Et"
         },
         "base_inform": {
-            "linear_progress": "Adım {}/3",
+            "linear_progress": "Adım {}/{}",
             "name_surname": "Ad Soyad",
             "name_surname_hint": "Lütfen Giriniz",
             "tc": "TC Kimlik No",
