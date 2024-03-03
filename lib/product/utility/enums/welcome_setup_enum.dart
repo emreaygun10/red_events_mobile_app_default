@@ -6,7 +6,7 @@ enum WelcomeSetupListEnum {
   infoCompany(LocaleKeys.setup_company_info_title),
   workType(LocaleKeys.setup_work_type_title),
   notification(LocaleKeys.setup_notifications),
-  personnels(LocaleKeys.setup_personnel);
+  personnels(LocaleKeys.setup_personnel_title);
 
   /// double value
   final String value;

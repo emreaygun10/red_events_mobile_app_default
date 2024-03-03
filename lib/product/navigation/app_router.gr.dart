@@ -27,6 +27,24 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AddDepartmentView(),
       );
     },
+    AddPersonnelFormRoute.name: (routeData) {
+      return AutoRoutePage<PersonnelModel>(
+        routeData: routeData,
+        child: const AddPersonnelFormView(),
+      );
+    },
+    AddPersonnelListRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AddPersonnelListView(),
+      );
+    },
+    AddPersonnelSelectionRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AddPersonnelSelectionView(),
+      );
+    },
     AddPersonnelRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -267,6 +285,48 @@ class AddDepartmentRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'AddDepartmentRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AddPersonnelFormView]
+class AddPersonnelFormRoute extends PageRouteInfo<void> {
+  const AddPersonnelFormRoute({List<PageRouteInfo>? children})
+      : super(
+          AddPersonnelFormRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddPersonnelFormRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AddPersonnelListView]
+class AddPersonnelListRoute extends PageRouteInfo<void> {
+  const AddPersonnelListRoute({List<PageRouteInfo>? children})
+      : super(
+          AddPersonnelListRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddPersonnelListRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AddPersonnelSelectionView]
+class AddPersonnelSelectionRoute extends PageRouteInfo<void> {
+  const AddPersonnelSelectionRoute({List<PageRouteInfo>? children})
+      : super(
+          AddPersonnelSelectionRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddPersonnelSelectionRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

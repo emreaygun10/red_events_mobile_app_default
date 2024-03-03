@@ -12,6 +12,7 @@ import 'package:kartal/kartal.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_autosizetext_for_title.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/model/department_model.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/mixin/add_department_form_mixin.dart';
+import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/widgets/custom_divider.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view_model/add_department_form_bloc.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view_model/state/add_department_form_state.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
@@ -90,7 +91,9 @@ class _AddDepartmentFormViewState extends BaseState<AddDepartmentFormView>
                                 .copyWith(bottom: 0),
                             child: buildPhoneNumber(context),
                           ),
-                          buildCustomDivider(),
+                          const CustomDivider(
+                            title: LocaleKeys.setup_add_department_part,
+                          ),
                           buildDepartmentSwitch(context),
                         ],
                       ),
@@ -163,35 +166,6 @@ class _AddDepartmentFormViewState extends BaseState<AddDepartmentFormView>
           AutoSizeText(
             LocaleKeys.setup_add_department_is_part_of_department_info.tr(),
             style: textTheme.titleSmall!.copyWith(color: ColorName.neutral500),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Padding buildCustomDivider() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20).r,
-      child: Row(
-        children: [
-          const Flexible(
-            flex: 4,
-            child: Divider(
-              color: ColorName.neutral200,
-            ),
-          ),
-          const Spacer(),
-          AutoSizeText(
-            LocaleKeys.setup_add_department_part.tr(),
-            style: textTheme.titleSmall!.copyWith(color: ColorName.neutral400),
-          ),
-          const Spacer(),
-          const Flexible(
-            flex: 4,
-            child: Divider(
-              height: 8,
-              color: ColorName.neutral200,
-            ),
           ),
         ],
       ),

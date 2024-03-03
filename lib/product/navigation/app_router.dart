@@ -33,8 +33,12 @@ import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_permission_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/request_views/profile_request_report_view.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/model/department_model.dart';
+import 'package:red_events_mobile_app_defult/feature/setup_wizard/model/peronnel_model.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/add_department_form_view.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/add_department_view.dart';
+import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/add_personnel_form_view.dart';
+import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/add_personnel_list_view.dart';
+import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/add_personnel_selection_view.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/company_information_view.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/welcome_wizard_view.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/work_type_view.dart';
@@ -84,5 +88,10 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: WelcomeWizardSetupRoute.page),
         AutoRoute(page: AddDepartmentFormRoute.page),
         AutoRoute(page: WorkTypeRoute.page, initial: kDebugMode),
+        AutoRoute(
+          page: AddPersonnelSelectionRoute.page,
+        ),
+        AutoRoute(page: AddPersonnelFormRoute.page),
+        AutoRoute(page: AddPersonnelListRoute.page),
       ];
 }

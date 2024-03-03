@@ -41,7 +41,29 @@
             "question_three": "Resmi tatillerde çalışma ücreti nasıl hesaplansın?"
         },
         "notifications": "Bildirimler",
-        "personnel": "Personeller",
+        "personnel": {
+            "title": "Personeller",
+            "manuel": "Manuel Ekle",
+            "link": "Linke Yönlendir",
+            "info": "Personel Ekleme Seçeneğinizi Seçiniz",
+            "form": {
+                "title": "Personel Oluştur",
+                "name_surname": "Ad Soyad",
+                "tc": "TC No",
+                "birtdate": "Doğum Tarihi",
+                "mail": "E-mail",
+                "phone_number": "Telefon Numarası",
+                "workinfo": {
+                    "title": "Çalışma Bilgileri",
+                    "work_type": "Çalışma Şekli",
+                    "departmanent": "Departman",
+                    "part": "Bölüm",
+                    "mission": "Görev",
+                    "start_date": "İşe Başlama Tarihi",
+                    "salary": "Maaş"
+                }
+            }
+        },
         "button": "Kuruluma Başla"
     },
     "general": {

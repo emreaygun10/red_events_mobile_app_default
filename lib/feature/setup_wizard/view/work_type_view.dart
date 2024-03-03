@@ -11,6 +11,7 @@ import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/mixin/wor
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view_model/state/work_type_state.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view_model/work_type_bloc.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
+import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
 import 'package:red_events_mobile_app_defult/product/utility/enums/linearprogress_enums.dart';
 import 'package:red_events_mobile_app_defult/product/widget/custom_personnel_top_stack.dart';
@@ -171,7 +172,12 @@ class _WorkTypeViewState extends BaseState<WorkTypeView> with WorkTypeMixin {
                               ? ColorName.neutral200
                               : ColorName.blueBase,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          context.router.pushAndPopUntil(
+                            const AddPersonnelSelectionRoute(),
+                            predicate: (route) => false,
+                          );
+                        },
                         child: AutoSizeText(
                           'Devam Et',
                           style: textTheme.titleLarge!.copyWith(

@@ -134,6 +134,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_file.svg
   SvgGenImage get icFile => const SvgGenImage('assets/icons/ic_file.svg');
 
+  /// File path: assets/icons/ic_file_edit.svg
+  SvgGenImage get icFileEdit =>
+      const SvgGenImage('assets/icons/ic_file_edit.svg');
+
   /// File path: assets/icons/ic_file_mark_line.svg
   SvgGenImage get icFileMarkLine =>
       const SvgGenImage('assets/icons/ic_file_mark_line.svg');
@@ -355,6 +359,7 @@ class $AssetsIconsGen {
         icEye,
         icEyeOff,
         icFile,
+        icFileEdit,
         icFileMarkLine,
         icFolderOpen,
         icFolderOpenLine,
