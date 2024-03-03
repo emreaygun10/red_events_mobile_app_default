@@ -37,6 +37,7 @@ import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/add_depar
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/add_department_view.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/company_information_view.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/welcome_wizard_view.dart';
+import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/work_type_view.dart';
 
 part 'app_router.gr.dart';
 
@@ -78,9 +79,10 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: ProfileNotificationRoute.page),
         AutoRoute(page: ProfileRequestChangeShiftRoute.page),
         AutoRoute(page: ProfileShiftsListRoute.page),
-        AutoRoute(page: CompanyInformationRoute.page, initial: kDebugMode),
+        AutoRoute(page: CompanyInformationRoute.page),
         AutoRoute(page: AddDepartmentRoute.page),
         AutoRoute(page: WelcomeWizardSetupRoute.page),
         AutoRoute(page: AddDepartmentFormRoute.page),
+        AutoRoute(page: WorkTypeRoute.page, initial: kDebugMode),
       ];
 }

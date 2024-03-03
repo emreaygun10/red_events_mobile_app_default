@@ -28,9 +28,18 @@
             "department_manager_gsm": "Department Müdürü GSM",
             "is_part_of_department": "Departmanın bölümleri var mı?",
             "is_part_of_department_info": "Lorem ipsum dolor sit amet consectetur.",
-            "part": "BÖLÜM"
+            "part": "BÖLÜM",
+            "button": "Oluştur"
         },
-        "work_type": "Çalışma Şekli",
+        "work_type": {
+            "title": "Çalışma Şekli",
+            "card": "Shiftbox, personellerinizin ücret ve hakedişlerini hesaplasın mı?",
+            "daily_clock": "Günlük Çalışma Saati",
+            "clock": "{} Saat",
+            "question_one": "Günlük standart çalışma saatinin üzerinde çalışmalar nasıl işlem görsün ?",
+            "question_two": "Mesai ücretleri nasıl hesaplansın?",
+            "question_three": "Resmi tatillerde çalışma ücreti nasıl hesaplansın?"
+        },
         "notifications": "Bildirimler",
         "personnel": "Personeller",
         "button": "Kuruluma Başla"

@@ -4,7 +4,7 @@ import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g
 enum WelcomeSetupListEnum {
   selectPackage(LocaleKeys.setup_select_package),
   infoCompany(LocaleKeys.setup_company_info_title),
-  workType(LocaleKeys.setup_work_type),
+  workType(LocaleKeys.setup_work_type_title),
   notification(LocaleKeys.setup_notifications),
   personnels(LocaleKeys.setup_personnel);
 

@@ -16,13 +16,13 @@ abstract class _$AppRouter extends RootStackRouter {
   @override
   final Map<String, PageFactory> pagesMap = {
     AddDepartmentFormRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
+      return AutoRoutePage<DepartmentModel>(
         routeData: routeData,
         child: const AddDepartmentFormView(),
       );
     },
     AddDepartmentRoute.name: (routeData) {
-      return AutoRoutePage<DepartmentModel>(
+      return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const AddDepartmentView(),
       );
@@ -232,6 +232,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const WelcomeWizardSetupView(),
+      );
+    },
+    WorkTypeRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const WorkTypeView(),
       );
     },
   };
@@ -778,6 +784,20 @@ class WelcomeWizardSetupRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'WelcomeWizardSetupRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [WorkTypeView]
+class WorkTypeRoute extends PageRouteInfo<void> {
+  const WorkTypeRoute({List<PageRouteInfo>? children})
+      : super(
+          WorkTypeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'WorkTypeRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
