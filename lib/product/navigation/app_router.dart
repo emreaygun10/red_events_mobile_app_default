@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:red_events_mobile_app_defult/feature/add_personnel/view/add_personnel_view.dart';
 import 'package:red_events_mobile_app_defult/feature/add_personnel/view/base_informations_view.dart';
@@ -12,6 +13,7 @@ import 'package:red_events_mobile_app_defult/feature/auth/sign_in/view/sign_in_v
 import 'package:red_events_mobile_app_defult/feature/home/view/bottom_navigation_bar_view.dart';
 import 'package:red_events_mobile_app_defult/feature/home/view/home_view.dart';
 import 'package:red_events_mobile_app_defult/feature/home/view/qr_view.dart';
+import 'package:red_events_mobile_app_defult/feature/manager/view/manager_bottom_navigation_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_detail_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_documents_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_education_view.dart';
@@ -53,7 +55,7 @@ class AppRouter extends _$AppRouter {
   List<AutoRoute> get routes => [
         AutoRoute(page: HomeRoute.page),
         // ignore: avoid_redundant_argument_values
-        AutoRoute(page: OnboardRoute.page, initial: true),
+        AutoRoute(page: OnboardRoute.page, initial: kReleaseMode),
         AutoRoute(page: SignInRoute.page),
         AutoRoute(page: SuccessSignInRoute.page),
         AutoRoute(page: LoginRoute.page),
@@ -94,5 +96,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: AddPersonnelFormRoute.page),
         AutoRoute(page: AddPersonnelListRoute.page),
         AutoRoute(page: SuccessRoute.page),
+        AutoRoute(page: ManagerBottomNavigationRoute.page, initial: kDebugMode),
       ];
 }

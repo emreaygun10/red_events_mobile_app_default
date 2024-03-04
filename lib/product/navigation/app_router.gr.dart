@@ -93,6 +93,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const LoginView(),
       );
     },
+    ManagerBottomNavigationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ManagerBottomNavigationView(),
+      );
+    },
     OnboardRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -445,6 +451,20 @@ class LoginRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'LoginRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ManagerBottomNavigationView]
+class ManagerBottomNavigationRoute extends PageRouteInfo<void> {
+  const ManagerBottomNavigationRoute({List<PageRouteInfo>? children})
+      : super(
+          ManagerBottomNavigationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ManagerBottomNavigationRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
