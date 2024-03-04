@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
 import 'package:kartal/kartal.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
+import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:red_events_mobile_app_defult/product/utility/enums/welcome_setup_enum.dart';
 import 'package:red_events_mobile_app_defult/product/widget/custom_top_linear_gradient.dart';
 import 'package:widgets/widgets.dart';
@@ -52,7 +53,12 @@ class WelcomeWizardSetupView extends StatelessWidget {
               height: 56.h,
               width: context.sized.width,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.router.pushAndPopUntil(
+                    const CompanyInformationRoute(),
+                    predicate: (route) => false,
+                  );
+                },
                 child: AutoSizeText(
                   LocaleKeys.setup_button.tr(),
                   style: Theme.of(context)
@@ -95,7 +101,10 @@ class WelcomeWizardSetupView extends StatelessWidget {
   }
 
   Row buildListTileContents(
-      List<Widget> listIcon, int index, BuildContext context) {
+    List<Widget> listIcon,
+    int index,
+    BuildContext context,
+  ) {
     return Row(
       children: [
         Row(

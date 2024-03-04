@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 
 class AddPersonnelFormState extends Equatable {
   const AddPersonnelFormState({
+    required this.isStartDate,
     this.nameSurname,
     this.tcNo,
     this.birthdate,
@@ -27,6 +28,7 @@ class AddPersonnelFormState extends Equatable {
   final String? mission;
   final String? startDate;
   final String? salary;
+  final bool isStartDate;
 
   @override
   List<Object?> get props => [
@@ -41,6 +43,7 @@ class AddPersonnelFormState extends Equatable {
         mission,
         startDate,
         salary,
+        isStartDate,
       ];
 
   AddPersonnelFormState copyWith({
@@ -55,6 +58,7 @@ class AddPersonnelFormState extends Equatable {
     String? mission,
     String? startDate,
     String? salary,
+    bool? isStartDate,
   }) {
     return AddPersonnelFormState(
       nameSurname: nameSurname ?? this.nameSurname,
@@ -68,6 +72,7 @@ class AddPersonnelFormState extends Equatable {
       mission: mission ?? this.mission,
       startDate: startDate ?? this.startDate,
       salary: salary ?? this.salary,
+      isStartDate: isStartDate ?? this.isStartDate,
     );
   }
 }

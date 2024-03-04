@@ -2,11 +2,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
 import 'package:kartal/kartal.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_autosizetext_for_title.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/mixin/company_information_mixin.dart';
+import 'package:red_events_mobile_app_defult/feature/setup_wizard/view_model/company_information_bloc.dart';
+import 'package:red_events_mobile_app_defult/feature/setup_wizard/view_model/state/company_information_state.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
 import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
@@ -27,74 +30,100 @@ class _CompanyInformationViewState extends BaseState<CompanyInformationView>
     with CompanyInformationMixin {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      bottomNavigationBar: buildNavigationButton(context),
-      bottomSheet: buildBottomSheet(context),
-      extendBodyBehindAppBar: true,
-      appBar: buildAppBar(),
-      body: ListView(
-        //physics: const NeverScrollableScrollPhysics(),
-        padding: EdgeInsets.zero,
-        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-        children: [
-          const CustomPersonnelTopStack(
-            linearProgressEnum: LinearProgressEnum.levelOneInFive,
-            text: LocaleKeys.setup_company_info_title,
-            maxLevel: '5',
-          ),
-          Container(
-            width: context.sized.width,
-            padding: const ProjectPadding.scaffold(),
-            child: Form(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+    return BlocProvider(
+      create: (context) => companyInformationBloc,
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        bottomSheet: buildBottomSheet(context),
+        extendBodyBehindAppBar: true,
+        appBar: buildAppBar(),
+        body: Column(
+          children: [
+            Flexible(
+              flex: 7,
+              child: ListView(
+                //physics: const NeverScrollableScrollPhysics(),
+                padding: EdgeInsets.zero,
+                keyboardDismissBehavior:
+                    ScrollViewKeyboardDismissBehavior.onDrag,
                 children: [
-                  const CustomAutoSizeTextForTitle(
-                    text: LocaleKeys.setup_company_info_company_name,
+                  const CustomPersonnelTopStack(
+                    linearProgressEnum: LinearProgressEnum.levelOneInFive,
+                    text: LocaleKeys.setup_company_info_title,
+                    maxLevel: '5',
                   ),
-                  buildCompanyNameTextFormField(),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16).r,
-                    child: const CustomAutoSizeTextForTitle(
-                      text: LocaleKeys.setup_company_info_sector,
+                  Container(
+                    width: context.sized.width,
+                    padding: const ProjectPadding.scaffold(),
+                    child: Form(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const CustomAutoSizeTextForTitle(
+                            text: LocaleKeys.setup_company_info_company_name,
+                          ),
+                          buildCompanyNameTextFormField(),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 16).r,
+                            child: const CustomAutoSizeTextForTitle(
+                              text: LocaleKeys.setup_company_info_sector,
+                            ),
+                          ),
+                          buildSectorContainer(),
+                          buildSectorInfoBox(context),
+                        ],
+                      ),
                     ),
                   ),
-                  buildSectorContainer(),
-                  buildSectorInfoBox(context),
+                  BlocBuilder<CompanyInformationBloc, CompanyInformationState>(
+                    builder: (context, state) {
+                      return state.isShow
+                          ? Padding(
+                              padding: const ProjectPadding.scaffold(),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      top: 40,
+                                      bottom: 12,
+                                    ).r,
+                                    child: AutoSizeText(
+                                      LocaleKeys.setup_company_info_work_model
+                                          .tr(),
+                                      style: textTheme.labelMedium!.copyWith(
+                                        color: ColorName.neutral900,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 352.h,
+                                    child: ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      itemCount: 3,
+                                      itemBuilder: (context, index) =>
+                                          buildModelCard(
+                                        index,
+                                        context,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          : const SizedBox();
+                    },
+                  ),
                 ],
               ),
             ),
-          ),
-          Padding(
-            padding: const ProjectPadding.scaffold(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 40, bottom: 12).r,
-                  child: AutoSizeText(
-                    LocaleKeys.setup_company_info_work_model.tr(),
-                    style: textTheme.labelMedium!
-                        .copyWith(color: ColorName.neutral900),
-                  ),
-                ),
-                SizedBox(
-                  height: 352.h,
-                  child: ListView.builder(
-                    padding: EdgeInsets.zero,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: 3,
-                    itemBuilder: (context, index) => buildModelCard(
-                      index,
-                      context,
-                    ),
-                  ),
-                ),
-              ],
+            Flexible(
+              child: buildNavigationButton(context),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -280,7 +309,9 @@ class _CompanyInformationViewState extends BaseState<CompanyInformationView>
         height: 56,
         width: context.sized.width - 40.w,
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            solidController.hide();
+          },
           child: AutoSizeText(
             LocaleKeys.setup_company_info_sheet_button.tr(),
             style: textTheme.titleLarge!.copyWith(color: ColorName.neutral0),
@@ -293,19 +324,29 @@ class _CompanyInformationViewState extends BaseState<CompanyInformationView>
   Flexible buildListView() {
     return Flexible(
       flex: 7,
-      child: ListView.separated(
-        itemBuilder: (context, index) => RadioListTile(
-          title: AutoSizeText(LocaleKeys.setup_company_info_sheet_title.tr()),
-          value: index,
-          groupValue: radioGroupValue,
-          onChanged: (value) {
-            radioGroupValue = value ?? 0;
-          },
-        ),
-        separatorBuilder: (context, index) => const Divider(
-          color: ColorName.neutral200,
-        ),
-        itemCount: 10,
+      child: BlocBuilder<CompanyInformationBloc, CompanyInformationState>(
+        builder: (context, state) {
+          return ListView.separated(
+            itemBuilder: (context, index) => RadioListTile(
+              title:
+                  AutoSizeText(LocaleKeys.setup_company_info_sheet_title.tr()),
+              value: index,
+              groupValue: state.groupValue,
+              onChanged: (value) {
+                companyInformationBloc
+                  ..changeRadio(value ?? 0)
+                  ..changeSectorName(
+                    'Seçilen Sektör',
+                  )
+                  ..changeIsShow(value: true);
+              },
+            ),
+            separatorBuilder: (context, index) => const Divider(
+              color: ColorName.neutral200,
+            ),
+            itemCount: 10,
+          );
+        },
       ),
     );
   }
@@ -409,10 +450,18 @@ class _CompanyInformationViewState extends BaseState<CompanyInformationView>
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              AutoSizeText(
-                LocaleKeys.setup_company_info_sector.tr(),
-                style: textTheme.titleMedium!
-                    .copyWith(color: ColorName.neutral500),
+              BlocBuilder<CompanyInformationBloc, CompanyInformationState>(
+                builder: (context, state) {
+                  return AutoSizeText(
+                    state.sectorName ??
+                        LocaleKeys.setup_company_info_sector.tr(),
+                    style: textTheme.titleMedium!.copyWith(
+                      color: state.sectorName == null
+                          ? ColorName.neutral500
+                          : ColorName.neutral900,
+                    ),
+                  );
+                },
               ),
               Assets.icons.icDownArrow.toGetSvg(),
             ],
@@ -444,6 +493,7 @@ class _CompanyInformationViewState extends BaseState<CompanyInformationView>
   AppBar buildAppBar() {
     return AppBar(
       backgroundColor: Colors.transparent,
+      automaticallyImplyLeading: false,
       centerTitle: true,
       title: Container(
         height: 40.h,

@@ -54,7 +54,7 @@ class _AddPersonnelListViewState extends BaseState<AddPersonnelListView>
                     itemBuilder: (context, index) {
                       return state.personnelList.isEmpty
                           ? buildDottedBorderCard(context)
-                          : index == state.personnelList.length
+                          : index != state.personnelList.length
                               ? buildPersonnelCard(context, index)
                               : buildDottedBorderCard(context);
                     },
@@ -73,6 +73,7 @@ class _AddPersonnelListViewState extends BaseState<AddPersonnelListView>
                 },
                 builder: (context, state) {
                   return CustomBottomButton(
+                    text: 'Tamamla',
                     backgroundColor: state.isDisable
                         ? ColorName.neutral200
                         : ColorName.blueBase,
@@ -80,7 +81,7 @@ class _AddPersonnelListViewState extends BaseState<AddPersonnelListView>
                         ? ColorName.neutral400
                         : ColorName.neutral0,
                     textTheme: textTheme,
-                    route: const AddDepartmentFormRoute(),
+                    route: const SuccessRoute(),
                     isDisable: state.isDisable,
                   );
                 },
@@ -98,90 +99,125 @@ class _AddPersonnelListViewState extends BaseState<AddPersonnelListView>
   ) {
     return BlocBuilder<AddPersonnelListBloc, AddPersonnelListState>(
       builder: (context, state) {
-        return Container(
-          padding: EdgeInsets.only(
-            top: 12,
-            bottom: 16.h,
-            right: 12,
-            left: 12,
-          ).r,
-          height: 96.h,
-          width: context.sized.width,
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: ColorName.neutral200,
-            ),
-            borderRadius: ProjectBorderRadius.allCircleMedium(),
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                height: 48.h,
-                width: 48.w,
-                child: Stack(
-                  children: [
-                    Align(
-                      child: Container(
-                        height: 48.h,
-                        width: 48.w,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: ColorName.orangeLight,
-                        ),
-                      ),
-                    ),
-                    const Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Chip(
-                        label: AutoSizeText('24'),
-                      ),
-                    ),
-                  ],
-                ),
+        return Padding(
+          padding: const ProjectPadding.scaffold().copyWith(bottom: 12).r,
+          child: Container(
+            padding: EdgeInsets.only(
+              top: 12,
+              bottom: 16.h,
+              right: 12,
+              left: 12,
+            ).r,
+            height: 96.h,
+            width: context.sized.width,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: ColorName.neutral200,
+                width: 2,
               ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    AutoSizeText(
-                      state.personnelList[index].nameSurname,
-                      style: textTheme.titleMedium!.copyWith(
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    AutoSizeText(
-                      state.personnelList[index].department,
-                      style: textTheme.titleSmall!.copyWith(
-                        color: ColorName.neutral500,
-                      ),
-                    ),
-                    Row(
+              borderRadius: ProjectBorderRadius.allCircleMedium(),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 8).r,
+                  child: SizedBox(
+                    height: 48.h,
+                    width: 48.w,
+                    child: Stack(
                       children: [
-                        AutoSizeText(
-                          state.personnelList[index].phoneNumber,
-                          style: textTheme.titleSmall!.copyWith(
-                            color: ColorName.neutral500,
+                        Align(
+                          child: Container(
+                            height: 48.h,
+                            width: 48.w,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: ColorName.orangeLight,
+                            ),
+                            child: Center(
+                              child: AutoSizeText(
+                                'CT',
+                                style: textTheme.labelLarge!.copyWith(
+                                  color: ColorName.neutral800,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                        Assets.icons.icDot.toGetSvg(),
-                        AutoSizeText(
-                          state.personnelList[index].mail,
-                          style: textTheme.titleSmall!.copyWith(
-                            color: ColorName.neutral500,
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            height: 16.h,
+                            width: 27.w,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  ProjectBorderRadius.allCircleLarge(),
+                              color: ColorName.neutral100,
+                            ),
+                            child: const Center(child: AutoSizeText('24')),
                           ),
                         ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
-              Assets.icons.icEditLine.toGetSvg(),
-            ],
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      AutoSizeText(
+                        state.personnelList[index].nameSurname,
+                        style: textTheme.titleMedium!.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      buildTextRich(
+                        left: state.personnelList[index].department,
+                        right: state.personnelList[index].part,
+                      ),
+                      buildTextRich(
+                        left: state.personnelList[index].phoneNumber,
+                        right: state.personnelList[index].mail,
+                      ),
+                    ],
+                  ),
+                ),
+                Assets.icons.icEditLine.toGetSvg(),
+              ],
+            ),
           ),
         );
       },
+    );
+  }
+
+  AutoSizeText buildTextRich({required String left, required String right}) {
+    return AutoSizeText.rich(
+      TextSpan(
+        children: [
+          TextSpan(
+            text: left,
+            style: textTheme.titleSmall!.copyWith(
+              color: ColorName.neutral500,
+            ),
+          ),
+          TextSpan(
+            text: ' - ',
+            style: textTheme.titleSmall!.copyWith(
+              color: ColorName.neutral500,
+            ),
+          ),
+          TextSpan(
+            text: right,
+            style: textTheme.titleSmall!.copyWith(
+              color: ColorName.neutral500,
+            ),
+          ),
+        ],
+      ),
     );
   }
 

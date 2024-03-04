@@ -246,6 +246,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SuccessSignInView(),
       );
     },
+    SuccessRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SuccessView(),
+      );
+    },
     WelcomeWizardSetupRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -830,6 +836,20 @@ class SuccessSignInRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SuccessSignInRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SuccessView]
+class SuccessRoute extends PageRouteInfo<void> {
+  const SuccessRoute({List<PageRouteInfo>? children})
+      : super(
+          SuccessRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SuccessRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

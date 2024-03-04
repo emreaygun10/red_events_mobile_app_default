@@ -11,6 +11,7 @@ class CustomBottomButton extends StatelessWidget {
     required this.backgroundColor,
     required this.textColor,
     required this.route,
+    required this.text,
     super.key,
     this.predicate = true,
     this.isDisable = false,
@@ -22,6 +23,7 @@ class CustomBottomButton extends StatelessWidget {
   final PageRouteInfo<dynamic> route;
   final bool predicate;
   final bool isDisable;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,7 @@ class CustomBottomButton extends StatelessWidget {
             }
           },
           child: AutoSizeText(
-            'Devam Et',
+            text,
             style: textTheme.titleLarge!.copyWith(
               color: textColor,
             ),
