@@ -55,7 +55,7 @@ class WelcomeWizardSetupView extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   context.router.pushAndPopUntil(
-                    const CompanyInformationRoute(),
+                    const PackageSelectionRoute(),
                     predicate: (route) => false,
                   );
                 },

@@ -41,6 +41,7 @@ import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/add_perso
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/add_personnel_list_view.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/add_personnel_selection_view.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/company_information_view.dart';
+import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/package_selection_view.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/success_view.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/welcome_wizard_view.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/work_type_view.dart';
@@ -87,7 +88,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: ProfileShiftsListRoute.page),
         AutoRoute(page: CompanyInformationRoute.page),
         AutoRoute(page: AddDepartmentRoute.page),
-        AutoRoute(page: WelcomeWizardSetupRoute.page),
+        AutoRoute(page: WelcomeWizardSetupRoute.page, initial: kDebugMode),
         AutoRoute(page: AddDepartmentFormRoute.page),
         AutoRoute(page: WorkTypeRoute.page),
         AutoRoute(
@@ -96,6 +97,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: AddPersonnelFormRoute.page),
         AutoRoute(page: AddPersonnelListRoute.page),
         AutoRoute(page: SuccessRoute.page),
-        AutoRoute(page: ManagerBottomNavigationRoute.page, initial: kDebugMode),
+        AutoRoute(page: ManagerBottomNavigationRoute.page),
+        AutoRoute(page: PackageSelectionRoute.page),
       ];
 }

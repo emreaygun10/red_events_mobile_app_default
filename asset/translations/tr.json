@@ -64,6 +64,11 @@
                 }
             }
         },
+        "package_selection": {
+            "mounth": "/ay",
+            "all_property": "Tüm Özellikler",
+            "add_title": "Standart paketlere ek olarak"
+        },
         "button": "Kuruluma Başla"
     },
     "general": {

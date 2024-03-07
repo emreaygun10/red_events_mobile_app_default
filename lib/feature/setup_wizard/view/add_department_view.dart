@@ -9,6 +9,7 @@ import 'package:gen/gen.dart';
 import 'package:kartal/kartal.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/model/department_model.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/mixin/add_department_mixin.dart';
+import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/widgets/custom_setup_app_bar_widget.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view_model/add_department_bloc.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view_model/state/add_department_state.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
@@ -35,7 +36,7 @@ class _AddDepartmentView extends BaseState<AddDepartmentView>
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         extendBodyBehindAppBar: true,
-        appBar: buildAppBar(),
+        appBar: const CustomSetupAppBarWidget(),
         body: Column(
           children: [
             const CustomPersonnelTopStack(
@@ -233,36 +234,6 @@ class _AddDepartmentView extends BaseState<AddDepartmentView>
           );
         },
       ),
-    );
-  }
-
-  AppBar buildAppBar() {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      backgroundColor: Colors.transparent,
-      centerTitle: true,
-      title: Container(
-        height: 40.h,
-        width: 40.w,
-        padding: const ProjectPadding.allXSmall(),
-        child: Assets.icons.icLogoDark.toGetSvg(),
-      ),
-      actions: [
-        Padding(
-          padding: const ProjectPadding.scaffold(),
-          child: Container(
-            decoration: BoxDecoration(
-              color: ColorName.neutral100.withOpacity(0.7),
-              shape: BoxShape.circle,
-            ),
-            padding: const EdgeInsets.all(6),
-            height: 30.h,
-            width: 30.w,
-            child: Assets.icons.icClose
-                .toGetSvgWithColor(color: ColorName.blueBase),
-          ),
-        ),
-      ],
     );
   }
 }

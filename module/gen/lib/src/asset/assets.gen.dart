@@ -50,6 +50,10 @@ class $AssetsIconsGen {
   SvgGenImage get icArrowRightS =>
       const SvgGenImage('assets/icons/ic_arrow_right_s.svg');
 
+  /// File path: assets/icons/ic_arrow_up_line.svg
+  SvgGenImage get icArrowUpLine =>
+      const SvgGenImage('assets/icons/ic_arrow_up_line.svg');
+
   /// File path: assets/icons/ic_bank_card_line.svg
   SvgGenImage get icBankCardLine =>
       const SvgGenImage('assets/icons/ic_bank_card_line.svg');
@@ -141,6 +145,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_file_mark_line.svg
   SvgGenImage get icFileMarkLine =>
       const SvgGenImage('assets/icons/ic_file_mark_line.svg');
+
+  /// File path: assets/icons/ic_flashlight.svg
+  SvgGenImage get icFlashlight =>
+      const SvgGenImage('assets/icons/ic_flashlight.svg');
 
   /// File path: assets/icons/ic_folder_open.svg
   SvgGenImage get icFolderOpen =>
@@ -327,6 +335,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_word.svg
   SvgGenImage get icWord => const SvgGenImage('assets/icons/ic_word.svg');
 
+  /// File path: assets/icons/star.svg
+  SvgGenImage get star => const SvgGenImage('assets/icons/star.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
         icAdd,
@@ -336,6 +347,7 @@ class $AssetsIconsGen {
         icArrowLeftLine,
         icArrowRight,
         icArrowRightS,
+        icArrowUpLine,
         icBankCardLine,
         icBuilding,
         icBuildingLine,
@@ -361,6 +373,7 @@ class $AssetsIconsGen {
         icFile,
         icFileEdit,
         icFileMarkLine,
+        icFlashlight,
         icFolderOpen,
         icFolderOpenLine,
         icFolderShieldLine,
@@ -410,7 +423,8 @@ class $AssetsIconsGen {
         icUserLine,
         icUserShared,
         icWhatsApp,
-        icWord
+        icWord,
+        star
       ];
 }
 
