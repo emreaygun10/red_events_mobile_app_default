@@ -74,15 +74,15 @@ class _BottomNAvigationBarViewState
               notchSmoothness: NotchSmoothness.sharpEdge,
               onTap: changePage,
             ),
-            // body: IndexedStack(
-            //   index: state.activePage,
-            //   children: screens,
-            // ),
-            body: const Scaffold(
-              body: Center(
-                child: AutoSizeText('deneme'),
-              ),
+            body: IndexedStack(
+              index: state.activePage,
+              children: screens,
             ),
+            // body: const Scaffold(
+            //   body: Center(
+            //     child: AutoSizeText('deneme'),
+            //   ),
+            // ),
           );
         },
       ),

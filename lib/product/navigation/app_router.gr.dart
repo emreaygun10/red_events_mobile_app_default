@@ -87,6 +87,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const HomeView(),
       );
     },
+    HrRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const HrView(),
+      );
+    },
     LoginRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -443,6 +449,20 @@ class HomeRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'HomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [HrView]
+class HrRoute extends PageRouteInfo<void> {
+  const HrRoute({List<PageRouteInfo>? children})
+      : super(
+          HrRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'HrRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

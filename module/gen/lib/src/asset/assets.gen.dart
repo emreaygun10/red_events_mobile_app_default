@@ -146,6 +146,9 @@ class $AssetsIconsGen {
   SvgGenImage get icFileMarkLine =>
       const SvgGenImage('assets/icons/ic_file_mark_line.svg');
 
+  /// File path: assets/icons/ic_filter.svg
+  SvgGenImage get icFilter => const SvgGenImage('assets/icons/ic_filter.svg');
+
   /// File path: assets/icons/ic_flashlight.svg
   SvgGenImage get icFlashlight =>
       const SvgGenImage('assets/icons/ic_flashlight.svg');
@@ -206,6 +209,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_menu_line.svg
   SvgGenImage get icMenuLine =>
       const SvgGenImage('assets/icons/ic_menu_line.svg');
+
+  /// File path: assets/icons/ic_more.svg
+  SvgGenImage get icMore => const SvgGenImage('assets/icons/ic_more.svg');
 
   /// File path: assets/icons/ic_newspaper.svg
   SvgGenImage get icNewspaper =>
@@ -373,6 +379,7 @@ class $AssetsIconsGen {
         icFile,
         icFileEdit,
         icFileMarkLine,
+        icFilter,
         icFlashlight,
         icFolderOpen,
         icFolderOpenLine,
@@ -389,6 +396,7 @@ class $AssetsIconsGen {
         icMail,
         icMailCheckLine,
         icMenuLine,
+        icMore,
         icNewspaper,
         icNotification05Line,
         icNotification4Line,
@@ -431,6 +439,10 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/image_avatar.png
+  AssetGenImage get imageAvatar =>
+      const AssetGenImage('assets/images/image_avatar.png');
+
   /// File path: assets/images/img_flags.png
   AssetGenImage get imgFlags =>
       const AssetGenImage('assets/images/img_flags.png');
@@ -449,7 +461,7 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values =>
-      [imgFlags, onboardOne, onboardThree, onboardTwo];
+      [imageAvatar, imgFlags, onboardOne, onboardThree, onboardTwo];
 }
 
 class $AssetsLottieGen {

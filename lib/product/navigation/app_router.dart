@@ -13,6 +13,7 @@ import 'package:red_events_mobile_app_defult/feature/auth/sign_in/view/sign_in_v
 import 'package:red_events_mobile_app_defult/feature/home/view/bottom_navigation_bar_view.dart';
 import 'package:red_events_mobile_app_defult/feature/home/view/home_view.dart';
 import 'package:red_events_mobile_app_defult/feature/home/view/qr_view.dart';
+import 'package:red_events_mobile_app_defult/feature/manager/hr/view/hr_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/view/manager_bottom_navigation_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_detail_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_documents_view.dart';
@@ -88,7 +89,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: ProfileShiftsListRoute.page),
         AutoRoute(page: CompanyInformationRoute.page),
         AutoRoute(page: AddDepartmentRoute.page),
-        AutoRoute(page: WelcomeWizardSetupRoute.page, initial: kDebugMode),
+        AutoRoute(page: WelcomeWizardSetupRoute.page),
         AutoRoute(page: AddDepartmentFormRoute.page),
         AutoRoute(page: WorkTypeRoute.page),
         AutoRoute(
@@ -97,7 +98,8 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: AddPersonnelFormRoute.page),
         AutoRoute(page: AddPersonnelListRoute.page),
         AutoRoute(page: SuccessRoute.page),
-        AutoRoute(page: ManagerBottomNavigationRoute.page),
+        AutoRoute(page: ManagerBottomNavigationRoute.page, initial: kDebugMode),
         AutoRoute(page: PackageSelectionRoute.page),
+        AutoRoute(page: HrRoute.page),
       ];
 }

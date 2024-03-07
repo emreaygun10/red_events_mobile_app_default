@@ -359,5 +359,11 @@
             "not_read": "Okunmadı",
             "read": "Okundu"
         }
+    },
+    "manager": {
+        "hr": {
+            "title": "İnsan Kaynakları",
+            "sub_title": "{} Kişi"
+        }
     }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gen/gen.dart';
+import 'package:red_events_mobile_app_defult/feature/manager/hr/view/hr_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/view/manager_bottom_navigation_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/view_model/manager_bottom_navigation_bloc.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
@@ -40,7 +41,9 @@ mixin ManagerBottomNavigationMixin on BaseState<ManagerBottomNavigationView> {
   ];
 
   /// Bottom Bar Screens
-  final List<Widget> screens = [];
+  final List<Widget> screens = [
+    const HrView(),
+  ];
 
   @override
   void initState() {
