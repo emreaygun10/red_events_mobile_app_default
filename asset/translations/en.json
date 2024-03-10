@@ -365,6 +365,7 @@
             "push_notification": {
                 "title": "Bildirim Gönder",
                 "button": "Bildirim Gönder ({})",
+                "continue": "Devam Et ({})",
                 "notification_title": "Bildirim Başlığı",
                 "notification_title_hint": "Bildirim başlığını yazınız",
                 "comment": "İçerik",

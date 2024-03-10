@@ -42,38 +42,7 @@ class _HrViewState extends BaseState<HrView> with HrMixin {
     return BlocProvider(
       create: (context) => hrBloc,
       child: Scaffold(
-        bottomNavigationBar: BlocBuilder<HrBloc, HrState>(
-          builder: (context, state) {
-            return state.isEditMode
-                ? Container(
-                    height: 96.h,
-                    padding:
-                        const ProjectPadding.allMedium().copyWith(bottom: 30).r,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        if (state.buttonCounter > 0) {
-                          context.router.push(
-                            PushNotificationRoute(
-                              list: state.selectedPersonnelList!,
-                            ),
-                          );
-                        }
-                      },
-                      child: AutoSizeText(
-                        LocaleKeys.manager_bottom_shhet_push_notification_button
-                            .tr(
-                          args: [
-                            state.buttonCounter.toString(),
-                          ],
-                        ),
-                        style: textTheme.titleMedium!
-                            .copyWith(color: ColorName.neutral0),
-                      ),
-                    ),
-                  )
-                : const SizedBox();
-          },
-        ),
+        bottomNavigationBar: buildBottomNavigationBar(),
         appBar: HrAppBarWidget(
           hrBloc: hrBloc,
         ),
@@ -81,60 +50,94 @@ class _HrViewState extends BaseState<HrView> with HrMixin {
           children: [
             buildFilterColumn(),
             buildSecondFilterRow(),
-            Expanded(
-              child: Padding(
-                padding: const ProjectPadding.scaffold(),
-                child: BlocBuilder<HrBloc, HrState>(
-                  builder: (context, state) {
-                    return ListView.separated(
-                      itemBuilder: (context, index) {
-                        return index == 0
-                            ? Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding:
-                                        const ProjectPadding.symmetricNormalV(),
-                                    child: AutoSizeText(
-                                      LocaleKeys.manager_hr_search_all_personnel
-                                          .tr(
-                                        args: [
-                                          state.personnelList.length.toString(),
-                                        ],
-                                      ),
-                                      style: textTheme.titleLarge!.copyWith(
-                                        color: ColorName.neutral700,
-                                        fontWeight: FontWeight.w800,
-                                      ),
-                                    ),
-                                  ),
-                                  CustomPersonnelCardWidget(
-                                    isEditMode: state.isEditMode,
-                                    personnelModel: state.personnelList[index],
-                                    hrBloc: hrBloc,
-                                  ),
-                                ],
-                              )
-                            : CustomPersonnelCardWidget(
-                                isEditMode: state.isEditMode,
-                                personnelModel: state.personnelList[index],
-                                hrBloc: hrBloc,
-                              );
-                      },
-                      separatorBuilder: (context, index) {
-                        return SizedBox(
-                          height: 5.h,
-                        );
-                      },
-                      itemCount: state.personnelList.length,
-                    );
-                  },
-                ),
-              ),
-            ),
+            buildList(),
           ],
         ),
       ),
+    );
+  }
+
+  Expanded buildList() {
+    return Expanded(
+      child: Padding(
+        padding: const ProjectPadding.scaffold(),
+        child: BlocBuilder<HrBloc, HrState>(
+          builder: (context, state) {
+            return ListView.separated(
+              itemBuilder: (context, index) {
+                return index == 0
+                    ? Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const ProjectPadding.symmetricNormalV(),
+                            child: AutoSizeText(
+                              LocaleKeys.manager_hr_search_all_personnel.tr(
+                                args: [
+                                  state.personnelList.length.toString(),
+                                ],
+                              ),
+                              style: textTheme.titleLarge!.copyWith(
+                                color: ColorName.neutral700,
+                                fontWeight: FontWeight.w800,
+                              ),
+                            ),
+                          ),
+                          CustomPersonnelCardWidget(
+                            isEditMode: state.isEditMode,
+                            personnelModel: state.personnelList[index],
+                            hrBloc: hrBloc,
+                          ),
+                        ],
+                      )
+                    : CustomPersonnelCardWidget(
+                        isEditMode: state.isEditMode,
+                        personnelModel: state.personnelList[index],
+                        hrBloc: hrBloc,
+                      );
+              },
+              separatorBuilder: (context, index) {
+                return SizedBox(
+                  height: 5.h,
+                );
+              },
+              itemCount: state.personnelList.length,
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  BlocBuilder<HrBloc, HrState> buildBottomNavigationBar() {
+    return BlocBuilder<HrBloc, HrState>(
+      builder: (context, state) {
+        return state.isEditMode
+            ? Container(
+                height: 96.h,
+                padding:
+                    const ProjectPadding.allMedium().copyWith(bottom: 30).r,
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (state.buttonCounter > 0) {
+                      context.router.push(
+                        PushNotificationRoute(
+                          list: state.selectedPersonnelList!,
+                        ),
+                      );
+                    }
+                  },
+                  child: AutoSizeText(
+                    selectBottomButtonText(
+                      HrBottomSheetEnum.values[widget.groupValue],
+                    ),
+                    style: textTheme.titleMedium!
+                        .copyWith(color: ColorName.neutral0),
+                  ),
+                ),
+              )
+            : const SizedBox();
+      },
     );
   }
 
