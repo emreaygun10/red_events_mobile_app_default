@@ -361,9 +361,32 @@
         }
     },
     "manager": {
+        "bottom_shhet": {
+            "push_notification": {
+                "title": "Bildirim Gönder",
+                "button": "Bildirim Gönder ({})",
+                "notification_title": "Bildirim Başlığı",
+                "notification_title_hint": "Bildirim başlığını yazınız",
+                "comment": "İçerik",
+                "comment_hint": "Bildirim içerini yazınız",
+                "success": "Seçilen kişilere bildirimler başarıyla gönderildi."
+            },
+            "push_file": "Bölge Gönder",
+            "push_gbt": "GBT gönder",
+            "donwload_excel": "Excel İndir"
+        },
         "hr": {
             "title": "İnsan Kaynakları",
-            "sub_title": "{} Kişi"
+            "sub_title": "{} Kişi",
+            "search": {
+                "search_hint": "Ara",
+                "search_title": "Arama",
+                "department": "Departmanlar ({})",
+                "last_searh": "Son Aramalar",
+                "searchs": "Aramalar ({})",
+                "empty_list": "Arama bulunmamaktadır.",
+                "all_personnel": "Tüm Personeller ({})"
+            }
         }
     }
 }
