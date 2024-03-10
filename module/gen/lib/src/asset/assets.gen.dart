@@ -119,6 +119,10 @@ class $AssetsIconsGen {
   SvgGenImage get icEditLine =>
       const SvgGenImage('assets/icons/ic_edit_line.svg');
 
+  /// File path: assets/icons/ic_empty_list_widget.svg
+  SvgGenImage get icEmptyListWidget =>
+      const SvgGenImage('assets/icons/ic_empty_list_widget.svg');
+
   /// File path: assets/icons/ic_error_warning_fill.svg
   SvgGenImage get icErrorWarningFill =>
       const SvgGenImage('assets/icons/ic_error_warning_fill.svg');
@@ -371,6 +375,7 @@ class $AssetsIconsGen {
         icDownArrow,
         icDownload,
         icEditLine,
+        icEmptyListWidget,
         icErrorWarningFill,
         icEu,
         icExcel,

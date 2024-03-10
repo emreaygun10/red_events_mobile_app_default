@@ -2,201 +2,138 @@ import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
 import 'package:kartal/kartal.dart';
+import 'package:red_events_mobile_app_defult/feature/manager/hr/view/mixin/hr_mixin.dart';
+import 'package:red_events_mobile_app_defult/feature/manager/hr/view/widget/custom_personnel_card_widget.dart';
+import 'package:red_events_mobile_app_defult/feature/manager/hr/viewmodel/hr_bloc.dart';
+import 'package:red_events_mobile_app_defult/feature/manager/hr/viewmodel/state/hr_state.dart';
+import 'package:red_events_mobile_app_defult/feature/setup_wizard/model/peronnel_model.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
+import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
+import 'package:red_events_mobile_app_defult/product/utility/enums/manager_enum.dart';
 import 'package:widgets/widgets.dart';
 
 part 'widget/hr_appbar.dart';
 
 @RoutePage()
 class HrView extends StatefulWidget {
-  const HrView({super.key});
+  const HrView({
+    super.key,
+    this.isEditMode = false,
+    this.groupValue = 0,
+    this.personnelList = const [],
+  });
+
+  final bool isEditMode;
+  final int groupValue;
+  final List<PersonnelModel> personnelList;
 
   @override
   State<HrView> createState() => _HrViewState();
 }
 
-class _HrViewState extends BaseState<HrView> {
+class _HrViewState extends BaseState<HrView> with HrMixin {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const HrAppBarWidget(),
-      body: Column(
-        children: [
-          buildFilterColumn(),
-          buildSecondFilterRow(),
-          Expanded(
-            child: Padding(
-              padding: const ProjectPadding.scaffold(),
-              child: ListView.separated(
-                itemBuilder: (context, index) {
-                  return index == 0
-                      ? Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const ProjectPadding.symmetricNormalV(),
-                              child: AutoSizeText(
-                                'Tüm Personeller (936)',
-                                style: textTheme.titleLarge!.copyWith(
-                                  color: ColorName.neutral700,
-                                  fontWeight: FontWeight.w800,
-                                ),
-                              ),
+    return BlocProvider(
+      create: (context) => hrBloc,
+      child: Scaffold(
+        bottomNavigationBar: BlocBuilder<HrBloc, HrState>(
+          builder: (context, state) {
+            return state.isEditMode
+                ? Container(
+                    height: 96.h,
+                    padding:
+                        const ProjectPadding.allMedium().copyWith(bottom: 30).r,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if (state.buttonCounter > 0) {
+                          context.router.push(
+                            PushNotificationRoute(
+                              list: state.selectedPersonnelList!,
                             ),
-                            buildPersonelCard(context),
+                          );
+                        }
+                      },
+                      child: AutoSizeText(
+                        LocaleKeys.manager_bottom_shhet_push_notification_button
+                            .tr(
+                          args: [
+                            state.buttonCounter.toString(),
                           ],
-                        )
-                      : buildPersonelCard(context);
-                },
-                separatorBuilder: (context, index) {
-                  return SizedBox(
-                    height: 5.h,
-                  );
-                },
-                itemCount: 20,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Container buildPersonelCard(BuildContext context) {
-    return Container(
-      padding: const ProjectPadding.allMedium(),
-      height: 76.h,
-      width: context.sized.width,
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: ColorName.neutral200,
+                        ),
+                        style: textTheme.titleMedium!
+                            .copyWith(color: ColorName.neutral0),
+                      ),
+                    ),
+                  )
+                : const SizedBox();
+          },
         ),
-        borderRadius: ProjectBorderRadius.allCircleMedium(),
-        color: ColorName.neutral0,
-        boxShadow: const [
-          BoxShadow(
-            color: ColorName.neutral300,
-            blurRadius: 4,
-            offset: Offset(0, 2),
-            blurStyle: BlurStyle.solid,
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              buildCircleAvatar(
-                url:
-                    'https://gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50)',
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    children: [
-                      AutoSizeText(
-                        'Başak Yılmaz Güven',
-                        style: textTheme.titleMedium!.copyWith(
-                          color: ColorName.neutral700,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      Padding(
-                        padding: const ProjectPadding.symmetricXSmallH(),
-                        child: Container(
-                          width: 24.w,
-                          height: 16.h,
-                          decoration: BoxDecoration(
-                            color: ColorName.neutral200,
-                            borderRadius: ProjectBorderRadius.allCircleNormal(),
-                          ),
-                          child: const Center(child: AutoSizeText('FT')),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Text.rich(
-                    TextSpan(
-                      style: textTheme.titleMedium!.copyWith(
-                        color: ColorName.neutral500,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      children: const [
-                        TextSpan(text: 'Food & Beverage'),
-                        TextSpan(text: '-'),
-                        TextSpan(text: 'Lobi Bar'),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                children: [
-                  Assets.icons.icStarFill.toGetSvg(),
-                  AutoSizeText(
-                    '(4.5)',
-                    style: textTheme.titleSmall!.copyWith(
-                      color: ColorName.neutral700,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ],
-              ),
-              Assets.icons.icWhatsApp.toGetSvg(),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  SizedBox buildCircleAvatar({
-    required String url,
-  }) {
-    return SizedBox(
-      height: 48.h,
-      width: 48.w,
-      child: Stack(
-        children: [
-          Align(
-            child: SizedBox(
-              height: 48.h,
-              width: 48.w,
-              child: Center(
-                child: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    url,
-                  ),
+        appBar: HrAppBarWidget(
+          hrBloc: hrBloc,
+        ),
+        body: Column(
+          children: [
+            buildFilterColumn(),
+            buildSecondFilterRow(),
+            Expanded(
+              child: Padding(
+                padding: const ProjectPadding.scaffold(),
+                child: BlocBuilder<HrBloc, HrState>(
+                  builder: (context, state) {
+                    return ListView.separated(
+                      itemBuilder: (context, index) {
+                        return index == 0
+                            ? Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding:
+                                        const ProjectPadding.symmetricNormalV(),
+                                    child: AutoSizeText(
+                                      LocaleKeys.manager_hr_search_all_personnel
+                                          .tr(
+                                        args: [
+                                          state.personnelList.length.toString(),
+                                        ],
+                                      ),
+                                      style: textTheme.titleLarge!.copyWith(
+                                        color: ColorName.neutral700,
+                                        fontWeight: FontWeight.w800,
+                                      ),
+                                    ),
+                                  ),
+                                  CustomPersonnelCardWidget(
+                                    isEditMode: state.isEditMode,
+                                    personnelModel: state.personnelList[index],
+                                    hrBloc: hrBloc,
+                                  ),
+                                ],
+                              )
+                            : CustomPersonnelCardWidget(
+                                isEditMode: state.isEditMode,
+                                personnelModel: state.personnelList[index],
+                                hrBloc: hrBloc,
+                              );
+                      },
+                      separatorBuilder: (context, index) {
+                        return SizedBox(
+                          height: 5.h,
+                        );
+                      },
+                      itemCount: state.personnelList.length,
+                    );
+                  },
                 ),
               ),
             ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: 16.h,
-              width: 27.w,
-              decoration: BoxDecoration(
-                borderRadius: ProjectBorderRadius.allCircleLarge(),
-                color: ColorName.neutral100,
-              ),
-              child: const Center(child: AutoSizeText('24')),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

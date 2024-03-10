@@ -88,9 +88,16 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     HrRoute.name: (routeData) {
+      final args =
+          routeData.argsAs<HrRouteArgs>(orElse: () => const HrRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const HrView(),
+        child: HrView(
+          key: args.key,
+          isEditMode: args.isEditMode,
+          groupValue: args.groupValue,
+          personnelList: args.personnelList,
+        ),
       );
     },
     LoginRoute.name: (routeData) {
@@ -115,6 +122,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const PackageSelectionView(),
+      );
+    },
+    PersonnelSearchRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const PersonnelSearchView(),
       );
     },
     ProfileDetailRoute.name: (routeData) {
@@ -238,6 +251,16 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const ProgressPaymentDocumentReadView(),
+      );
+    },
+    PushNotificationRoute.name: (routeData) {
+      final args = routeData.argsAs<PushNotificationRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: PushNotificationView(
+          list: args.list,
+          key: args.key,
+        ),
       );
     },
     QRCameraRoute.name: (routeData) {
@@ -455,16 +478,49 @@ class HomeRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [HrView]
-class HrRoute extends PageRouteInfo<void> {
-  const HrRoute({List<PageRouteInfo>? children})
-      : super(
+class HrRoute extends PageRouteInfo<HrRouteArgs> {
+  HrRoute({
+    Key? key,
+    bool isEditMode = false,
+    int groupValue = 0,
+    List<PersonnelModel> personnelList = const [],
+    List<PageRouteInfo>? children,
+  }) : super(
           HrRoute.name,
+          args: HrRouteArgs(
+            key: key,
+            isEditMode: isEditMode,
+            groupValue: groupValue,
+            personnelList: personnelList,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'HrRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<HrRouteArgs> page = PageInfo<HrRouteArgs>(name);
+}
+
+class HrRouteArgs {
+  const HrRouteArgs({
+    this.key,
+    this.isEditMode = false,
+    this.groupValue = 0,
+    this.personnelList = const [],
+  });
+
+  final Key? key;
+
+  final bool isEditMode;
+
+  final int groupValue;
+
+  final List<PersonnelModel> personnelList;
+
+  @override
+  String toString() {
+    return 'HrRouteArgs{key: $key, isEditMode: $isEditMode, groupValue: $groupValue, personnelList: $personnelList}';
+  }
 }
 
 /// generated route for
@@ -519,6 +575,20 @@ class PackageSelectionRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'PackageSelectionRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [PersonnelSearchView]
+class PersonnelSearchRoute extends PageRouteInfo<void> {
+  const PersonnelSearchRoute({List<PageRouteInfo>? children})
+      : super(
+          PersonnelSearchRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PersonnelSearchRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -842,6 +912,44 @@ class ProgressPaymentDocumentReadRoute extends PageRouteInfo<void> {
   static const String name = 'ProgressPaymentDocumentReadRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [PushNotificationView]
+class PushNotificationRoute extends PageRouteInfo<PushNotificationRouteArgs> {
+  PushNotificationRoute({
+    required List<PersonnelModel> list,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          PushNotificationRoute.name,
+          args: PushNotificationRouteArgs(
+            list: list,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'PushNotificationRoute';
+
+  static const PageInfo<PushNotificationRouteArgs> page =
+      PageInfo<PushNotificationRouteArgs>(name);
+}
+
+class PushNotificationRouteArgs {
+  const PushNotificationRouteArgs({
+    required this.list,
+    this.key,
+  });
+
+  final List<PersonnelModel> list;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'PushNotificationRouteArgs{list: $list, key: $key}';
+  }
 }
 
 /// generated route for

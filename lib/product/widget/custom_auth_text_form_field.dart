@@ -19,6 +19,7 @@ final class CustomTextFormField extends StatefulWidget {
     this.autovalidateMode = AutovalidateMode.disabled,
     this.trailingAssetSecond,
     this.keyboardType = TextInputType.text,
+    this.onChanged,
   });
 
   /// label string
@@ -39,10 +40,14 @@ final class CustomTextFormField extends StatefulWidget {
   ///Hint text
   final String hintText;
 
+  /// keyboard type
   final TextInputType keyboardType;
 
   /// AutoValidede mode default [AutovalidateMode.disabled]
   final AutovalidateMode autovalidateMode;
+
+  ///CustomOnChanged function
+  final void Function(String)? onChanged;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -111,6 +116,7 @@ class _CustomTextFormFieldState extends BaseState<CustomTextFormField> {
                       ),
                     ),
                   ),
+                  onChanged: widget.onChanged,
                 ),
               ),
             ),
