@@ -253,6 +253,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ProgressPaymentDocumentReadView(),
       );
     },
+    PushFileRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const PushFileView(),
+      );
+    },
     PushNotificationRoute.name: (routeData) {
       final args = routeData.argsAs<PushNotificationRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -910,6 +916,20 @@ class ProgressPaymentDocumentReadRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ProgressPaymentDocumentReadRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [PushFileView]
+class PushFileRoute extends PageRouteInfo<void> {
+  const PushFileRoute({List<PageRouteInfo>? children})
+      : super(
+          PushFileRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PushFileRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

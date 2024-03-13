@@ -28,7 +28,7 @@ class _PushNotificationViewState extends BaseState<PushNotificationView>
   Widget build(BuildContext context) {
     return Scaffold(
       bottomSheet: buildBottomSheet(context),
-      appBar: AppBar(),
+      appBar: buildAppBar(context),
       body: Form(
         child: Padding(
           padding: const ProjectPadding.scaffold(),
@@ -39,17 +39,17 @@ class _PushNotificationViewState extends BaseState<PushNotificationView>
                 padding: const ProjectPadding.symmetricNormalV(),
                 child: buildColumn(
                   title: LocaleKeys
-                      .manager_bottom_shhet_push_notification_notification_title,
+                      .manager_bottom_sheet_push_notification_notification_title,
                   hint: LocaleKeys
-                      .manager_bottom_shhet_push_notification_notification_title_hint,
+                      .manager_bottom_sheet_push_notification_notification_title_hint,
                   controller: textTitleEditingController,
                 ),
               ),
               buildColumn(
                 title:
-                    LocaleKeys.manager_bottom_shhet_push_notification_comment,
+                    LocaleKeys.manager_bottom_sheet_push_notification_comment,
                 hint: LocaleKeys
-                    .manager_bottom_shhet_push_notification_comment_hint,
+                    .manager_bottom_sheet_push_notification_comment_hint,
                 controller: textContentEditingController,
               ),
               const Spacer(
@@ -60,7 +60,7 @@ class _PushNotificationViewState extends BaseState<PushNotificationView>
                 width: context.sized.width,
                 child: ElevatedButton(
                   child: AutoSizeText(
-                    LocaleKeys.manager_bottom_shhet_push_notification_button.tr(
+                    LocaleKeys.manager_bottom_sheet_push_notification_button.tr(
                       args: [widget.list.length.toString()],
                     ),
                     style: textTheme.titleLarge!
@@ -75,6 +75,31 @@ class _PushNotificationViewState extends BaseState<PushNotificationView>
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  AppBar buildAppBar(BuildContext context) {
+    return AppBar(
+      leadingWidth: 90,
+      titleSpacing: 0,
+      leading: Padding(
+        padding: const ProjectPadding.symmetricSmallV(),
+        child: GestureDetector(
+          onTap: () => context.router.pop(),
+          child: Container(
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: ColorName.neutral200,
+            ),
+            child: Assets.icons.icArroeLeftS.toGetSvg(),
+          ),
+        ),
+      ),
+      centerTitle: true,
+      title: Text(
+        LocaleKeys.manager_bottom_sheet_push_notification_title.tr(),
+        style: textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w700),
       ),
     );
   }
@@ -147,7 +172,7 @@ class _PushNotificationViewState extends BaseState<PushNotificationView>
                         AutoSizeText(
                           textAlign: TextAlign.center,
                           LocaleKeys
-                              .manager_bottom_shhet_push_notification_success
+                              .manager_bottom_sheet_push_notification_success
                               .tr(),
                           style: Theme.of(context).textTheme.headlineSmall,
                         ),

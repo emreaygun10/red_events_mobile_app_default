@@ -100,6 +100,9 @@ class $AssetsIconsGen {
   SvgGenImage get icContactsBook =>
       const SvgGenImage('assets/icons/ic_contacts_book.svg');
 
+  /// File path: assets/icons/ic_copy.svg
+  SvgGenImage get icCopy => const SvgGenImage('assets/icons/ic_copy.svg');
+
   /// File path: assets/icons/ic_delete_bin.svg
   SvgGenImage get icDeleteBin =>
       const SvgGenImage('assets/icons/ic_delete_bin.svg');
@@ -191,6 +194,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_information_fill.svg
   SvgGenImage get icInformationFill =>
       const SvgGenImage('assets/icons/ic_information_fill.svg');
+
+  /// File path: assets/icons/ic_link.svg
+  SvgGenImage get icLink => const SvgGenImage('assets/icons/ic_link.svg');
 
   /// File path: assets/icons/ic_lock.svg
   SvgGenImage get icLock => const SvgGenImage('assets/icons/ic_lock.svg');
@@ -370,6 +376,7 @@ class $AssetsIconsGen {
         icClose,
         icCloseCircle,
         icContactsBook,
+        icCopy,
         icDeleteBin,
         icDot,
         icDownArrow,
@@ -395,6 +402,7 @@ class $AssetsIconsGen {
         icHomeOffice,
         icIdentity,
         icInformationFill,
+        icLink,
         icLock,
         icLogoBlue,
         icLogoDark,

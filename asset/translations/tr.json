@@ -361,7 +361,7 @@
         }
     },
     "manager": {
-        "bottom_shhet": {
+        "bottom_sheet": {
             "push_notification": {
                 "title": "Bildirim Gönder",
                 "button": "Bildirim Gönder ({})",
@@ -372,9 +372,21 @@
                 "comment_hint": "Bildirim içerini yazınız",
                 "success": "Seçilen kişilere bildirimler başarıyla gönderildi."
             },
-            "push_file": "Bölge Gönder",
-            "push_gbt": "GBT gönder",
-            "donwload_excel": "Excel İndir"
+            "push_file": {
+                "push_file_title": "Belge Gönder",
+                "list_title": "Göndermek istediğiniz belgeleri seçin",
+                "button": "Seçilen Belgeleri Gönder ({})"
+            },
+            "push_gbt": {
+                "title": "GBT gönder",
+                "sheet_title": "GBT linki başarıyla oluşturuldu.",
+                "sheet_sub_title": "Bu link üzerinden seçilen personellere ait GBT dökümlerini indirebilirsiniz."
+            },
+            "donwload_excel": {
+                "title": "Excel İndir",
+                "sheet_title": "Excel dosyası oluşturuldu.",
+                "sheet_sub_title": "Bu link üzerinden seçilen personellere ait bilgileri indirebilirsiniz."
+            }
         },
         "hr": {
             "title": "İnsan Kaynakları",

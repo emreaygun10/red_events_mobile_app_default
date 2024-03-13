@@ -8,6 +8,7 @@ import 'package:gen/gen.dart';
 import 'package:kartal/kartal.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/hr/view/mixin/hr_mixin.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/hr/view/widget/custom_personnel_card_widget.dart';
+import 'package:red_events_mobile_app_defult/feature/manager/hr/view/widget/custom_solid_bottom_sheet_with_link.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/hr/viewmodel/hr_bloc.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/hr/viewmodel/state/hr_state.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/model/peronnel_model.dart';
@@ -42,7 +43,7 @@ class _HrViewState extends BaseState<HrView> with HrMixin {
     return BlocProvider(
       create: (context) => hrBloc,
       child: Scaffold(
-        bottomNavigationBar: buildBottomNavigationBar(),
+        bottomSheet: buildBottomSheet(),
         appBar: HrAppBarWidget(
           hrBloc: hrBloc,
         ),
@@ -51,9 +52,27 @@ class _HrViewState extends BaseState<HrView> with HrMixin {
             buildFilterColumn(),
             buildSecondFilterRow(),
             buildList(),
+            buildBottomNavigationBar(),
           ],
         ),
       ),
+    );
+  }
+
+  CustomSolidBottomSheetWithLink buildBottomSheet() {
+    return CustomSolidBottomSheetWithLink(
+      baseTitle: widget.groupValue == HrBottomSheetEnum.pushGBT.index
+          ? LocaleKeys.manager_bottom_sheet_push_gbt_sheet_title
+          : LocaleKeys.manager_bottom_sheet_donwload_excel_sheet_title,
+      subTitle: widget.groupValue == HrBottomSheetEnum.pushGBT.index
+          ? LocaleKeys.manager_bottom_sheet_push_gbt_sheet_sub_title
+          : LocaleKeys.manager_bottom_sheet_donwload_excel_sheet_sub_title,
+      icon: widget.groupValue == HrBottomSheetEnum.pushGBT.index
+          ? Assets.icons.icLink.toGetSvg()
+          : Assets.icons.icExcel.toGetSvg(),
+      solidController: solidController,
+      textEditingController: textEditingController,
+      route: HrRoute(),
     );
   }
 
@@ -115,16 +134,30 @@ class _HrViewState extends BaseState<HrView> with HrMixin {
         return state.isEditMode
             ? Container(
                 height: 96.h,
+                width: context.sized.width,
                 padding:
                     const ProjectPadding.allMedium().copyWith(bottom: 30).r,
                 child: ElevatedButton(
                   onPressed: () {
                     if (state.buttonCounter > 0) {
-                      context.router.push(
-                        PushNotificationRoute(
-                          list: state.selectedPersonnelList!,
-                        ),
-                      );
+                      if (widget.groupValue ==
+                              HrBottomSheetEnum.pushFile.index ||
+                          widget.groupValue ==
+                              HrBottomSheetEnum.pushNotification.index) {
+                        context.router.push(
+                          selectBottomButtonRoute(
+                            HrBottomSheetEnum.values[widget.groupValue],
+                          )!,
+                        );
+                      } else if (widget.groupValue ==
+                          HrBottomSheetEnum.pushGBT.index) {
+                        print('gbt');
+                        solidController.show();
+                      } else if (widget.groupValue ==
+                          HrBottomSheetEnum.downloadExcel.index) {
+                        print('excel');
+                        solidController.show();
+                      }
                     }
                   },
                   child: AutoSizeText(
