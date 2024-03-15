@@ -145,28 +145,32 @@ class _PushNotificationViewState extends BaseState<PushNotificationView>
                         SizedBox(
                           height: 32.h,
                         ),
-                        Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            Container(
-                              height: 88.h,
-                              width: 88.w,
-                              padding: const ProjectPadding.allMedium(),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: ColorName.neutral200.withOpacity(0.4),
+                        SizedBox(
+                          height: 88.h,
+                          width: 88.w,
+                          child: Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Container(
+                                height: 88.h,
+                                width: 88.w,
+                                padding: const ProjectPadding.allMedium(),
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: ColorName.neutral200.withOpacity(0.4),
+                                ),
                               ),
-                            ),
-                            Container(
-                              height: 56.h,
-                              width: 56.w,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: ColorName.greenBase,
+                              Container(
+                                height: 56.h,
+                                width: 56.w,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: ColorName.greenBase,
+                                ),
                               ),
-                            ),
-                            Assets.icons.icCheckLine.toGetSvg(),
-                          ],
+                              Assets.icons.icCheckLine.toGetSvg(),
+                            ],
+                          ),
                         ),
                         const Spacer(),
                         AutoSizeText(
