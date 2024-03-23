@@ -275,6 +275,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const QRCameraView(),
       );
     },
+    ShiftBoxRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ShiftBoxView(),
+      );
+    },
     SignInRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -982,6 +988,20 @@ class QRCameraRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'QRCameraRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ShiftBoxView]
+class ShiftBoxRoute extends PageRouteInfo<void> {
+  const ShiftBoxRoute({List<PageRouteInfo>? children})
+      : super(
+          ShiftBoxRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ShiftBoxRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
