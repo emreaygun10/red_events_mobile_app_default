@@ -51,6 +51,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AddPersonnelView(),
       );
     },
+    AddShiftRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AddShiftView(),
+      );
+    },
     BaseInformationRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -400,6 +406,20 @@ class AddPersonnelRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'AddPersonnelRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AddShiftView]
+class AddShiftRoute extends PageRouteInfo<void> {
+  const AddShiftRoute({List<PageRouteInfo>? children})
+      : super(
+          AddShiftRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddShiftRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

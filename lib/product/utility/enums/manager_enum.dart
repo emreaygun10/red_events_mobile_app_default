@@ -13,3 +13,17 @@ enum HrBottomSheetEnum {
   ///
   const HrBottomSheetEnum(this.value);
 }
+
+/// Shift box top list Enums
+enum ShiftBoxTopTitleEnum {
+  list('Shift Listesi'),
+  weekly('Haftalık Shift'),
+  daily('Günlük Shift'),
+  event('Event'),
+  puantaj('Puantaj');
+
+  /// double value
+  final String value;
+
+  const ShiftBoxTopTitleEnum(this.value);
+}

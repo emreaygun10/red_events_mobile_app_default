@@ -17,6 +17,7 @@ import 'package:red_events_mobile_app_defult/feature/manager/hr/view/bottom_shee
 import 'package:red_events_mobile_app_defult/feature/manager/hr/view/bottom_sheet_views/push_notification_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/hr/view/hr_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/hr/view/personnel_search_view.dart';
+import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/add_shift_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/shiftbox_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/view/manager_bottom_navigation_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_detail_view.dart';
@@ -111,5 +112,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: PushNotificationRoute.page),
         AutoRoute(page: PushFileRoute.page),
         AutoRoute(page: ShiftBoxRoute.page, initial: kDebugMode),
+        AutoRoute(page: AddShiftRoute.page),
       ];
 }

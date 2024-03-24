@@ -156,6 +156,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_filter.svg
   SvgGenImage get icFilter => const SvgGenImage('assets/icons/ic_filter.svg');
 
+  /// File path: assets/icons/ic_finance_banking.svg
+  SvgGenImage get icFinanceBanking =>
+      const SvgGenImage('assets/icons/ic_finance_banking.svg');
+
   /// File path: assets/icons/ic_flashlight.svg
   SvgGenImage get icFlashlight =>
       const SvgGenImage('assets/icons/ic_flashlight.svg');
@@ -392,6 +396,7 @@ class $AssetsIconsGen {
         icFileEdit,
         icFileMarkLine,
         icFilter,
+        icFinanceBanking,
         icFlashlight,
         icFolderOpen,
         icFolderOpenLine,

@@ -367,6 +367,10 @@
         }
     },
     "manager": {
+        "add_shift": {
+            "title": "Shift Ekle",
+            "shift_info": "Shift Bilgileri"
+        },
         "bottom_sheet": {
             "push_notification": {
                 "title": "Bildirim Gönder",
