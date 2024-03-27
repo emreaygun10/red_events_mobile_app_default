@@ -27,3 +27,11 @@ enum ShiftBoxTopTitleEnum {
 
   const ShiftBoxTopTitleEnum(this.value);
 }
+
+enum AddShiftEnums {
+  type('Göre Türü Seçin'),
+  location('Göre Yeri Seçin');
+
+  final String value;
+  const AddShiftEnums(this.value);
+}

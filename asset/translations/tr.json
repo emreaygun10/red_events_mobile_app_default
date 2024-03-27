@@ -369,7 +369,16 @@
     "manager": {
         "add_shift": {
             "title": "Shift Ekle",
-            "shift_info": "Shift Bilgileri"
+            "shift_info": "Shift Bilgileri",
+            "date_title": "Talep Tarihi",
+            "date_hint": "Tarih Seçiniz",
+            "hours_hint": "Saat seçin veya girin",
+            "repeat": "Bu shift tekrarlansın mı?",
+            "repeat_info": "Shifti sabitlemeniz durumunda iptal edene kadar tekrar eder.",
+            "repeat_title_info": "Tekrarlanma Bilgileri",
+            "shift_days_hint": "Sabit shift günlerini seçin",
+            "shift_day": "{} gün seçildi",
+            "end_date_hint": "Bitiş Tarihi Seçiniz (opsiyonel)"
         },
         "bottom_sheet": {
             "push_notification": {
