@@ -264,6 +264,10 @@ class $AssetsIconsGen {
   SvgGenImage get icProgressPaymentEmptyList =>
       const SvgGenImage('assets/icons/ic_progress_payment_empty_list.svg');
 
+  /// File path: assets/icons/ic_pushpin_fill.svg
+  SvgGenImage get icPushpinFill =>
+      const SvgGenImage('assets/icons/ic_pushpin_fill.svg');
+
   /// File path: assets/icons/ic_qr_code.svg
   SvgGenImage get icQrCode => const SvgGenImage('assets/icons/ic_qr_code.svg');
 
@@ -293,6 +297,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_shield_star_line.svg
   SvgGenImage get icShieldStarLine =>
       const SvgGenImage('assets/icons/ic_shield_star_line.svg');
+
+  /// File path: assets/icons/ic_shift_logo.svg
+  SvgGenImage get icShiftLogo =>
+      const SvgGenImage('assets/icons/ic_shift_logo.svg');
 
   /// File path: assets/icons/ic_star.svg
   SvgGenImage get icStar => const SvgGenImage('assets/icons/ic_star.svg');
@@ -425,6 +433,7 @@ class $AssetsIconsGen {
         icPickPerson,
         icPlus,
         icProgressPaymentEmptyList,
+        icPushpinFill,
         icQrCode,
         icRequestEmpytList,
         icSearch,
@@ -433,6 +442,7 @@ class $AssetsIconsGen {
         icSelectBoxCircleFill,
         icShareBoxFill,
         icShieldStarLine,
+        icShiftLogo,
         icStar,
         icStarEmpty,
         icStarFill,

@@ -13,7 +13,7 @@ import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart'
 import 'package:widgets/widgets.dart';
 
 @RoutePage()
-class ManagerBottomNavigationView extends StatefulWidget {
+final class ManagerBottomNavigationView extends StatefulWidget {
   const ManagerBottomNavigationView({super.key});
 
   @override
@@ -32,10 +32,15 @@ class _BottomNAvigationBarViewState
           ManagerBottomNavigationState>(
         builder: (context, state) {
           return Scaffold(
-            floatingActionButton: SizedBox(
-              height: 50.h,
-              width: 50.w,
-              child: Assets.icons.icLogoBlue.toGetSvg(),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () => managerBottomNavigationBloc
+                  .changeActivePage(screens.length - 1),
+              child: Container(
+                height: 64.h,
+                width: 64.w,
+                decoration: const BoxDecoration(shape: BoxShape.circle),
+                child: Assets.icons.icShiftLogo.toGetSvg(),
+              ),
             ),
 
             floatingActionButtonLocation:

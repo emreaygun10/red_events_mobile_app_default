@@ -18,7 +18,6 @@ import 'package:widgets/widgets.dart';
 
 part 'widgets/custom_app_bar.dart';
 
-@RoutePage()
 class ShiftBoxView extends StatefulWidget {
   const ShiftBoxView({super.key});
 
@@ -31,32 +30,15 @@ class _ShiftBoxViewState extends BaseState<ShiftBoxView> with ShiftboxMixin {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => shiftBoxBloc,
-      child: Scaffold(
-        extendBodyBehindAppBar: true,
-        appBar: const CustomAppBar(),
-        body: Container(
-          width: double.maxFinite,
-          height: double.maxFinite,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [ColorName.blueLight, ColorName.neutral100],
-              stops: [0, 0.5],
-            ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          buildTopCard(context),
+          Expanded(child: buildBottomCard(context)),
+          SizedBox(
+            height: 24.h,
           ),
-          child: Padding(
-            padding: const ProjectPadding.scaffold().copyWith(top: 120.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                buildTopFilterRow(context),
-                buildTopCard(context),
-                buildBottomCard(context),
-              ],
-            ),
-          ),
-        ),
+        ],
       ),
     );
   }
@@ -67,7 +49,7 @@ class _ShiftBoxViewState extends BaseState<ShiftBoxView> with ShiftboxMixin {
       height: 435.h,
       width: context.sized.width,
       decoration: BoxDecoration(
-        borderRadius: ProjectBorderRadius.allCircleLarge(),
+        borderRadius: ProjectBorderRadius.allCircleNormal(),
         color: ColorName.neutral0,
       ),
       child: Column(
@@ -164,7 +146,7 @@ class _ShiftBoxViewState extends BaseState<ShiftBoxView> with ShiftboxMixin {
         height: 144.h,
         width: context.sized.width,
         decoration: BoxDecoration(
-          borderRadius: ProjectBorderRadius.allCircleLarge(),
+          borderRadius: ProjectBorderRadius.allCircleNormal(),
           color: ColorName.neutral0,
         ),
         child: Column(
@@ -255,36 +237,6 @@ class _ShiftBoxViewState extends BaseState<ShiftBoxView> with ShiftboxMixin {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  SizedBox buildTopFilterRow(BuildContext context) {
-    return SizedBox(
-      height: 22.h,
-      width: context.sized.width,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          buildTopFilterList(index: 0, isSelected: true),
-          buildTopFilterList(index: 1),
-          buildTopFilterList(index: 2),
-          buildTopFilterList(index: 3),
-          buildTopFilterList(index: 4),
-        ],
-      ),
-    );
-  }
-
-  AutoSizeText buildTopFilterList({
-    required int index,
-    bool isSelected = false,
-  }) {
-    return AutoSizeText(
-      ShiftBoxTopTitleEnum.values[index].value,
-      style: textTheme.titleSmall!.copyWith(
-        fontWeight: FontWeight.w500,
-        color: isSelected ? ColorName.neutral900 : ColorName.neutral500,
       ),
     );
   }

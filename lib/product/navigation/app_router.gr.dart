@@ -63,6 +63,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const BaseInformationView(),
       );
     },
+    BaseRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const BaseView(),
+      );
+    },
     BottomNAvigationBarRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -281,10 +287,10 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const QRCameraView(),
       );
     },
-    ShiftBoxRoute.name: (routeData) {
+    ShiftDetailRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ShiftBoxView(),
+        child: const ShiftDetailView(),
       );
     },
     SignInRoute.name: (routeData) {
@@ -434,6 +440,20 @@ class BaseInformationRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'BaseInformationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [BaseView]
+class BaseRoute extends PageRouteInfo<void> {
+  const BaseRoute({List<PageRouteInfo>? children})
+      : super(
+          BaseRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'BaseRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -1013,15 +1033,15 @@ class QRCameraRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [ShiftBoxView]
-class ShiftBoxRoute extends PageRouteInfo<void> {
-  const ShiftBoxRoute({List<PageRouteInfo>? children})
+/// [ShiftDetailView]
+class ShiftDetailRoute extends PageRouteInfo<void> {
+  const ShiftDetailRoute({List<PageRouteInfo>? children})
       : super(
-          ShiftBoxRoute.name,
+          ShiftDetailRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'ShiftBoxRoute';
+  static const String name = 'ShiftDetailRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

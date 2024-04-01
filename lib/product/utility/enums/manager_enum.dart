@@ -16,11 +16,11 @@ enum HrBottomSheetEnum {
 
 /// Shift box top list Enums
 enum ShiftBoxTopTitleEnum {
+  daily('Günlük'),
+  weekly('Haftalık'),
   list('Shift Listesi'),
-  weekly('Haftalık Shift'),
-  daily('Günlük Shift'),
-  event('Event'),
-  puantaj('Puantaj');
+  puantaj('Puantaj'),
+  event('Event');
 
   /// double value
   final String value;
