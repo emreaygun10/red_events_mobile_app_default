@@ -419,6 +419,19 @@
                 "empty_list": "Arama bulunmamaktadır.",
                 "all_personnel": "Tüm Personeller ({})"
             }
+        },
+        "shift_detail": {
+            "title": "Shift Detayı",
+            "info": "Shift Bilgileri",
+            "shift_content": "SHİFT DETAYLARI",
+            "date": "Tarih",
+            "shift_hour": "Shift Saati",
+            "shift_type": "Shift Tipi",
+            "duty": "Görev",
+            "request": "Talep / Atanan",
+            "waiting_accept": "Onay Bekleyen",
+            "still_shift_info": "SABİT SHİFT DETAYLARI",
+            "finished_time": "Bitiş Tarihi"
         }
     }
 }
