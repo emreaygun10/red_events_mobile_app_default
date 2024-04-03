@@ -125,7 +125,7 @@ class _ShiftBoxViewState extends BaseState<ShiftBoxView> with ShiftboxMixin {
         ),
         TextButton(
           onPressed: () {
-            context.router.push(const AddShiftRoute());
+            context.router.push(AddShiftRoute());
           },
           child: AutoSizeText(
             'Shift Ekle',

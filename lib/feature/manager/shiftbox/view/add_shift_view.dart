@@ -23,7 +23,12 @@ import 'package:widgets/widgets.dart';
 
 @RoutePage()
 class AddShiftView extends StatefulWidget {
-  const AddShiftView({super.key});
+  const AddShiftView({
+    super.key,
+    this.title = LocaleKeys.manager_add_shift_title,
+  });
+
+  final String title;
 
   @override
   State<AddShiftView> createState() => _AddShiftViewState();
@@ -542,7 +547,7 @@ class _AddShiftViewState extends BaseState<AddShiftView> with AddShiftmixin {
       backgroundColor: ColorName.neutral100,
       surfaceTintColor: Colors.transparent,
       title: AutoSizeText(
-        LocaleKeys.manager_add_shift_title.tr(),
+        widget.title.tr(),
         style: textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w700),
       ),
     );

@@ -52,9 +52,14 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     AddShiftRoute.name: (routeData) {
+      final args = routeData.argsAs<AddShiftRouteArgs>(
+          orElse: () => const AddShiftRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const AddShiftView(),
+        child: AddShiftView(
+          key: args.key,
+          title: args.title,
+        ),
       );
     },
     BaseInformationRoute.name: (routeData) {
@@ -418,16 +423,40 @@ class AddPersonnelRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [AddShiftView]
-class AddShiftRoute extends PageRouteInfo<void> {
-  const AddShiftRoute({List<PageRouteInfo>? children})
-      : super(
+class AddShiftRoute extends PageRouteInfo<AddShiftRouteArgs> {
+  AddShiftRoute({
+    Key? key,
+    String title = LocaleKeys.manager_add_shift_title,
+    List<PageRouteInfo>? children,
+  }) : super(
           AddShiftRoute.name,
+          args: AddShiftRouteArgs(
+            key: key,
+            title: title,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'AddShiftRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<AddShiftRouteArgs> page =
+      PageInfo<AddShiftRouteArgs>(name);
+}
+
+class AddShiftRouteArgs {
+  const AddShiftRouteArgs({
+    this.key,
+    this.title = LocaleKeys.manager_add_shift_title,
+  });
+
+  final Key? key;
+
+  final String title;
+
+  @override
+  String toString() {
+    return 'AddShiftRouteArgs{key: $key, title: $title}';
+  }
 }
 
 /// generated route for

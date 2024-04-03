@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
 import 'package:kartal/kartal.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
+import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:widgets/widgets.dart';
 
 @RoutePage()
@@ -51,7 +52,8 @@ class ShiftDetailView extends StatelessWidget {
               ),
               rightButtonText: 'Shift Düzenle',
               rightColor: ColorName.neutral400,
-              rightonTap: () {},
+              rightonTap: () =>
+                  context.router.push(AddShiftRoute(title: "Shift'i Düzenle")),
             ),
             const Spacer(),
           ],
@@ -100,7 +102,7 @@ class ShiftDetailView extends StatelessWidget {
     BuildContext context,
   ) {
     return GestureDetector(
-      onTap: () => onTap,
+      onTap: onTap,
       child: Container(
         height: 40.h,
         width: 150.w,

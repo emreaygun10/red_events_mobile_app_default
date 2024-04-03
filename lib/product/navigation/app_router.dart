@@ -52,6 +52,7 @@ import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/package_s
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/success_view.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/welcome_wizard_view.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/work_type_view.dart';
+import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
 
 part 'app_router.gr.dart';
 
