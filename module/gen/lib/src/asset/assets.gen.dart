@@ -220,6 +220,13 @@ class $AssetsIconsGen {
   SvgGenImage get icMailCheckLine =>
       const SvgGenImage('assets/icons/ic_mail_check_line.svg');
 
+  /// File path: assets/icons/ic_mail_send.svg
+  SvgGenImage get icMailSend =>
+      const SvgGenImage('assets/icons/ic_mail_send.svg');
+
+  /// File path: assets/icons/ic_map_pin.svg
+  SvgGenImage get icMapPin => const SvgGenImage('assets/icons/ic_map_pin.svg');
+
   /// File path: assets/icons/ic_menu_line.svg
   SvgGenImage get icMenuLine =>
       const SvgGenImage('assets/icons/ic_menu_line.svg');
@@ -356,6 +363,14 @@ class $AssetsIconsGen {
   SvgGenImage get icUserShared =>
       const SvgGenImage('assets/icons/ic_user_shared.svg');
 
+  /// File path: assets/icons/ic_weakly_subtract.svg
+  SvgGenImage get icWeaklySubtract =>
+      const SvgGenImage('assets/icons/ic_weakly_subtract.svg');
+
+  /// File path: assets/icons/ic_weakly_union.svg
+  SvgGenImage get icWeaklyUnion =>
+      const SvgGenImage('assets/icons/ic_weakly_union.svg');
+
   /// File path: assets/icons/ic_whatsApp.svg
   SvgGenImage get icWhatsApp =>
       const SvgGenImage('assets/icons/ic_whatsApp.svg');
@@ -421,6 +436,8 @@ class $AssetsIconsGen {
         icLogoDark,
         icMail,
         icMailCheckLine,
+        icMailSend,
+        icMapPin,
         icMenuLine,
         icMore,
         icNewspaper,
@@ -458,6 +475,8 @@ class $AssetsIconsGen {
         icUserFill,
         icUserLine,
         icUserShared,
+        icWeaklySubtract,
+        icWeaklyUnion,
         icWhatsApp,
         icWord,
         star

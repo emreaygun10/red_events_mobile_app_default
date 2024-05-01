@@ -322,6 +322,18 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SuccessView(),
       );
     },
+    WeaklyShiftDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const WeaklyShiftDetailView(),
+      );
+    },
+    WeaklyShiftRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const WeaklyShiftView(),
+      );
+    },
     WelcomeWizardSetupRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -1127,6 +1139,34 @@ class SuccessRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SuccessRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [WeaklyShiftDetailView]
+class WeaklyShiftDetailRoute extends PageRouteInfo<void> {
+  const WeaklyShiftDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          WeaklyShiftDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'WeaklyShiftDetailRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [WeaklyShiftView]
+class WeaklyShiftRoute extends PageRouteInfo<void> {
+  const WeaklyShiftRoute({List<PageRouteInfo>? children})
+      : super(
+          WeaklyShiftRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'WeaklyShiftRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

@@ -20,6 +20,8 @@ import 'package:red_events_mobile_app_defult/feature/manager/hr/view/personnel_s
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/add_shift_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/base_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/shift_detail_view.dart';
+import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/weakly_shift_detail_view.dart';
+import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/weakly_shift_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/view/manager_bottom_navigation_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_detail_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_documents_view.dart';
@@ -117,5 +119,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: AddShiftRoute.page),
         AutoRoute(page: BaseRoute.page),
         AutoRoute(page: ShiftDetailRoute.page),
+        AutoRoute(page: WeaklyShiftRoute.page),
+        AutoRoute(page: WeaklyShiftDetailRoute.page),
       ];
 }

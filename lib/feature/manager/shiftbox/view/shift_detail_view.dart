@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
 import 'package:kartal/kartal.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_okay_elaviton_button.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
 import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:widgets/widgets.dart';
@@ -45,7 +46,185 @@ class ShiftDetailView extends StatelessWidget {
               leftButtonText: 'Shift Sil',
               context: context,
               leftColor: ColorName.redBase,
-              leftonTap: () {},
+              leftonTap: () async {
+                final value = await showModalBottomSheet<bool>(
+                  isScrollControlled: true,
+                  context: context,
+                  showDragHandle: true,
+                  builder: (BuildContext context) {
+                    return Wrap(
+                      children: [
+                        Column(
+                          children: [
+                            const AutoSizeText(
+                              'Uyarı',
+                            ),
+                            const Padding(
+                              padding: ProjectPadding.symmetricSmallV(),
+                              child: Divider(
+                                height: 2,
+                                color: ColorName.neutral300,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 450.h,
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: 32.h,
+                                  ),
+                                  Stack(
+                                    alignment: Alignment.center,
+                                    children: [
+                                      Container(
+                                        height: 88.h,
+                                        width: 88.w,
+                                        padding:
+                                            const ProjectPadding.allMedium(),
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: ColorName.neutral200,
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 56.h,
+                                        width: 56.w,
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: ColorName.orangeBase,
+                                        ),
+                                      ),
+                                      Assets.icons.icDeleteBin
+                                          .toGetSvgWithColor(
+                                        color: ColorName.neutral0,
+                                      ),
+                                    ],
+                                  ),
+                                  const Spacer(),
+                                  AutoSizeText(
+                                    'Shifti silmek istediğinize emin misiniz?',
+                                    style:
+                                        Theme.of(context).textTheme.titleLarge,
+                                  ),
+                                  const Spacer(),
+                                  AutoSizeText(
+                                    'Shift’i silmeniz durumunda shift bilgileri ve bu shifte eklenmiş personeller de silinip boşa düşer.',
+                                    textAlign: TextAlign.center,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleLarge!
+                                        .copyWith(color: ColorName.neutral500),
+                                  ),
+                                  const Spacer(
+                                    flex: 2,
+                                  ),
+                                  buildCustomButton(
+                                    context: context,
+                                    text: 'Sil',
+                                    value: true,
+                                  ),
+                                  SizedBox(
+                                    height: 10.h,
+                                  ),
+                                  buildCustomButton(
+                                    context: context,
+                                    text: 'Vazgeç',
+                                    backgroundColor: ColorName.neutral0,
+                                    textColor: ColorName.neutral500,
+                                  ),
+                                  const Spacer(
+                                    flex: 2,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    );
+                  },
+                );
+                if (value ?? false) {
+                  await showModalBottomSheet<void>(
+                    isScrollControlled: true,
+                    context: context,
+                    showDragHandle: true,
+                    builder: (BuildContext context) {
+                      return Wrap(
+                        children: [
+                          Column(
+                            children: [
+                              AutoSizeText(
+                                LocaleKeys
+                                    .profile_requests_request_permission_information
+                                    .tr(),
+                              ),
+                              const Padding(
+                                padding: ProjectPadding.symmetricSmallV(),
+                                child: Divider(
+                                  height: 2,
+                                  color: ColorName.neutral300,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 250.h,
+                                child: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: 32.h,
+                                    ),
+                                    Stack(
+                                      alignment: Alignment.center,
+                                      children: [
+                                        Container(
+                                          height: 88.h,
+                                          width: 88.w,
+                                          padding:
+                                              const ProjectPadding.allMedium(),
+                                          decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: ColorName.neutral200,
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 56.h,
+                                          width: 56.w,
+                                          decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: ColorName.greenBase,
+                                          ),
+                                        ),
+                                        Assets.icons.icCheckLine.toGetSvg(),
+                                      ],
+                                    ),
+                                    const Spacer(),
+                                    AutoSizeText(
+                                      'Shift başarılı bir şekilde silindi',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge,
+                                    ),
+                                    const Spacer(
+                                      flex: 5,
+                                    ),
+                                    const CustomOkayElevationButton(),
+                                    const Spacer(
+                                      flex: 2,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                  context.router.pop();
+
+                  /// TODO: Silme apisini getir
+                }
+              },
               rightButtonIcon: const Icon(
                 Icons.edit,
                 color: ColorName.neutral400,
@@ -57,6 +236,36 @@ class ShiftDetailView extends StatelessWidget {
             ),
             const Spacer(),
           ],
+        ),
+      ),
+    );
+  }
+
+  Padding buildCustomButton({
+    required BuildContext context,
+    required String text,
+    Color? backgroundColor,
+    Color? textColor,
+    Object? value,
+  }) {
+    return Padding(
+      padding: const ProjectPadding.scaffold(),
+      child: SizedBox(
+        height: 56.h,
+        width: context.sized.width,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: backgroundColor ?? ColorName.blueBase,
+          ),
+          onPressed: () {
+            context.router.pop(value);
+          },
+          child: AutoSizeText(
+            text.tr(),
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  color: textColor ?? ColorName.neutral0,
+                ),
+          ),
         ),
       ),
     );

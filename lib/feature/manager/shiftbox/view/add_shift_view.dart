@@ -12,6 +12,7 @@ import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/widge
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view_model/bloc/add_shift_bloc.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view_model/model/day_model.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view_model/state/add_shift_state.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_okay_elaviton_button.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
 import 'package:red_events_mobile_app_defult/product/utility/enums/manager_enum.dart';
@@ -41,6 +42,7 @@ class _AddShiftViewState extends BaseState<AddShiftView> with AddShiftmixin {
       create: (context) => addShiftBloc,
       child: Scaffold(
         bottomSheet: buildBottomSheet(context),
+        bottomNavigationBar: buildBottomButton(context),
         appBar: buildAppBar(),
         body: SingleChildScrollView(
           child: Column(
@@ -186,6 +188,98 @@ class _AddShiftViewState extends BaseState<AddShiftView> with AddShiftmixin {
                 ),
               ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Container buildBottomButton(BuildContext context) {
+    return Container(
+      padding: const ProjectPadding.scaffold().copyWith(bottom: 24).r,
+      height: 80.h,
+      width: context.sized.width,
+      child: ElevatedButton(
+        onPressed: () async {
+          await showModalBottomSheet<void>(
+            isScrollControlled: true,
+            context: context,
+            showDragHandle: true,
+            builder: (BuildContext context) {
+              return Wrap(
+                children: [
+                  Column(
+                    children: [
+                      AutoSizeText(
+                        LocaleKeys
+                            .profile_requests_request_permission_information
+                            .tr(),
+                      ),
+                      const Padding(
+                        padding: ProjectPadding.symmetricSmallV(),
+                        child: Divider(
+                          height: 2,
+                          color: ColorName.neutral300,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 250.h,
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 32.h,
+                            ),
+                            Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                Container(
+                                  height: 88.h,
+                                  width: 88.w,
+                                  padding: const ProjectPadding.allMedium(),
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: ColorName.neutral200,
+                                  ),
+                                ),
+                                Container(
+                                  height: 56.h,
+                                  width: 56.w,
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: ColorName.greenBase,
+                                  ),
+                                ),
+                                Assets.icons.icCheckLine.toGetSvg(),
+                              ],
+                            ),
+                            const Spacer(),
+                            AutoSizeText(
+                              LocaleKeys.profile_progress_payment_chips_info
+                                  .tr(),
+                              style: Theme.of(context).textTheme.titleLarge,
+                            ),
+                            const Spacer(
+                              flex: 5,
+                            ),
+                            const CustomOkayElevationButton(),
+                            const Spacer(
+                              flex: 2,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              );
+            },
+          );
+          context.router.pop();
+        },
+        child: AutoSizeText(
+          'Kaydet',
+          style: textTheme.titleLarge!.copyWith(
+            color: ColorName.neutral0,
           ),
         ),
       ),
