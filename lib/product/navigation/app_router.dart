@@ -20,8 +20,9 @@ import 'package:red_events_mobile_app_defult/feature/manager/hr/view/personnel_s
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/add_shift_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/base_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/shift_detail_view.dart';
-import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/weakly_shift_detail_view.dart';
-import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/weakly_shift_view.dart';
+import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/shift_permission_view.dart';
+import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/weakly_views/weakly_shift_detail_view.dart';
+import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/weakly_views/weakly_shift_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/view/manager_bottom_navigation_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_detail_view.dart';
 import 'package:red_events_mobile_app_defult/feature/profile/view/profile_documents_view.dart';
@@ -55,6 +56,7 @@ import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/success_v
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/welcome_wizard_view.dart';
 import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/work_type_view.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
+import 'package:red_events_mobile_app_defult/product/utility/enums/shift_enum.dart';
 
 part 'app_router.gr.dart';
 
@@ -109,7 +111,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: AddPersonnelFormRoute.page),
         AutoRoute(page: AddPersonnelListRoute.page),
         AutoRoute(page: SuccessRoute.page),
-        AutoRoute(page: ManagerBottomNavigationRoute.page, initial: kDebugMode),
+        AutoRoute(page: ManagerBottomNavigationRoute.page),
         AutoRoute(page: PackageSelectionRoute.page),
         AutoRoute(page: HrRoute.page),
         AutoRoute(page: PersonnelSearchRoute.page),
@@ -120,6 +122,9 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: BaseRoute.page),
         AutoRoute(page: ShiftDetailRoute.page),
         AutoRoute(page: WeaklyShiftRoute.page),
-        AutoRoute(page: WeaklyShiftDetailRoute.page),
+        AutoRoute(page: WeaklyShiftDetailRoute.page, initial: kDebugMode),
+        AutoRoute(
+          page: ShiftPermissionRoute.page,
+        ),
       ];
 }

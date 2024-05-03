@@ -298,6 +298,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ShiftDetailView(),
       );
     },
+    ShiftPermissionRoute.name: (routeData) {
+      final args = routeData.argsAs<ShiftPermissionRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ShiftPermissionView(
+          fromTheView: args.fromTheView,
+          key: args.key,
+        ),
+      );
+    },
     SignInRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -1085,6 +1095,44 @@ class ShiftDetailRoute extends PageRouteInfo<void> {
   static const String name = 'ShiftDetailRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ShiftPermissionView]
+class ShiftPermissionRoute extends PageRouteInfo<ShiftPermissionRouteArgs> {
+  ShiftPermissionRoute({
+    required FromTheView fromTheView,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ShiftPermissionRoute.name,
+          args: ShiftPermissionRouteArgs(
+            fromTheView: fromTheView,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ShiftPermissionRoute';
+
+  static const PageInfo<ShiftPermissionRouteArgs> page =
+      PageInfo<ShiftPermissionRouteArgs>(name);
+}
+
+class ShiftPermissionRouteArgs {
+  const ShiftPermissionRouteArgs({
+    required this.fromTheView,
+    this.key,
+  });
+
+  final FromTheView fromTheView;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ShiftPermissionRouteArgs{fromTheView: $fromTheView, key: $key}';
+  }
 }
 
 /// generated route for

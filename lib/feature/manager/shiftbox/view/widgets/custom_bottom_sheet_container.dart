@@ -6,7 +6,7 @@ import 'package:gen/gen.dart';
 import 'package:kartal/kartal.dart';
 import 'package:widgets/widgets.dart';
 
-class CustomBottomSheetContainer extends StatelessWidget {
+final class CustomBottomSheetContainer extends StatelessWidget {
   const CustomBottomSheetContainer({
     required this.hintText,
     required this.onTap,

@@ -431,7 +431,9 @@
             "request": "Talep / Atanan",
             "waiting_accept": "Onay Bekleyen",
             "still_shift_info": "SABİT SHİFT DETAYLARI",
-            "finished_time": "Bitiş Tarihi"
+            "finished_time": "Bitiş Tarihi",
+            "start_time": "Başlangıç saati seçin veya girin",
+            "end_time": "Bitiş saati seçin veya girin"
         }
     }
 }

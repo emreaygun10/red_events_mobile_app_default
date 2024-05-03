@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,7 +9,7 @@ class CustomBottomButton extends StatelessWidget {
     required this.textTheme,
     required this.backgroundColor,
     required this.textColor,
-    required this.route,
+    required this.onTap,
     required this.text,
     super.key,
     this.predicate = true,
@@ -20,7 +19,7 @@ class CustomBottomButton extends StatelessWidget {
   final TextTheme textTheme;
   final Color backgroundColor;
   final Color textColor;
-  final PageRouteInfo<dynamic> route;
+  final void Function() onTap;
   final bool predicate;
   final bool isDisable;
   final String text;
@@ -36,12 +35,7 @@ class CustomBottomButton extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             backgroundColor: backgroundColor,
           ),
-          onPressed: () {
-            if (!isDisable) {
-              context.router
-                  .pushAndPopUntil(route, predicate: (route) => predicate);
-            }
-          },
+          onPressed: isDisable != true ? onTap : null,
           child: AutoSizeText(
             text,
             style: textTheme.titleLarge!.copyWith(

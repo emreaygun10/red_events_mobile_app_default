@@ -81,7 +81,9 @@ class _AddPersonnelListViewState extends BaseState<AddPersonnelListView>
                         ? ColorName.neutral400
                         : ColorName.neutral0,
                     textTheme: textTheme,
-                    route: const SuccessRoute(),
+                    onTap: () => context.router.push(
+                      const SuccessRoute(),
+                    ),
                     isDisable: state.isDisable,
                   );
                 },
