@@ -10,10 +10,10 @@ import 'package:widgets/widgets.dart';
 final class CustomTextFormField extends StatefulWidget {
   // ignore: public_member_api_docs
   const CustomTextFormField({
-    required this.labelText,
     required this.leadingAsset,
     required this.textEditingController,
     required this.hintText,
+    this.labelText,
     super.key,
     this.trailingAssetFirst,
     this.autovalidateMode = AutovalidateMode.disabled,
@@ -23,7 +23,7 @@ final class CustomTextFormField extends StatefulWidget {
   });
 
   /// label string
-  final String labelText;
+  final String? labelText;
 
   /// leading widget
   final Widget leadingAsset;
@@ -74,13 +74,15 @@ class _CustomTextFormFieldState extends BaseState<CustomTextFormField> {
         children: [
           Padding(
             padding: const ProjectPadding.onlyBottomSmall().r,
-            child: SizedBox(
-              height: 20.h,
-              child: AutoSizeText(
-                widget.labelText.tr(),
-                style: Theme.of(context).textTheme.labelSmall,
-              ),
-            ),
+            child: widget.labelText != null
+                ? SizedBox(
+                    height: 20.h,
+                    child: AutoSizeText(
+                      widget.labelText!.tr(),
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
+                  )
+                : const SizedBox(),
           ),
           SizedBox(
             height: 44.h,

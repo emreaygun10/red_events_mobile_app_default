@@ -135,6 +135,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const OnboardView(),
       );
     },
+    OperationPersonnelListRoute.name: (routeData) {
+      final args = routeData.argsAs<OperationPersonnelListRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: OperationPersonnelListView(
+          operationType: args.operationType,
+          key: args.key,
+        ),
+      );
+    },
     PackageSelectionRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -666,6 +676,45 @@ class OnboardRoute extends PageRouteInfo<void> {
   static const String name = 'OnboardRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [OperationPersonnelListView]
+class OperationPersonnelListRoute
+    extends PageRouteInfo<OperationPersonnelListRouteArgs> {
+  OperationPersonnelListRoute({
+    required OperationsEnum operationType,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          OperationPersonnelListRoute.name,
+          args: OperationPersonnelListRouteArgs(
+            operationType: operationType,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'OperationPersonnelListRoute';
+
+  static const PageInfo<OperationPersonnelListRouteArgs> page =
+      PageInfo<OperationPersonnelListRouteArgs>(name);
+}
+
+class OperationPersonnelListRouteArgs {
+  const OperationPersonnelListRouteArgs({
+    required this.operationType,
+    this.key,
+  });
+
+  final OperationsEnum operationType;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'OperationPersonnelListRouteArgs{operationType: $operationType, key: $key}';
+  }
 }
 
 /// generated route for

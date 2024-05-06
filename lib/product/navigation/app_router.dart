@@ -19,6 +19,7 @@ import 'package:red_events_mobile_app_defult/feature/manager/hr/view/hr_view.dar
 import 'package:red_events_mobile_app_defult/feature/manager/hr/view/personnel_search_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/add_shift_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/base_view.dart';
+import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/operation_personnel_list_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/shift_detail_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/shift_permission_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/weakly_views/weakly_shift_detail_view.dart';
@@ -111,7 +112,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: AddPersonnelFormRoute.page),
         AutoRoute(page: AddPersonnelListRoute.page),
         AutoRoute(page: SuccessRoute.page),
-        AutoRoute(page: ManagerBottomNavigationRoute.page),
+        AutoRoute(page: ManagerBottomNavigationRoute.page, initial: kDebugMode),
         AutoRoute(page: PackageSelectionRoute.page),
         AutoRoute(page: HrRoute.page),
         AutoRoute(page: PersonnelSearchRoute.page),
@@ -122,9 +123,12 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: BaseRoute.page),
         AutoRoute(page: ShiftDetailRoute.page),
         AutoRoute(page: WeaklyShiftRoute.page),
-        AutoRoute(page: WeaklyShiftDetailRoute.page, initial: kDebugMode),
+        AutoRoute(page: WeaklyShiftDetailRoute.page),
         AutoRoute(
           page: ShiftPermissionRoute.page,
+        ),
+        AutoRoute(
+          page: OperationPersonnelListRoute.page,
         ),
       ];
 }

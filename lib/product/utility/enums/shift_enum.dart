@@ -57,3 +57,15 @@ enum FromTheView {
 
   const FromTheView(this.buttonText, this.appBarText);
 }
+
+enum OperationsEnum {
+  specialScreen('Ekranı Özelleştir'),
+  sendGbt('GBT Gönder'),
+  download('İndir'),
+  sendShift('Personellere Shiftlerini Gönder'),
+  addPersonnel('Personel Ekle');
+
+  final String text;
+
+  const OperationsEnum(this.text);
+}

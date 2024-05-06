@@ -28,6 +28,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_add.svg
   SvgGenImage get icAdd => const SvgGenImage('assets/icons/ic_add.svg');
 
+  /// File path: assets/icons/ic_add_user.svg
+  SvgGenImage get icAddUser =>
+      const SvgGenImage('assets/icons/ic_add_user.svg');
+
   /// File path: assets/icons/ic_address.svg
   SvgGenImage get icAddress => const SvgGenImage('assets/icons/ic_address.svg');
 
@@ -117,6 +121,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_download.svg
   SvgGenImage get icDownload =>
       const SvgGenImage('assets/icons/ic_download.svg');
+
+  /// File path: assets/icons/ic_download_cloud.svg
+  SvgGenImage get icDownloadCloud =>
+      const SvgGenImage('assets/icons/ic_download_cloud.svg');
 
   /// File path: assets/icons/ic_edit_line.svg
   SvgGenImage get icEditLine =>
@@ -297,6 +305,10 @@ class $AssetsIconsGen {
   SvgGenImage get icSelectBoxCircleFill =>
       const SvgGenImage('assets/icons/ic_select_box_circle_fill.svg');
 
+  /// File path: assets/icons/ic_settings.svg
+  SvgGenImage get icSettings =>
+      const SvgGenImage('assets/icons/ic_settings.svg');
+
   /// File path: assets/icons/ic_share_box_fill.svg
   SvgGenImage get icShareBoxFill =>
       const SvgGenImage('assets/icons/ic_share_box_fill.svg');
@@ -304,6 +316,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_shield_star_line.svg
   SvgGenImage get icShieldStarLine =>
       const SvgGenImage('assets/icons/ic_shield_star_line.svg');
+
+  /// File path: assets/icons/ic_shield_user.svg
+  SvgGenImage get icShieldUser =>
+      const SvgGenImage('assets/icons/ic_shield_user.svg');
 
   /// File path: assets/icons/ic_shift_logo.svg
   SvgGenImage get icShiftLogo =>
@@ -384,6 +400,7 @@ class $AssetsIconsGen {
   /// List of all assets
   List<SvgGenImage> get values => [
         icAdd,
+        icAddUser,
         icAddress,
         icAge,
         icArroeLeftS,
@@ -408,6 +425,7 @@ class $AssetsIconsGen {
         icDot,
         icDownArrow,
         icDownload,
+        icDownloadCloud,
         icEditLine,
         icEmptyListWidget,
         icErrorWarningFill,
@@ -457,8 +475,10 @@ class $AssetsIconsGen {
         icSecurePaymentLine,
         icSelectBoxCircle,
         icSelectBoxCircleFill,
+        icSettings,
         icShareBoxFill,
         icShieldStarLine,
+        icShieldUser,
         icShiftLogo,
         icStar,
         icStarEmpty,

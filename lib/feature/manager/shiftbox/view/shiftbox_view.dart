@@ -12,6 +12,7 @@ import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view_model
 import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
 import 'package:red_events_mobile_app_defult/product/utility/enums/manager_enum.dart';
+import 'package:red_events_mobile_app_defult/product/utility/enums/shift_enum.dart';
 import 'package:red_events_mobile_app_defult/product/widget/custom_divider.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:widgets/widgets.dart';
