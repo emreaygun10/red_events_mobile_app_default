@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:gen/gen.dart';
+import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:widgets/widgets.dart';
 
 class CustomDailyPartContainer extends StatelessWidget {
@@ -112,7 +114,7 @@ class CustomDailyPartContainer extends StatelessWidget {
 
   ListTile buildAddPersonnel(BuildContext context) {
     return ListTile(
-      onTap: () {},
+      onTap: () => context.router.push(const AddPersonnelDailyRoute()),
       leading: const Icon(
         Icons.add,
         color: ColorName.blueDark,

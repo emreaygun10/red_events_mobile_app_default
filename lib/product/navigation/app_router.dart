@@ -17,6 +17,7 @@ import 'package:red_events_mobile_app_defult/feature/manager/hr/view/bottom_shee
 import 'package:red_events_mobile_app_defult/feature/manager/hr/view/bottom_sheet_views/push_notification_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/hr/view/hr_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/hr/view/personnel_search_view.dart';
+import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/add_personnel_daily_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/add_shift_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/base_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/operation_personnel_list_view.dart';
@@ -130,5 +131,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: OperationPersonnelListRoute.page,
         ),
+        AutoRoute(page: AddPersonnelDailyRoute.page),
       ];
 }

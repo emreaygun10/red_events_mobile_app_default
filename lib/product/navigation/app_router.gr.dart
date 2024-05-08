@@ -27,6 +27,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AddDepartmentView(),
       );
     },
+    AddPersonnelDailyRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AddPersonnelDailyView(),
+      );
+    },
     AddPersonnelFormRoute.name: (routeData) {
       return AutoRoutePage<PersonnelModel>(
         routeData: routeData,
@@ -393,6 +399,20 @@ class AddDepartmentRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'AddDepartmentRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AddPersonnelDailyView]
+class AddPersonnelDailyRoute extends PageRouteInfo<void> {
+  const AddPersonnelDailyRoute({List<PageRouteInfo>? children})
+      : super(
+          AddPersonnelDailyRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddPersonnelDailyRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
