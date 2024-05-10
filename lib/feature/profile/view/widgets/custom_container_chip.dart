@@ -9,14 +9,12 @@ import 'package:widgets/widgets.dart';
 
 class CustomContainerChip extends StatelessWidget {
   const CustomContainerChip({
-    required this.textTheme,
     required this.chipIndex,
     required this.text,
     required this.onTap,
     super.key,
   });
 
-  final TextTheme textTheme;
   final bool chipIndex;
   final String text;
   final VoidCallback onTap;
@@ -36,9 +34,9 @@ class CustomContainerChip extends StatelessWidget {
         child: Center(
           child: AutoSizeText(
             text.tr(),
-            style: textTheme.titleMedium!.copyWith(
-              color: chipIndex ? ColorName.neutral0 : ColorName.neutral900,
-            ),
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  color: chipIndex ? ColorName.neutral0 : ColorName.neutral900,
+                ),
           ),
         ),
       ),

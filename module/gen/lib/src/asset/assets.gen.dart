@@ -367,6 +367,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_user_2.svg
   SvgGenImage get icUser2 => const SvgGenImage('assets/icons/ic_user_2.svg');
 
+  /// File path: assets/icons/ic_user_background.svg
+  SvgGenImage get icUserBackground =>
+      const SvgGenImage('assets/icons/ic_user_background.svg');
+
   /// File path: assets/icons/ic_user_fill.svg
   SvgGenImage get icUserFill =>
       const SvgGenImage('assets/icons/ic_user_fill.svg');
@@ -492,6 +496,7 @@ class $AssetsIconsGen {
         icTr,
         icUs,
         icUser2,
+        icUserBackground,
         icUserFill,
         icUserLine,
         icUserShared,
@@ -510,6 +515,10 @@ class $AssetsImagesGen {
   AssetGenImage get imageAvatar =>
       const AssetGenImage('assets/images/image_avatar.png');
 
+  /// File path: assets/images/image_user_background.png
+  AssetGenImage get imageUserBackground =>
+      const AssetGenImage('assets/images/image_user_background.png');
+
   /// File path: assets/images/img_flags.png
   AssetGenImage get imgFlags =>
       const AssetGenImage('assets/images/img_flags.png');
@@ -527,8 +536,14 @@ class $AssetsImagesGen {
       const AssetGenImage('assets/images/onboard_two.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [imageAvatar, imgFlags, onboardOne, onboardThree, onboardTwo];
+  List<AssetGenImage> get values => [
+        imageAvatar,
+        imageUserBackground,
+        imgFlags,
+        onboardOne,
+        onboardThree,
+        onboardTwo
+      ];
 }
 
 class $AssetsLottieGen {

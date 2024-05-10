@@ -581,13 +581,11 @@ class _ProfileProgressPaymentViewState
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               CustomContainerChip(
-                textTheme: textTheme,
                 chipIndex: state.chipIndex,
                 text: LocaleKeys.profile_progress_payment_chips_payment,
                 onTap: profileProgressPaymentBloc.changeChipIndex,
               ),
               CustomContainerChip(
-                textTheme: textTheme,
                 chipIndex: !state.chipIndex,
                 text: LocaleKeys.profile_progress_payment_chips_payroll,
                 onTap: profileProgressPaymentBloc.changeChipIndex,

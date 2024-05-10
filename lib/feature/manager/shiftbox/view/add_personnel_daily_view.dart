@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +10,9 @@ import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/mixin
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view_model/bloc/add_personnel_daily_bloc.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view_model/model/daily_personnel_model.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view_model/state/add_peronnel_daily_state.dart';
+import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/widgets/custom_bottom_button.dart';
+import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
+import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
 import 'package:widgets/widgets.dart';
 
@@ -80,15 +84,38 @@ class _AddPersonnelDailyViewState extends BaseState<AddPersonnelDailyView>
                   );
                 },
               ),
-              BlocBuilder<AddPersonnelDailyBloc, AddPersonnelDailyState>(
-                builder: (context, state) {
-                  return buildTitle(
-                    counter: state.personnelList.ext.isNotNullOrEmpty
-                        ? state.personnelList!.length
-                        : 0,
-                    title: 'Kişiler',
-                  );
-                },
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  BlocBuilder<AddPersonnelDailyBloc, AddPersonnelDailyState>(
+                    builder: (context, state) {
+                      return buildTitle(
+                        counter: state.personnelList.ext.isNotNullOrEmpty
+                            ? state.personnelList!.length
+                            : 0,
+                        title: 'Kişiler',
+                      );
+                    },
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 12),
+                    child: Row(
+                      children: [
+                        Assets.icons.icAddUser
+                            .toGetSvgWithColor(color: ColorName.blueDark),
+                        TextButton(
+                          onPressed: () => context.router
+                              .push(const AddPersonnelDailyFormRoute()),
+                          child: Text(
+                            'Günübirlik kişi yarat',
+                            style: textTheme.titleSmall!
+                                .copyWith(color: ColorName.blueDark),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
               BlocBuilder<AddPersonnelDailyBloc, AddPersonnelDailyState>(
                 builder: (context, state) {
@@ -111,6 +138,21 @@ class _AddPersonnelDailyViewState extends BaseState<AddPersonnelDailyView>
                           ),
                         )
                       : buildEmptyUser();
+                },
+              ),
+              BlocBuilder<AddPersonnelDailyBloc, AddPersonnelDailyState>(
+                builder: (context, state) {
+                  return Padding(
+                    padding: const ProjectPadding.symmetricMediumV(),
+                    child: CustomBottomButton(
+                      textTheme: textTheme,
+                      backgroundColor: ColorName.blueBase,
+                      textColor: ColorName.neutral0,
+                      onTap: () {},
+                      text: LocaleKeys.general_button_save.tr(),
+                      isDisable: state.addedPersonnelList.ext.isNullOrEmpty,
+                    ),
+                  );
                 },
               ),
             ],
@@ -182,23 +224,23 @@ class _AddPersonnelDailyViewState extends BaseState<AddPersonnelDailyView>
               ),
             ],
           ),
-          Container(
-            height: 24.h,
-            decoration: const BoxDecoration(
-              color: ColorName.blueBase,
-              shape: BoxShape.circle,
-            ),
-            child: InkWell(
-              onTap: () => personnelModel.isAdded
-                  ? removePersonnel(personnelModel)
-                  : addPersonnel(personnelModel),
-              child: BlocBuilder<AddPersonnelDailyBloc, AddPersonnelDailyState>(
-                builder: (context, state) {
-                  return Icon(
-                    personnelModel.isAdded ? Icons.remove : Icons.add,
-                    color: ColorName.neutral0,
-                  );
-                },
+          BlocBuilder<AddPersonnelDailyBloc, AddPersonnelDailyState>(
+            builder: (context, state) => Container(
+              height: 24.h,
+              decoration: BoxDecoration(
+                color: personnelModel.isAdded
+                    ? ColorName.redBase
+                    : ColorName.blueBase,
+                shape: BoxShape.circle,
+              ),
+              child: InkWell(
+                onTap: () => personnelModel.isAdded
+                    ? removePersonnel(personnelModel)
+                    : addPersonnel(personnelModel),
+                child: Icon(
+                  personnelModel.isAdded ? Icons.remove : Icons.add,
+                  color: ColorName.neutral0,
+                ),
               ),
             ),
           ),

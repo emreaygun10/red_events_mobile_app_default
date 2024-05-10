@@ -27,6 +27,18 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AddDepartmentView(),
       );
     },
+    AddPersonnelDailyFormDocumentsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AddPersonnelDailyFormDocumentsView(),
+      );
+    },
+    AddPersonnelDailyFormRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AddPersonnelDailyFormView(),
+      );
+    },
     AddPersonnelDailyRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -399,6 +411,34 @@ class AddDepartmentRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'AddDepartmentRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AddPersonnelDailyFormDocumentsView]
+class AddPersonnelDailyFormDocumentsRoute extends PageRouteInfo<void> {
+  const AddPersonnelDailyFormDocumentsRoute({List<PageRouteInfo>? children})
+      : super(
+          AddPersonnelDailyFormDocumentsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddPersonnelDailyFormDocumentsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AddPersonnelDailyFormView]
+class AddPersonnelDailyFormRoute extends PageRouteInfo<void> {
+  const AddPersonnelDailyFormRoute({List<PageRouteInfo>? children})
+      : super(
+          AddPersonnelDailyFormRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddPersonnelDailyFormRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
