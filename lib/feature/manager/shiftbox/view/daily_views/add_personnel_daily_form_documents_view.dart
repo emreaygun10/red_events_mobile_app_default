@@ -1,9 +1,13 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
+import 'package:red_events_mobile_app_defult/feature/profile/view/widgets/custom_sheets_bottom_sheet.dart';
+import 'package:red_events_mobile_app_defult/feature/setup_wizard/view/widgets/custom_bottom_button.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
+import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
 import 'package:widgets/widgets.dart';
 
@@ -21,6 +25,27 @@ class _AddPersonnelDailyFormDocumentsViewState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: SafeArea(
+        child: CustomBottomButton(
+          textTheme: textTheme,
+          backgroundColor: ColorName.blueBase,
+          textColor: ColorName.neutral0,
+          onTap: () async {
+            await showModalBottomSheet<void>(
+              context: context,
+              builder: (context) => const CustomSheetsBottomSheet(
+                text: 'Ellen Rose adlı Kişi başarıyla eklendi',
+              ),
+            );
+            if (!context.mounted) return;
+            await context.router.pushAndPopUntil(
+              const ManagerBottomNavigationRoute(),
+              predicate: (route) => false,
+            );
+          },
+          text: LocaleKeys.general_button_continue.tr(),
+        ),
+      ),
       backgroundColor: ColorName.neutral0,
       appBar: AppBar(
         backgroundColor: ColorName.neutral0,
@@ -51,8 +76,8 @@ class _AddPersonnelDailyFormDocumentsViewState
                 separatorBuilder: (context, index) => SizedBox(
                   height: 12.h,
                 ),
-                itemBuilder: (context, index) => buildCustomDocument(),
-                itemCount: 1,
+                itemBuilder: (context, index) => unLoadedDocuments(),
+                itemCount: 5,
               ),
             ),
           ],
@@ -118,6 +143,58 @@ class _AddPersonnelDailyFormDocumentsViewState
               ),
             ),
           ],
+        ),
+      );
+
+  DottedBorder unLoadedDocuments() => DottedBorder(
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 4).r,
+        borderType: BorderType.RRect,
+        radius: const Radius.circular(16),
+        dashPattern: const [10, 5, 10, 5],
+        color: ColorName.neutral200,
+        child: SizedBox(
+          height: 45.h,
+          child: ListTile(
+            titleAlignment: ListTileTitleAlignment.top,
+            onTap: () {
+              print('Tıklandı');
+            },
+            splashColor: ColorName.blueLighter,
+            leading: Container(
+              padding: const EdgeInsets.all(6).r,
+              height: 32.h,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: ColorName.neutral100,
+              ),
+              child: Assets.icons.icFile.toGetSvg(),
+            ),
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Diploma',
+                  style: textTheme.titleLarge,
+                ),
+                Text(
+                  '120 KB',
+                  style: textTheme.titleMedium!.copyWith(
+                    color: ColorName.neutral600,
+                  ),
+                ),
+              ],
+            ),
+            trailing: Container(
+              padding: const EdgeInsets.all(5).r,
+              height: 32.h,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: ColorName.blueBase,
+              ),
+              child: Assets.icons.icAdd
+                  .toGetSvgWithColor(color: ColorName.neutral0),
+            ),
+          ),
         ),
       );
 }

@@ -46,6 +46,7 @@ dependencies:
   flutter_popup: ^3.1.8
   expandable: ^5.0.1
   flutter_slidable: ^3.1.0
+  weekly_date_picker: ^1.4.2
   
 
 dev_dependencies:

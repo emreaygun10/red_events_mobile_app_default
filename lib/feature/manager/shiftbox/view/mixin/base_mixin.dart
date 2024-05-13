@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gen/gen.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/base_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/daily_views/daily_shift_view.dart';
+import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/puantaj/puantaj_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/shift_list_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/shiftbox_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/weakly_views/weakly_shift_view.dart';
@@ -24,6 +25,7 @@ mixin BaseMixin on BaseState<BaseView> {
       const DailyShiftView(),
       const WeaklyShiftView(),
       const ShiftListView(),
+      const PuantajView(),
       const ShiftBoxView(),
       Container(
         color: ColorName.redBase,

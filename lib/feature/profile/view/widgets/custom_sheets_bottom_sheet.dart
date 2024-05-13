@@ -18,9 +18,20 @@ class CustomSheetsBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 400,
+      height: 420,
       child: Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 8,
+              bottom: 12,
+            ).r,
+            child: Container(
+              width: 32.w,
+              height: 5.h,
+              color: ColorName.neutral300,
+            ),
+          ),
           AutoSizeText(
             LocaleKeys.profile_requests_request_permission_information.tr(),
             style: Theme.of(context).textTheme.labelLarge,

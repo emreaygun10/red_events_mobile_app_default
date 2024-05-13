@@ -62,6 +62,10 @@ class $AssetsIconsGen {
   SvgGenImage get icBankCardLine =>
       const SvgGenImage('assets/icons/ic_bank_card_line.svg');
 
+  /// File path: assets/icons/ic_bar_chart.svg
+  SvgGenImage get icBarChart =>
+      const SvgGenImage('assets/icons/ic_bar_chart.svg');
+
   /// File path: assets/icons/ic_building.svg
   SvgGenImage get icBuilding =>
       const SvgGenImage('assets/icons/ic_building.svg');
@@ -133,6 +137,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_empty_list_widget.svg
   SvgGenImage get icEmptyListWidget =>
       const SvgGenImage('assets/icons/ic_empty_list_widget.svg');
+
+  /// File path: assets/icons/ic_empty_state.svg
+  SvgGenImage get icEmptyState =>
+      const SvgGenImage('assets/icons/ic_empty_state.svg');
 
   /// File path: assets/icons/ic_error_warning_fill.svg
   SvgGenImage get icErrorWarningFill =>
@@ -413,6 +421,7 @@ class $AssetsIconsGen {
         icArrowRightS,
         icArrowUpLine,
         icBankCardLine,
+        icBarChart,
         icBuilding,
         icBuildingLine,
         icCalendar,
@@ -432,6 +441,7 @@ class $AssetsIconsGen {
         icDownloadCloud,
         icEditLine,
         icEmptyListWidget,
+        icEmptyState,
         icErrorWarningFill,
         icEu,
         icExcel,
