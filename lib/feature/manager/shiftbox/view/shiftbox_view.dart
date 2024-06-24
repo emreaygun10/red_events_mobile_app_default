@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,10 +10,11 @@ import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/mixin
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/widgets/custom_empty_list.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view_model/bloc/shiftbox_bloc.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view_model/state/shiftbox_state.dart';
+import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
 import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
-import 'package:red_events_mobile_app_defult/product/utility/enums/manager_enum.dart';
 import 'package:red_events_mobile_app_defult/product/utility/enums/shift_enum.dart';
+import 'package:red_events_mobile_app_defult/product/utility/extension/days.dart';
 import 'package:red_events_mobile_app_defult/product/widget/custom_divider.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:widgets/widgets.dart';
@@ -57,12 +59,112 @@ class _ShiftBoxViewState extends BaseState<ShiftBoxView> with ShiftboxMixin {
         children: [
           buildTitleRow(context),
           buildDateRow(),
-          buildFilterRow(context),
-          Expanded(
-            child: CustomEmptyList(textTheme: textTheme),
+          // buildFilterRow(context),
+          BlocBuilder<ShiftBoxBloc, ShiftBoxState>(
+            builder: (context, state) {
+              return Expanded(
+                child: state.eventList.ext.isNotNullOrEmpty
+                    ? ListView.separated(
+                        padding: EdgeInsets.zero,
+                        itemBuilder: (context, index) {
+                          return buildListCard(state, index);
+                        },
+                        separatorBuilder: (context, index) =>
+                            SizedBox(height: 12.h),
+                        itemCount: state.eventList!.length,
+                      )
+                    : CustomEmptyList(
+                        text: 'Oluşturulmuş event bulunmamaktadır.',
+                        subTitle: 'Oluşturulmuş evet bulunmamaktadır.',
+                        icon: Assets.icons.icFinanceBanking.toGetSvg(),
+                      ),
+              );
+            },
           ),
         ],
       ),
+    );
+  }
+
+  Container buildListCard(ShiftBoxState state, int index) {
+    return Container(
+      padding: const ProjectPadding.allMedium(),
+      decoration: BoxDecoration(
+        color: findCardColor(state.eventList![index].eventDate),
+        borderRadius: ProjectBorderRadius.allCircleNormal(),
+      ),
+      height: 78.h,
+      child: Row(
+        children: [
+          buildDateColumn(state, index),
+          const Padding(
+            padding: ProjectPadding.symmetricSmallH(),
+            child: VerticalDivider(
+              thickness: 2,
+              color: ColorName.neutral300,
+            ),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text(
+                state.eventList![index].eventName,
+                style: textTheme.titleSmall!.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              Text(
+                state.eventList![index].eventClock,
+                style: textTheme.titleSmall!.copyWith(
+                  color: ColorName.neutral400,
+                ),
+              ),
+              Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: ColorName.neutral0,
+                    maxRadius: 8.r,
+                    child: Assets.icons.icStickyNoteLine.toGetSvgWithColor(
+                      color: ColorName.blueBase,
+                      height: 12.h,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 4.w,
+                  ),
+                  Text(
+                    state.eventList![index].eventPlace,
+                    style: textTheme.titleSmall!.copyWith(
+                      color: ColorName.neutral400,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Column buildDateColumn(ShiftBoxState state, int index) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          state.eventList![index].eventDate.day.toString(),
+          style: textTheme.labelLarge!.copyWith(
+            color: ColorName.neutral400,
+          ),
+        ),
+        Text(
+          state.eventList![index].eventDate.getDaysString(),
+          style: textTheme.titleSmall!.copyWith(
+            color: ColorName.neutral400,
+          ),
+        ),
+      ],
     );
   }
 
@@ -121,7 +223,7 @@ class _ShiftBoxViewState extends BaseState<ShiftBoxView> with ShiftboxMixin {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         AutoSizeText(
-          ShiftBoxTopTitleEnum.list.value,
+          LocaleKeys.manager_shift_box_events_moutly_calender.tr(),
           style: textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w700),
         ),
         TextButton(
@@ -129,7 +231,7 @@ class _ShiftBoxViewState extends BaseState<ShiftBoxView> with ShiftboxMixin {
             context.router.push(AddShiftRoute());
           },
           child: AutoSizeText(
-            'Shift Ekle',
+            LocaleKeys.manager_shift_box_events_create_event.tr(),
             style: textTheme.titleMedium!.copyWith(
               color: ColorName.neutral500,
             ),
@@ -144,97 +246,30 @@ class _ShiftBoxViewState extends BaseState<ShiftBoxView> with ShiftboxMixin {
       padding: const ProjectPadding.symmetricNormalV(),
       child: Container(
         padding: const ProjectPadding.allMedium(),
-        height: 144.h,
         width: context.sized.width,
         decoration: BoxDecoration(
           borderRadius: ProjectBorderRadius.allCircleNormal(),
           color: ColorName.neutral0,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Padding(
-              padding: const ProjectPadding.symmetricSmallV(),
-              child: Row(
-                children: [
-                  Assets.icons.icCalendarEventLine
-                      .toGetSvgWithColor(color: ColorName.blueBase),
-                  Padding(
-                    padding: const ProjectPadding.symmetricSmallH(),
-                    child: AutoSizeText(
-                      ShiftBoxTopTitleEnum.list.value,
-                      style: textTheme.titleLarge,
-                    ),
-                  ),
-                ],
-              ),
+            Text(
+              LocaleKeys.manager_shift_box_events_top_title_first_row.tr(),
+              style:
+                  textTheme.titleMedium!.copyWith(color: ColorName.neutral400),
             ),
-            const Divider(
-              color: ColorName.neutral300,
-              height: 2,
+            Text(
+              LocaleKeys.manager_shift_box_events_top_title_second_row
+                  .tr(args: ['5']),
+              style: textTheme.headlineLarge!
+                  .copyWith(color: ColorName.neutral900),
             ),
-            Padding(
-              padding: const ProjectPadding.symmetricMediumV(),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SizedBox(
-                    width: 115.w,
-                    height: 50.h,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            AutoSizeText(
-                              'Mart',
-                              style: textTheme.titleMedium,
-                            ),
-                            AutoSizeText(
-                              '0/0',
-                              style: textTheme.titleMedium!.copyWith(
-                                color: ColorName.neutral500,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const LinearProgressIndicator(
-                          backgroundColor: ColorName.neutral200,
-                          color: ColorName.redBase,
-                          value: 0.4,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 2,
-                    height: 50.h,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: ColorName.neutral200),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 115.w,
-                    height: 50.h,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        AutoSizeText(
-                          'Toplam Çalışan',
-                          style: textTheme.titleMedium!.copyWith(
-                            color: ColorName.neutral500,
-                            fontSize: 11.sp,
-                          ),
-                        ),
-                        AutoSizeText(
-                          'Çalışan Yok',
-                          style: textTheme.titleMedium,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+            Text(
+              LocaleKeys.manager_shift_box_events_top_title_third_row.tr(),
+              style:
+                  textTheme.titleMedium!.copyWith(color: ColorName.neutral400),
             ),
           ],
         ),
