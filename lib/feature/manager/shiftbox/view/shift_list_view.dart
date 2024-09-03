@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gen/gen.dart';
 import 'package:kartal/kartal.dart';
+import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/widgets/custom_occupancy_widget.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view_model/bloc/base_bloc.dart';
 import 'package:red_events_mobile_app_defult/product/navigation/app_router.dart';
 import 'package:red_events_mobile_app_defult/product/state/base/base_state.dart';
@@ -28,7 +29,10 @@ class _ShiftListViewState extends BaseState<ShiftListView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            buildTopContainer(context),
+            const CustomOccupancyWidget(
+              mainText: 'Mart Doluluk Oranı',
+              occupancy: '90',
+            ),
             buildShiftList(),
           ],
         ),
@@ -77,70 +81,72 @@ class _ShiftListViewState extends BaseState<ShiftListView> {
                 shrinkWrap: true,
                 itemCount: 100,
                 itemBuilder: (context, index) {
-                  return Container(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 8, horizontal: 14)
-                            .r,
-                    height: 78.h,
-                    width: context.sized.width,
-                    decoration: BoxDecoration(
-                      color: ColorName.neutral200,
-                      borderRadius: ProjectBorderRadius.allCircleMedium(),
-                    ),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: 36.w,
-                          child: buildDateColumn(),
-                        ),
-                        const VerticalDivider(
-                          color: ColorName.neutral300,
-                        ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              buildFirstRow(),
-                              AutoSizeText(
-                                '07:00',
-                                style: textTheme.titleSmall!.copyWith(
-                                  fontSize: 11.sp,
-                                ),
-                              ),
-                              Row(
-                                children: [
-                                  SizedBox(
-                                    width: 32.w,
-                                    height: 6.h,
-                                    child: const LinearProgressIndicator(
-                                      backgroundColor: ColorName.neutral100,
-                                      color: ColorName.blueBase,
-                                      value: 0.4,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 8.w,
-                                  ),
-                                  AutoSizeText(
-                                    '6/10',
-                                    style: textTheme.titleSmall!.copyWith(
-                                      color: ColorName.neutral500,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
+                  return buildListItem(context);
                 },
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Container buildListItem(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 14).r,
+      height: 78.h,
+      width: context.sized.width,
+      decoration: BoxDecoration(
+        color: ColorName.neutral100,
+        borderRadius: ProjectBorderRadius.allCircleMedium(),
+      ),
+      child: Row(
+        children: [
+          SizedBox(
+            width: 36.w,
+            child: buildDateColumn(),
+          ),
+          const VerticalDivider(
+            color: ColorName.neutral300,
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                buildFirstRow(),
+                AutoSizeText(
+                  '07:00',
+                  style: textTheme.titleSmall!.copyWith(
+                    fontSize: 11.sp,
+                  ),
+                ),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 32.w,
+                      height: 6.h,
+                      child: const LinearProgressIndicator(
+                        backgroundColor: ColorName.neutral100,
+                        color: ColorName.blueBase,
+                        value: 0.4,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 8.w,
+                    ),
+                    AutoSizeText(
+                      '6/10',
+                      style: textTheme.titleSmall!.copyWith(
+                        color: ColorName.neutral500,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -226,65 +232,6 @@ class _ShiftListViewState extends BaseState<ShiftListView> {
               color: ColorName.neutral0,
               fontWeight: FontWeight.w500,
             ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Container buildTopContainer(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: ColorName.neutral0,
-        borderRadius: ProjectBorderRadius.allCircleMedium(),
-      ),
-      height: 56.h,
-      width: context.sized.width,
-      padding: const ProjectPadding.allNormal().copyWith(top: 16, bottom: 16).r,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              Assets.icons.icCalendar
-                  .toGetSvgWithColor(color: ColorName.blueBase),
-              Padding(
-                padding: const ProjectPadding.symmetricXSmallH()
-                    .copyWith(right: 0)
-                    .r,
-                child: AutoSizeText(
-                  'Mart 2024 doluluk',
-                  style: textTheme.titleMedium!.copyWith(
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              SizedBox(
-                width: 37.w,
-                height: 6.h,
-                child: const LinearProgressIndicator(
-                  backgroundColor: ColorName.neutral200,
-                  color: ColorName.blueBase,
-                  value: 0.4,
-                ),
-              ),
-              Padding(
-                padding: const ProjectPadding.symmetricXSmallH()
-                    .copyWith(right: 0)
-                    .r,
-                child: AutoSizeText(
-                  '90/100',
-                  style: textTheme.titleSmall!.copyWith(
-                    color: ColorName.neutral400,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-              ),
-            ],
           ),
         ],
       ),

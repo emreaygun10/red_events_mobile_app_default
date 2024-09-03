@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gen/gen.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view/shiftbox_view.dart';
 import 'package:red_events_mobile_app_defult/feature/manager/shiftbox/view_model/bloc/shiftbox_bloc.dart';
@@ -71,6 +72,29 @@ mixin ShiftboxMixin on BaseState<ShiftBoxView> {
             .add(months: 1)
             .dateTime,
       );
+    }
+  }
+
+  /// Find List card color
+  Color findCardColor(DateTime date) {
+    if (DateTime(date.year, date.month, date.day).isBefore(
+      DateTime(
+        DateTime.now().year,
+        DateTime.now().month,
+        DateTime.now().day,
+      ),
+    )) {
+      return ColorName.neutral100;
+    } else if (DateTime(date.year, date.month, date.day).isAfter(
+      DateTime(
+        DateTime.now().year,
+        DateTime.now().month,
+        DateTime.now().day,
+      ),
+    )) {
+      return ColorName.orangeLight;
+    } else {
+      return ColorName.blueLight;
     }
   }
 }

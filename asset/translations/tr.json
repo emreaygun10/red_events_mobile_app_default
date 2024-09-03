@@ -419,6 +419,30 @@
                 "empty_list": "Arama bulunmamaktadır.",
                 "all_personnel": "Tüm Personeller ({})"
             }
+        },
+        "shift_detail": {
+            "title": "Shift Detayı",
+            "info": "Shift Bilgileri",
+            "shift_content": "SHİFT DETAYLARI",
+            "date": "Tarih",
+            "shift_hour": "Shift Saati",
+            "shift_type": "Shift Tipi",
+            "duty": "Görev",
+            "request": "Talep / Atanan",
+            "waiting_accept": "Onay Bekleyen",
+            "still_shift_info": "SABİT SHİFT DETAYLARI",
+            "finished_time": "Bitiş Tarihi",
+            "start_time": "Başlangıç saati seçin veya girin",
+            "end_time": "Bitiş saati seçin veya girin"
+        },
+        "shift_box": {
+            "events": {
+                "top_title_first_row": "Bu ay toplam",
+                "top_title_second_row": "{} adet",
+                "top_title_third_row": "etkinliğiniz var",
+                "moutly_calender": "Aylık Takvim",
+                "create_event": "Etkinlik yarat"
+            }
         }
     }
 }

@@ -27,6 +27,24 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AddDepartmentView(),
       );
     },
+    AddPersonnelDailyFormDocumentsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AddPersonnelDailyFormDocumentsView(),
+      );
+    },
+    AddPersonnelDailyFormRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AddPersonnelDailyFormView(),
+      );
+    },
+    AddPersonnelDailyRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AddPersonnelDailyView(),
+      );
+    },
     AddPersonnelFormRoute.name: (routeData) {
       return AutoRoutePage<PersonnelModel>(
         routeData: routeData,
@@ -52,9 +70,14 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     AddShiftRoute.name: (routeData) {
+      final args = routeData.argsAs<AddShiftRouteArgs>(
+          orElse: () => const AddShiftRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const AddShiftView(),
+        child: AddShiftView(
+          key: args.key,
+          title: args.title,
+        ),
       );
     },
     BaseInformationRoute.name: (routeData) {
@@ -128,6 +151,16 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const OnboardView(),
+      );
+    },
+    OperationPersonnelListRoute.name: (routeData) {
+      final args = routeData.argsAs<OperationPersonnelListRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: OperationPersonnelListView(
+          operationType: args.operationType,
+          key: args.key,
+        ),
       );
     },
     PackageSelectionRoute.name: (routeData) {
@@ -293,6 +326,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ShiftDetailView(),
       );
     },
+    ShiftPermissionRoute.name: (routeData) {
+      final args = routeData.argsAs<ShiftPermissionRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ShiftPermissionView(
+          fromTheView: args.fromTheView,
+          key: args.key,
+        ),
+      );
+    },
     SignInRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -315,6 +358,18 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const SuccessView(),
+      );
+    },
+    WeaklyShiftDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const WeaklyShiftDetailView(),
+      );
+    },
+    WeaklyShiftRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const WeaklyShiftView(),
       );
     },
     WelcomeWizardSetupRoute.name: (routeData) {
@@ -356,6 +411,48 @@ class AddDepartmentRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'AddDepartmentRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AddPersonnelDailyFormDocumentsView]
+class AddPersonnelDailyFormDocumentsRoute extends PageRouteInfo<void> {
+  const AddPersonnelDailyFormDocumentsRoute({List<PageRouteInfo>? children})
+      : super(
+          AddPersonnelDailyFormDocumentsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddPersonnelDailyFormDocumentsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AddPersonnelDailyFormView]
+class AddPersonnelDailyFormRoute extends PageRouteInfo<void> {
+  const AddPersonnelDailyFormRoute({List<PageRouteInfo>? children})
+      : super(
+          AddPersonnelDailyFormRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddPersonnelDailyFormRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AddPersonnelDailyView]
+class AddPersonnelDailyRoute extends PageRouteInfo<void> {
+  const AddPersonnelDailyRoute({List<PageRouteInfo>? children})
+      : super(
+          AddPersonnelDailyRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AddPersonnelDailyRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -418,16 +515,40 @@ class AddPersonnelRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [AddShiftView]
-class AddShiftRoute extends PageRouteInfo<void> {
-  const AddShiftRoute({List<PageRouteInfo>? children})
-      : super(
+class AddShiftRoute extends PageRouteInfo<AddShiftRouteArgs> {
+  AddShiftRoute({
+    Key? key,
+    String title = LocaleKeys.manager_add_shift_title,
+    List<PageRouteInfo>? children,
+  }) : super(
           AddShiftRoute.name,
+          args: AddShiftRouteArgs(
+            key: key,
+            title: title,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'AddShiftRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<AddShiftRouteArgs> page =
+      PageInfo<AddShiftRouteArgs>(name);
+}
+
+class AddShiftRouteArgs {
+  const AddShiftRouteArgs({
+    this.key,
+    this.title = LocaleKeys.manager_add_shift_title,
+  });
+
+  final Key? key;
+
+  final String title;
+
+  @override
+  String toString() {
+    return 'AddShiftRouteArgs{key: $key, title: $title}';
+  }
 }
 
 /// generated route for
@@ -615,6 +736,45 @@ class OnboardRoute extends PageRouteInfo<void> {
   static const String name = 'OnboardRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [OperationPersonnelListView]
+class OperationPersonnelListRoute
+    extends PageRouteInfo<OperationPersonnelListRouteArgs> {
+  OperationPersonnelListRoute({
+    required OperationsEnum operationType,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          OperationPersonnelListRoute.name,
+          args: OperationPersonnelListRouteArgs(
+            operationType: operationType,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'OperationPersonnelListRoute';
+
+  static const PageInfo<OperationPersonnelListRouteArgs> page =
+      PageInfo<OperationPersonnelListRouteArgs>(name);
+}
+
+class OperationPersonnelListRouteArgs {
+  const OperationPersonnelListRouteArgs({
+    required this.operationType,
+    this.key,
+  });
+
+  final OperationsEnum operationType;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'OperationPersonnelListRouteArgs{operationType: $operationType, key: $key}';
+  }
 }
 
 /// generated route for
@@ -1047,6 +1207,44 @@ class ShiftDetailRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ShiftPermissionView]
+class ShiftPermissionRoute extends PageRouteInfo<ShiftPermissionRouteArgs> {
+  ShiftPermissionRoute({
+    required FromTheView fromTheView,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ShiftPermissionRoute.name,
+          args: ShiftPermissionRouteArgs(
+            fromTheView: fromTheView,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ShiftPermissionRoute';
+
+  static const PageInfo<ShiftPermissionRouteArgs> page =
+      PageInfo<ShiftPermissionRouteArgs>(name);
+}
+
+class ShiftPermissionRouteArgs {
+  const ShiftPermissionRouteArgs({
+    required this.fromTheView,
+    this.key,
+  });
+
+  final FromTheView fromTheView;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ShiftPermissionRouteArgs{fromTheView: $fromTheView, key: $key}';
+  }
+}
+
+/// generated route for
 /// [SignInView]
 class SignInRoute extends PageRouteInfo<void> {
   const SignInRoute({List<PageRouteInfo>? children})
@@ -1098,6 +1296,34 @@ class SuccessRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SuccessRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [WeaklyShiftDetailView]
+class WeaklyShiftDetailRoute extends PageRouteInfo<void> {
+  const WeaklyShiftDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          WeaklyShiftDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'WeaklyShiftDetailRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [WeaklyShiftView]
+class WeaklyShiftRoute extends PageRouteInfo<void> {
+  const WeaklyShiftRoute({List<PageRouteInfo>? children})
+      : super(
+          WeaklyShiftRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'WeaklyShiftRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

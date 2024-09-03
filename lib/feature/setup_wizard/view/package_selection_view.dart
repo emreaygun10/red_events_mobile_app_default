@@ -103,7 +103,7 @@ class _PackageSelectionViewState extends BaseState<PackageSelectionView>
         textTheme: textTheme,
         backgroundColor: ColorName.blueBase,
         textColor: ColorName.neutral0,
-        route: const CompanyInformationRoute(),
+        onTap: () => context.router.push(const CompanyInformationRoute()),
         text: '1 Ay Ücretsiz Dene',
       ),
     );

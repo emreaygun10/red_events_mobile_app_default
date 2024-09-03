@@ -101,8 +101,8 @@ class _BaseViewState extends BaseState<BaseView> with BaseMixin {
             style: Theme.of(context).textTheme.titleSmall!.copyWith(
                   fontWeight: FontWeight.w500,
                   color: baseBloc.state.pageIndex == index
-                      ? ColorName.neutral900
-                      : ColorName.neutral0,
+                      ? ColorName.neutral0
+                      : ColorName.neutral900,
                 ),
           ),
         ),

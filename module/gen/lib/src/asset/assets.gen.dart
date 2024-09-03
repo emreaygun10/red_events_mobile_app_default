@@ -28,6 +28,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_add.svg
   SvgGenImage get icAdd => const SvgGenImage('assets/icons/ic_add.svg');
 
+  /// File path: assets/icons/ic_add_user.svg
+  SvgGenImage get icAddUser =>
+      const SvgGenImage('assets/icons/ic_add_user.svg');
+
   /// File path: assets/icons/ic_address.svg
   SvgGenImage get icAddress => const SvgGenImage('assets/icons/ic_address.svg');
 
@@ -57,6 +61,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_bank_card_line.svg
   SvgGenImage get icBankCardLine =>
       const SvgGenImage('assets/icons/ic_bank_card_line.svg');
+
+  /// File path: assets/icons/ic_bar_chart.svg
+  SvgGenImage get icBarChart =>
+      const SvgGenImage('assets/icons/ic_bar_chart.svg');
 
   /// File path: assets/icons/ic_building.svg
   SvgGenImage get icBuilding =>
@@ -118,6 +126,10 @@ class $AssetsIconsGen {
   SvgGenImage get icDownload =>
       const SvgGenImage('assets/icons/ic_download.svg');
 
+  /// File path: assets/icons/ic_download_cloud.svg
+  SvgGenImage get icDownloadCloud =>
+      const SvgGenImage('assets/icons/ic_download_cloud.svg');
+
   /// File path: assets/icons/ic_edit_line.svg
   SvgGenImage get icEditLine =>
       const SvgGenImage('assets/icons/ic_edit_line.svg');
@@ -125,6 +137,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_empty_list_widget.svg
   SvgGenImage get icEmptyListWidget =>
       const SvgGenImage('assets/icons/ic_empty_list_widget.svg');
+
+  /// File path: assets/icons/ic_empty_state.svg
+  SvgGenImage get icEmptyState =>
+      const SvgGenImage('assets/icons/ic_empty_state.svg');
 
   /// File path: assets/icons/ic_error_warning_fill.svg
   SvgGenImage get icErrorWarningFill =>
@@ -220,6 +236,13 @@ class $AssetsIconsGen {
   SvgGenImage get icMailCheckLine =>
       const SvgGenImage('assets/icons/ic_mail_check_line.svg');
 
+  /// File path: assets/icons/ic_mail_send.svg
+  SvgGenImage get icMailSend =>
+      const SvgGenImage('assets/icons/ic_mail_send.svg');
+
+  /// File path: assets/icons/ic_map_pin.svg
+  SvgGenImage get icMapPin => const SvgGenImage('assets/icons/ic_map_pin.svg');
+
   /// File path: assets/icons/ic_menu_line.svg
   SvgGenImage get icMenuLine =>
       const SvgGenImage('assets/icons/ic_menu_line.svg');
@@ -290,6 +313,10 @@ class $AssetsIconsGen {
   SvgGenImage get icSelectBoxCircleFill =>
       const SvgGenImage('assets/icons/ic_select_box_circle_fill.svg');
 
+  /// File path: assets/icons/ic_settings.svg
+  SvgGenImage get icSettings =>
+      const SvgGenImage('assets/icons/ic_settings.svg');
+
   /// File path: assets/icons/ic_share_box_fill.svg
   SvgGenImage get icShareBoxFill =>
       const SvgGenImage('assets/icons/ic_share_box_fill.svg');
@@ -297,6 +324,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_shield_star_line.svg
   SvgGenImage get icShieldStarLine =>
       const SvgGenImage('assets/icons/ic_shield_star_line.svg');
+
+  /// File path: assets/icons/ic_shield_user.svg
+  SvgGenImage get icShieldUser =>
+      const SvgGenImage('assets/icons/ic_shield_user.svg');
 
   /// File path: assets/icons/ic_shift_logo.svg
   SvgGenImage get icShiftLogo =>
@@ -344,6 +375,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_user_2.svg
   SvgGenImage get icUser2 => const SvgGenImage('assets/icons/ic_user_2.svg');
 
+  /// File path: assets/icons/ic_user_background.svg
+  SvgGenImage get icUserBackground =>
+      const SvgGenImage('assets/icons/ic_user_background.svg');
+
   /// File path: assets/icons/ic_user_fill.svg
   SvgGenImage get icUserFill =>
       const SvgGenImage('assets/icons/ic_user_fill.svg');
@@ -355,6 +390,14 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_user_shared.svg
   SvgGenImage get icUserShared =>
       const SvgGenImage('assets/icons/ic_user_shared.svg');
+
+  /// File path: assets/icons/ic_weakly_subtract.svg
+  SvgGenImage get icWeaklySubtract =>
+      const SvgGenImage('assets/icons/ic_weakly_subtract.svg');
+
+  /// File path: assets/icons/ic_weakly_union.svg
+  SvgGenImage get icWeaklyUnion =>
+      const SvgGenImage('assets/icons/ic_weakly_union.svg');
 
   /// File path: assets/icons/ic_whatsApp.svg
   SvgGenImage get icWhatsApp =>
@@ -369,6 +412,7 @@ class $AssetsIconsGen {
   /// List of all assets
   List<SvgGenImage> get values => [
         icAdd,
+        icAddUser,
         icAddress,
         icAge,
         icArroeLeftS,
@@ -377,6 +421,7 @@ class $AssetsIconsGen {
         icArrowRightS,
         icArrowUpLine,
         icBankCardLine,
+        icBarChart,
         icBuilding,
         icBuildingLine,
         icCalendar,
@@ -393,8 +438,10 @@ class $AssetsIconsGen {
         icDot,
         icDownArrow,
         icDownload,
+        icDownloadCloud,
         icEditLine,
         icEmptyListWidget,
+        icEmptyState,
         icErrorWarningFill,
         icEu,
         icExcel,
@@ -421,6 +468,8 @@ class $AssetsIconsGen {
         icLogoDark,
         icMail,
         icMailCheckLine,
+        icMailSend,
+        icMapPin,
         icMenuLine,
         icMore,
         icNewspaper,
@@ -440,8 +489,10 @@ class $AssetsIconsGen {
         icSecurePaymentLine,
         icSelectBoxCircle,
         icSelectBoxCircleFill,
+        icSettings,
         icShareBoxFill,
         icShieldStarLine,
+        icShieldUser,
         icShiftLogo,
         icStar,
         icStarEmpty,
@@ -455,9 +506,12 @@ class $AssetsIconsGen {
         icTr,
         icUs,
         icUser2,
+        icUserBackground,
         icUserFill,
         icUserLine,
         icUserShared,
+        icWeaklySubtract,
+        icWeaklyUnion,
         icWhatsApp,
         icWord,
         star
@@ -470,6 +524,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/image_avatar.png
   AssetGenImage get imageAvatar =>
       const AssetGenImage('assets/images/image_avatar.png');
+
+  /// File path: assets/images/image_user_background.png
+  AssetGenImage get imageUserBackground =>
+      const AssetGenImage('assets/images/image_user_background.png');
 
   /// File path: assets/images/img_flags.png
   AssetGenImage get imgFlags =>
@@ -488,8 +546,14 @@ class $AssetsImagesGen {
       const AssetGenImage('assets/images/onboard_two.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [imageAvatar, imgFlags, onboardOne, onboardThree, onboardTwo];
+  List<AssetGenImage> get values => [
+        imageAvatar,
+        imageUserBackground,
+        imgFlags,
+        onboardOne,
+        onboardThree,
+        onboardTwo
+      ];
 }
 
 class $AssetsLottieGen {

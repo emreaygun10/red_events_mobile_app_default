@@ -7,6 +7,28 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final list = <Widget>[
+      Assets.icons.icSettings.toGetSvgWithColor(
+        height: 25.h,
+        color: ColorName.neutral900,
+      ),
+      Assets.icons.icShieldUser.toGetSvgWithColor(
+        height: 25.h,
+        color: ColorName.neutral900,
+      ),
+      Assets.icons.icDownloadCloud.toGetSvgWithColor(
+        height: 25.h,
+        color: ColorName.neutral900,
+      ),
+      Assets.icons.icMailSend.toGetSvgWithColor(
+        height: 25.h,
+        color: ColorName.neutral900,
+      ),
+      Assets.icons.icAddUser.toGetSvgWithColor(
+        height: 25.h,
+        color: ColorName.neutral900,
+      ),
+    ];
     return AppBar(
       toolbarHeight: preferredSize.height,
       automaticallyImplyLeading: false,
@@ -31,6 +53,76 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               .textTheme
               .titleSmall!
               .copyWith(color: ColorName.neutral400),
+        ),
+      ),
+      actions: [
+        Padding(
+          padding: const EdgeInsets.only(right: 20).r,
+          child: Row(
+            children: [
+              BuildAppBarActions(
+                icon: Icons.more_horiz,
+                onTap: () async {
+                  await showModalBottomSheet<void>(
+                    showDragHandle: true,
+                    context: context,
+                    builder: (context) => SizedBox(
+                      width: context.sized.width,
+                      child: Column(
+                        children: [
+                          AutoSizeText(
+                            'İşlemler',
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                          Expanded(
+                            child: ListView.separated(
+                              itemBuilder: (context, index) => ListTile(
+                                onTap: () => context.router.push(
+                                  OperationPersonnelListRoute(
+                                    operationType: OperationsEnum.values[index],
+                                  ),
+                                ),
+                                leading: list[index],
+                                title: AutoSizeText(
+                                  OperationsEnum.values[index].text,
+                                  style: Theme.of(context).textTheme.titleLarge,
+                                ),
+                              ),
+                              separatorBuilder: (context, index) =>
+                                  const Divider(),
+                              itemCount: OperationsEnum.values.length,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  GestureDetector BuildAppBarActions({
+    required IconData icon,
+    required void Function() onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.all(3).r,
+        height: 24.h,
+        width: 24.w,
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          color: ColorName.neutral0,
+        ),
+        child: Icon(
+          icon,
+          size: 19.r,
         ),
       ),
     );

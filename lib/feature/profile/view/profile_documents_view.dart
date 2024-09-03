@@ -226,13 +226,11 @@ class _DocumentsViewState extends BaseState<ProfileDocumentsView>
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               CustomContainerChip(
-                textTheme: textTheme,
                 chipIndex: state.chipIndex,
                 text: LocaleKeys.add_personnel_document_loaded_documents,
                 onTap: profileDocumentsBloc.changeChipIndex,
               ),
               CustomContainerChip(
-                textTheme: textTheme,
                 chipIndex: !state.chipIndex,
                 text: LocaleKeys.add_personnel_document_missing_documents,
                 onTap: profileDocumentsBloc.changeChipIndex,

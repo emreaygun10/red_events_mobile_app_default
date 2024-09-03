@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:local_auth_android/local_auth_android.dart';
-import 'package:local_auth_ios/local_auth_ios.dart';
+import 'package:local_auth_darwin/local_auth_darwin.dart';
 import 'package:red_events_mobile_app_defult/feature/auth/login/view/login_view.dart';
 import 'package:red_events_mobile_app_defult/feature/auth/login/view_model/login_view_model.dart';
 import 'package:red_events_mobile_app_defult/product/init/language/locale_keys.g.dart';
