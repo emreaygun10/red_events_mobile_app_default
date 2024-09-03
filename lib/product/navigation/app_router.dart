@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:red_events_mobile_app_defult/feature/add_personnel/view/add_personnel_view.dart';
 import 'package:red_events_mobile_app_defult/feature/add_personnel/view/base_informations_view.dart';
@@ -72,7 +71,7 @@ class AppRouter extends _$AppRouter {
   List<AutoRoute> get routes => [
         AutoRoute(page: HomeRoute.page),
         // ignore: avoid_redundant_argument_values
-        AutoRoute(page: OnboardRoute.page, initial: kReleaseMode),
+        AutoRoute(page: OnboardRoute.page, initial: true),
         AutoRoute(page: SignInRoute.page),
         AutoRoute(page: SuccessSignInRoute.page),
         AutoRoute(page: LoginRoute.page),
@@ -89,7 +88,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: ProfileProgressPaymentRoute.page),
         AutoRoute(
           page: BottomNAvigationBarRoute.page,
-          initial: kDebugMode,
         ), //kdebug
         AutoRoute(page: ProfileDocumentsRoute.page),
         AutoRoute(page: ProfileRequestPermissionRoute.page),
