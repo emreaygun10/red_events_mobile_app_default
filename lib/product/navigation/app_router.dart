@@ -89,6 +89,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: ProfileProgressPaymentRoute.page),
         AutoRoute(
           page: BottomNAvigationBarRoute.page,
+          initial: kDebugMode,
         ), //kdebug
         AutoRoute(page: ProfileDocumentsRoute.page),
         AutoRoute(page: ProfileRequestPermissionRoute.page),
@@ -115,7 +116,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: AddPersonnelFormRoute.page),
         AutoRoute(page: AddPersonnelListRoute.page),
         AutoRoute(page: SuccessRoute.page),
-        AutoRoute(page: ManagerBottomNavigationRoute.page, initial: kDebugMode),
+        AutoRoute(page: ManagerBottomNavigationRoute.page),
         AutoRoute(page: PackageSelectionRoute.page),
         AutoRoute(page: HrRoute.page),
         AutoRoute(page: PersonnelSearchRoute.page),
