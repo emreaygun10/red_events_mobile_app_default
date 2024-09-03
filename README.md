@@ -1,16 +1,4 @@
 # red_events_mobile_app_defult
 
-A new Flutter project.
+This application is designed to manage the operations of an event planning and coordination company, providing a comprehensive platform for both users and administrators. For users, the app offers an intuitive interface to browse, book and manage events, allowing them to easily communicate with organizers and receive updates. For administrators, the app includes robust features to manage event schedules, handle bookings, and oversee customer interactions, ensuring seamless coordination and efficient operation of the company’s services. The application is built to enhance the overall event planning experience by integrating user-friendly functionalities with powerful administrative tools.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
